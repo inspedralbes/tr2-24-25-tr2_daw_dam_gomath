@@ -19,7 +19,7 @@ Un cop comenceu heu de canviar aquesta explicació amb la corresponent al vostre
 **Nom del projecte:**
 - GoMath
 
-*Petita descripció:
+**Petita descripció:**
 - [Descripció breu del projecte. Què es vol aconseguir? Quin problema es vol resoldre?]
 
 **Adreça del gestor de tasques:**
