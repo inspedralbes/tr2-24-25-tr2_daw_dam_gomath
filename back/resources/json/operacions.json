@@ -1,0 +1,142 @@
+[
+    {
+        "id": 1,
+        "problem_json": {
+            "question": "¿Cuánto es 2 + 2?",
+            "answers": [
+                { "value": 3, "is_correct": false },
+                { "value": 4, "is_correct": true },
+                { "value": 5, "is_correct": false },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "suma"
+    },
+    {
+        "id": 2,
+        "problem_json": {
+            "question": "¿Cuánto es 5 + 3?",
+            "answers": [
+                { "value": 7, "is_correct": false },
+                { "value": 8, "is_correct": true },
+                { "value": 9, "is_correct": false },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "suma"
+    },
+    {
+        "id": 3,
+        "problem_json": {
+            "question": "¿Cuánto es 9 - 4?",
+            "answers": [
+                { "value": 6, "is_correct": false },
+                { "value": 5, "is_correct": true },
+                { "value": 4, "is_correct": false },
+                { "value": 3, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 4,
+        "problem_json": {
+            "question": "¿Cuánto es 6 × 2?",
+            "answers": [
+                { "value": 12, "is_correct": true },
+                { "value": 10, "is_correct": false },
+                { "value": 14, "is_correct": false },
+                { "value": 16, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicación"
+    },
+    {
+        "id": 5,
+        "problem_json": {
+            "question": "¿Cuánto es 10 ÷ 2?",
+            "answers": [
+                { "value": 5, "is_correct": true },
+                { "value": 4, "is_correct": false },
+                { "value": 6, "is_correct": false },
+                { "value": 3, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "división"
+    },
+    {
+        "id": 6,
+        "problem_json": {
+            "question": "¿Cuánto es 7 + 8?",
+            "answers": [
+                { "value": 14, "is_correct": false },
+                { "value": 15, "is_correct": true },
+                { "value": 13, "is_correct": false },
+                { "value": 16, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "suma"
+    },
+    {
+        "id": 7,
+        "problem_json": {
+            "question": "¿Cuánto es 15 - 9?",
+            "answers": [
+                { "value": 7, "is_correct": false },
+                { "value": 6, "is_correct": true },
+                { "value": 5, "is_correct": false },
+                { "value": 8, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 8,
+        "problem_json": {
+            "question": "¿Cuánto es 8 × 3?",
+            "answers": [
+                { "value": 24, "is_correct": true },
+                { "value": 21, "is_correct": false },
+                { "value": 22, "is_correct": false },
+                { "value": 23, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicación"
+    },
+    {
+        "id": 9,
+        "problem_json": {
+            "question": "¿Cuánto es 18 ÷ 6?",
+            "answers": [
+                { "value": 2, "is_correct": false },
+                { "value": 3, "is_correct": true },
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "división"
+    },
+    {
+        "id": 10,
+        "problem_json": {
+            "question": "¿Cuánto es 20 + 12?",
+            "answers": [
+                { "value": 31, "is_correct": false },
+                { "value": 32, "is_correct": true },
+                { "value": 33, "is_correct": false },
+                { "value": 34, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "suma"
+    }
+]
