@@ -20,13 +20,13 @@ Un cop comenceu heu de canviar aquesta explicació amb la corresponent al vostre
 - GoMath
 
 **Petita descripció:**
-- [Descripció breu del projecte. Què es vol aconseguir? Quin problema es vol resoldre?]
+
 
 **Adreça del gestor de tasques:**
-- [Taiga]([https://tree.taiga.io/project/a23hashusraf-grupohybrido_tr2/timeline](https://tree.taiga.io/project/a23hashusraf-grupohybrido_tr2/timeline))
+- [Taiga](https://tree.taiga.io/project/a23hashusraf-grupohybrido_tr2/timeline)
 
 **Adreça del prototip gràfic del projecte:**
-- [Penpot]([https://design.penpot.app/#/view/a0a8e792-b2d2-818e-8005-5cd1e24c61ba?page-id=a0a8e792-b2d2-818e-8005-5cd1e24c61bb&section=interactions&index=0&share-id=a0a8e792-b2d2-818e-8005-5d13afee4a77](https://design.penpot.app/#/view/a0a8e792-b2d2-818e-8005-5cd1e24c61ba?page-id=a0a8e792-b2d2-818e-8005-5cd1e24c61bb&section=interactions&index=0&share-id=a0a8e792-b2d2-818e-8005-5d13afee4a77))
+- [Penpot](https://design.penpot.app/#/view/a0a8e792-b2d2-818e-8005-5cd1e24c61ba?page-id=a0a8e792-b2d2-818e-8005-5cd1e24c61bb&section=interactions&index=0&share-id=a0a8e792-b2d2-818e-8005-5d13afee4a77)
   
  **URL de producció (quan la tingueu)**
    
