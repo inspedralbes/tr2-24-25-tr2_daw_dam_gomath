@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class OperacionsSeeder extends Seeder
 {
@@ -13,9 +14,7 @@ class OperacionsSeeder extends Seeder
      */
     public function run(): void
     {
-        $jsonPath = resource_path('json/operacions.json');
-
-        $jsonData = File::get($jsonPath);
+        $jsonData = File::get(database_path('seeders/data/operacions.json'));
         $operacions = json_decode($jsonData, true);
 
         foreach ($operacions as $operacion) {

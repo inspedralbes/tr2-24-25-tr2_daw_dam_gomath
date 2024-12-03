@@ -12,7 +12,9 @@ class PuntuacionController extends Controller
      */
     public function index()
     {
-        //
+        $puntuacion = Puntuacion::all();
+
+        return response()->json($puntuacion);
     }
 
     /**
