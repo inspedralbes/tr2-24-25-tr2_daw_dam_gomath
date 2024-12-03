@@ -35,40 +35,19 @@
 </style>
 
 <script>
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { useAppStore } from '@/stores/app'
-
-export default {
-  name: 'LoginPage',
-  setup() {
-    const username = ref('');
-    const password = ref('');
-    const router = useRouter();
-    
-    function login(){
-      if (username.value === 'user' && password.value === '1234') {
-        // Redirige a la página de votaciones
-        router.push('/Offline');
-
-        // Almacena la información en el store
-        const appStore = useAppStore();
-        appStore.setLoginInfo({
-            loggedIn: true,
-            username: username.value,
-            image: 'https://randomuser.me/api/portraits/thumb/women/56.jpg', // Reemplaza con la URL real del avatar si la tienes
-          });
-
-      } else {
-        alert("Credenciales incorrectas")
-      }
-    };
-
-    return {
-      username,
-      password,
-      login,
-    };
-  },
-};
-</script>
+  import { inject, onMounted } from 'vue';
+  
+  export default {
+    setup() {
+      const divActivo = inject('divActivo'); 
+  
+      onMounted(() => {
+        if (divActivo) {
+          divActivo.value = 'login';
+        }
+      });
+  
+      return {};
+    },
+  };
+  </script>
