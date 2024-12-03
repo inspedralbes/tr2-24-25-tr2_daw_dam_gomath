@@ -67,7 +67,7 @@ export default {
     const email = ref('');
     const password = ref('');
     const codiProfe = ref('');
-    const isProfe = ref(false); // Estado para el toggle "Soy profesor"
+    const isProfe = ref(false);
     const router = useRouter();
 
     function login() {
@@ -78,10 +78,10 @@ export default {
           return;
         }
 
-        // Redirige a la página Offline
+
         router.push('/Offline');
 
-        // Almacena la información en el store
+        
         const appStore = useAppStore();
         appStore.setLoginInfo({
           loggedIn: true,

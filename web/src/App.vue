@@ -5,23 +5,22 @@ import { useRouter, useRoute } from 'vue-router';
 export default {
   setup() {
     const isLeftDrawerOpen = ref(false);
-    const divActivo = ref(''); // Inicializa sin valor
+    const divActivo = ref('');
     provide('divActivo', divActivo);
 
     const router = useRouter();
     const route = useRoute();
 
-    // Función para determinar si el drawer debe mostrarse
+
     const updateDivActivo = () => {
       const currentRoute = route.path;
       if (currentRoute === '/login') {
         divActivo.value = 'login';
       } else {
-        divActivo.value = ''; // Vacía cuando no es necesario
+        divActivo.value = '';
       }
     };
 
-    // Actualiza el estado al montar el componente y en cada navegación
     onMounted(updateDivActivo);
     router.afterEach(updateDivActivo);
 
