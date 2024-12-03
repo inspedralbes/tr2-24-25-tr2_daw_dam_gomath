@@ -3,7 +3,7 @@ import Login from '../components/LoginScreen.vue'
 import Offline from '../components/OfflineScreen.vue'
 import Online from '../components/OnlineScreen.vue'
 import Apunts from '../components/ApuntsScreen.vue'
-import Jocs from '../components/jocsScreen.vue'
+import Jocs from '../components/JocsScreen.vue'
 import Home from '../components/HomeScreen.vue'
 import Register from '../components/RegisterScreen.vue';
 const router = createRouter({
