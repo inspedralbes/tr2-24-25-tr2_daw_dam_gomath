@@ -73,15 +73,12 @@ export default {
     <q-route-tab to="/buscaminas" label="BUSCAMINAS"/>
   </q-tabs>
 </q-drawer>
-<q-drawer v-if="divActivo === 'login'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
+<q-drawer v-if="divActivo === 'online'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
   <q-tabs vertical>
-    <q-route-tab to="/Puntuaciones" label="PUNTUACIONES"/>
-    <q-route-tab to="/Configuracion" label="CONFIGURACION"/>
-    <q-route-tab 
-      to="/Cerrar-sesion" 
-      label="Cerrar sesión" 
-      class="text-red" 
-    />
+    <q-route-tab to="/sumaOffline" label="SUMA"/>
+    <q-route-tab to="/restaOffline" label="RESTA"/>
+    <q-route-tab to="/multiplicacionOffline" label="MULTIPLICACION"/>
+    <q-route-tab to="/divisionOffline" label="DIVISION"/>
   </q-tabs>
 </q-drawer>
     <q-page-container>
