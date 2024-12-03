@@ -37,7 +37,7 @@ export default {
         <q-route-tab to="/Online" label="ONLINE" />
         <q-route-tab to="/Jocs" label="JOCS" />
         <q-route-tab to="/Apunts" label="APUNTS" />
-        <q-route-tab to="/" label="LOGIN" />
+        <q-route-tab to="/login" label="LOGIN" />
       </q-tabs>
     </q-header>
 
