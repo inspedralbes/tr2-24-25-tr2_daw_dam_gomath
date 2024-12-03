@@ -87,7 +87,7 @@ README.md --> Documentación principal del proyecto
 
 | Nombre | Rol |
 |--------|-----|
-| [Gerard Arias] | --- |
+| [Gerard Arias ] | --- |
 | [Ayoub Boudhafri] | --- |
 | [Pablo Matamoros] | --- |
 | [Eduard Renau] | --- |
