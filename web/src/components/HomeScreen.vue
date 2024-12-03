@@ -1,7 +1,7 @@
 <template>
   <div id="home-screen" class="home-screen-container">
     <header>
-      <img src="/path/to/logo.png" alt="MathQuest Logo" class="logo" />
+      <img src="../assets/img/infinity-math-icon-2ab72a.webp" alt="MathQuest Logo" class="logo" />
     </header>
     <main>
       <h1 class="title">Bienvenido a MathQuest</h1>
@@ -40,7 +40,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   height: 100vh;
-  
+
   font-family: 'Aller', sans-serif;
   padding: 20px;
   text-align: center;
