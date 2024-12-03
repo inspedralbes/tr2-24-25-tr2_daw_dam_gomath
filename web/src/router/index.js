@@ -4,12 +4,18 @@ import Offline from '../components/OfflineScreen.vue'
 import Online from '../components/OnlineScreen.vue'
 import Apunts from '../components/ApuntsScreen.vue'
 import Jocs from '../components/jocsScreen.vue'
+import Home from '../components/HomeScreen.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/login',
+      path: '/',
       name: 'home',
+      component: Home,
+    },
+    {
+      path: '/login',
+      name: 'login',
       component: Login,
     },
     {

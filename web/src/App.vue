@@ -19,11 +19,11 @@ export default {
 
 <template>
   <q-layout view="hHh lpR fFf">
-    
+
     <q-header elevated class="bg-primary text-white" height-hint="98">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleDrawer" />
-        
+
         <q-toolbar-title>
           <q-avatar>
             <img src="./assets/img/infinity-math-icon-2ab72a.webp">
@@ -45,10 +45,10 @@ export default {
   <q-tabs vertical>
     <q-route-tab to="/Puntuaciones" label="PUNTUACIONES"/>
     <q-route-tab to="/Configuracion" label="CONFIGURACION"/>
-    <q-route-tab 
-      to="/Cerrar-sesion" 
-      label="Cerrar sesión" 
-      class="text-red" 
+    <q-route-tab
+      to="/Cerrar-sesion"
+      label="Cerrar sesión"
+      class="text-red"
     />
   </q-tabs>
 </q-drawer>
