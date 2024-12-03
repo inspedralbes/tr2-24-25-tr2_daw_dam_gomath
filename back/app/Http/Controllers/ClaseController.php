@@ -12,7 +12,9 @@ class ClaseController extends Controller
      */
     public function index()
     {
-        
+        $clase = Clase::all();
+
+        return response()->json($clase);
     }
 
     /**
