@@ -22,14 +22,30 @@ services:
     ports:
       - "9090:8080"
 
-  # Laravel: Aplicación PHP de Laravel
+    # Servicio de Laravel
   laravel:
     build: ./back/laravel
     ports:
       - "8000:8000"
     volumes:
+    #Quina carpeta LOCAL s'ha de mapejar / veure DINS del contenidor?
       - ./back/laravel:/var/www/
     working_dir: /var/www/
     depends_on:
       - db
-    command: bash -c "composer install && php artisan key:generate && php artisan migrate && php artisan serve --host=0.0.0.0"
+    #Quan es crea, es poden executar ordres
+    command: bash -c "composer install && php artisan key:generate && php artisan migrate &&php artisan serve --host=0.0.0.0"
+
+    # Servicio de Vue.js
+  vue:
+    build: ./web  # Ruta donde está tu proyecto Vue.js
+    ports:
+      - 8080:8080       # Mapea el puerto 8080 al contenedor
+    volumes:
+      - ./web:/app # Mapea la carpeta local del frontend al contenedor
+    working_dir: /app    # Directorio de trabajo dentro del contenedor
+    command: npm run serve # Ejecuta el servidor de desarrollo de Vue
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Soluciona problemas de cambio de archivos en algunos sistemas de archivos
+    depends_on:
+      - laravel # Si Vue depende de Laravel (si es el caso)
