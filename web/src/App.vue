@@ -1,13 +1,15 @@
 <script>
-import { ref } from 'vue'
+import { ref, provide } from 'vue';
 import { socket } from '@/socket';
 
 export default {
   setup() {
     const isLeftDrawerOpen = ref(false);
-
+    const divActivo = ref('login');
+    provide('divActivo', divActivo);
     return {
       isLeftDrawerOpen,
+      divActivo,
       toggleDrawer() {
         isLeftDrawerOpen.value = !isLeftDrawerOpen.value;
       }
@@ -36,12 +38,12 @@ export default {
         <q-route-tab to="/Online" label="ONLINE" />
         <q-route-tab to="/Jocs" label="JOCS" />
         <q-route-tab to="/Apunts" label="APUNTS" />
+        <q-route-tab to="/" label="LOGIN" />
       </q-tabs>
     </q-header>
 
-    <q-drawer show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
+    <q-drawer v-if="divActivo === 'login'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
   <q-tabs vertical>
-    <q-route-tab to="/" label="LOGIN" />
     <q-route-tab to="/Puntuaciones" label="PUNTUACIONES"/>
     <q-route-tab to="/Configuracion" label="CONFIGURACION"/>
     <q-route-tab 
@@ -51,9 +53,6 @@ export default {
     />
   </q-tabs>
 </q-drawer>
-
-
-
     <q-page-container>
       <router-view />
     </q-page-container>

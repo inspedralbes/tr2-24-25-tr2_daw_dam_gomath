@@ -43,4 +43,21 @@
     height: auto;
   }
   </style>
+  <script>
+  import { inject, onMounted } from 'vue';
+  
+  export default {
+    setup() {
+      const divActivo = inject('divActivo'); 
+  
+      onMounted(() => {
+        if (divActivo) {
+          divActivo.value = 'online';
+        }
+      });
+  
+      return {};
+    },
+  };
+  </script>
   
