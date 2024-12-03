@@ -2,20 +2,20 @@
   <q-page class="flex flex-center">
     <q-card class="q-pa-md" style="width: 300px;">
       <q-card-section>
-        <div class="text-h6">Iniciar sesión</div>
-        <div class="text-subtitle2">Por favor ingresa tus credenciales</div>
+        <div class="text-h6">Iniciar sesió</div>
+        <div class="text-subtitle2">Ingresa les teves credencials</div>
       </q-card-section>
-      
+
       <q-card-section>
         <q-input
           v-model="username"
-          label="Nombre de usuario"
+          label="Nom d'usuari"
           outlined
           dense
         />
         <q-input
           v-model="password"
-          label="Contraseña"
+          label="Contrasenya"
           type="password"
           outlined
           dense
@@ -24,7 +24,7 @@
       </q-card-section>
 
       <q-card-actions align="right">
-        <q-btn label="Iniciar sesión" color="primary" @click="login" />
+        <q-btn label="Iniciar sesió" color="primary" @click="login" />
       </q-card-actions>
     </q-card>
   </q-page>
@@ -45,7 +45,7 @@ export default {
     const username = ref('');
     const password = ref('');
     const router = useRouter();
-    
+
     function login(){
       if (username.value === 'user' && password.value === '1234') {
         // Redirige a la página de votaciones

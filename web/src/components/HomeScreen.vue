@@ -1,20 +1,20 @@
 <template>
   <div id="home-screen" class="home-screen-container">
-    <header>
-      <img src="../assets/img/infinity-math-icon-2ab72a.webp" alt="MathQuest Logo" class="logo" />
-    </header>
-    <main>
-      <h1 class="title">Bienvenido a MathQuest</h1>
-      <p class="description">
-        ¡Descubre tu nivel de matemáticas, desafía tus límites y mejora tus habilidades mientras te diviertes!
-      </p>
-      <button class="cta-button" @click="goToRegister">¡Regístrate ahora!</button>
-    </main>
-    <footer>
-      <p class="footer-text">¿Ya tienes una cuenta?
-        <a href="#" @click="goToLogin">Inicia sesión aquí</a>
-      </p>
-    </footer>
+    <div class="content">
+      <main>
+        <h1 class="title">Bienvenido a MathQuest</h1>
+        <p class="description">
+          ¡Descubre tu nivel de matemáticas, desafía tus límites y mejora tus habilidades mientras te diviertes!
+        </p>
+        <button class="cta-button" @click="goToRegister">¡Regístrate ahora!</button>
+      </main>
+      <footer>
+        <p class="footer-text">¿Ya tienes una cuenta?
+          <a href="#" @click="goToLogin">Inicia sesión aquí</a>
+        </p>
+      </footer>
+    </div>
+
   </div>
 </template>
 
@@ -40,7 +40,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   height: 100vh;
-
+  background-image: url("../assets/img/background.jpg");
   font-family: 'Aller', sans-serif;
   padding: 20px;
   text-align: center;
@@ -51,6 +51,13 @@ export default {
 .logo {
   width: 150px;
   margin-top: 20px;
+}
+
+/* Main */
+.content {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  margin-top: 50px;
 }
 
 /* Título */
