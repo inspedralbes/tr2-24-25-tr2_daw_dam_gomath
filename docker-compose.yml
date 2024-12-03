@@ -12,8 +12,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: math
-      MYSQL_USER: user
-      MYSQL_PASSWORD: user
+      MYSQL_USER: root
+      MYSQL_PASSWORD:
     ports:
       - 1000:3306
     volumes:
@@ -32,12 +32,12 @@ services:
       - "9090:8080"
   laravel:
     #S'ha de fer un dockerfile amb PHP i Composer i les utilitats de docker per php per aixecar un servidor Laravel
-    build: ./back
+    build: ./back/laravel
     ports:
       - 8000:8000
     volumes:
 #Quina carpeta LOCAL s'ha de mapejar / veure DINS del contenidor?
-      - ./back:/var/www/
+      - ./back/laravel:/var/www/
     working_dir: /var/www/
     depends_on:
       - db
