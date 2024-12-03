@@ -21,7 +21,7 @@ services:
       # La carpeta de l'esquerra HA D'EXISTIR
       - ./mysql_data:/var/lib/mysql
       # Per crear algunes taules al primer inici
-      # (Falta poner nuestro codigo de la bd) - ./back/takeOutFit.sql:/docker-entrypoint-initdb.d/dades.sql
+      - ./back/math.sql:/docker-entrypoint-initdb.d/dades.sql
 
   adminer:
     image: adminer
