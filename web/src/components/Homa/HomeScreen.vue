@@ -2,7 +2,7 @@
   <div id="home-screen" class="home-screen-container">
     <div class="content">
       <main>
-        <h1 class="title">Bienvenido a MathQuest</h1>
+        <h1 class="title">Bienvenido a GoMath</h1>
         <p class="description">
           ¡Descubre tu nivel de matemáticas, desafía tus límites y mejora tus habilidades mientras te diviertes!
         </p>

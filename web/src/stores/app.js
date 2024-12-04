@@ -8,30 +8,30 @@ export const useAppStore = defineStore('app', () => {
   const loginInfo = ref({
     loggedIn: false,
     username: '',
+    role: '',
     image: '',
   });
 
-  const infoVotos = ref({
-    votos: [],
+  const registrationInfo = ref({
+    loggedIn: false,
+    username: '',
+    role: '',
+    image: '',
   });
-
-
-
   // Actions
 
-  const setLoginInfo = ({ loggedIn, username, image }) => {
+  const setLoginInfo = ({ loggedIn, username, role, image }) => {
     loginInfo.value.loggedIn = loggedIn;
     loginInfo.value.username = username;
+    loginInfo.value.role = role;
     loginInfo.value.image = image;
   };
 
-  const setVotos = (votos) => {
-    infoVotos.value.votos = votos;
-  };
-
-
-  const getVotos = () => {
-    return infoVotos.value.votos;
+  const setRegistrationInfo = ({ loggedIn, username, role, image }) => {
+    registrationInfo.value.loggedIn = loggedIn;
+    registrationInfo.value.username = username;
+    registrationInfo.value.role = role;
+    registrationInfo.value.image = image;
   };
 
   const isLoggedIn = computed(() => loginInfo.value.loggedIn);
@@ -41,10 +41,9 @@ export const useAppStore = defineStore('app', () => {
 
   return {
     loginInfo,
-    infoVotos,
+    registrationInfo,
     setLoginInfo,
-    setVotos,
-    getVotos,
+    setRegistrationInfo,
     isLoggedIn,
     getLoginInfo,
   };
