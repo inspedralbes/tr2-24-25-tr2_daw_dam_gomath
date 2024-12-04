@@ -16,7 +16,6 @@ return new class extends Migration
             $table->json('problem_json');
             $table->string('nivel_dificultad');
             $table->string('tipo_operacion');
-            $table->timestamps();
         });
     }
 
