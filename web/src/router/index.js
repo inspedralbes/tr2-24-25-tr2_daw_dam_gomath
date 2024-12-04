@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from '../components/LoginScreen.vue'
-import Offline from '../components/OfflineScreen.vue'
-import Online from '../components/OnlineScreen.vue'
-import Apunts from '../components/ApuntsScreen.vue'
-import Jocs from '../components/JocsScreen.vue'
-import Home from '../components/HomeScreen.vue'
-import Register from '../components/RegisterScreen.vue';
+import Login from '../components/Login/LoginScreen.vue'
+import Offline from '../components/Offline/OfflineScreen.vue'
+import Online from '../components/Online/OnlineScreen.vue'
+import Apunts from '../components/Apuntes/ApuntsScreen.vue'
+import Jocs from '../components/Jocs/JocsScreen.vue'
+import Home from '../components/Homa/HomeScreen.vue'
+import Register from '../components/Login/RegisterScreen.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
