@@ -2,18 +2,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const fileUpload = require('express-fileupload');
 const path = require('path');
+const offlineGamesRoutes = require('./routes/offlineGames');
 
 const app = express();
 
 // Middleware
 app.use(express.json());
 app.use(cors()); // Habilitar CORS per a qualsevol origen
-app.use(fileUpload()); // Habilitar la pujada d'arxius
-
-// Servir arxius estàtics des de la carpeta 'upload'
-app.use('/upload', express.static(path.join(__dirname, 'upload')));
+app.use('/api/offlineGames', offlineGamesRoutes);
 
 // Connexió a la base de dades MongoDB
 mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/GoMath', {
@@ -31,5 +28,5 @@ app.listen(PORT, () => {
 
 // Rutes
 app.get('/', (req, res) => {
-  res.send('Benvingut al servidor de motocicletes');
+  res.send('Benvingut al servidor de jocs offline');
 });
