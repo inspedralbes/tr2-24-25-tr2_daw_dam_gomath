@@ -18,16 +18,16 @@
 <template>
     <div class="grid-container">
       <div class="grid-item">
-        <img src="../assets/img/suma.svg" alt="Suma">
+        <img src="../../assets/img/suma.svg" alt="Suma">
       </div>
       <div class="grid-item">
-        <img src="../assets/img/resta.svg" alt="Resta">
+        <img src="../../assets/img/resta.svg" alt="Resta">
       </div>
       <div class="grid-item">
-        <img src="../assets/img/mult.svg" alt="Multiplicación">
+        <img src="../../assets/img/mult.svg" alt="Multiplicación">
       </div>
       <div class="grid-item">
-        <img src="../assets/img/div.svg" alt="División">
+        <img src="../../assets/img/div.svg" alt="División">
       </div>
     </div>
   </template>
