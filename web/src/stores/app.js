@@ -8,6 +8,7 @@ export const useAppStore = defineStore('app', () => {
   const loginInfo = ref({
     loggedIn: false,
     username: '',
+    role: '',
     image: '',
   });
 
@@ -19,9 +20,10 @@ export const useAppStore = defineStore('app', () => {
   });
   // Actions
 
-  const setLoginInfo = ({ loggedIn, username, image }) => {
+  const setLoginInfo = ({ loggedIn, username, role, image }) => {
     loginInfo.value.loggedIn = loggedIn;
     loginInfo.value.username = username;
+    loginInfo.value.role = role;
     loginInfo.value.image = image;
   };
 

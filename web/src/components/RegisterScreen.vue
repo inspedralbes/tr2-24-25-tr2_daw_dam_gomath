@@ -51,7 +51,7 @@ export default {
 
     function registration() {
       // Valida credenciales
-      if (username.value === 'user' && password.value && email.value) {
+      if (username.value && password.value && email.value) {
         // Si es profesor, valida el código de profesor
         if (isProfe.value) {
           if (codiProfe.value.trim() === '') {
