@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, inject, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAppStore } from '@/stores/app';
 
@@ -69,7 +69,13 @@ export default {
     const codiProfe = ref('');
     const isProfe = ref(false);
     const router = useRouter();
+    const divActivo = inject('divActivo')
 
+    onMounted(() => {
+      if(divActivo){
+        divActivo.value = 'register';
+      }
+    })
     function login() {
       // Valida credenciales
       if (username.value === 'user' && password.value === '1234') {

@@ -61,13 +61,14 @@ export default {
     </q-header>
 
     <q-drawer
-      v-if="divActivo === 'login'"
+      v-if="divActivo === 'login' || divActivo === 'register'"
       show-if-above
       v-model="isLeftDrawerOpen"
       side="left"
       bordered
     >
       <q-tabs vertical>
+        <q-route-tab to="/register" label="REGISTRATE" />
         <q-route-tab to="/Puntuacions" label="Puntuacións" />
         <q-route-tab to="/Configuracio" label="CONFIGURACIÓ" />
         <q-route-tab
