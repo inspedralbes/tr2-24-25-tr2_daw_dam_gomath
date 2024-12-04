@@ -35,3 +35,17 @@ services:
       - db
     #Quan es crea, es poden executar ordres
     command: bash -c "composer install && php artisan key:generate && php artisan migrate &&php artisan serve --host=0.0.0.0"
+
+    #Servicio de Vue
+  vue:
+    build:
+      context: ./web
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./web:/app
+    depends_on:
+      - laravel
+    environment:
+      VUE_APP_API_URL: http://laravel:8000
+    command: bash -c "npm install && npm run dev"
