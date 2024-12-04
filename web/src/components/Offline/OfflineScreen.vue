@@ -17,19 +17,19 @@
   </script>
 <template>
     <div class="grid-container">
-      <div class="grid-item">
-        <img src="../../assets/img/suma.svg" alt="Suma">
-      </div>
-      <div class="grid-item">
-        <img src="../../assets/img/resta.svg" alt="Resta">
-      </div>
-      <div class="grid-item">
-        <img src="../../assets/img/mult.svg" alt="Multiplicación">
-      </div>
-      <div class="grid-item">
-        <img src="../../assets/img/div.svg" alt="División">
-      </div>
-    </div>
+    <router-link to="/Offline/Partida" class="grid-item">
+      <img src="../../assets/img/suma.svg" alt="Suma">
+    </router-link>
+    <router-link to="/Offline/Partida" class="grid-item">
+      <img src="../../assets/img/resta.svg" alt="Resta">
+    </router-link>
+    <router-link to="/Offline/Partida" class="grid-item">
+      <img src="../../assets/img/mult.svg" alt="Multiplicación">
+    </router-link>
+    <router-link to="/Offline/Partida" class="grid-item">
+      <img src="../../assets/img/div.svg" alt="División">
+    </router-link>
+  </div>
   </template>
   
   <style scoped>

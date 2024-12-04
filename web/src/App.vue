@@ -101,10 +101,10 @@ export default {
 </q-drawer>
 <q-drawer v-if="divActivo === 'online'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
   <q-tabs vertical>
-    <q-route-tab to="/sumaOffline" label="SUMA"/>
-    <q-route-tab to="/restaOffline" label="RESTA"/>
-    <q-route-tab to="/multiplicacionOffline" label="MULTIPLICACION"/>
-    <q-route-tab to="/divisionOffline" label="DIVISION"/>
+    <q-route-tab to="/Offline/Partida" label="SUMA"/>
+    <q-route-tab to="/Offline/Partida" label="RESTA"/>
+    <q-route-tab to="/Offline/Partida" label="MULTIPLICACION"/>
+    <q-route-tab to="/Offline/Partida" label="DIVISION"/>
   </q-tabs>
     </q-drawer>
 

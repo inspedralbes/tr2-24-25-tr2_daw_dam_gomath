@@ -40,7 +40,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   height: 100vh;
-  background-image: url("../assets/img/background.jpg");
+  background-image: url("../../assets/img/background.jpg");
   font-family: 'Aller', sans-serif;
   padding: 20px;
   text-align: center;
