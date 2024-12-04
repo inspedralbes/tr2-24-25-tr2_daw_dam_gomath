@@ -80,6 +80,12 @@ export default {
           role: role.value,
           image: 'https://randomuser.me/api/portraits/thumb/women/56.jpg', // Reemplaza con tu avatar real
         });
+        appStore.setLoginInfo({
+          loggedIn: true,
+          username: username.value,
+          role: role.value,
+          image: 'https://randomuser.me/api/portraits/thumb/women/56.jpg', // Reemplaza con tu avatar real
+        });
       } else {
         alert("Credenciales incorrectas");
       }
