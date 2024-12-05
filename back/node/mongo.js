@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 const offlineGamesRoutes = require('./routes/offlineGames');
+const onlineGamesRoutes = require('./routes/onlineGames')
 
 const app = express();
 
@@ -11,6 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(cors()); // Habilitar CORS per a qualsevol origen
 app.use('/api/offlineGames', offlineGamesRoutes);
+app.use('/api/onlineGames', onlineGamesRoutes);
 
 // Connexió a la base de dades MongoDB
 mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/GoMath', {
