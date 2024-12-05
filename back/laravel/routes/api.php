@@ -13,5 +13,6 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/operaciones', [OperacionController::class, 'index']);
 Route::get('/users', [UserController::class, 'index']);
+Route::post('/users/store', [UserController::class, 'store']);
 Route::get('/clases', [ClaseController::class, 'index']);
 Route::get('/puntuaciones', [PuntuacionController::class, 'index']);
