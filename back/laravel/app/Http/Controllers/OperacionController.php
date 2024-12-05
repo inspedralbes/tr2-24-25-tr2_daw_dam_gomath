@@ -120,7 +120,7 @@ class OperacionController extends Controller
         }
 
         // Si es una vista, redirigir con mensaje de éxito
-        return redirect()->route('operacions.index')->with('success', 'Operación actualizada correctamente');
+        return redirect()->route('operacions')->with('success', 'Operación actualizada correctamente');
     }
 
 
