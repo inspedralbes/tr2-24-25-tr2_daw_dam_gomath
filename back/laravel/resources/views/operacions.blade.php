@@ -24,7 +24,7 @@
                 <th>Resposta</th>
                 <th>Dificultad</th>
                 <th>Operacion</th>
-                <th>Accions</th> <!-- Añadido para el botón de eliminar -->
+                <th>Accions</th> <!-- Añadido para el botón de editar -->
             </tr>
         </thead>
         <tbody>
@@ -47,6 +47,9 @@
                             <td>{{ $operacion->nivel_dificultad }}</td>
                             <td>{{ $operacion->tipo_operacion }}</td>
                             <td>
+                                <!-- Botón de editar -->
+                                <a href="{{ route('operacions.edit', $operacion->id) }}" class="btn btn-primary">Editar</a>
+
                                 <!-- Formulario para eliminar -->
                                 <form action="{{ route('operacions.destroy', $operacion->id) }}" method="POST"
                                     style="display:inline;">
