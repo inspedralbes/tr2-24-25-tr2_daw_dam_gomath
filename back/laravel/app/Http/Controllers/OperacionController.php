@@ -13,7 +13,11 @@ class OperacionController extends Controller
     {
         $operaciones = Operacion::all();
 
-        return response()->json($operaciones);
+        if (request()->is('api/*')) {
+            return response()->json($operaciones); 
+        }
+        
+        return view('operacions', compact('operaciones'));
     }
 
     /**
