@@ -51,63 +51,49 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        // Validar los datos de entrada
-        echo "Validando los datos de entrada...\n";
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:6',
-            'rol' => 'required|string|in:student,professor',
+{
+    // Validar los datos de entrada
+    $data = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|string|min:6',
+        'rol' => 'required|string|in:student,professor',
+    ]);
+
+    // Crear el usuario con los datos validados
+    try {
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']), // Cifrar contraseña
+            'rol' => $data['rol'],
         ]);
-
-        echo "Datos validados:\n";
-        print_r($data);
-
-        // Crear el usuario con los datos validados
-        echo "Creando el usuario...\n";
-        try {
-            $user = User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']), // Cifrar contraseña
-                'rol' => $data['rol'],
-            ]);
-            echo "Usuario creado exitosamente:\n";
-            print_r($user);
-        } catch (\Exception $e) {
-            echo "Error al crear el usuario: " . $e->getMessage() . "\n";
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Hubo un error al crear el usuario',
-            ], 500); // Código HTTP 500: Error interno del servidor
-        }
-
-        // Generar un token para el usuario
-        echo "Generando el token para el usuario...\n";
-        try {
-            $token = $user->createToken('auth-token')->plainTextToken;
-            echo "Token generado:\n";
-            echo $token . "\n";
-        } catch (\Exception $e) {
-            echo "Error al generar el token: " . $e->getMessage() . "\n";
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Hubo un error al generar el token',
-            ], 500); // Código HTTP 500: Error interno del servidor
-        }
-
-        // Retornar la respuesta con el token y el usuario creado
-        echo "Preparando la respuesta...\n";
-        response()->json([
-            'status' => 'success',
-            'message' => 'Usuario registrado exitosamente',
-            'token' => $token,
-            'user' => $user->only(['id', 'name', 'email', 'rol'])
-        ], 201);
-        echo response();
-        return response();
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Hubo un error al crear el usuario: ' . $e->getMessage(),
+        ], 500); // Código HTTP 500: Error interno del servidor
     }
+
+    // Generar un token para el usuario
+    try {
+        $token = $user->createToken('auth-token')->plainTextToken;
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Hubo un error al generar el token: ' . $e->getMessage(),
+        ], 500); // Código HTTP 500: Error interno del servidor
+    }
+
+    // Retornar la respuesta con el token y el usuario creado
+    return response()->json([
+        'status' => 'success',
+        'message' => 'Usuario registrado exitosamente',
+        'token' => $token,
+        'user' => $user->only(['id', 'name', 'email', 'rol'])
+    ], 201); // Código HTTP 201: Creado
+}
+
 
     /**
      * Display the specified resource.
@@ -135,8 +121,7 @@ class UserController extends Controller
             'name'=>'required',
             'email'=>'required',
             'password'=>'required',
-            'rol'=>'required',
-            'clase_id'=>'required',
+            'rol'=>'required'
         ]);
 
         $user = User::find($id);
@@ -149,7 +134,6 @@ class UserController extends Controller
             $user->password = Hash::make($data['password']); //password hasheado
         }
         $user -> rol = $data['rol'];
-        $user -> clase_id = $data['clase_id'];
         $user->save();
 
         return response()->json(['message'=>'Usuario actualizado correctamente']);
