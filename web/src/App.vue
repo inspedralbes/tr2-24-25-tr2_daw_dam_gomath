@@ -6,8 +6,13 @@ export default {
   setup() {
     const isLeftDrawerOpen = ref(false);
     const divActivo = ref('');
+    const tipoPartida = ref({
+      operacion: '',
+      modo: '',
+      cantidad:'',
+    });
     provide('divActivo', divActivo);
-
+    provide('tipoPartida', tipoPartida)
     const router = useRouter();
     const route = useRoute();
 
