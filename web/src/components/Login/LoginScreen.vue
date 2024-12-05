@@ -12,6 +12,7 @@
           label="Email"
           outlined
           dense
+          :error="!isValidEmail && email !== ''" error-message="Introduce un correo válido"
         />
         <q-input
           v-model="password"
@@ -76,6 +77,7 @@ export default {
     return {
       email,
       password,
+      isValidEmail,
       login,
     };
   },
