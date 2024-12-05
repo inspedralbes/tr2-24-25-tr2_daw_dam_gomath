@@ -4,7 +4,6 @@ import { ref, computed } from 'vue';
 
 export const useAppStore = defineStore('app', () => {
 
-  // State
   const loginInfo = ref({
     loggedIn: false,
     username: '',
@@ -18,8 +17,7 @@ export const useAppStore = defineStore('app', () => {
     role: '',
     image: '',
   });
-  // Actions
-
+  
   const setLoginInfo = ({ loggedIn, username, role, image }) => {
     loginInfo.value.loggedIn = loggedIn;
     loginInfo.value.username = username;
@@ -37,7 +35,6 @@ export const useAppStore = defineStore('app', () => {
   const isLoggedIn = computed(() => loginInfo.value.loggedIn);
   const getLoginInfo = computed(() => loginInfo.value);
 
-  // Expose state and actions
 
   return {
     loginInfo,
