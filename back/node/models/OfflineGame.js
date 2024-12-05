@@ -6,13 +6,16 @@ const OfflineGameSchema = new mongoose.Schema({
     total_rounds: { type: Number, required: true },
     session_time: { type: Number, required: false },
     questions: [
-        {
-        question: { type: String, required: true },
-        correct_response: { type: String, required: true },
-        current_response: { type: String, required: true },
-        time_to_response: { type: Number, required: true },
-        }
+        new mongoose.Schema(
+            {
+                question: { type: String, required: true },
+                correct_response: { type: String, required: true },
+                current_response: { type: String, required: true },
+                time_to_response: { type: Number, required: true },
+            },
+            { _id: false } // Desactivar la generació automàtica d'_id
+        )
     ]
 });
 
-module.exports = mongoose.model('Game', OfflineGameSchema);
+module.exports = mongoose.model('Game', OfflineGameSchema, 'Offline-Games');

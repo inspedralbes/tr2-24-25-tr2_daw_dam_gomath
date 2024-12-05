@@ -13,7 +13,7 @@ app.use(cors()); // Habilitar CORS per a qualsevol origen
 app.use('/api/offlineGames', offlineGamesRoutes);
 
 // Connexió a la base de dades MongoDB
-mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/GoMath/Offline-Games', {
+mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/GoMath', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

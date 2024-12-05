@@ -37,15 +37,15 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Obtenir una motocicleta per ID
+// Obtenir totes les partides per player_id
 router.get('/:player_id', async (req, res) => {
-    try {
-        const game = await OfflineGame.findOne({ player_id: req.params.player_id }); // Cerca per player_id
-        if (!game) return res.status(404).json({ missatge: 'Partida no trobada' });
-        res.json(game);
-    } catch (error) {
-        res.status(500).json({ missatge: 'Error al obtenir la Partida', error });
-    }
+  try {
+      const games = await OfflineGame.find({ player_id: req.params.player_id }); // Cerca totes les coincidències
+      if (games.length === 0) return res.status(404).json({ missatge: 'No s’han trobat partides per aquest player_id' });
+      res.json(games);
+  } catch (error) {
+      res.status(500).json({ missatge: 'Error al obtenir les partides', error });
+  }
 });
 
 // Eliminar una motocicleta per ID
