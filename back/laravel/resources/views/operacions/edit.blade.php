@@ -1,49 +1,46 @@
-HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!!!
 @extends('app')
 
 @section('content')
-<!DOCTYPE html>
-<html lang="ca">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Operación</title>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-</head>
-<body>
-
 <h1>Editar Operación</h1>
 
-<!-- Formulario de edición -->
 <form action="{{ route('operacions.update', $operacion->id) }}" method="POST">
     @csrf
     @method('PUT')
-    
+
+    <!-- Pregunta -->
     <div>
         <label for="question">Pregunta</label>
-        <input type="text" id="question" name="question" value="{{ $operacion->decoded_problem->question ?? '' }}" required>
+        <input type="text" id="question" name="problem_json[question]" value="{{ $operacion->decoded_problem['question'] }}" required>
     </div>
 
+    <!-- Respuestas -->
     <div>
-        <label for="answers">Respuestas</label>
-        <input type="value" id="answers" name="answers" value="{{ implode(', ', array_map(function ($item) { return $item->value ?? 'N/A'; }, $operacion->decoded_problem->answers ?? [])) }}" required>
+        <label>Respuestas:</label>
+        <div id="answers">
+            @foreach ($operacion->decoded_problem['answers'] as $index => $answer)
+                <div>
+                    <input type="text" name="problem_json[answers][{{ $index }}][value]" value="{{ $answer['value'] }}" required>
+                    <label>
+                        <input type="radio" name="correct_answer" value="{{ $index }}" {{ $answer['is_correct'] ? 'checked' : '' }}>
+                        Correcta
+                    </label>
+                </div>
+            @endforeach
+        </div>
     </div>
 
+    <!-- Dificultad -->
     <div>
-        <label for="difficulty">Dificultad</label>
-        <input type="text" id="difficulty" name="difficulty" value="{{ $operacion->nivel_dificultad }}" required>
+        <label for="nivel_dificultad">Dificultad</label>
+        <input type="text" id="nivel_dificultad" name="nivel_dificultad" value="{{ $operacion->nivel_dificultad }}" required>
     </div>
 
+    <!-- Tipo de operación -->
     <div>
-        <label for="operation_type">Tipo de Operación</label>
-        <input type="text" id="operation_type" name="operation_type" value="{{ $operacion->tipo_operacion }}" required>
+        <label for="tipo_operacion">Tipo de Operación</label>
+        <input type="text" id="tipo_operacion" name="tipo_operacion" value="{{ $operacion->tipo_operacion }}" required>
     </div>
 
     <button type="submit">Guardar Cambios</button>
 </form>
-
-</body>
-</html>
 @endsection
