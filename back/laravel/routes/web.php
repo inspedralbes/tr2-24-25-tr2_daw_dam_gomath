@@ -12,3 +12,4 @@ Route::get('/adminer', function () {
 });
 
 Route::get('/operacion', [OperacionController::class, 'index'])->name('operacions');
+Route::delete('/operacion/{id}', [OperacionController::class, 'destroy'])->name('operacions.destroy');

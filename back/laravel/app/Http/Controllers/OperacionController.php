@@ -16,6 +16,9 @@ class OperacionController extends Controller
         if (request()->is('api/*')) {
             return response()->json($operaciones); 
         }
+        foreach ($operaciones as $operacion) {
+            $operacion->decoded_problem = json_decode($operacion->problem_json);
+        }
         
         return view('operacions', compact('operaciones'));
     }
@@ -61,7 +64,8 @@ class OperacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $operacion = Operacion::findOrFail($id);
+        return view('operacions.edit', compact('operacion'));
     }
 
     /**
@@ -97,6 +101,9 @@ class OperacionController extends Controller
             return response()->json(['error' => 'Operacion no encontrada'], 404);
         }
         $operacion->delete(); 
-        return response()->json(['message'=>'Operacion borrada correctamente']);
+        if (request()->is('api/*')) {
+            return response()->json(['message'=>'Operacion borrada correctamente']);
+        }
+        return redirect()->route('operacions')->with('success', 'Operación eliminada correctamente.');
     }
 }

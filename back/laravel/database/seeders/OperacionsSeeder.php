@@ -20,7 +20,7 @@ class OperacionsSeeder extends Seeder
         foreach ($operacions as $operacion) {
             DB::table('operacions')->insert([
                 'id' => $operacion['id'],
-                'problem_json' => $operacion['problem_json'],
+                'problem_json' => json_encode($operacion['problem_json']),
                 'nivel_dificultad' => $operacion['nivel_dificultad'],
                 'tipo_operacion' => $operacion['tipo_operacion'],
             ]);
