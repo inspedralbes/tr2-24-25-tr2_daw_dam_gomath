@@ -4,29 +4,39 @@
   export default {
     setup() {
       const divActivo = inject('divActivo'); 
-  
+      const tipoPartida = inject('tipoPartida');
+
+      function cambioOperacion(operacion){
+        if (tipoPartida) {
+        tipoPartida.value.operacion = operacion;  
+        console.log('Soy el tipo de operacion',tipoPartida.value);
+        
+      }
+      }
       onMounted(() => {
         if (divActivo) {
           divActivo.value = 'offline';
         }
       });
   
-      return {};
+      return {
+        cambioOperacion,
+      };
     },
   };
   </script>
 <template>
     <div class="grid-container">
-    <router-link to="/Offline/Partida" class="grid-item">
+    <router-link to="/Offline/Partida" class="grid-item" @click="cambioOperacion('suma')">
       <img src="../../assets/img/suma.svg" alt="Suma">
     </router-link>
-    <router-link to="/Offline/Partida" class="grid-item">
+    <router-link to="/Offline/Partida" class="grid-item" @click="cambioOperacion('resta')">
       <img src="../../assets/img/resta.svg" alt="Resta">
     </router-link>
-    <router-link to="/Offline/Partida" class="grid-item">
+    <router-link to="/Offline/Partida" class="grid-item" @click="cambioOperacion('multiplicacion')">
       <img src="../../assets/img/mult.svg" alt="Multiplicación">
     </router-link>
-    <router-link to="/Offline/Partida" class="grid-item">
+    <router-link to="/Offline/Partida" class="grid-item" @click="cambioOperacion('division')">
       <img src="../../assets/img/div.svg" alt="División">
     </router-link>
   </div>
