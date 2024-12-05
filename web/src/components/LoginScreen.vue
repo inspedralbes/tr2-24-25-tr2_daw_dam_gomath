@@ -8,8 +8,8 @@
 
       <q-card-section>
         <q-input
-          v-model="username"
-          label="Nom d'usuari"
+          v-model="email"
+          label="Email"
           outlined
           dense
         />
@@ -35,19 +35,28 @@
 </style>
 
 <script>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAppStore } from '@/stores/app'
 
 export default {
   name: 'LoginPage',
   setup() {
-    const username = ref('');
+    const email = ref('');
     const password = ref('');
     const router = useRouter();
 
-    function login(){
-      if (username.value === 'user' && password.value === '1234') {
+    const isValidEmail = computed(() => {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return emailRegex.test(email.value.trim());
+    });
+
+    function login() {
+      if (!isValidEmail.value) {
+        alert('Por favor introduce un email válido.');
+        return;
+      }
+      if (email.value === 'user' && password.value === '1234') {
         // Redirige a la página de votaciones
         router.push('/Offline');
 
@@ -55,7 +64,7 @@ export default {
         const appStore = useAppStore();
         appStore.setLoginInfo({
             loggedIn: true,
-            username: username.value,
+            email: email.value,
             image: 'https://randomuser.me/api/portraits/thumb/women/56.jpg', // Reemplaza con la URL real del avatar si la tienes
           });
 
@@ -65,7 +74,7 @@ export default {
     };
 
     return {
-      username,
+      email,
       password,
       login,
     };
