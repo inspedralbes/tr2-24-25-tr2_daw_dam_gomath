@@ -1,130 +1,138 @@
 <template>
-  <div class="q-pa-md botones-container">
-    <!-- Dropdown para el número de preguntas -->
-    <q-btn-dropdown color="primary" label="NUMERO DE PREGUNTAS" @click="cambioCantidad('numero')">
-      <q-list>
-        <q-item clickable v-close-popup @click="() => { peticioOperacions(); cambioModo('10p'); }">
-          <q-item-section>
-            <q-item-label>10</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-close-popup @click="() => { peticioOperacions(); cambioModo('20p'); }">
-          <q-item-section>
-            <q-item-label>20</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-close-popup @click="() => { peticioOperacions(); cambioModo('30p'); }">
-          <q-item-section>
-            <q-item-label>30</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
-    </q-btn-dropdown>
-
-    <!-- Dropdown para el cronómetro -->
-    <q-btn-dropdown color="primary" label="CRONO" @click="cambioCantidad('crono')">
-      <q-list>
-        <q-item clickable v-close-popup @click="() => { peticioOperacions(); cambioModo('30s'); }">
-          <q-item-section>
-            <q-item-label>30seg</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-close-popup @click="() => { peticioOperacions(); cambioModo('60s'); }">
-          <q-item-section>
-            <q-item-label>1min</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-close-popup @click="() => { peticioOperacions(); cambioModo('180s'); }">
-          <q-item-section>
-            <q-item-label>3min</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
-    </q-btn-dropdown>
-
-    <q-btn-dropdown color="primary" label="HASTA QUE FALLES" @click="cambioCantidad('fallos')">
-      <q-list>
-        <q-item clickable v-close-popup  @click="() => { peticioOperacions(); cambioModo('1 fallo'); }">
-          <q-item-section>
-            <q-item-label>1 Fallo</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-close-popup @click="() => { peticioOperacions(); cambioModo('3 fallos'); }">
-          <q-item-section>
-            <q-item-label>3 Fallos</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-close-popup @click="() => { peticioOperacions(); cambioModo('5 fallos'); }">
-          <q-item-section>
-            <q-item-label>5 Fallos</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
-    </q-btn-dropdown>
-  </div>
-</template>
-
-<script>
-import { useOperationsStore } from '@/stores/comunicationManager';  
-import { inject } from 'vue';
-export default {
-  setup() {
-      const tipoPartida = inject('tipoPartida');
-
-      function cambioModo(modo){
-        if (tipoPartida) {
-        tipoPartida.value.modo = modo;
-        console.log('Soy el modo de juego',tipoPartida.value);
-        
+    <div>
+      <div v-if="operation">
+        <h2>{{ operation.question }}</h2>
+  
+        <div class="opciones">
+          <q-btn
+            v-for="(answer, index) in operation.answers"
+            :key="index"
+            :color="getButtonColor(answer)"
+            class="opcion-btn"
+            @click="handleAnswer(answer)"
+            :disabled="answered && answer !== selectedAnswer"
+            style="width: 200px; margin: 5px auto;"
+          >
+            {{ answer.value }}
+          </q-btn>
+        </div>
+  
+        <div class="navegacion">
+          <q-btn
+            @click="previousQuestion"
+            label="Anterior"
+            :disabled="currentQuestionIndex === 0"
+          />
+          <q-btn
+            @click="nextQuestion"
+            label="Siguiente"
+          />
+        </div>
+      </div>
+      <div v-else>
+        <p>Cargando pregunta...</p>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  import { computed, onMounted, ref } from 'vue';
+  import { useOperationsStore } from "@/stores/comunicationManager";
+  
+  export default {
+    setup() {
+      const operationsStore = useOperationsStore();
+      const currentQuestionIndex = ref(0);
+      const answered = ref(false); 
+      const selectedAnswer = ref(null); 
+      const correctAnswer = ref(null);
+  
+      const operation = computed(() => {
+        const firstOperation = operationsStore.operations?.operaciones_filtradas?.[currentQuestionIndex.value];
+        if (firstOperation) {
+          try {
+            return JSON.parse(firstOperation.problem_json);
+          } catch (e) {
+            console.error("Error al decodificar el JSON:", e);
+            return null;
+          }
         }
-      }
-      function cambioCantidad(cantidad){
-        if (tipoPartida) {
-        tipoPartida.value.cantidad = cantidad;
-        console.log('Soy cantidad',tipoPartida.value);
-        
+        return null;
+      });
+  
+      onMounted(async () => {
+        await operationsStore.fetchOperations();
+      });
+  
+      const getButtonColor = (answer) => {
+        if (answered.value) {
+          return answer.is_correct ? 'green' : 'red';
         }
-      }
+        return 'primary'; 
+      };
+  
+      const handleAnswer = (selected) => {
+        selectedAnswer.value = selected;
+        correctAnswer.value = selected.is_correct;
+        answered.value = true;
+      };
+      const nextQuestion = () => {
+        if (hasNextQuestion.value) {
+          currentQuestionIndex.value++;
+          answered.value = false;
+          selectedAnswer.value = null;
+          correctAnswer.value = null;
+        }
+      };
+      const previousQuestion = () => {
+        if (currentQuestionIndex.value > 0) {
+          currentQuestionIndex.value--;
+          answered.value = false;
+          selectedAnswer.value = null;
+          correctAnswer.value = null;
+        }
+      };
+      const hasNextQuestion = computed(() => {
+        return currentQuestionIndex.value < operationsStore.operations.operaciones_filtradas.length - 1;
+      });
+  
       return {
-        cambioModo,
-        cambioCantidad,
+        operation,
+        handleAnswer,
+        nextQuestion,
+        previousQuestion,
+        currentQuestionIndex,
+        answered,
+        selectedAnswer,
+        getButtonColor,
+        hasNextQuestion,
       };
     },
-  data() {
-    return {
-      selectedQuestions: null,
-      selectedCrono: null,
-      selectedFails: null
-    };
-  },
-  methods: {
-    peticioOperacions() {
-      this.cargarOperacions();
-    },
-
-    async cargarOperacions() {
-      const fetchDeOperaciones = useOperationsStore();  
-      await fetchDeOperaciones.fetchOperations();  
-    },
-  },
-};
-</script>
-
-<style scoped>
-.botones-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px; 
-}
-
-.q-btn-dropdown {
-  font-size: 16px;
-  padding: 10px 20px;
-  height: 50px; 
-}
-
-.q-item-label {
-  font-weight: bold;
-}
-</style>
+  };
+  </script>
+  
+  <style scoped>
+  .opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: center; 
+  }
+  
+  .opcion-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .navegacion {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .q-btn {
+    width: 48%;
+  }
+  </style>
+  

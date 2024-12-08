@@ -6,6 +6,7 @@ import Apunts from '../components/Apuntes/ApuntsScreen.vue'
 import Jocs from '../components/Jocs/JocsScreen.vue'
 import Home from '../components/Homa/HomeScreen.vue'
 import Register from '../components/Login/RegisterScreen.vue'
+import prePartida from '../components/Offline/PartidaOffline/prePartidaScreen.vue'
 import Partida from '../components/Offline/PartidaOffline/PartidaScreen.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,13 +30,13 @@ const router = createRouter({
       path: '/Offline',
       name: 'Offline',
       component: Offline, 
-      children: [
-        {
-          path: '/Partida', 
-          name: 'partidaOffline',
-          component: Partida,
-        },
-      ],
+      // children: [
+      //   {
+      //     path: '/Partida', 
+      //     name: 'partidaOffline',
+      //     component: Partida,
+      //   },
+      // ],
     },
     {
       path: '/Online',
@@ -46,6 +47,11 @@ const router = createRouter({
       path: '/Jocs',
       name: 'Jocs',
       component: Jocs,
+    },
+    {
+      path: '/Offline/prePartida',
+      name: 'prePartida',
+      component: prePartida,
     },
     {
       path: '/Offline/Partida',
