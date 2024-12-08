@@ -1,42 +1,36 @@
 <script>
   import { inject, onMounted } from 'vue';
-  
+  import { useTipoPartidaStore } from '../../App.vue';
+
   export default {
     setup() {
-      const divActivo = inject('divActivo'); 
-      const tipoPartida = inject('tipoPartida');
+      const tipoPartidaStore = useTipoPartidaStore();
+      const divActivo = inject('divActivo');
 
-      function cambioOperacion(operacion){
-        if (tipoPartida) {
-        tipoPartida.value.operacion = operacion;  
-        console.log('Soy el tipo de operacion',tipoPartida.value);
-        
-      }
-      }
       onMounted(() => {
         if (divActivo) {
           divActivo.value = 'offline';
         }
       });
-  
+
       return {
-        cambioOperacion,
+        tipoPartidaStore,
       };
     },
   };
-  </script>
+</script>
 <template>
     <div class="grid-container">
-    <router-link to="/Offline/Partida" class="grid-item" @click="cambioOperacion('suma')">
+    <router-link to="/Offline/prePartida" class="grid-item" @click="tipoPartidaStore.setOperacion('suma')">
       <img src="../../assets/img/suma.svg" alt="Suma">
     </router-link>
-    <router-link to="/Offline/Partida" class="grid-item" @click="cambioOperacion('resta')">
+    <router-link to="/Offline/prePartida" class="grid-item" @click="tipoPartidaStore.setOperacion('resta')">
       <img src="../../assets/img/resta.svg" alt="Resta">
     </router-link>
-    <router-link to="/Offline/Partida" class="grid-item" @click="cambioOperacion('multiplicacion')">
+    <router-link to="/Offline/prePartida" class="grid-item" @click="tipoPartidaStore.setOperacion('multiplicacion')">
       <img src="../../assets/img/mult.svg" alt="Multiplicación">
     </router-link>
-    <router-link to="/Offline/Partida" class="grid-item" @click="cambioOperacion('division')">
+    <router-link to="/Offline/prePartida" class="grid-item" @click="tipoPartidaStore.setOperacion('division')">
       <img src="../../assets/img/div.svg" alt="División">
     </router-link>
   </div>
@@ -70,5 +64,4 @@
     height: auto;
   }
   </style>
-  
   
