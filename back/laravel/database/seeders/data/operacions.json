@@ -5,8 +5,8 @@
             "question": "¿Cuánto es 3 + 5?",
             "answers": [
                 { "value": 7, "is_correct": false },
-                { "value": 8, "is_correct": true },
                 { "value": 6, "is_correct": false },
+                { "value": 8, "is_correct": true },
                 { "value": 9, "is_correct": false }
             ]
         },
@@ -33,8 +33,8 @@
             "question": "¿Cuánto es 12 + 23?",
             "answers": [
                 { "value": 34, "is_correct": false },
-                { "value": 35, "is_correct": true },
                 { "value": 36, "is_correct": false },
+                { "value": 35, "is_correct": true },
                 { "value": 33, "is_correct": false }
             ]
         },
@@ -46,8 +46,8 @@
         "problem_json": {
             "question": "¿Cuánto es 18 + 24?",
             "answers": [
-                { "value": 42, "is_correct": true },
                 { "value": 41, "is_correct": false },
+                { "value": 42, "is_correct": true },
                 { "value": 43, "is_correct": false },
                 { "value": 40, "is_correct": false }
             ]
@@ -60,9 +60,9 @@
         "problem_json": {
             "question": "¿Cuánto es 102 + 203?",
             "answers": [
-                { "value": 305, "is_correct": true },
                 { "value": 304, "is_correct": false },
                 { "value": 306, "is_correct": false },
+                { "value": 305, "is_correct": true },
                 { "value": 307, "is_correct": false }
             ]
         },
@@ -74,10 +74,10 @@
         "problem_json": {
             "question": "¿Cuánto es 350 + 420?",
             "answers": [
-                { "value": 770, "is_correct": true },
                 { "value": 760, "is_correct": false },
                 { "value": 780, "is_correct": false },
-                { "value": 750, "is_correct": false }
+                { "value": 750, "is_correct": false },
+                { "value": 770, "is_correct": true }
             ]
         },
         "nivel_dificultad": "difícil",
@@ -88,8 +88,8 @@
         "problem_json": {
             "question": "¿Cuánto es 4 + 6?",
             "answers": [
-                { "value": 9, "is_correct": false },
                 { "value": 10, "is_correct": true },
+                { "value": 9, "is_correct": false },
                 { "value": 11, "is_correct": false },
                 { "value": 8, "is_correct": false }
             ]
@@ -102,8 +102,8 @@
         "problem_json": {
             "question": "¿Cuánto es 13 + 27?",
             "answers": [
-                { "value": 40, "is_correct": true },
                 { "value": 41, "is_correct": false },
+                { "value": 40, "is_correct": true },
                 { "value": 39, "is_correct": false },
                 { "value": 38, "is_correct": false }
             ]
@@ -117,8 +117,8 @@
             "question": "¿Cuánto es 6 + 1?",
             "answers": [
                 { "value": 6, "is_correct": false },
-                { "value": 7, "is_correct": true },
                 { "value": 8, "is_correct": false },
+                { "value": 7, "is_correct": true },
                 { "value": 9, "is_correct": false }
             ]
         },
@@ -130,10 +130,10 @@
         "problem_json": {
             "question": "¿Cuánto es 530 + 290?",
             "answers": [
-                { "value": 820, "is_correct": true },
                 { "value": 810, "is_correct": false },
                 { "value": 830, "is_correct": false },
-                { "value": 800, "is_correct": false }
+                { "value": 800, "is_correct": false },
+                { "value": 820, "is_correct": true }
             ]
         },
         "nivel_dificultad": "difícil",
@@ -144,8 +144,8 @@
         "problem_json": {
             "question": "¿Cuánto es 2 + 6?",
             "answers": [
-                { "value": 7, "is_correct": false },
                 { "value": 8, "is_correct": true },
+                { "value": 7, "is_correct": false },
                 { "value": 9, "is_correct": false },
                 { "value": 10, "is_correct": false }
             ]
@@ -158,8 +158,8 @@
         "problem_json": {
             "question": "¿Cuánto es 4 + 5?",
             "answers": [
-                { "value": 9, "is_correct": true },
                 { "value": 8, "is_correct": false },
+                { "value": 9, "is_correct": true },
                 { "value": 10, "is_correct": false },
                 { "value": 7, "is_correct": false }
             ]
@@ -173,8 +173,8 @@
             "question": "¿Cuánto es 14 + 25?",
             "answers": [
                 { "value": 38, "is_correct": false },
-                { "value": 39, "is_correct": true },
                 { "value": 40, "is_correct": false },
+                { "value": 39, "is_correct": true },
                 { "value": 41, "is_correct": false }
             ]
         },
@@ -187,9 +187,9 @@
             "question": "¿Cuánto es 31 + 42?",
             "answers": [
                 { "value": 72, "is_correct": false },
-                { "value": 73, "is_correct": true },
                 { "value": 74, "is_correct": false },
-                { "value": 71, "is_correct": false }
+                { "value": 71, "is_correct": false },
+                { "value": 73, "is_correct": true }
             ]
         },
         "nivel_dificultad": "intermedio",
@@ -200,8 +200,8 @@
         "problem_json": {
             "question": "¿Cuánto es 123 + 456?",
             "answers": [
-                { "value": 578, "is_correct": false },
                 { "value": 579, "is_correct": true },
+                { "value": 578, "is_correct": false },
                 { "value": 580, "is_correct": false },
                 { "value": 581, "is_correct": false }
             ]
@@ -214,8 +214,8 @@
         "problem_json": {
             "question": "¿Cuánto es 789 + 345?",
             "answers": [
-                { "value": 1134, "is_correct": true },
                 { "value": 1133, "is_correct": false },
+                { "value": 1134, "is_correct": true },
                 { "value": 1135, "is_correct": false },
                 { "value": 1136, "is_correct": false }
             ]
@@ -229,8 +229,8 @@
             "question": "¿Cuánto es 8 + 3?",
             "answers": [
                 { "value": 10, "is_correct": false },
-                { "value": 11, "is_correct": true },
                 { "value": 12, "is_correct": false },
+                { "value": 11, "is_correct": true },
                 { "value": 13, "is_correct": false }
             ]
         },
@@ -242,10 +242,10 @@
         "problem_json": {
             "question": "¿Cuánto es 45 + 62?",
             "answers": [
-                { "value": 107, "is_correct": true },
                 { "value": 106, "is_correct": false },
                 { "value": 108, "is_correct": false },
-                { "value": 109, "is_correct": false }
+                { "value": 109, "is_correct": false },
+                { "value": 107, "is_correct": true }
             ]
         },
         "nivel_dificultad": "intermedio",
@@ -271,8 +271,8 @@
             "question": "¿Cuánto es 234 + 678?",
             "answers": [
                 { "value": 911, "is_correct": false },
-                { "value": 912, "is_correct": false },
                 { "value": 913, "is_correct": true },
+                { "value": 912, "is_correct": false },
                 { "value": 914, "is_correct": false }
             ]
         },
@@ -285,8 +285,8 @@
             "question": "¿Cuánto es 345 + 567?",
             "answers": [
                 { "value": 910, "is_correct": false },
-                { "value": 912, "is_correct": true },
                 { "value": 913, "is_correct": false },
+                { "value": 912, "is_correct": true },
                 { "value": 914, "is_correct": false }
             ]
         },
@@ -299,9 +299,9 @@
             "question": "¿Cuánto es 5 + 4?",
             "answers": [
                 { "value": 8, "is_correct": false },
-                { "value": 9, "is_correct": true },
                 { "value": 10, "is_correct": false },
-                { "value": 11, "is_correct": false }
+                { "value": 11, "is_correct": false },
+                { "value": 9, "is_correct": true }
             ]
         },
         "nivel_dificultad": "fácil",
@@ -312,8 +312,8 @@
         "problem_json": {
             "question": "¿Cuánto es 28 + 35?",
             "answers": [
-                { "value": 63, "is_correct": true },
                 { "value": 62, "is_correct": false },
+                { "value": 63, "is_correct": true },
                 { "value": 64, "is_correct": false },
                 { "value": 65, "is_correct": false }
             ]
@@ -327,8 +327,8 @@
             "question": "¿Cuánto es 89 + 176?",
             "answers": [
                 { "value": 265, "is_correct": false },
-                { "value": 266, "is_correct": true },
                 { "value": 267, "is_correct": false },
+                { "value": 266, "is_correct": true },
                 { "value": 268, "is_correct": false }
             ]
         },
@@ -340,10 +340,10 @@
         "problem_json": {
             "question": "¿Cuánto es 3 + 7?",
             "answers": [
-                { "value": 10, "is_correct": true },
                 { "value": 9, "is_correct": false },
                 { "value": 11, "is_correct": false },
-                { "value": 12, "is_correct": false }
+                { "value": 12, "is_correct": false },
+                { "value": 10, "is_correct": true }
             ]
         },
         "nivel_dificultad": "fácil",
@@ -354,8 +354,8 @@
         "problem_json": {
             "question": "¿Cuánto es 6 + 2?",
             "answers": [
-                { "value": 7, "is_correct": false },
                 { "value": 8, "is_correct": true },
+                { "value": 7, "is_correct": false },
                 { "value": 9, "is_correct": false },
                 { "value": 10, "is_correct": false }
             ]
@@ -382,9 +382,9 @@
         "problem_json": {
             "question": "¿Cuánto es 34 + 49?",
             "answers": [
-                { "value": 83, "is_correct": true },
                 { "value": 82, "is_correct": false },
                 { "value": 84, "is_correct": false },
+                { "value": 83, "is_correct": true },
                 { "value": 85, "is_correct": false }
             ]
         },
@@ -397,9 +397,9 @@
             "question": "¿Cuánto es 567 + 234?",
             "answers": [
                 { "value": 800, "is_correct": false },
-                { "value": 801, "is_correct": true },
+                { "value": 801, "is_correct": false },
                 { "value": 802, "is_correct": false },
-                { "value": 803, "is_correct": false }
+                { "value": 803, "is_correct": true }
             ]
         },
         "nivel_dificultad": "difícil",
@@ -410,9 +410,9 @@
         "problem_json": {
             "question": "¿Cuánto es 789 + 432?",
             "answers": [
+                { "value": 1222, "is_correct": true },
                 { "value": 1220, "is_correct": false },
                 { "value": 1221, "is_correct": false },
-                { "value": 1222, "is_correct": true },
                 { "value": 1223, "is_correct": false }
             ]
         },
@@ -424,8 +424,8 @@
         "problem_json": {
             "question": "¿Cuánto es 9 + 1?",
             "answers": [
-                { "value": 10, "is_correct": true },
                 { "value": 11, "is_correct": false },
+                { "value": 10, "is_correct": true },
                 { "value": 9, "is_correct": false },
                 { "value": 12, "is_correct": false }
             ]
@@ -439,8 +439,8 @@
             "question": "¿Cuánto es 13 + 24?",
             "answers": [
                 { "value": 36, "is_correct": false },
-                { "value": 37, "is_correct": true },
                 { "value": 38, "is_correct": false },
+                { "value": 37, "is_correct": true },
                 { "value": 39, "is_correct": false }
             ]
         },
@@ -453,9 +453,9 @@
             "question": "¿Cuánto es 81 + 92?",
             "answers": [
                 { "value": 172, "is_correct": false },
-                { "value": 173, "is_correct": true },
                 { "value": 174, "is_correct": false },
-                { "value": 175, "is_correct": false }
+                { "value": 175, "is_correct": false },
+                { "value": 173, "is_correct": true }
             ]
         },
         "nivel_dificultad": "intermedio",
@@ -466,8 +466,8 @@
         "problem_json": {
             "question": "¿Cuánto es 124 + 389?",
             "answers": [
-                { "value": 512, "is_correct": false },
                 { "value": 513, "is_correct": true },
+                { "value": 512, "is_correct": false },
                 { "value": 514, "is_correct": false },
                 { "value": 515, "is_correct": false }
             ]
@@ -509,9 +509,9 @@
             "question": "¿Cuánto es 653 + 748?",
             "answers": [
                 { "value": 1400, "is_correct": false },
-                { "value": 1401, "is_correct": true },
+                { "value": 1401, "is_correct": false },
                 { "value": 1402, "is_correct": false },
-                { "value": 1403, "is_correct": false }
+                { "value": 1403, "is_correct": true }
             ]
         },
         "nivel_dificultad": "difícil",
@@ -522,8 +522,8 @@
         "problem_json": {
             "question": "¿Cuánto es 345 + 234?",
             "answers": [
-                { "value": 578, "is_correct": false },
                 { "value": 579, "is_correct": true },
+                { "value": 578, "is_correct": false },
                 { "value": 580, "is_correct": false },
                 { "value": 581, "is_correct": false }
             ]
@@ -550,9 +550,9 @@
         "problem_json": {
             "question": "¿Cuánto es 7 + 2?",
             "answers": [
-                { "value": 9, "is_correct": true },
                 { "value": 8, "is_correct": false },
                 { "value": 10, "is_correct": false },
+                { "value": 9, "is_correct": true },
                 { "value": 11, "is_correct": false }
             ]
         },
@@ -565,9 +565,9 @@
             "question": "¿Cuánto es 22 + 16?",
             "answers": [
                 { "value": 37, "is_correct": false },
-                { "value": 38, "is_correct": true },
+                { "value": 38, "is_correct": false },
                 { "value": 39, "is_correct": false },
-                { "value": 40, "is_correct": false }
+                { "value": 40, "is_correct": true }
             ]
         },
         "nivel_dificultad": "intermedio",
@@ -578,8 +578,8 @@
         "problem_json": {
             "question": "¿Cuánto es 30 + 42?",
             "answers": [
-                { "value": 71, "is_correct": false },
                 { "value": 72, "is_correct": true },
+                { "value": 71, "is_correct": false },
                 { "value": 73, "is_correct": false },
                 { "value": 74, "is_correct": false }
             ]
@@ -607,8 +607,8 @@
             "question": "¿Cuánto es 781 + 348?",
             "answers": [
                 { "value": 1128, "is_correct": false },
-                { "value": 1129, "is_correct": true },
                 { "value": 1130, "is_correct": false },
+                { "value": 1129, "is_correct": true },
                 { "value": 1131, "is_correct": false }
             ]
         },
@@ -621,9 +621,9 @@
             "question": "¿Cuánto es 5 + 6?",
             "answers": [
                 { "value": 10, "is_correct": false },
-                { "value": 11, "is_correct": true },
                 { "value": 12, "is_correct": false },
-                { "value": 9, "is_correct": false }
+                { "value": 9, "is_correct": false },
+                { "value": 11, "is_correct": true }
             ]
         },
         "nivel_dificultad": "fácil",
@@ -634,8 +634,8 @@
         "problem_json": {
             "question": "¿Cuánto es 19 + 23?",
             "answers": [
-                { "value": 41, "is_correct": false },
                 { "value": 42, "is_correct": true },
+                { "value": 41, "is_correct": false },
                 { "value": 43, "is_correct": false },
                 { "value": 44, "is_correct": false }
             ]
@@ -663,8 +663,8 @@
             "question": "¿Cuánto es 437 + 285?",
             "answers": [
                 { "value": 721, "is_correct": false },
-                { "value": 722, "is_correct": true },
                 { "value": 723, "is_correct": false },
+                { "value": 722, "is_correct": true },
                 { "value": 724, "is_correct": false }
             ]
         },
@@ -677,9 +677,9 @@
             "question": "¿Cuánto es 8 + 3?",
             "answers": [
                 { "value": 10, "is_correct": false },
-                { "value": 11, "is_correct": true },
                 { "value": 12, "is_correct": false },
-                { "value": 13, "is_correct": false }
+                { "value": 13, "is_correct": false },
+                { "value": 11, "is_correct": true }
             ]
         },
         "nivel_dificultad": "fácil",
@@ -719,8 +719,8 @@
             "question": "¿Cuánto es 34 + 19?",
             "answers": [
                 { "value": 52, "is_correct": false },
-                { "value": 53, "is_correct": true },
                 { "value": 54, "is_correct": false },
+                { "value": 53, "is_correct": true },
                 { "value": 55, "is_correct": false }
             ]
         },
@@ -733,9 +733,9 @@
             "question": "¿Cuánto es 726 + 194?",
             "answers": [
                 { "value": 919, "is_correct": false },
-                { "value": 920, "is_correct": true },
                 { "value": 921, "is_correct": false },
-                { "value": 922, "is_correct": false }
+                { "value": 922, "is_correct": false },
+                { "value": 920, "is_correct": true }
             ]
         },
         "nivel_dificultad": "difícil",
@@ -746,8 +746,8 @@
         "problem_json": {
             "question": "¿Cuánto es 318 + 447?",
             "answers": [
-                { "value": 764, "is_correct": false },
                 { "value": 765, "is_correct": true },
+                { "value": 764, "is_correct": false },
                 { "value": 766, "is_correct": false },
                 { "value": 767, "is_correct": false }
             ]
@@ -775,8 +775,8 @@
             "question": "¿Cuánto es 15 + 28?",
             "answers": [
                 { "value": 42, "is_correct": false },
-                { "value": 43, "is_correct": true },
                 { "value": 44, "is_correct": false },
+                { "value": 43, "is_correct": true },
                 { "value": 45, "is_correct": false }
             ]
         },
@@ -789,9 +789,9 @@
             "question": "¿Cuánto es 583 + 217?",
             "answers": [
                 { "value": 799, "is_correct": false },
-                { "value": 800, "is_correct": true },
                 { "value": 801, "is_correct": false },
-                { "value": 802, "is_correct": false }
+                { "value": 802, "is_correct": false },
+                { "value": 800, "is_correct": true }
             ]
         },
         "nivel_dificultad": "difícil",
@@ -802,8 +802,8 @@
         "problem_json": {
             "question": "¿Cuánto es 441 + 365?",
             "answers": [
-                { "value": 804, "is_correct": false },
                 { "value": 805, "is_correct": true },
+                { "value": 804, "is_correct": false },
                 { "value": 806, "is_correct": false },
                 { "value": 807, "is_correct": false }
             ]
@@ -816,8 +816,8 @@
         "problem_json": {
             "question": "¿Cuánto es 2 + 5?",
             "answers": [
-                { "value": 7, "is_correct": true },
                 { "value": 8, "is_correct": false },
+                { "value": 7, "is_correct": true },
                 { "value": 9, "is_correct": false },
                 { "value": 10, "is_correct": false }
             ]
@@ -831,8 +831,8 @@
             "question": "¿Cuánto es 4 + 4?",
             "answers": [
                 { "value": 7, "is_correct": false },
-                { "value": 8, "is_correct": true },
                 { "value": 9, "is_correct": false },
+                { "value": 8, "is_correct": true },
                 { "value": 10, "is_correct": false }
             ]
         },
@@ -845,9 +845,9 @@
             "question": "¿Cuánto es 23 + 16?",
             "answers": [
                 { "value": 38, "is_correct": false },
-                { "value": 39, "is_correct": true },
                 { "value": 40, "is_correct": false },
-                { "value": 41, "is_correct": false }
+                { "value": 41, "is_correct": false },
+                { "value": 39, "is_correct": true }
             ]
         },
         "nivel_dificultad": "intermedio",
@@ -858,8 +858,8 @@
         "problem_json": {
             "question": "¿Cuánto es 45 + 18?",
             "answers": [
-                { "value": 62, "is_correct": false },
                 { "value": 63, "is_correct": true },
+                { "value": 62, "is_correct": false },
                 { "value": 64, "is_correct": false },
                 { "value": 65, "is_correct": false }
             ]
@@ -887,8 +887,8 @@
             "question": "¿Cuánto es 619 + 431?",
             "answers": [
                 { "value": 1049, "is_correct": false },
-                { "value": 1050, "is_correct": true },
                 { "value": 1051, "is_correct": false },
+                { "value": 1050, "is_correct": true },
                 { "value": 1052, "is_correct": false }
             ]
         },
@@ -901,9 +901,9 @@
             "question": "¿Cuánto es 7 + 6?",
             "answers": [
                 { "value": 12, "is_correct": false },
-                { "value": 13, "is_correct": true },
                 { "value": 14, "is_correct": false },
-                { "value": 15, "is_correct": false }
+                { "value": 15, "is_correct": false },
+                { "value": 13, "is_correct": true }
             ]
         },
         "nivel_dificultad": "fácil",
@@ -914,8 +914,8 @@
         "problem_json": {
             "question": "¿Cuánto es 17 + 24?",
             "answers": [
-                { "value": 40, "is_correct": false },
                 { "value": 41, "is_correct": true },
+                { "value": 40, "is_correct": false },
                 { "value": 42, "is_correct": false },
                 { "value": 43, "is_correct": false }
             ]
@@ -943,8 +943,8 @@
             "question": "¿Cuánto es 489 + 320?",
             "answers": [
                 { "value": 808, "is_correct": false },
-                { "value": 809, "is_correct": true },
                 { "value": 810, "is_correct": false },
+                { "value": 809, "is_correct": true },
                 { "value": 811, "is_correct": false }
             ]
         },
@@ -957,9 +957,9 @@
             "question": "¿Cuánto es 1 + 7?",
             "answers": [
                 { "value": 6, "is_correct": false },
-                { "value": 8, "is_correct": true },
                 { "value": 9, "is_correct": false },
-                { "value": 10, "is_correct": false }
+                { "value": 10, "is_correct": false },
+                { "value": 8, "is_correct": true }
             ]
         },
         "nivel_dificultad": "fácil",
@@ -984,8 +984,8 @@
         "problem_json": {
             "question": "¿Cuánto es 21 + 13?",
             "answers": [
-                { "value": 34, "is_correct": true },
                 { "value": 33, "is_correct": false },
+                { "value": 34, "is_correct": true },
                 { "value": 35, "is_correct": false },
                 { "value": 36, "is_correct": false }
             ]
@@ -999,8 +999,8 @@
             "question": "¿Cuánto es 38 + 27?",
             "answers": [
                 { "value": 64, "is_correct": false },
-                { "value": 65, "is_correct": true },
                 { "value": 66, "is_correct": false },
+                { "value": 65, "is_correct": true },
                 { "value": 67, "is_correct": false }
             ]
         },
@@ -1013,9 +1013,9 @@
             "question": "¿Cuánto es 649 + 482?",
             "answers": [
                 { "value": 1130, "is_correct": false },
-                { "value": 1131, "is_correct": true },
                 { "value": 1132, "is_correct": false },
-                { "value": 1133, "is_correct": false }
+                { "value": 1133, "is_correct": false },
+                { "value": 1131, "is_correct": true }
             ]
         },
         "nivel_dificultad": "difícil",
@@ -1026,8 +1026,8 @@
         "problem_json": {
             "question": "¿Cuánto es 523 + 197?",
             "answers": [
-                { "value": 719, "is_correct": false },
                 { "value": 720, "is_correct": true },
+                { "value": 719, "is_correct": false },
                 { "value": 721, "is_correct": false },
                 { "value": 722, "is_correct": false }
             ]
@@ -1055,8 +1055,8 @@
             "question": "¿Cuánto es 29 + 14?",
             "answers": [
                 { "value": 42, "is_correct": false },
-                { "value": 43, "is_correct": true },
                 { "value": 44, "is_correct": false },
+                { "value": 43, "is_correct": true },
                 { "value": 45, "is_correct": false }
             ]
         },
@@ -1069,9 +1069,9 @@
             "question": "¿Cuánto es 372 + 259?",
             "answers": [
                 { "value": 630, "is_correct": false },
-                { "value": 631, "is_correct": true },
                 { "value": 632, "is_correct": false },
-                { "value": 633, "is_correct": false }
+                { "value": 633, "is_correct": false },
+                { "value": 631, "is_correct": true }
             ]
         },
         "nivel_dificultad": "difícil",
@@ -1082,8 +1082,8 @@
         "problem_json": {
             "question": "¿Cuánto es 794 + 385?",
             "answers": [
-                { "value": 1178, "is_correct": false },
                 { "value": 1179, "is_correct": true },
+                { "value": 1178, "is_correct": false },
                 { "value": 1180, "is_correct": false },
                 { "value": 1181, "is_correct": false }
             ]
@@ -1111,8 +1111,8 @@
             "question": "¿Cuánto es 8 + 3?",
             "answers": [
                 { "value": 10, "is_correct": false },
-                { "value": 11, "is_correct": true },
                 { "value": 12, "is_correct": false },
+                { "value": 11, "is_correct": true },
                 { "value": 13, "is_correct": false }
             ]
         },
@@ -1125,9 +1125,9 @@
             "question": "¿Cuánto es 32 + 18?",
             "answers": [
                 { "value": 49, "is_correct": false },
-                { "value": 50, "is_correct": true },
                 { "value": 51, "is_correct": false },
-                { "value": 52, "is_correct": false }
+                { "value": 52, "is_correct": false },
+                { "value": 50, "is_correct": true }
             ]
         },
         "nivel_dificultad": "intermedio",
@@ -1138,8 +1138,8 @@
         "problem_json": {
             "question": "¿Cuánto es 46 + 29?",
             "answers": [
-                { "value": 74, "is_correct": false },
                 { "value": 75, "is_correct": true },
+                { "value": 74, "is_correct": false },
                 { "value": 76, "is_correct": false },
                 { "value": 77, "is_correct": false }
             ]
@@ -1152,8 +1152,8 @@
         "problem_json": {
             "question": "¿Cuánto es 857 + 194?",
             "answers": [
-                { "value": 1049, "is_correct": true },
                 { "value": 1050, "is_correct": false },
+                { "value": 1049, "is_correct": true },
                 { "value": 1051, "is_correct": false },
                 { "value": 1052, "is_correct": false }
             ]
@@ -1167,8 +1167,8 @@
             "question": "¿Cuánto es 648 + 529?",
             "answers": [
                 { "value": 1176, "is_correct": false },
-                { "value": 1177, "is_correct": true },
                 { "value": 1178, "is_correct": false },
+                { "value": 1177, "is_correct": true },
                 { "value": 1179, "is_correct": false }
             ]
         },
@@ -1181,9 +1181,9 @@
             "question": "¿Cuánto es 4 + 7?",
             "answers": [
                 { "value": 10, "is_correct": false },
-                { "value": 11, "is_correct": true },
                 { "value": 12, "is_correct": false },
-                { "value": 13, "is_correct": false }
+                { "value": 13, "is_correct": false },
+                { "value": 11, "is_correct": true }
             ]
         },
         "nivel_dificultad": "fácil",
@@ -1194,8 +1194,8 @@
         "problem_json": {
             "question": "¿Cuánto es 25 + 17?",
             "answers": [
-                { "value": 41, "is_correct": false },
                 { "value": 42, "is_correct": true },
+                { "value": 41, "is_correct": false },
                 { "value": 43, "is_correct": false },
                 { "value": 44, "is_correct": false }
             ]
@@ -1223,8 +1223,8 @@
             "question": "¿Cuánto es 743 + 416?",
             "answers": [
                 { "value": 1158, "is_correct": false },
-                { "value": 1159, "is_correct": true },
                 { "value": 1160, "is_correct": false },
+                { "value": 1159, "is_correct": true },
                 { "value": 1161, "is_correct": false }
             ]
         },
@@ -1237,9 +1237,9 @@
             "question": "¿Cuánto es 7 + 2?",
             "answers": [
                 { "value": 8, "is_correct": false },
-                { "value": 9, "is_correct": true },
                 { "value": 10, "is_correct": false },
-                { "value": 11, "is_correct": false }
+                { "value": 11, "is_correct": false },
+                { "value": 9, "is_correct": true }
             ]
         },
         "nivel_dificultad": "fácil",
@@ -1250,8 +1250,8 @@
         "problem_json": {
             "question": "¿Cuánto es 6 + 5?",
             "answers": [
-                { "value": 10, "is_correct": false },
                 { "value": 11, "is_correct": true },
+                { "value": 10, "is_correct": false },
                 { "value": 12, "is_correct": false },
                 { "value": 13, "is_correct": false }
             ]
@@ -1279,8 +1279,8 @@
             "question": "¿Cuánto es 39 + 23?",
             "answers": [
                 { "value": 61, "is_correct": false },
-                { "value": 62, "is_correct": true },
                 { "value": 63, "is_correct": false },
+                { "value": 62, "is_correct": true },
                 { "value": 64, "is_correct": false }
             ]
         },
@@ -1293,9 +1293,9 @@
             "question": "¿Cuánto es 652 + 318?",
             "answers": [
                 { "value": 969, "is_correct": false },
-                { "value": 970, "is_correct": true },
                 { "value": 971, "is_correct": false },
-                { "value": 972, "is_correct": false }
+                { "value": 972, "is_correct": false },
+                { "value": 970, "is_correct": true }
             ]
         },
         "nivel_dificultad": "difícil",
@@ -1306,8 +1306,8 @@
         "problem_json": {
             "question": "¿Cuánto es 587 + 412?",
             "answers": [
-                { "value": 998, "is_correct": false },
                 { "value": 999, "is_correct": true },
+                { "value": 998, "is_correct": false },
                 { "value": 1000, "is_correct": false },
                 { "value": 1001, "is_correct": false }
             ]
@@ -1335,8 +1335,8 @@
             "question": "¿Cuánto es 18 + 29?",
             "answers": [
                 { "value": 46, "is_correct": false },
-                { "value": 47, "is_correct": true },
                 { "value": 48, "is_correct": false },
+                { "value": 47, "is_correct": true },
                 { "value": 49, "is_correct": false }
             ]
         },
@@ -1349,9 +1349,9 @@
             "question": "¿Cuánto es 321 + 478?",
             "answers": [
                 { "value": 798, "is_correct": false },
-                { "value": 799, "is_correct": true },
                 { "value": 800, "is_correct": false },
-                { "value": 801, "is_correct": false }
+                { "value": 801, "is_correct": false },
+                { "value": 799, "is_correct": true }
             ]
         },
         "nivel_dificultad": "difícil",
@@ -1362,8 +1362,8 @@
         "problem_json": {
             "question": "¿Cuánto es 918 + 374?",
             "answers": [
-                { "value": 1291, "is_correct": false },
                 { "value": 1292, "is_correct": true },
+                { "value": 1291, "is_correct": false },
                 { "value": 1293, "is_correct": false },
                 { "value": 1294, "is_correct": false }
             ]
@@ -1391,12 +1391,475 @@
             "question": "¿Cuánto es 24 + 19?",
             "answers": [
                 { "value": 42, "is_correct": false },
-                { "value": 43, "is_correct": true },
                 { "value": 44, "is_correct": false },
+                { "value": 43, "is_correct": true },
                 { "value": 45, "is_correct": false }
             ]
         },
         "nivel_dificultad": "intermedio",
         "tipo_operacion": "suma"
+    },
+    {
+        "id": 101,
+        "problem_json": {
+            "question": "¿Cuánto es 9 - 4?",
+            "answers": [
+                { "value": 6, "is_correct": false },
+                { "value": 5, "is_correct": false },
+                { "value": 7, "is_correct": false },
+                { "value": 5, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 102,
+        "problem_json": {
+            "question": "¿Cuánto es 57 - 23?",
+            "answers": [
+                { "value": 35, "is_correct": false },
+                { "value": 34, "is_correct": true },
+                { "value": 33, "is_correct": false },
+                { "value": 36, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 103,
+        "problem_json": {
+            "question": "¿Cuánto es 345 - 123?",
+            "answers": [
+                { "value": 221, "is_correct": false },
+                { "value": 222, "is_correct": false },
+                { "value": 223, "is_correct": true },
+                { "value": 224, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 104,
+        "problem_json": {
+            "question": "¿Cuánto es 8 - 2?",
+            "answers": [
+                { "value": 6, "is_correct": false },
+                { "value": 7, "is_correct": false },
+                { "value": 5, "is_correct": false },
+                { "value": 6, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 105,
+        "problem_json": {
+            "question": "¿Cuánto es 65 - 27?",
+            "answers": [
+                { "value": 37, "is_correct": false },
+                { "value": 36, "is_correct": false },
+                { "value": 38, "is_correct": true },
+                { "value": 39, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 106,
+        "problem_json": {
+            "question": "¿Cuánto es 723 - 387?",
+            "answers": [
+                { "value": 335, "is_correct": false },
+                { "value": 334, "is_correct": false },
+                { "value": 336, "is_correct": false },
+                { "value": 337, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 107,
+        "problem_json": {
+            "question": "¿Cuánto es 7 - 2?",
+            "answers": [
+                { "value": 6, "is_correct": false },
+                { "value": 5, "is_correct": true },
+                { "value": 7, "is_correct": false },
+                { "value": 4, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 108,
+        "problem_json": {
+            "question": "¿Cuánto es 45 - 29?",
+            "answers": [
+                { "value": 16, "is_correct": true },
+                { "value": 15, "is_correct": false },
+                { "value": 14, "is_correct": false },
+                { "value": 17, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 109,
+        "problem_json": {
+            "question": "¿Cuánto es 412 - 125?",
+            "answers": [
+                { "value": 287, "is_correct": false },
+                { "value": 290, "is_correct": false },
+                { "value": 285, "is_correct": true },
+                { "value": 286, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 110,
+        "problem_json": {
+            "question": "¿Cuánto es 8 - 3?",
+            "answers": [
+                { "value": 5, "is_correct": true },
+                { "value": 6, "is_correct": false },
+                { "value": 4, "is_correct": false },
+                { "value": 3, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 111,
+        "problem_json": {
+            "question": "¿Cuánto es 67 - 33?",
+            "answers": [
+                { "value": 35, "is_correct": false },
+                { "value": 34, "is_correct": false },
+                { "value": 36, "is_correct": false },
+                { "value": 34, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 112,
+        "problem_json": {
+            "question": "¿Cuánto es 973 - 487?",
+            "answers": [
+                { "value": 486, "is_correct": true },
+                { "value": 485, "is_correct": false },
+                { "value": 487, "is_correct": false },
+                { "value": 485, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 113,
+        "problem_json": {
+            "question": "¿Cuánto es 4 - 1?",
+            "answers": [
+                { "value": 3, "is_correct": true },
+                { "value": 2, "is_correct": false },
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 114,
+        "problem_json": {
+            "question": "¿Cuánto es 56 - 24?",
+            "answers": [
+                { "value": 32, "is_correct": false },
+                { "value": 31, "is_correct": false },
+                { "value": 34, "is_correct": false },
+                { "value": 32, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 115,
+        "problem_json": {
+            "question": "¿Cuánto es 789 - 432?",
+            "answers": [
+                { "value": 356, "is_correct": false },
+                { "value": 357, "is_correct": true },
+                { "value": 358, "is_correct": false },
+                { "value": 359, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 116,
+        "problem_json": {
+            "question": "¿Cuánto es 5 - 1?",
+            "answers": [
+                { "value": 4, "is_correct": true },
+                { "value": 3, "is_correct": false },
+                { "value": 5, "is_correct": false },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 117,
+        "problem_json": {
+            "question": "¿Cuánto es 53 - 18?",
+            "answers": [
+                { "value": 35, "is_correct": true },
+                { "value": 36, "is_correct": false },
+                { "value": 37, "is_correct": false },
+                { "value": 38, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 118,
+        "problem_json": {
+            "question": "¿Cuánto es 853 - 692?",
+            "answers": [
+                { "value": 161, "is_correct": true },
+                { "value": 160, "is_correct": false },
+                { "value": 162, "is_correct": false },
+                { "value": 159, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 119,
+        "problem_json": {
+            "question": "¿Cuánto es 9 - 5?",
+            "answers": [
+                { "value": 4, "is_correct": true },
+                { "value": 5, "is_correct": false },
+                { "value": 6, "is_correct": false },
+                { "value": 3, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 120,
+        "problem_json": {
+            "question": "¿Cuánto es 82 - 27?",
+            "answers": [
+                { "value": 55, "is_correct": true },
+                { "value": 56, "is_correct": false },
+                { "value": 54, "is_correct": false },
+                { "value": 53, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 121,
+        "problem_json": {
+            "question": "¿Cuánto es 918 - 563?",
+            "answers": [
+                { "value": 355, "is_correct": true },
+                { "value": 356, "is_correct": false },
+                { "value": 357, "is_correct": false },
+                { "value": 358, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 122,
+        "problem_json": {
+            "question": "¿Cuánto es 6 - 3?",
+            "answers": [
+                { "value": 4, "is_correct": false },
+                { "value": 3, "is_correct": true },
+                { "value": 2, "is_correct": false },
+                { "value": 5, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 123,
+        "problem_json": {
+            "question": "¿Cuánto es 76 - 45?",
+            "answers": [
+                { "value": 31, "is_correct": true },
+                { "value": 32, "is_correct": false },
+                { "value": 30, "is_correct": false },
+                { "value": 33, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 124,
+        "problem_json": {
+            "question": "¿Cuánto es 991 - 547?",
+            "answers": [
+                { "value": 445, "is_correct": false },
+                { "value": 444, "is_correct": true },
+                { "value": 446, "is_correct": false },
+                { "value": 447, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    
+    {
+        "id": 125,
+        "problem_json": {
+            "question": "¿Cuánto es 7 - 4?",
+            "answers": [
+                { "value": 3, "is_correct": true },
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": false },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 126,
+        "problem_json": {
+            "question": "¿Cuánto es 64 - 21?",
+            "answers": [
+                { "value": 42, "is_correct": false },
+                { "value": 43, "is_correct": true },
+                { "value": 41, "is_correct": false },
+                { "value": 40, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 127,
+        "problem_json": {
+            "question": "¿Cuánto es 742 - 519?",
+            "answers": [
+                { "value": 223, "is_correct": true },
+                { "value": 224, "is_correct": false },
+                { "value": 225, "is_correct": false },
+                { "value": 226, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 128,
+        "problem_json": {
+            "question": "¿Cuánto es 3 - 1?",
+            "answers": [
+                { "value": 2, "is_correct": true },
+                { "value": 3, "is_correct": false },
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 129,
+        "problem_json": {
+            "question": "¿Cuánto es 53 - 14?",
+            "answers": [
+                { "value": 39, "is_correct": true },
+                { "value": 40, "is_correct": false },
+                { "value": 41, "is_correct": false },
+                { "value": 38, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 130,
+        "problem_json": {
+            "question": "¿Cuánto es 893 - 632?",
+            "answers": [
+                { "value": 261, "is_correct": true },
+                { "value": 260, "is_correct": false },
+                { "value": 259, "is_correct": false },
+                { "value": 258, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 131,
+        "problem_json": {
+            "question": "¿Cuánto es 9 - 7?",
+            "answers": [
+                { "value": 2, "is_correct": true },
+                { "value": 3, "is_correct": false },
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 132,
+        "problem_json": {
+            "question": "¿Cuánto es 57 - 40?",
+            "answers": [
+                { "value": 17, "is_correct": true },
+                { "value": 16, "is_correct": false },
+                { "value": 15, "is_correct": false },
+                { "value": 18, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 133,
+        "problem_json": {
+            "question": "¿Cuánto es 831 - 482?",
+            "answers": [
+                { "value": 349, "is_correct": true },
+                { "value": 350, "is_correct": false },
+                { "value": 348, "is_correct": false },
+                { "value": 351, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
     }
 ]
