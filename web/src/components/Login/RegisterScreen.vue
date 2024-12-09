@@ -11,7 +11,8 @@
         <q-input v-model="username" label="Nom d'usuari" outlined dense />
 
         <!-- Validación de email -->
-        <q-input v-model="email" label="Email" outlined dense class="q-mt-md" :error="!isValidEmail && email !== ''" error-message="Introduce un correo válido" />
+        <q-input v-model="email" label="Email" outlined dense class="q-mt-md" :error="!isValidEmail && email !== ''"
+          error-message="Introduce un correo válido" />
 
         <!-- Input para la contraseña -->
         <q-input v-model="password" label="Contrasenya" type="password" outlined dense class="q-mt-md" />
@@ -21,7 +22,8 @@
         </div>
 
         <!-- Código de profesor, solo si es profesor -->
-        <q-input v-if="isProfe" v-model="codiProfe" label="Codi de profe" type="password" outlined dense class="q-mt-md" />
+        <q-input v-if="isProfe" v-model="codiProfe" label="Codi de profe" type="password" outlined dense
+          class="q-mt-md" />
       </q-card-section>
 
       <q-card-actions align="right">
@@ -100,7 +102,7 @@ export default {
       };
 
       // Hacer la solicitud fetch al backend
-      fetch('http://localhost:8000/api/users/store', {
+      fetch('http://127.0.0.1:8000/api/users/store', {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -108,36 +110,38 @@ export default {
         },
         body: JSON.stringify(formData),  // Enviar los datos del formulario
       })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data.success) {
-          // Si el registro fue exitoso, redirigir al usuario
-          router.push('/Offline');
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (data.status === 'success') {
 
-          // Actualizar el estado de la aplicación (usando Vuex o store)
-          const appStore = useAppStore();
-          appStore.setRegistrationInfo({
-            loggedIn: true,
-            username: username.value,
-            role: role.value,
-            image: 'https://randomuser.me/api/portraits/thumb/women/56.jpg',
-          });
-          appStore.setLoginInfo({
-            loggedIn: true,
-            username: username.value,
-            role: role.value,
-            image: 'https://randomuser.me/api/portraits/thumb/women/56.jpg',
-          });
-        } else {
-          // Mostrar mensaje de error si la respuesta es negativa
-          alert('Error en el registro: ' + data.message);
-        }
-      })
-      .catch((error) => {
-        console.error('Error al registrar:', error);
-        alert('Hubo un problema al registrar al usuario.');
-      });
+              // Si el registro fue exitoso, redirigir al usuario
+              router.push('/Offline');
+
+              // Actualizar el estado de la aplicación (usando Vuex o store)
+              const appStore = useAppStore();
+              appStore.setRegistrationInfo({
+                loggedIn: true,
+                username: username.value,
+                role: role.value,
+                image: 'https://randomuser.me/api/portraits/thumb/women/56.jpg',
+              });
+              appStore.setLoginInfo({
+                loggedIn: true,
+                username: username.value,
+                role: role.value,
+                image: 'https://randomuser.me/api/portraits/thumb/women/56.jpg',
+              });
+
+          } else {
+            // Mostrar mensaje de error si la respuesta es negativa
+            alert('Error en el registro: ' + data.message);
+          }
+        })
+        .catch((error) => {
+          console.error('Error al insertar datos en Pinia: ', error);
+          alert('Hubo un problema al registrar al usuario.');
+        });
     }
 
     // Retornar las variables y funciones necesarias para el template

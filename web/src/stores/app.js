@@ -1,48 +1,36 @@
-
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
 
-export const useAppStore = defineStore('app', () => {
-
-  const loginInfo = ref({
-    loggedIn: false,
-    username: '',
-    role: '',
-    image: '',
-  });
-
-  const registrationInfo = ref({
-    loggedIn: false,
-    username: '',
-    role: '',
-    image: '',
-  });
-  
-  const setLoginInfo = ({ loggedIn, username, role, image }) => {
-    loginInfo.value.loggedIn = loggedIn;
-    loginInfo.value.username = username;
-    loginInfo.value.role = role;
-    loginInfo.value.image = image;
-  };
-
-  const setRegistrationInfo = ({ loggedIn, username, role, image }) => {
-    registrationInfo.value.loggedIn = loggedIn;
-    registrationInfo.value.username = username;
-    registrationInfo.value.role = role;
-    registrationInfo.value.image = image;
-  };
-
-  const isLoggedIn = computed(() => loginInfo.value.loggedIn);
-  const getLoginInfo = computed(() => loginInfo.value);
-
-
-  return {
-    loginInfo,
-    registrationInfo,
-    setLoginInfo,
-    setRegistrationInfo,
-    isLoggedIn,
-    getLoginInfo,
-  };
-
+export const useAppStore = defineStore('app', {
+  state: () => ({
+    loginInfo: {
+      loggedIn: false,
+      username: '',
+      role: '',
+      image: '',
+    },
+    registrationInfo: {
+      loggedIn: false,
+      username: '',
+      role: '',
+      image: '',
+    },
+  }),
+  actions: {
+    setLoginInfo({ loggedIn, username, role, image }) {
+      this.loginInfo.loggedIn = loggedIn;
+      this.loginInfo.username = username;
+      this.loginInfo.role = role;
+      this.loginInfo.image = image;
+    },
+    setRegistrationInfo({ loggedIn, username, role, image }) {
+      this.registrationInfo.loggedIn = loggedIn;
+      this.registrationInfo.username = username;
+      this.registrationInfo.role = role;
+      this.registrationInfo.image = image;
+    },
+  },
+  getters: {
+    isLoggedIn: (state) => state.loginInfo.loggedIn,
+    getLoginInfo: (state) => state.loginInfo,
+  },
 });
