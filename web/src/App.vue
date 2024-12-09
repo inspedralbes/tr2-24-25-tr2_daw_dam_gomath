@@ -8,6 +8,7 @@ export const useTipoPartidaStore = defineStore('tipoPartida', () => {
     operacion: 'suma',
     modo: 'numero',
     cantidad: '10p',
+    dificultat: '',
   });
   console.log('Hola soy Tipo de partida', tipoPartida)
   function setOperacion(operacion) {
@@ -59,6 +60,7 @@ export default {
     router.afterEach(updateDivActivo);
 
     return {
+      color: ref('cyan'),
       isLeftDrawerOpen,
       divActivo,
       toggleDrawer() {
@@ -101,6 +103,45 @@ export default {
         <q-route-tab to="/Puntuacions" label="Puntuacións" />
         <q-route-tab to="/Configuracio" label="CONFIGURACIÓ" />
         <q-route-tab to="/Cerrar-sesion" label="Tancar sessió" class="text-red" />
+      </q-tabs>
+</q-drawer>
+<q-drawer v-if="divActivo === 'partida'" show-if-above v-model="isLeftDrawerOpen"
+      side="left" bordered>
+      <q-tabs vertical>
+    <q-list>
+      <!--
+        Rendering a <label> tag (notice tag="label")
+        so QRadios will respond to clicks on QItems to
+        change Toggle state.
+      -->
+
+      <q-item tag="label" v-ripple>
+        <q-item-section avatar>
+          <q-radio v-model="color" val="teal" color="blue" />
+        </q-item-section>
+        <q-item-section>
+          <q-item-label>Fácil</q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item tag="label" v-ripple>
+        <q-item-section avatar>
+          <q-radio v-model="color" val="orange" color="orange" />
+        </q-item-section>
+        <q-item-section>
+          <q-item-label>Intermedio</q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item tag="label" v-ripple>
+        <q-item-section avatar top>
+          <q-radio v-model="color" val="cyan" color="red" />
+        </q-item-section>
+        <q-item-section>
+          <q-item-label>Difícil</q-item-label>
+        </q-item-section>
+      </q-item>
+    </q-list>
       </q-tabs>
 </q-drawer>
 <q-drawer v-if="divActivo === 'offline'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>

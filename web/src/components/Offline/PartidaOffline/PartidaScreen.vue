@@ -33,14 +33,16 @@
         <img src="../../../assets/img/loading.gif" alt="cargando">
       </div>
     </div>
+    
   </template>
   
   <script>
   import { computed, onMounted, ref } from 'vue';
   import { useOperationsStore } from "@/stores/comunicationManager";
-  
+  import { inject } from 'vue';
   export default {
     setup() {
+      const divActivo = inject('divActivo');
       const operationsStore = useOperationsStore();
       const currentQuestionIndex = ref(0);
       const answered = ref(false); 
@@ -63,7 +65,8 @@
   
       onMounted(async () => {
         await operationsStore.fetchOperations();
-      });
+      }
+    );
   
       const getButtonColor = (answer) => {
         if (answered.value) {
