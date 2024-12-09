@@ -324,12 +324,12 @@
     {
         "id": 24,
         "problem_json": {
-            "question": "¿Cuánto es 89 + 176?",
+            "question": "¿Cuánto es 189 + 176?",
             "answers": [
-                { "value": 265, "is_correct": false },
-                { "value": 267, "is_correct": false },
-                { "value": 266, "is_correct": true },
-                { "value": 268, "is_correct": false }
+                { "value": 365, "is_correct": false },
+                { "value": 367, "is_correct": false },
+                { "value": 366, "is_correct": true },
+                { "value": 368, "is_correct": false }
             ]
         },
         "nivel_dificultad": "difícil",

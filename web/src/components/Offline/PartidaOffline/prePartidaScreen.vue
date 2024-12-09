@@ -64,18 +64,24 @@
   </div>
 </template>
 
-<script>
-import { useOperationsStore } from '@/stores/comunicationManager';  
-import { inject } from 'vue';
+<script> 
 import { useTipoPartidaStore } from '../../../App.vue';
+import { inject, onMounted, ref } from 'vue';
 export default {
   setup() {
-      const tipoPartida = inject('tipoPartida');
       const tipoPartidaStore = useTipoPartidaStore();
+      const divActivo = inject('divActivo');
+      onMounted(() => {
+        if (divActivo) {
+          divActivo.value = 'partida';
+        }
+      }
+    );
       return {
         tipoPartidaStore,
       };
     },
+    
   data() {
     return {
       selectedQuestions: null,
@@ -84,6 +90,7 @@ export default {
     };
   },
 };
+
 </script>
 
 <style scoped>
