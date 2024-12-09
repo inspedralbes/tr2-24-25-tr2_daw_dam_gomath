@@ -60,7 +60,8 @@ io.on('connection', (socket) => {
     if (!roomUsers[room]) {
       roomUsers[room] = [];
     }
-    roomUsers[room].push(socket.data.email);
+    const user = { username, email, role }
+    roomUsers[room].push(user);
 
     console.log(`${socket.data.username} se unió al room: ${room}, Rol: ${socket.data.role}, Email: ${socket.data.email}`);
     io.to(room).emit('roomMessage', {
@@ -69,6 +70,17 @@ io.on('connection', (socket) => {
       users: roomUsers[room], // Enviar la lista de usuarios en el room
     });
   });
+
+  // Fer JSON
+  socket.on('requestUserList', ({ room }) => {
+    // Verifica si la sala existeix i retorna la llista d'usuaris
+    if (roomUsers[room]) {
+        const userList = roomUsers[room];
+        socket.emit('userList', userList);
+    } else {
+        socket.emit('userList', []);
+    }
+});
 
   // Enviar un mensaje a un room
   socket.on('sendMessage', (data) => {
@@ -81,6 +93,7 @@ io.on('connection', (socket) => {
     }
 
     console.log(`Mensaje de ${socket.data.username}: ${message}`);
+    console.log(roomUsers[room])
     io.to(room).emit('roomMessage', {
       sender: socket.data.username,
       role: socket.data.role,
@@ -120,6 +133,31 @@ io.on('connection', (socket) => {
       }
     } else {
       socket.emit('message', 'No tienes permisos para realizar esta acción.');
+    }
+  });
+
+  socket.on('leaveRoom', (data) => {
+    const {room, email} = data;
+    const targetSocket = [...io.sockets.sockets.values()].find(
+      (s) => s.data.email === email
+    );
+    if (targetSocket) {
+      const targetUsername = targetSocket.data.username || 'Usuario desconocido';
+      targetSocket.leave(room);
+
+      // Eliminar usuario del room
+      roomUsers[room] = roomUsers[room].filter(mail => mail !== email);
+
+      console.log(`Usuario ${targetUsername} (${targetSocket.data.email}) salio del room ${room}`);
+      io.to(room).emit('roomMessage', {
+        sender: 'Servidor',
+        message: `${targetUsername} salio del room.`,
+        users: roomUsers[room], // Actualizar la lista de usuarios en el room
+      });
+
+      targetSocket.emit('message', 'Has salido del room.');
+    } else {
+      socket.emit('message', 'No se encontró al usuario con ese email.');
     }
   });
 

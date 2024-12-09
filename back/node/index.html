@@ -30,19 +30,46 @@
     <input id="kickUserEmail" type="email" placeholder="Enter email to Kick">
     <button id="kickBtn">Kick User</button>
   </div>
+  <div>
+    <button id="leaveBtn">Leave Room</button>
+  </div>
 
   <script>
     const socket = io('http://localhost:3000'); // URL del servidor
+    var room = '';
+    var username = '';
+    var email = '';
+    var role = '';
 
     // Unirse a un room
     document.getElementById('joinBtn').onclick = () => {
-      const room = document.getElementById('roomInput').value;
-      const username = document.getElementById('usernameInput').value;
-      const email = document.getElementById('emailInput').value;
-      const role = document.getElementById('roleSelect').value;
+      room = document.getElementById('roomInput').value;
+      username = document.getElementById('usernameInput').value;
+      email = document.getElementById('emailInput').value;
+      role = document.getElementById('roleSelect').value;
 
       if (room.trim() !== '' && username.trim() !== '' && email.trim() !== '') {
         socket.emit('joinRoom', { room, username, role, email });
+
+        // Si el rol és admin, demana la llista d'usuaris de la sala
+        if (role === 'admin') {
+            socket.emit('requestUserList', { room });
+        }
+      } else {
+        alert('Por favor, completa todos los campos.');
+      }
+    };
+
+    // Recepció de la llista d'usuaris des del servidor
+    socket.on('userList', (userList) => {
+      console.log('Llista d\'usuaris de la sala:', userList);
+      alert(JSON.stringify(userList, null, 2)); // Mostra el JSON amb format
+    });
+
+    // Salir de la room
+    document.getElementById('leaveBtn').onclick = () => {
+      if (room.trim() !== '' && email.trim() !== '') {
+        socket.emit('leaveRoom', { room, username, role, email });
       } else {
         alert('Por favor, completa todos los campos.');
       }
@@ -50,7 +77,6 @@
 
     // Enviar mensaje al room
     document.getElementById('sendBtn').onclick = () => {
-      const room = document.getElementById('roomInput').value;
       const message = document.getElementById('messageInput').value;
 
       if (room.trim() !== '' && message.trim() !== '') {
@@ -63,7 +89,6 @@
     // Expulsar a un usuario por email
     document.getElementById('kickBtn').onclick = () => {
       const targetEmail = document.getElementById('kickUserEmail').value;
-      const room = document.getElementById('roomInput').value;
 
       if (targetEmail.trim() !== '' && room.trim() !== '') {
         socket.emit('kickUser', { targetEmail, room });
