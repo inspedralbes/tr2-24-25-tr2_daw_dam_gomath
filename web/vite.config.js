@@ -24,5 +24,9 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  server: {
+    host: '0.0.0.0', // Asegúrate de que Vite escuche en todas las interfaces
+    port: 5173,      // Usa el puerto que desees (asegúrate de que sea el mismo en docker-compose)
+  }
 })
 

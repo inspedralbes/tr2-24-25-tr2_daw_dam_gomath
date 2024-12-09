@@ -15,12 +15,10 @@ class UserController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        // Si no se encuentra el usuario o las contraseñas no coinciden
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json(['status' => 'error', 'message' => 'Correo o contraseña incorrectos'], 401);
         }
 
-        // Si las credenciales son correctas, generar el token de acceso
         $token = $user->createToken('auth-token')->plainTextToken;
 
         return response()->json([
