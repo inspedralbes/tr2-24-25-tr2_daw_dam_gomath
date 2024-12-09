@@ -29,14 +29,7 @@ const router = createRouter({
     {
       path: '/Offline',
       name: 'Offline',
-      component: Offline, 
-      // children: [
-      //   {
-      //     path: '/Partida', 
-      //     name: 'partidaOffline',
-      //     component: Partida,
-      //   },
-      // ],
+      component: Offline,
     },
     {
       path: '/Online',

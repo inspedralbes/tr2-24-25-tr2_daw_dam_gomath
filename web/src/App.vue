@@ -8,27 +8,29 @@ export const useTipoPartidaStore = defineStore('tipoPartida', () => {
     operacion: 'suma',
     modo: 'numero',
     cantidad: '10p',
-    dificultat: '',
+    dificultat: 'facil',
   });
-  console.log('Hola soy Tipo de partida', tipoPartida)
+  console.log('Hola soy Tipo de partida', tipoPartida);
+
   function setOperacion(operacion) {
     tipoPartida.value.operacion = operacion;
-    console.log('Hola soy operacion',operacion,tipoPartida);
-    
+    console.log('Hola soy operacion', operacion, tipoPartida);
   }
 
   function setModo(modo) {
     tipoPartida.value.modo = modo;
-    console.log('Hola soy modo',modo,tipoPartida);
-
-    
+    console.log('Hola soy modo', modo, tipoPartida);
   }
 
   function setCantidad(cantidad) {
     tipoPartida.value.cantidad = cantidad;
-    console.log('Hola soy cantidad',cantidad,tipoPartida);
-      router.push('/Offline/Partida'); 
-    
+    console.log('Hola soy cantidad', cantidad, tipoPartida);
+    router.push('/Offline/Partida');
+  }
+
+  function setDificultat(dificultat) {
+    tipoPartida.value.dificultat = dificultat;
+    console.log('Hola soy dificultad', dificultat, tipoPartida);
   }
 
   return {
@@ -36,6 +38,7 @@ export const useTipoPartidaStore = defineStore('tipoPartida', () => {
     setOperacion,
     setModo,
     setCantidad,
+    setDificultat, // Nueva función para actualizar la dificultad
   };
 });
 export default {
@@ -46,6 +49,7 @@ export default {
     const router = useRouter();
     const route = useRoute();
 
+    const { tipoPartida, setDificultat } = useTipoPartidaStore(); // Accede al estado y función de la tienda
 
     const updateDivActivo = () => {
       const currentRoute = route.path;
@@ -60,9 +64,10 @@ export default {
     router.afterEach(updateDivActivo);
 
     return {
-      color: ref('cyan'),
+      color: ref(tipoPartida.dificultat), // Sincronizamos con el estado de dificultad
       isLeftDrawerOpen,
       divActivo,
+      setDificultat,
       toggleDrawer() {
         isLeftDrawerOpen.value = !isLeftDrawerOpen.value;
       },
@@ -105,19 +110,17 @@ export default {
         <q-route-tab to="/Cerrar-sesion" label="Tancar sessió" class="text-red" />
       </q-tabs>
 </q-drawer>
-<q-drawer v-if="divActivo === 'partida'" show-if-above v-model="isLeftDrawerOpen"
-      side="left" bordered>
-      <q-tabs vertical>
+<q-drawer v-if="divActivo === 'partida'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
+  <q-tabs vertical>
     <q-list>
-      <!--
-        Rendering a <label> tag (notice tag="label")
-        so QRadios will respond to clicks on QItems to
-        change Toggle state.
-      -->
-
       <q-item tag="label" v-ripple>
         <q-item-section avatar>
-          <q-radio v-model="color" val="teal" color="blue" />
+          <q-radio
+            v-model="color"
+            val="teal"
+            color="blue"
+            @update:model-value="setDificultat('fácil')"
+          />
         </q-item-section>
         <q-item-section>
           <q-item-label>Fácil</q-item-label>
@@ -126,7 +129,12 @@ export default {
 
       <q-item tag="label" v-ripple>
         <q-item-section avatar>
-          <q-radio v-model="color" val="orange" color="orange" />
+          <q-radio
+            v-model="color"
+            val="orange"
+            color="orange"
+            @update:model-value="setDificultat('intermedio')"
+          />
         </q-item-section>
         <q-item-section>
           <q-item-label>Intermedio</q-item-label>
@@ -134,15 +142,20 @@ export default {
       </q-item>
 
       <q-item tag="label" v-ripple>
-        <q-item-section avatar top>
-          <q-radio v-model="color" val="cyan" color="red" />
+        <q-item-section avatar>
+          <q-radio
+            v-model="color"
+            val="cyan"
+            color="red"
+            @update:model-value="setDificultat('difícil')" 
+          />
         </q-item-section>
         <q-item-section>
           <q-item-label>Difícil</q-item-label>
         </q-item-section>
       </q-item>
     </q-list>
-      </q-tabs>
+  </q-tabs>
 </q-drawer>
 <q-drawer v-if="divActivo === 'offline'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
   <q-tabs vertical>
