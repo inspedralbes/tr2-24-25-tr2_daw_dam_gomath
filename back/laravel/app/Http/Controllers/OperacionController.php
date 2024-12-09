@@ -53,19 +53,33 @@ class OperacionController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'problem_json' => 'required',
-            'nivel_dificultad' => 'required',
-            'tipo_operacion' => 'required',
+        // Valida la entrada
+        $request->validate([
+            'question' => 'required|string',
+            'answers' => 'required|array',
+            'difficulty' => 'required|string|in:easy,medium,hard',
+            'operation_type' => 'required|string|in:addition,subtraction,multiplication,division',
         ]);
 
-        $operacion = new Operacion();
-        $operacion->problem_json = $data['problem_json'];
-        $operacion->nivel_dificultad = $data['nivel_dificultad'];
-        $operacion->tipo_operacion = $data['tipo_operacion'];
-        $operacion->save();
+        // Crear el objeto de la pregunta en formato JSON
+        $problem_json = [
+            'question' => $request->question,
+            'answers' => array_map(function ($answer, $index) use ($request) {
+                return [
+                    'value' => $answer['value'],
+                    'is_correct' => $request->has("answers.$index.is_correct") && $request->input("answers.$index.is_correct") === 'true',
+                ];
+            }, $request->input('answers', []), array_keys($request->input('answers'))),
+        ];
 
-        return response()->json(['message' => 'Operacion creada correctamente']);
+        // Guardar la operación
+        Operacion::create([
+            'problem_json' => json_encode($problem_json),  // Almacenamos el JSON en la base de datos
+            'nivel_dificultad' => $request->difficulty,
+            'tipo_operacion' => $request->operation_type,
+        ]);
+
+        return redirect()->route('operacions.index')->with('success', 'Problema agregado correctamente.');
     }
 
     /**
