@@ -13,4 +13,5 @@ class Operacion extends Model
         'nivel_dificultad',
         'tipo_operacion',
     ];
+    public $timestamps = false;
 }

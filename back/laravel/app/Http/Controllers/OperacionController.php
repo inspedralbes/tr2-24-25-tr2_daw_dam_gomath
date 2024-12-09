@@ -10,24 +10,24 @@ class OperacionController extends Controller
      * Display a listing of the resource.
      */
     public function operacionsFiltro(Request $request)
-{
-    $operacion = $request->input('operacion');
-    $modo = $request->input('modo');
-    $cantidad = $request->input('cantidad');
-    $dificultat = $request->input('dificultat');
+    {
+        $operacion = $request->input('operacion');
+        $modo = $request->input('modo');
+        $cantidad = $request->input('cantidad');
+        $dificultat = $request->input('dificultat');
 
-    if (!$operacion || !in_array($operacion, ['suma', 'resta', 'multiplicacion', 'division'])) {
-        return response()->json(['error' => 'Operación no válida o no especificada'], 400);
+        if (!$operacion || !in_array($operacion, ['suma', 'resta', 'multiplicacion', 'division'])) {
+            return response()->json(['error' => 'Operación no válida o no especificada'], 400);
+        }
+
+        $operaciones = Operacion::where('tipo_operacion', $operacion)->inRandomOrder()->get();
+        $operaciones = Operacion::where('nivel_dificultad', $dificultat)->get();
+        return response()->json([
+            'filtro_operacion' => $operacion,
+            'filtro_dificultat' => $dificultat,
+            'operaciones_filtradas' => $operaciones,
+        ]);
     }
-
-    $operaciones = Operacion::where('tipo_operacion', $operacion)->inRandomOrder()->get();
-    $operaciones = Operacion::where('nivel_dificultad', $dificultat)->get();
-    return response()->json([
-        'filtro_operacion' => $operacion, 
-        'filtro_dificultat' => $dificultat,
-        'operaciones_filtradas' => $operaciones,
-    ]);
-}
 
     public function index()
     {
@@ -56,12 +56,12 @@ class OperacionController extends Controller
      */
     public function store(Request $request)
     {
-        // Valida la entrada
+        // Validación de los datos
         $request->validate([
             'question' => 'required|string',
             'answers' => 'required|array',
-            'difficulty' => 'required|string|in:easy,medium,hard',
-            'operation_type' => 'required|string|in:addition,subtraction,multiplication,division',
+            'difficulty' => 'required|string|in:fácil,intermedio,difícil',
+            'operation_type' => 'required|string|in:suma,resta,multiplicación,division',
         ]);
 
         // Crear el objeto de la pregunta en formato JSON
@@ -70,7 +70,7 @@ class OperacionController extends Controller
             'answers' => array_map(function ($answer, $index) use ($request) {
                 return [
                     'value' => $answer['value'],
-                    'is_correct' => $request->has("answers.$index.is_correct") && $request->input("answers.$index.is_correct") === 'true',
+                    'is_correct' => $request->has("answers.$index.is_correct"),
                 ];
             }, $request->input('answers', []), array_keys($request->input('answers'))),
         ];
@@ -78,12 +78,13 @@ class OperacionController extends Controller
         // Guardar la operación
         Operacion::create([
             'problem_json' => json_encode($problem_json),  // Almacenamos el JSON en la base de datos
-            'nivel_dificultad' => $request->difficulty,
-            'tipo_operacion' => $request->operation_type,
+            'nivel_dificultad' => $request->difficulty,    // Guardamos la dificultad en español
+            'tipo_operacion' => $request->operation_type,   // Guardamos el tipo de operación en español
         ]);
 
         return redirect()->route('operacions.index')->with('success', 'Problema agregado correctamente.');
     }
+
 
     /**
      * Display the specified resource.
@@ -120,16 +121,13 @@ class OperacionController extends Controller
             'tipo_operacion' => 'required|string',
         ]);
 
-        // Encontrar la operación que se va a actualizar
         $operacion = Operacion::find($id);
         if (!$operacion) {
             return response()->json(['error' => 'Operación no encontrada'], 404);
         }
 
-        // Decodificar el JSON como un array
         $problem = json_decode($operacion->problem_json, true);
 
-        // Recibir las respuestas y marcar la correcta
         $answers = [];
         foreach ($request->input('problem_json.answers') as $index => $answer) {
             $answers[] = [
@@ -138,22 +136,18 @@ class OperacionController extends Controller
             ];
         }
 
-        // Actualizar los datos
         $problem['question'] = $request->input('problem_json.question');
         $problem['answers'] = $answers;
 
-        // Guardar el nuevo JSON
         $operacion->problem_json = json_encode($problem);
         $operacion->nivel_dificultad = $data['nivel_dificultad'];
         $operacion->tipo_operacion = $data['tipo_operacion'];
         $operacion->save();
 
-        // Si es una API, devolver mensaje JSON
         if (request()->is('api/*')) {
             return response()->json(['message' => 'Operación actualizada correctamente']);
         }
 
-        // Si es una vista, redirigir con mensaje de éxito
         return redirect()->route('operacions')->with('success', 'Operación actualizada correctamente');
     }
 
