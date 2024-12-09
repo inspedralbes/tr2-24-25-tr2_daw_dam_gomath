@@ -29,8 +29,8 @@
           />
         </div>
       </div>
-      <div v-else>
-        <p>Cargando pregunta...</p>
+      <div v-else class="loading-container">
+        <img src="../../../assets/img/loading.gif" alt="cargando">
       </div>
     </div>
   </template>
@@ -48,17 +48,18 @@
       const correctAnswer = ref(null);
   
       const operation = computed(() => {
-        const firstOperation = operationsStore.operations?.operaciones_filtradas?.[currentQuestionIndex.value];
-        if (firstOperation) {
-          try {
-            return JSON.parse(firstOperation.problem_json);
-          } catch (e) {
-            console.error("Error al decodificar el JSON:", e);
-            return null;
-          }
+      const operacionesFiltradas = operationsStore.operations && operationsStore.operations.operaciones_filtradas;
+      if (operacionesFiltradas && operacionesFiltradas[currentQuestionIndex.value]) {
+        const firstOperation = operacionesFiltradas[currentQuestionIndex.value];
+        try {
+          return JSON.parse(firstOperation.problem_json);
+        } catch (e) {
+          console.error("Error al decodificar el JSON:", e);
+          return null;
         }
-        return null;
-      });
+      }
+      return null;
+    });
   
       onMounted(async () => {
         await operationsStore.fetchOperations();
@@ -134,5 +135,12 @@
   .q-btn {
     width: 48%;
   }
+  .loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transform: translateY(-100px)
+}
   </style>
   
