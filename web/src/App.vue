@@ -7,7 +7,7 @@ export const useTipoPartidaStore = defineStore('tipoPartida', () => {
   const tipoPartida = ref({
     operacion: 'suma',
     modo: 'numero',
-    cantidad: '10p',
+    cantidad: 10,
     dificultat: 'facil',
   });
   console.log('Hola soy Tipo de partida', tipoPartida);
@@ -38,7 +38,7 @@ export const useTipoPartidaStore = defineStore('tipoPartida', () => {
     setOperacion,
     setModo,
     setCantidad,
-    setDificultat, // Nueva función para actualizar la dificultad
+    setDificultat, 
   };
 });
 export default {
@@ -49,7 +49,7 @@ export default {
     const router = useRouter();
     const route = useRoute();
 
-    const { tipoPartida, setDificultat } = useTipoPartidaStore(); // Accede al estado y función de la tienda
+    const { tipoPartida, setDificultat } = useTipoPartidaStore(); 
 
     const updateDivActivo = () => {
       const currentRoute = route.path;
@@ -64,7 +64,7 @@ export default {
     router.afterEach(updateDivActivo);
 
     return {
-      color: ref(tipoPartida.dificultat), // Sincronizamos con el estado de dificultad
+      color: ref(tipoPartida.dificultat), 
       isLeftDrawerOpen,
       divActivo,
       setDificultat,
@@ -116,6 +116,7 @@ export default {
       <q-item tag="label" v-ripple>
         <q-item-section avatar>
           <q-radio
+            size="45px"
             v-model="color"
             val="teal"
             color="blue"
@@ -130,6 +131,7 @@ export default {
       <q-item tag="label" v-ripple>
         <q-item-section avatar>
           <q-radio
+            size="45px"
             v-model="color"
             val="orange"
             color="orange"
@@ -144,6 +146,7 @@ export default {
       <q-item tag="label" v-ripple>
         <q-item-section avatar>
           <q-radio
+            size="45px"
             v-model="color"
             val="cyan"
             color="red"
