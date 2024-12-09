@@ -77,9 +77,9 @@ class OperacionController extends Controller
 
         // Guardar la operación
         Operacion::create([
-            'problem_json' => json_encode($problem_json),  // Almacenamos el JSON en la base de datos
-            'nivel_dificultad' => $request->difficulty,    // Guardamos la dificultad en español
-            'tipo_operacion' => $request->operation_type,   // Guardamos el tipo de operación en español
+            'problem_json' => json_encode($problem_json),
+            'nivel_dificultad' => $request->difficulty,    
+            'tipo_operacion' => $request->operation_type,   
         ]);
 
         return redirect()->route('operacions.index')->with('success', 'Problema agregado correctamente.');
