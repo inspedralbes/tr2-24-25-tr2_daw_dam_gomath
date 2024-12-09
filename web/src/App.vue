@@ -1,13 +1,47 @@
 <script>
 import { ref, provide, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import { defineStore } from 'pinia';
+export const useTipoPartidaStore = defineStore('tipoPartida', () => {
+  const router = useRouter();
+  const tipoPartida = ref({
+    operacion: 'suma',
+    modo: 'numero',
+    cantidad: '10p',
+  });
+  console.log('Hola soy Tipo de partida', tipoPartida)
+  function setOperacion(operacion) {
+    tipoPartida.value.operacion = operacion;
+    console.log('Hola soy operacion',operacion,tipoPartida);
+    
+  }
 
+  function setModo(modo) {
+    tipoPartida.value.modo = modo;
+    console.log('Hola soy modo',modo,tipoPartida);
+
+    
+  }
+
+  function setCantidad(cantidad) {
+    tipoPartida.value.cantidad = cantidad;
+    console.log('Hola soy cantidad',cantidad,tipoPartida);
+      router.push('/Offline/Partida'); 
+    
+  }
+
+  return {
+    tipoPartida,
+    setOperacion,
+    setModo,
+    setCantidad,
+  };
+});
 export default {
   setup() {
     const isLeftDrawerOpen = ref(false);
     const divActivo = ref('');
     provide('divActivo', divActivo);
-
     const router = useRouter();
     const route = useRoute();
 
@@ -68,35 +102,35 @@ export default {
         <q-route-tab to="/Configuracio" label="CONFIGURACIÓ" />
         <q-route-tab to="/Cerrar-sesion" label="Tancar sessió" class="text-red" />
       </q-tabs>
-    </q-drawer>
-    <q-drawer v-if="divActivo === 'offline'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
-      <q-tabs vertical>
-        <q-route-tab to="/sumaOffline" label="SUMA" />
-        <q-route-tab to="/restaOffline" label="RESTA" />
-        <q-route-tab to="/multiplicacionOffline" label="MULTIPLICACION" />
-        <q-route-tab to="/divisionOffline" label="DIVISION" />
+</q-drawer>
+<q-drawer v-if="divActivo === 'offline'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
+  <q-tabs vertical>
+        <q-route-tab to="/Offline/prePartida" label="SUMA" />
+        <q-route-tab to="/Offline/prePartida" label="RESTA" />
+        <q-route-tab to="/Offline/prePartida" label="MULTIPLICACION" />
+        <q-route-tab to="/Offline/prePartida" label="DIVISION" />
       </q-tabs>
-    </q-drawer>
-    <q-drawer v-if="divActivo === 'apunts'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
-      <q-tabs vertical>
-        <q-route-tab to="/tablasMultiplicar" label="TAULES DE MULTIPLICAR" />
-        <q-route-tab to="/equacions" label="EQUACIONS" />
-        <q-route-tab to="/pitagoras" label="PITAGORAS" />
-      </q-tabs>
-    </q-drawer>
-    <q-drawer v-if="divActivo === 'jocs'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
-      <q-tabs vertical>
-        <q-route-tab to="/ocaMatematica" label="Oca Matematica" />
-        <q-route-tab to="/buscaminas" label="BUSCAMINAS" />
-      </q-tabs>
-    </q-drawer>
-    <q-drawer v-if="divActivo === 'online'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
-      <q-tabs vertical>
-        <q-route-tab to="/sumaOffline" label="SUMA" />
-        <q-route-tab to="/restaOffline" label="RESTA" />
-        <q-route-tab to="/multiplicacionOffline" label="MULTIPLICACION" />
-        <q-route-tab to="/divisionOffline" label="DIVISION" />
-      </q-tabs>
+</q-drawer>
+<q-drawer v-if="divActivo === 'apunts'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
+  <q-tabs vertical>
+    <q-route-tab to="/tablasMultiplicar" label="TAULES DE MULTIPLICAR"/>
+    <q-route-tab to="/equacions" label="EQUACIONS"/>
+    <q-route-tab to="/pitagoras" label="PITAGORAS"/>
+  </q-tabs>
+</q-drawer>
+<q-drawer v-if="divActivo === 'jocs'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
+  <q-tabs vertical>
+    <q-route-tab to="/ocaMatematica" label="Oca Matematica"/>
+    <q-route-tab to="/buscaminas" label="BUSCAMINAS"/>
+  </q-tabs>
+</q-drawer>
+<q-drawer v-if="divActivo === 'online'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
+  <q-tabs vertical>
+    <q-route-tab to="/sumaOffline" label="SUMA"/>
+    <q-route-tab to="/restaOffline" label="RESTA"/>
+    <q-route-tab to="/multiplicacionOffline" label="MULTIPLICACION"/>
+    <q-route-tab to="/divisionOffline" label="DIVISION"/>
+  </q-tabs>
     </q-drawer>
 
     <q-page-container>
@@ -104,13 +138,10 @@ export default {
     </q-page-container>
 
     <q-footer elevated style="height: calc(50px + 5px);">
-      <!-- Contenido adicional del footer -->
       <div class="text-center py-2">
-        <!-- Símbolo de copyright en ASCII y enlace a institutpedralbes.cat -->
         <p>&#169; 2024 GoMath. Todos los derechos reservados. <a href="https://www.institutpedralbes.cat"
             target="_blank" class="text-white">institutpedralbes.cat</a></p>
 
-        <!-- Agradecimientos o disclaimers -->
         <p style="font-size: 10px; color: #F7FFF7;">
           La información contenida en esta aplicación es solo para fines educativos. No nos responsabilizamos por su uso
           inapropiado.
