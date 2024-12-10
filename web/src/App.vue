@@ -2,33 +2,48 @@
 import { ref, provide, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { defineStore } from 'pinia';
+const LOCAL_STORAGE_KEY = 'tipoPartida';
 
 export const useTipoPartidaStore = defineStore('tipoPartida', () => {
   const router = useRouter();
-  const tipoPartida = ref({
-    operacion: 'suma',
-    modo: 'numero',
-    cantidad: '10p',
-    dificultat: 'facil',
-  });
+
+  const tipoPartida = ref(
+    JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || {
+      operacion: 'suma',
+      modo: 'numero',
+      cantidad: 10,
+      dificultat: 'facil',
+    }
+  );
+
+  function updateLocalStorage() {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tipoPartida.value));
+  };
 
   function setOperacion(operacion) {
     tipoPartida.value.operacion = operacion;
+    updateLocalStorage();
+    console.log('Hola soy operacion', operacion, tipoPartida);
   }
 
   function setModo(modo) {
     tipoPartida.value.modo = modo;
+    updateLocalStorage();
+    console.log('Hola soy modo', modo, tipoPartida);
   }
 
   function setCantidad(cantidad) {
     tipoPartida.value.cantidad = cantidad;
+    updateLocalStorage();
+    console.log('Hola soy cantidad', cantidad, tipoPartida);
     router.push('/Offline/Partida');
   }
 
   function setDificultat(dificultat) {
     tipoPartida.value.dificultat = dificultat;
+    updateLocalStorage();
+    console.log('Hola soy dificultad', dificultat, tipoPartida);
   }
-
   return {
     tipoPartida,
     setOperacion,
@@ -46,7 +61,7 @@ export default {
     const router = useRouter();
     const route = useRoute();
 
-    const { tipoPartida, setDificultat } = useTipoPartidaStore(); // Accede al estado y función de la tienda
+    const { tipoPartida, setDificultat } = useTipoPartidaStore();
 
     const updateDivActivo = () => {
       const currentRoute = route.path;
@@ -57,7 +72,7 @@ export default {
     router.afterEach(updateDivActivo);
 
     return {
-      color: ref(tipoPartida.dificultat), // Sincronizamos con el estado de dificultad
+      color: ref(tipoPartida.dificultat),
       isLeftDrawerOpen,
       divActivo,
       setDificultat,
@@ -100,6 +115,85 @@ export default {
         <q-route-tab to="/Configuracio" label="CONFIGURACIÓ" />
         <q-route-tab to="/Cerrar-sesion" label="Tancar sessió" class="text-red" />
       </q-tabs>
+</q-drawer>
+<q-drawer v-if="divActivo === 'partida'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
+  <q-tabs vertical>
+    <q-list>
+      <q-item tag="label" v-ripple>
+        <q-item-section avatar>
+          <q-radio
+            size="45px"
+            v-model="color"
+            val="teal"
+            color="blue"
+            @update:model-value="setDificultat('fácil')"
+          />
+        </q-item-section>
+        <q-item-section>
+          <q-item-label>Fácil</q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item tag="label" v-ripple>
+        <q-item-section avatar>
+          <q-radio
+            size="45px"
+            v-model="color"
+            val="orange"
+            color="orange"
+            @update:model-value="setDificultat('intermedio')"
+          />
+        </q-item-section>
+        <q-item-section>
+          <q-item-label>Intermedio</q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item tag="label" v-ripple>
+        <q-item-section avatar>
+          <q-radio
+            size="45px"
+            v-model="color"
+            val="cyan"
+            color="red"
+            @update:model-value="setDificultat('difícil')"
+          />
+        </q-item-section>
+        <q-item-section>
+          <q-item-label>Difícil</q-item-label>
+        </q-item-section>
+      </q-item>
+    </q-list>
+  </q-tabs>
+</q-drawer>
+<q-drawer v-if="divActivo === 'offline'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
+  <q-tabs vertical>
+        <q-route-tab to="/Offline/prePartida" label="SUMA" />
+        <q-route-tab to="/Offline/prePartida" label="RESTA" />
+        <q-route-tab to="/Offline/prePartida" label="MULTIPLICACION" />
+        <q-route-tab to="/Offline/prePartida" label="DIVISION" />
+      </q-tabs>
+</q-drawer>
+<q-drawer v-if="divActivo === 'apunts'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
+  <q-tabs vertical>
+    <q-route-tab to="/tablasMultiplicar" label="TAULES DE MULTIPLICAR"/>
+    <q-route-tab to="/equacions" label="EQUACIONS"/>
+    <q-route-tab to="/pitagoras" label="PITAGORAS"/>
+  </q-tabs>
+</q-drawer>
+<q-drawer v-if="divActivo === 'jocs'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
+  <q-tabs vertical>
+    <q-route-tab to="/ocaMatematica" label="Oca Matematica"/>
+    <q-route-tab to="/buscaminas" label="BUSCAMINAS"/>
+  </q-tabs>
+</q-drawer>
+<q-drawer v-if="divActivo === 'online'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
+  <q-tabs vertical>
+    <q-route-tab to="/sumaOffline" label="SUMA"/>
+    <q-route-tab to="/restaOffline" label="RESTA"/>
+    <q-route-tab to="/multiplicacionOffline" label="MULTIPLICACION"/>
+    <q-route-tab to="/divisionOffline" label="DIVISION"/>
+  </q-tabs>
     </q-drawer>
 
     <q-drawer v-if="divActivo === 'partida'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
