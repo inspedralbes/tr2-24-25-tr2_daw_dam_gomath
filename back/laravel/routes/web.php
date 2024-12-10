@@ -8,6 +8,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/adminer', function () {
+    return view('app');
+});
+
+Route::get('/operacion',[OperacionController::class,'index'])->name('operacions');
+Route::delete('/operacion/{id}',[OperacionController::class,'destroy'])->name('operacions.destroy');
+Route::resource('operacions',OperacionController::class);
+
+    
 Route::get('/clases', [ClaseController::class, 'index'])->name('clases.index');
 Route::get('/clases/create', [ClaseController::class, 'create'])->name('clases.create');
 Route::post('/clases', [ClaseController::class, 'store'])->name('clases.store');
