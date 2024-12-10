@@ -3477,12 +3477,12 @@
     {
         "id": 249,
         "problem_json": {
-            "question": "¿Cuánto es 17 x 15?",
+            "question": "¿Cuánto es 17 x 11?",
             "answers": [
-                { "value": 250, "is_correct": false },
-                { "value": 240, "is_correct": false },
-                { "value": 260, "is_correct": false },
-                { "value": 255, "is_correct": true }
+                { "value": 177, "is_correct": false },
+                { "value": 117, "is_correct": false },
+                { "value": 167, "is_correct": false },
+                { "value": 187, "is_correct": true }
             ]
         },
         "nivel_dificultad": "intermedio",
