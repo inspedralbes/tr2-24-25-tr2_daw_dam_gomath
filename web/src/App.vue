@@ -1,7 +1,6 @@
 <script>
 import { ref, provide, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { useAppStore } from './stores/app.js';
 import { defineStore } from 'pinia';
 
 export const useTipoPartidaStore = defineStore('tipoPartida', () => {
@@ -46,7 +45,6 @@ export default {
     provide('divActivo', divActivo);
     const router = useRouter();
     const route = useRoute();
-    const appStore = useAppStore();
 
     const { tipoPartida, setDificultat } = useTipoPartidaStore(); // Accede al estado y función de la tienda
 
@@ -62,7 +60,6 @@ export default {
       color: ref(tipoPartida.dificultat), // Sincronizamos con el estado de dificultad
       isLeftDrawerOpen,
       divActivo,
-      appStore,
       setDificultat,
       toggleDrawer() {
         isLeftDrawerOpen.value = !isLeftDrawerOpen.value;
@@ -91,14 +88,15 @@ export default {
         <q-route-tab to="/Online" label="ONLINE" />
         <q-route-tab to="/Jocs" label="JOCS" />
         <q-route-tab to="/Apunts" label="APUNTS" />
-        <q-route-tab v-if="!appStore.isLoggedIn" to="/login" label="LOGIN" />
+        <q-route-tab to="/login" label="LOGIN" />
+        <q-route-tab to="/logout" label="LOGOUT" style="background-color: #ff4d4d;  color: white; border-top-left-radius: 5px;  border-top-right-radius: 5px;" />
       </q-tabs>
     </q-header>
 
     <q-drawer v-if="divActivo === 'login' || divActivo === 'register'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
       <q-tabs vertical>
         <q-route-tab to="/register" label="REGISTRATE" />
-        <q-route-tab to="/Puntuacions" label="Puntuaciones" />
+/        <q-route-tab to="/Puntuacions" label="Puntuaciones" />
         <q-route-tab to="/Configuracio" label="CONFIGURACIÓ" />
         <q-route-tab to="/Cerrar-sesion" label="Tancar sessió" class="text-red" />
       </q-tabs>

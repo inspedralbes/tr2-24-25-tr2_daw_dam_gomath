@@ -18,4 +18,5 @@ Route::post('/users/store', [UserController::class, 'store']);
 Route::get('/clases', [ClaseController::class, 'index']);
 Route::get('/puntuaciones', [PuntuacionController::class, 'index']);
 Route::post('/userLogin', [UserController::class,'loginUser']);
+Route::post('/userLogout', [UserController::class,'logoutUser']);
 Route::post('/operacionsFiltro', [OperacionController::class, 'operacionsFiltro']);

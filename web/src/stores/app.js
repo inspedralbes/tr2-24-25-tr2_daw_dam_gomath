@@ -16,6 +16,12 @@ export const useAppStore = defineStore('app', {
     },
   }),
   actions: {
+    logout() {
+      this.loginInfo.loggedIn = false;
+      this.loginInfo.username = '';
+      this.loginInfo.role = '';
+      this.loginInfo.image = '';
+    },
     setLoginInfo({ loggedIn, username, role, image }) {
       this.loginInfo.loggedIn = loggedIn;
       this.loginInfo.username = username;

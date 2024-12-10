@@ -80,6 +80,7 @@ export default {
           appStore.setLoginInfo({
             loggedIn: true,
             email: email.value,
+            role: data.user.rol,
             image: data.user.image || 'https://randomuser.me/api/portraits/thumb/women/56.jpg', // Si tienes una imagen en la respuesta, reemplázala
           });
 
