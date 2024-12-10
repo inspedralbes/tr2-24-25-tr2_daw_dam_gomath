@@ -46,7 +46,8 @@
                     href="{{ route('operacions') }}">CRUD operacions</a>
                     </li>
                     <li class="nav-item">
-                        Crud clases
+                    <a class="nav-link {{ str_contains(Route::current()->getName(), 'clases') ? 'active' : '' }}"
+                    href="{{ route('clases.index') }}">CRUD Clases</a>
                     </li>
                     <li class="nav-item">
                         Crud Users
