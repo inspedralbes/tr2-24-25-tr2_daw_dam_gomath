@@ -2,43 +2,54 @@
 import { ref, provide, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { defineStore } from 'pinia';
+const LOCAL_STORAGE_KEY = 'tipoPartida';
+
 export const useTipoPartidaStore = defineStore('tipoPartida', () => {
   const router = useRouter();
-  const tipoPartida = ref({
-    operacion: 'suma',
-    modo: 'numero',
-    cantidad: '10p',
-    dificultat: 'facil',
-  });
-  console.log('Hola soy Tipo de partida', tipoPartida);
+
+  const tipoPartida = ref(
+    JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || {
+      operacion: 'suma',
+      modo: 'numero',
+      cantidad: 10,
+      dificultat: 'facil',
+    }
+  );
+
+  function updateLocalStorage() {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tipoPartida.value));
+  };
 
   function setOperacion(operacion) {
     tipoPartida.value.operacion = operacion;
+    updateLocalStorage();
     console.log('Hola soy operacion', operacion, tipoPartida);
   }
 
   function setModo(modo) {
     tipoPartida.value.modo = modo;
+    updateLocalStorage();
     console.log('Hola soy modo', modo, tipoPartida);
   }
 
   function setCantidad(cantidad) {
     tipoPartida.value.cantidad = cantidad;
+    updateLocalStorage();
     console.log('Hola soy cantidad', cantidad, tipoPartida);
     router.push('/Offline/Partida');
   }
 
   function setDificultat(dificultat) {
     tipoPartida.value.dificultat = dificultat;
+    updateLocalStorage();
     console.log('Hola soy dificultad', dificultat, tipoPartida);
   }
-
   return {
     tipoPartida,
     setOperacion,
     setModo,
     setCantidad,
-    setDificultat, // Nueva función para actualizar la dificultad
+    setDificultat, 
   };
 });
 export default {
@@ -49,7 +60,7 @@ export default {
     const router = useRouter();
     const route = useRoute();
 
-    const { tipoPartida, setDificultat } = useTipoPartidaStore(); // Accede al estado y función de la tienda
+    const { tipoPartida, setDificultat } = useTipoPartidaStore(); 
 
     const updateDivActivo = () => {
       const currentRoute = route.path;
@@ -64,7 +75,7 @@ export default {
     router.afterEach(updateDivActivo);
 
     return {
-      color: ref(tipoPartida.dificultat), // Sincronizamos con el estado de dificultad
+      color: ref(tipoPartida.dificultat), 
       isLeftDrawerOpen,
       divActivo,
       setDificultat,
@@ -116,6 +127,7 @@ export default {
       <q-item tag="label" v-ripple>
         <q-item-section avatar>
           <q-radio
+            size="45px"
             v-model="color"
             val="teal"
             color="blue"
@@ -130,6 +142,7 @@ export default {
       <q-item tag="label" v-ripple>
         <q-item-section avatar>
           <q-radio
+            size="45px"
             v-model="color"
             val="orange"
             color="orange"
@@ -144,6 +157,7 @@ export default {
       <q-item tag="label" v-ripple>
         <q-item-section avatar>
           <q-radio
+            size="45px"
             v-model="color"
             val="cyan"
             color="red"

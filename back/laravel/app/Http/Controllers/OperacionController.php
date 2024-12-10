@@ -11,6 +11,7 @@ class OperacionController extends Controller
      */
     public function operacionsFiltro(Request $request)
 {
+
     $operacion = $request->input('operacion');
     $modo = $request->input('modo');
     $cantidad = $request->input('cantidad');
@@ -19,9 +20,15 @@ class OperacionController extends Controller
     if (!$operacion || !in_array($operacion, ['suma', 'resta', 'multiplicacion', 'division'])) {
         return response()->json(['error' => 'Operación no válida o no especificada'], 400);
     }
-
-    $operaciones = Operacion::where('tipo_operacion', $operacion)->inRandomOrder()->get();
-    $operaciones = Operacion::where('nivel_dificultad', $dificultat)->get();
+    if($modo == 'numero'){
+        $operaciones = Operacion::where('tipo_operacion', $operacion)->where('nivel_dificultad', $dificultat)->inRandomOrder()->take($cantidad)->get();
+        return response()->json([
+            'filtro_operacion' => $operacion, 
+            'filtro_dificultat' => $dificultat,
+            'operaciones_filtradas' => $operaciones,
+        ]); 
+    }
+    $operaciones = Operacion::where('tipo_operacion', $operacion)->where('nivel_dificultad', $dificultat)->inRandomOrder()->get();
     return response()->json([
         'filtro_operacion' => $operacion, 
         'filtro_dificultat' => $dificultat,
