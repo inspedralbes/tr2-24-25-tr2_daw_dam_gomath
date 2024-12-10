@@ -5,24 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adminer</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    @yield('page-style')
+    
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
-
         }
 
-        .color-container {
-            width: 16px;
-            height: 16px;
-            display: inline-block;
-            border-radius: 4px;
+        .navbar {
+            position: sticky;
+            z-index: 1000;
+            top: 0;
+            background: linear-gradient(to right, #1976d2, #42a5f5);
+        }
+
+        .navbar .nav-link, .navbar .navbar-brand {
+            color: white !important;
+        }
+
+        .navbar .nav-link:hover, .navbar .navbar-brand:hover {
+            color: white;
+            opacity: 0.6;
         }
 
         a {
@@ -31,29 +40,32 @@
     </style>
 </head>
 
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-        <a class="navbar-brand" href="#">GoMath</a>
+            <a class="navbar-brand" href="#">GoMath</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                    <a class="nav-link {{ str_contains(Route::current()->getName(), 'operacions') ? 'active' : '' }}"
-                    href="{{ route('operacions') }}">CRUD operacions</a>
+                        <a class="nav-link {{ str_contains(Route::current()->getName(), 'operacions') ? 'active' : '' }}"
+                            href="{{ route('operacions.index') }}">CRUD operacions</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link {{ str_contains(Route::current()->getName(), 'clases') ? 'active' : '' }}"
-                    href="{{ route('clases.index') }}">CRUD Clases</a>
+                        <a class="nav-link {{ str_contains(Route::current()->getName(), 'clases') ? 'active' : '' }}"
+                            href="{{ route('clases.index') }}">CRUD Clases</a>
                     </li>
                     <li class="nav-item">
-                        Crud Users
+                        <a class="nav-link {{ str_contains(Route::current()->getName(), 'users') ? 'active' : '' }}"
+                            href="{{ route('clases.index') }}">CRUD Users</a>
                     </li>
                     <li class="nav-item">
-                        Crud puntuacions
+                        <a class="nav-link {{ str_contains(Route::current()->getName(), 'puntuacuions') ? 'active' : '' }}"
+                            href="{{ route('clases.index') }}">CRUD Puntuacions</a>
                     </li>
                 </ul>
             </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OperacionController;
 use App\Http\Controllers\ClaseController;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -12,9 +13,10 @@ Route::get('/adminer', function () {
     return view('app');
 });
 
-Route::get('/operacion',[OperacionController::class,'index'])->name('operacions');
-Route::delete('/operacion/{id}',[OperacionController::class,'destroy'])->name('operacions.destroy');
+Route::get('/operacion', [OperacionController::class, 'index'])->name('operacions.index');
 Route::resource('operacions',OperacionController::class);
+Route::delete('/operacion/{id}',[OperacionController::class,'destroy'])->name('operacions.destroy');
+
 
     
 Route::get('/clases', [ClaseController::class, 'index'])->name('clases.index');
