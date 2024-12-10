@@ -3,17 +3,17 @@
     <!-- Dropdown para el número de preguntas -->
     <q-btn-dropdown color="primary" label="NUMERO DE PREGUNTAS" @click="tipoPartidaStore.setModo('numero')">
       <q-list>
-        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad('10p')">
+        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(10)">
           <q-item-section>
             <q-item-label>10</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad('20p')">
+        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(20)">
           <q-item-section>
             <q-item-label>20</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad('30p')">
+        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(30)">
           <q-item-section>
             <q-item-label>30</q-item-label>
           </q-item-section>
