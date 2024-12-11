@@ -9,7 +9,7 @@ import Register from '../components/Login/RegisterScreen.vue';
 import prePartida from '../components/Offline/PartidaOffline/prePartidaScreen.vue';
 import Partida from '../components/Offline/PartidaOffline/PartidaScreen.vue';
 import Codigo from '../components/Jocs/codigo/game.vue'
-// import Sudoku from '../components/Jocs/sudoku/sudoku.vue';
+import Sudoku from '../components/Jocs/sudoku/hola.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,6 +58,11 @@ const router = createRouter({
       path: '/Jocs/codigo',
       name: 'Codigo',
       component: Codigo,
+    },
+    {
+      path: '/Jocs/sudoku',
+      name: 'Sudoku',
+      component: Sudoku,
     }
   ],
 });

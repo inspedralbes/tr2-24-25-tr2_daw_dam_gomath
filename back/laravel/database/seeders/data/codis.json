@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "codi_json": {
+            "secretCode": "376",
+            "codes": [
+                {
+                    "code": "123",
+                    "hint": "Tiene 1 número correcto en la posición correcta."
+                },
+                {
+                    "code": "234",
+                    "hint": "Tiene 1 número correcto pero en la posición incorrecta."
+                },
+                {
+                    "code": "345",
+                    "hint": "Tiene 2 números correctos en posiciones incorrectas."
+                },
+                {
+                    "code": "456",
+                    "hint": "Tiene 0 números correctos."
+                },
+                {
+                    "code": "567",
+                    "hint": "Tiene 1 número correcto en la posición correcta."
+                }
+            ]
+            }
+        }
+    ]
