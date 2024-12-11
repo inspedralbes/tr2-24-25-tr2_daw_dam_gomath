@@ -40,38 +40,66 @@
     </style>
 </head>
 
-
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">GoMath</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link {{ str_contains(Route::current()->getName(), 'operacions') ? 'active' : '' }}"
-                            href="{{ route('operacions.index') }}">CRUD operacions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ str_contains(Route::current()->getName(), 'clases') ? 'active' : '' }}"
-                            href="{{ route('clases.index') }}">CRUD Clases</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ str_contains(Route::current()->getName(), 'users') ? 'active' : '' }}"
-                            href="{{ route('clases.index') }}">CRUD Users</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ str_contains(Route::current()->getName(), 'puntuacuions') ? 'active' : '' }}"
-                            href="{{ route('clases.index') }}">CRUD Puntuacions</a>
-                    </li>
-                </ul>
+    @if(Auth::check())
+        <!-- Navbar: Mostrar solo si el usuario está autenticado -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="{{ route('welcome') }}">
+                    Panell d'Administració
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link {{ str_contains(Route::current()->getName(), 'operacions') ? 'active' : '' }}"
+                                href="{{ route('operacions.index') }}">CRUD operacions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ str_contains(Route::current()->getName(), 'clases') ? 'active' : '' }}"
+                                href="{{ route('clases.index') }}">CRUD Clases</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ str_contains(Route::current()->getName(), 'users') ? 'active' : '' }}"
+                                href="{{ route('clases.index') }}">CRUD Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ str_contains(Route::current()->getName(), 'puntuacuions') ? 'active' : '' }}"
+                                href="{{ route('clases.index') }}">CRUD Puntuacions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Tancar Sessió</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    @endif
+
     @yield('content')
+
+    @yield('page-script')
+    <script>
+            function toggleForms() {
+                var loginForm = document.getElementById('loginForm');
+                var registerForm = document.getElementById('registerForm');
+
+                if (loginForm.style.display === "none") {
+                    loginForm.style.display = "block";
+                    registerForm.style.display = "none";
+                } else {
+                    loginForm.style.display = "none";
+                    registerForm.style.display = "block";
+                }
+            }
+    </script>
 </body>
 
 </html>
+
