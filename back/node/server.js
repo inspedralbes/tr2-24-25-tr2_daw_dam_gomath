@@ -32,6 +32,12 @@ app.get('/', (req, res) => {
     res.send('Benvingut al servidor de jocs offline');
 });
 
+app.post('/api/userLogin',(req, res) => {
+  const {email} = req.body;
+
+  res.json({"email": email, "role": "admin"});
+});
+
 const roomUsers = {};
 
 io.on('connection', (socket) => {
@@ -80,7 +86,7 @@ io.on('connection', (socket) => {
     } else {
         socket.emit('userList', []);
     }
-});
+  });
 
   // Enviar un mensaje a un room
   socket.on('sendMessage', (data) => {
@@ -178,7 +184,7 @@ io.on('connection', (socket) => {
 });
 
 // Iniciar el servidor
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3010;
 server.listen(PORT, () => {
   console.log(`Servidor en funcionament a http://localhost:${PORT}`);
 });
