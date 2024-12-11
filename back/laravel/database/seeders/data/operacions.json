@@ -271,8 +271,8 @@
             "question": "¿Cuánto es 234 + 678?",
             "answers": [
                 { "value": 911, "is_correct": false },
-                { "value": 913, "is_correct": true },
-                { "value": 912, "is_correct": false },
+                { "value": 913, "is_correct": false },
+                { "value": 912, "is_correct": true },
                 { "value": 914, "is_correct": false }
             ]
         },
@@ -397,9 +397,9 @@
             "question": "¿Cuánto es 567 + 234?",
             "answers": [
                 { "value": 800, "is_correct": false },
-                { "value": 801, "is_correct": false },
+                { "value": 801, "is_correct": true },
                 { "value": 802, "is_correct": false },
-                { "value": 803, "is_correct": true }
+                { "value": 803, "is_correct": false }
             ]
         },
         "nivel_dificultad": "difícil",
@@ -565,9 +565,9 @@
             "question": "¿Cuánto es 22 + 16?",
             "answers": [
                 { "value": 37, "is_correct": false },
-                { "value": 38, "is_correct": false },
+                { "value": 38, "is_correct": true },
                 { "value": 39, "is_correct": false },
-                { "value": 40, "is_correct": true }
+                { "value": 40, "is_correct": false }
             ]
         },
         "nivel_dificultad": "intermedio",
@@ -1433,8 +1433,8 @@
             "question": "¿Cuánto es 345 - 123?",
             "answers": [
                 { "value": 221, "is_correct": false },
-                { "value": 222, "is_correct": false },
-                { "value": 223, "is_correct": true },
+                { "value": 222, "is_correct": true },
+                { "value": 223, "is_correct": false },
                 { "value": 224, "is_correct": false }
             ]
         },
@@ -1446,7 +1446,7 @@
         "problem_json": {
             "question": "¿Cuánto es 8 - 2?",
             "answers": [
-                { "value": 6, "is_correct": false },
+                { "value": 10, "is_correct": false },
                 { "value": 7, "is_correct": false },
                 { "value": 5, "is_correct": false },
                 { "value": 6, "is_correct": true }
@@ -1476,8 +1476,8 @@
             "answers": [
                 { "value": 335, "is_correct": false },
                 { "value": 334, "is_correct": false },
-                { "value": 336, "is_correct": false },
-                { "value": 337, "is_correct": true }
+                { "value": 336, "is_correct": true },
+                { "value": 337, "is_correct": false }
             ]
         },
         "nivel_dificultad": "difícil",
@@ -1516,9 +1516,9 @@
         "problem_json": {
             "question": "¿Cuánto es 412 - 125?",
             "answers": [
-                { "value": 287, "is_correct": false },
+                { "value": 287, "is_correct": true },
                 { "value": 290, "is_correct": false },
-                { "value": 285, "is_correct": true },
+                { "value": 285, "is_correct": false },
                 { "value": 286, "is_correct": false }
             ]
         },
@@ -1586,7 +1586,7 @@
         "problem_json": {
             "question": "¿Cuánto es 56 - 24?",
             "answers": [
-                { "value": 32, "is_correct": false },
+                { "value": 80, "is_correct": false },
                 { "value": 31, "is_correct": false },
                 { "value": 34, "is_correct": false },
                 { "value": 32, "is_correct": true }
@@ -1839,8 +1839,8 @@
         "problem_json": {
             "question": "¿Cuánto es 57 - 40?",
             "answers": [
-                { "value": 17, "is_correct": true },
                 { "value": 16, "is_correct": false },
+                { "value": 17, "is_correct": true },
                 { "value": 15, "is_correct": false },
                 { "value": 18, "is_correct": false }
             ]
@@ -1861,5 +1861,3747 @@
         },
         "nivel_dificultad": "difícil",
         "tipo_operacion": "resta"
-    }
+    },
+
+
+    {
+        "id": 134,
+        "problem_json": {
+            "question": "¿Cuánto es 6 - 4?",
+            "answers": [
+                { "value": 3, "is_correct": false },
+                { "value": 1, "is_correct": false },
+                { "value": 2, "is_correct": true },
+                { "value": 0, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 135,
+        "problem_json": {
+            "question": "¿Cuánto es 68 - 32?",
+            "answers": [
+                { "value": 37, "is_correct": false },
+                { "value": 36, "is_correct": true },
+                { "value": 35, "is_correct": false },
+                { "value": 34, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 136,
+        "problem_json": {
+            "question": "¿Cuánto es 765 - 489?",
+            "answers": [
+                { "value": 275, "is_correct": false },
+                { "value": 277, "is_correct": false },
+                { "value": 278, "is_correct": false },
+                { "value": 276, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 137,
+        "problem_json": {
+            "question": "¿Cuánto es 8 - 6?",
+            "answers": [
+                { "value": 3, "is_correct": false },
+                { "value": 2, "is_correct": true },
+                { "value": 1, "is_correct": false },
+                { "value": 4, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 138,
+        "problem_json": {
+            "question": "¿Cuánto es 75 - 41?",
+            "answers": [
+                { "value": 33, "is_correct": false },
+                { "value": 35, "is_correct": false },
+                { "value": 34, "is_correct": true },
+                { "value": 36, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 139,
+        "problem_json": {
+            "question": "¿Cuánto es 894 - 762?",
+            "answers": [
+                { "value": 132, "is_correct": true },
+                { "value": 131, "is_correct": false },
+                { "value": 133, "is_correct": false },
+                { "value": 134, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 140,
+        "problem_json": {
+            "question": "¿Cuánto es 5 - 2?",
+            "answers": [
+                { "value": 4, "is_correct": false },
+                { "value": 2, "is_correct": false },
+                { "value": 5, "is_correct": false },
+                { "value": 3, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 141,
+        "problem_json": {
+            "question": "¿Cuánto es 93 - 58?",
+            "answers": [
+                { "value": 36, "is_correct": false },
+                { "value": 34, "is_correct": false },
+                { "value": 35, "is_correct": true },
+                { "value": 33, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 142,
+        "problem_json": {
+            "question": "¿Cuánto es 634 - 475?",
+            "answers": [
+                { "value": 160, "is_correct": false },
+                { "value": 159, "is_correct": true },
+                { "value": 158, "is_correct": false },
+                { "value": 157, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 143,
+        "problem_json": {
+            "question": "¿Cuánto es 4 - 3?",
+            "answers": [
+                { "value": 2, "is_correct": false },
+                { "value": 3, "is_correct": false },
+                { "value": 1, "is_correct": true },
+                { "value": 4, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 144,
+        "problem_json": {
+            "question": "¿Cuánto es 84 - 59?",
+            "answers": [
+                { "value": 26, "is_correct": false },
+                { "value": 24, "is_correct": false },
+                { "value": 27, "is_correct": false },
+                { "value": 25, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 145,
+        "problem_json": {
+            "question": "¿Cuánto es 732 - 498?",
+            "answers": [
+                { "value": 235, "is_correct": false },
+                { "value": 234, "is_correct": true },
+                { "value": 233, "is_correct": false },
+                { "value": 236, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 146,
+        "problem_json": {
+            "question": "¿Cuánto es 10 - 7?",
+            "answers": [
+                { "value": 4, "is_correct": false },
+                { "value": 2, "is_correct": false },
+                { "value": 3, "is_correct": true },
+                { "value": 5, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 147,
+        "problem_json": {
+            "question": "¿Cuánto es 92 - 47?",
+            "answers": [
+                { "value": 44, "is_correct": false },
+                { "value": 46, "is_correct": false },
+                { "value": 43, "is_correct": false },
+                { "value": 45, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 148,
+        "problem_json": {
+            "question": "¿Cuánto es 982 - 637?",
+            "answers": [
+                { "value": 345, "is_correct": true },
+                { "value": 344, "is_correct": false },
+                { "value": 346, "is_correct": false },
+                { "value": 347, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 149,
+        "problem_json": {
+            "question": "¿Cuánto es 3 - 2?",
+            "answers": [
+                { "value": 2, "is_correct": false },
+                { "value": 1, "is_correct": true },
+                { "value": 3, "is_correct": false },
+                { "value": 4, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 150,
+        "problem_json": {
+            "question": "¿Cuánto es 63 - 28?",
+            "answers": [
+                { "value": 36, "is_correct": false },
+                { "value": 34, "is_correct": false },
+                { "value": 35, "is_correct": true },
+                { "value": 33, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 151,
+        "problem_json": {
+            "question": "¿Cuánto es 743 - 516?",
+            "answers": [
+                { "value": 226, "is_correct": false },
+                { "value": 228, "is_correct": false },
+                { "value": 229, "is_correct": false },
+                { "value": 227, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 152,
+        "problem_json": {
+            "question": "¿Cuánto es 9 - 4?",
+            "answers": [
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": true },
+                { "value": 6, "is_correct": false },
+                { "value": 7, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 153,
+        "problem_json": {
+            "question": "¿Cuánto es 81 - 37?",
+            "answers": [
+                { "value": 44, "is_correct": true },
+                { "value": 43, "is_correct": false },
+                { "value": 45, "is_correct": false },
+                { "value": 42, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 154,
+        "problem_json": {
+            "question": "¿Cuánto es 978 - 683?",
+            "answers": [
+                { "value": 295, "is_correct": true },
+                { "value": 294, "is_correct": false },
+                { "value": 296, "is_correct": false },
+                { "value": 293, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 155,
+        "problem_json": {
+            "question": "¿Cuánto es 7 - 5?",
+            "answers": [
+                { "value": 1, "is_correct": false },
+                { "value": 2, "is_correct": true },
+                { "value": 3, "is_correct": false },
+                { "value": 4, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 156,
+        "problem_json": {
+            "question": "¿Cuánto es 95 - 47?",
+            "answers": [
+                { "value": 47, "is_correct": false },
+                { "value": 48, "is_correct": true },
+                { "value": 46, "is_correct": false },
+                { "value": 49, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 157,
+        "problem_json": {
+            "question": "¿Cuánto es 843 - 594?",
+            "answers": [
+                { "value": 249, "is_correct": true },
+                { "value": 248, "is_correct": false },
+                { "value": 250, "is_correct": false },
+                { "value": 247, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 158,
+        "problem_json": {
+            "question": "¿Cuánto es 10 - 3?",
+            "answers": [
+                { "value": 6, "is_correct": false },
+                { "value": 7, "is_correct": true },
+                { "value": 5, "is_correct": false },
+                { "value": 8, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 159,
+        "problem_json": {
+            "question": "¿Cuánto es 83 - 59?",
+            "answers": [
+                { "value": 25, "is_correct": false },
+                { "value": 24, "is_correct": true },
+                { "value": 26, "is_correct": false },
+                { "value": 23, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 160,
+        "problem_json": {
+            "question": "¿Cuánto es 932 - 712?",
+            "answers": [
+                { "value": 220, "is_correct": true },
+                { "value": 221, "is_correct": false },
+                { "value": 219, "is_correct": false },
+                { "value": 222, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 161,
+        "problem_json": {
+            "question": "¿Cuánto es 8 - 3?",
+            "answers": [
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": true },
+                { "value": 6, "is_correct": false },
+                { "value": 7, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 162,
+        "problem_json": {
+            "question": "¿Cuánto es 72 - 39?",
+            "answers": [
+                { "value": 34, "is_correct": false },
+                { "value": 33, "is_correct": true },
+                { "value": 35, "is_correct": false },
+                { "value": 36, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 163,
+        "problem_json": {
+            "question": "¿Cuánto es 496 - 274?",
+            "answers": [
+                { "value": 222, "is_correct": true },
+                { "value": 221, "is_correct": false },
+                { "value": 223, "is_correct": false },
+                { "value": 224, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 164,
+        "problem_json": {
+            "question": "¿Cuánto es 6 - 4?",
+            "answers": [
+                { "value": 1, "is_correct": false },
+                { "value": 2, "is_correct": true },
+                { "value": 3, "is_correct": false },
+                { "value": 4, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 165,
+        "problem_json": {
+            "question": "¿Cuánto es 85 - 44?",
+            "answers": [
+                { "value": 41, "is_correct": true },
+                { "value": 40, "is_correct": false },
+                { "value": 42, "is_correct": false },
+                { "value": 39, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 166,
+        "problem_json": {
+            "question": "¿Cuánto es 748 - 524?",
+            "answers": [
+                { "value": 224, "is_correct": true },
+                { "value": 223, "is_correct": false },
+                { "value": 225, "is_correct": false },
+                { "value": 226, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 167,
+        "problem_json": {
+            "question": "¿Cuánto es 9 - 6?",
+            "answers": [
+                { "value": 3, "is_correct": true },
+                { "value": 2, "is_correct": false },
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 168,
+        "problem_json": {
+            "question": "¿Cuánto es 63 - 28?",
+            "answers": [
+                { "value": 34, "is_correct": false },
+                { "value": 35, "is_correct": true },
+                { "value": 36, "is_correct": false },
+                { "value": 33, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 169,
+        "problem_json": {
+            "question": "¿Cuánto es 913 - 486?",
+            "answers": [
+                { "value": 426, "is_correct": false },
+                { "value": 427, "is_correct": true },
+                { "value": 428, "is_correct": false },
+                { "value": 425, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 170,
+        "problem_json": {
+            "question": "¿Cuánto es 14 - 9?",
+            "answers": [
+                { "value": 6, "is_correct": false },
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": true },
+                { "value": 3, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 171,
+        "problem_json": {
+            "question": "¿Cuánto es 52 - 17?",
+            "answers": [
+                { "value": 34, "is_correct": false },
+                { "value": 35, "is_correct": true },
+                { "value": 36, "is_correct": false },
+                { "value": 33, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 172,
+        "problem_json": {
+            "question": "¿Cuánto es 324 - 198?",
+            "answers": [
+                { "value": 127, "is_correct": false },
+                { "value": 129, "is_correct": false },
+                { "value": 128, "is_correct": false },
+                { "value": 126, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 173,
+        "problem_json": {
+            "question": "¿Cuánto es 10 - 2?",
+            "answers": [
+                { "value": 8, "is_correct": true },
+                { "value": 7, "is_correct": false },
+                { "value": 9, "is_correct": false },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 174,
+        "problem_json": {
+            "question": "¿Cuánto es 90 - 45?",
+            "answers": [
+                { "value": 35, "is_correct": false },
+                { "value": 34, "is_correct": false },
+                { "value": 44, "is_correct": false },
+                { "value": 45, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 175,
+        "problem_json": {
+            "question": "¿Cuánto es 205 - 150?",
+            "answers": [
+                { "value": 55, "is_correct": true },
+                { "value": 54, "is_correct": false },
+                { "value": 56, "is_correct": false },
+                { "value": 57, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 176,
+        "problem_json": {
+            "question": "¿Cuánto es 18 - 7?",
+            "answers": [
+                { "value": 12, "is_correct": false },
+                { "value": 11, "is_correct": true },
+                { "value": 13, "is_correct": false },
+                { "value": 10, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 177,
+        "problem_json": {
+            "question": "¿Cuánto es 68 - 32?",
+            "answers": [
+                { "value": 36, "is_correct": true },
+                { "value": 35, "is_correct": false },
+                { "value": 37, "is_correct": false },
+                { "value": 34, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 178,
+        "problem_json": {
+            "question": "¿Cuánto es 402 - 198?",
+            "answers": [
+                { "value": 204, "is_correct": true },
+                { "value": 205, "is_correct": false },
+                { "value": 203, "is_correct": false },
+                { "value": 202, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 179,
+        "problem_json": {
+            "question": "¿Cuánto es 7 - 3?",
+            "answers": [
+                { "value": 4, "is_correct": true },
+                { "value": 5, "is_correct": false },
+                { "value": 3, "is_correct": false },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 180,
+        "problem_json": {
+            "question": "¿Cuánto es 80 - 48?",
+            "answers": [
+                { "value": 31, "is_correct": false },
+                { "value": 32, "is_correct": true },
+                { "value": 33, "is_correct": false },
+                { "value": 34, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 181,
+        "problem_json": {
+            "question": "¿Cuánto es 100 - 56?",
+            "answers": [
+                { "value": 35, "is_correct": false },
+                { "value": 34, "is_correct": false },
+                { "value": 46, "is_correct": false },
+                { "value": 44, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 182,
+        "problem_json": {
+            "question": "¿Cuánto es 15 - 7?",
+            "answers": [
+                { "value": 9, "is_correct": false },
+                { "value": 8, "is_correct": true },
+                { "value": 7, "is_correct": false },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 183,
+        "problem_json": {
+            "question": "¿Cuánto es 225 - 174?",
+            "answers": [
+                { "value": 50, "is_correct": false },
+                { "value": 51, "is_correct": true },
+                { "value": 52, "is_correct": false },
+                { "value": 53, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 184,
+        "problem_json": {
+            "question": "¿Cuánto es 36 - 19?",
+            "answers": [
+                { "value": 17, "is_correct": true },
+                { "value": 18, "is_correct": false },
+                { "value": 16, "is_correct": false },
+                { "value": 15, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 185,
+        "problem_json": {
+            "question": "¿Cuánto es 9 - 6?",
+            "answers": [
+                { "value": 4, "is_correct": false },
+                { "value": 3, "is_correct": true },
+                { "value": 5, "is_correct": false },
+                { "value": 2, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 186,
+        "problem_json": {
+            "question": "¿Cuánto es 128 - 95?",
+            "answers": [
+                { "value": 33, "is_correct": true },
+                { "value": 32, "is_correct": false },
+                { "value": 34, "is_correct": false },
+                { "value": 35, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 187,
+        "problem_json": {
+            "question": "¿Cuánto es 600 - 425?",
+            "answers": [
+                { "value": 175, "is_correct": true },
+                { "value": 176, "is_correct": false },
+                { "value": 174, "is_correct": false },
+                { "value": 177, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 188,
+        "problem_json": {
+            "question": "¿Cuánto es 14 - 5?",
+            "answers": [
+                { "value": 10, "is_correct": false },
+                { "value": 9, "is_correct": true },
+                { "value": 8, "is_correct": false },
+                { "value": 7, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 189,
+        "problem_json": {
+            "question": "¿Cuánto es 58 - 22?",
+            "answers": [
+                { "value": 35, "is_correct": false },
+                { "value": 36, "is_correct": true },
+                { "value": 37, "is_correct": false },
+                { "value": 34, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 190,
+        "problem_json": {
+            "question": "¿Cuánto es 500 - 299?",
+            "answers": [
+                { "value": 200, "is_correct": false },
+                { "value": 201, "is_correct": true },
+                { "value": 202, "is_correct": false },
+                { "value": 203, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 191,
+        "problem_json": {
+            "question": "¿Cuánto es 35 - 18?",
+            "answers": [
+                { "value": 17, "is_correct": true },
+                { "value": 16, "is_correct": false },
+                { "value": 15, "is_correct": false },
+                { "value": 18, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 192,
+        "problem_json": {
+            "question": "¿Cuánto es 1000 - 850?",
+            "answers": [
+                { "value": 150, "is_correct": true },
+                { "value": 149, "is_correct": false },
+                { "value": 151, "is_correct": false },
+                { "value": 152, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 193,
+        "problem_json": {
+            "question": "¿Cuánto es 60 - 27?",
+            "answers": [
+                { "value": 34, "is_correct": false },
+                { "value": 32, "is_correct": false },
+                { "value": 33, "is_correct": true },
+                { "value": 35, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 194,
+        "problem_json": {
+            "question": "¿Cuánto es 22 - 12?",
+            "answers": [
+                { "value": 10, "is_correct": true },
+                { "value": 11, "is_correct": false },
+                { "value": 9, "is_correct": false },
+                { "value": 8, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 195,
+        "problem_json": {
+            "question": "¿Cuánto es 150 - 47?",
+            "answers": [
+                { "value": 102, "is_correct": false },
+                { "value": 103, "is_correct": true },
+                { "value": 104, "is_correct": false },
+                { "value": 101, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 196,
+        "problem_json": {
+            "question": "¿Cuánto es 200 - 89?",
+            "answers": [
+                { "value": 110, "is_correct": false },
+                { "value": 111, "is_correct": true },
+                { "value": 109, "is_correct": false },
+                { "value": 108, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 197,
+        "problem_json": {
+            "question": "¿Cuánto es 12 - 5?",
+            "answers": [
+                { "value": 8, "is_correct": false },
+                { "value": 6, "is_correct": false },
+                { "value": 9, "is_correct": false },
+                { "value": 7, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 198,
+        "problem_json": {
+            "question": "¿Cuánto es 85 - 39?",
+            "answers": [
+                { "value": 47, "is_correct": false },
+                { "value": 46, "is_correct": true },
+                { "value": 48, "is_correct": false },
+                { "value": 45, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 199,
+        "problem_json": {
+            "question": "¿Cuánto es 500 - 275?",
+            "answers": [
+                { "value": 224, "is_correct": false },
+                { "value": 225, "is_correct": true },
+                { "value": 226, "is_correct": false },
+                { "value": 223, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 200,
+        "problem_json": {
+            "question": "¿Cuánto es 19 - 8?",
+            "answers": [
+                { "value": 11, "is_correct": true },
+                { "value": 12, "is_correct": false },
+                { "value": 10, "is_correct": false },
+                { "value": 9, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "resta"
+    },
+    {
+        "id": 201,
+        "problem_json": {
+            "question": "¿Cuánto es 8 x 6?",
+            "answers": [
+                { "value": 48, "is_correct": true },
+                { "value": 45, "is_correct": false },
+                { "value": 50, "is_correct": false },
+                { "value": 52, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 202,
+        "problem_json": {
+            "question": "¿Cuánto es 12 x 6?",
+            "answers": [
+                { "value": 75, "is_correct": false },
+                { "value": 70, "is_correct": false },
+                { "value": 80, "is_correct": false },
+                { "value": 72, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 203,
+        "problem_json": {
+            "question": "¿Cuánto es 24 x 12?",
+            "answers": [
+                { "value": 280, "is_correct": false },
+                { "value": 295, "is_correct": false },
+                { "value": 288, "is_correct": true },
+                { "value": 300, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 204,
+        "problem_json": {
+            "question": "¿Cuánto es 7 x 5?",
+            "answers": [
+                { "value": 30, "is_correct": false },
+                { "value": 25, "is_correct": false },
+                { "value": 35, "is_correct": true },
+                { "value": 40, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 205,
+        "problem_json": {
+            "question": "¿Cuánto es 14 x 8?",
+            "answers": [
+                { "value": 110, "is_correct": false },
+                { "value": 120, "is_correct": false },
+                { "value": 100, "is_correct": false },
+                { "value": 112, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 206,
+        "problem_json": {
+            "question": "¿Cuánto es 30 x 18?",
+            "answers": [
+                { "value": 520, "is_correct": false },
+                { "value": 530, "is_correct": false },
+                { "value": 540, "is_correct": true },
+                { "value": 550, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 207,
+        "problem_json": {
+            "question": "¿Cuánto es 4 x 7?",
+            "answers": [
+                { "value": 30, "is_correct": false },
+                { "value": 32, "is_correct": false },
+                { "value": 28, "is_correct": true },
+                { "value": 25, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 208,
+        "problem_json": {
+            "question": "¿Cuánto es 15 x 9?",
+            "answers": [
+                { "value": 130, "is_correct": false },
+                { "value": 140, "is_correct": false },
+                { "value": 120, "is_correct": false },
+                { "value": 135, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 209,
+        "problem_json": {
+            "question": "¿Cuánto es 25 x 16?",
+            "answers": [
+                { "value": 420, "is_correct": false },
+                { "value": 380, "is_correct": false },
+                { "value": 400, "is_correct": true },
+                { "value": 410, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 210,
+        "problem_json": {
+            "question": "¿Cuánto es 5 x 9?",
+            "answers": [
+                { "value": 40, "is_correct": false },
+                { "value": 50, "is_correct": false },
+                { "value": 45, "is_correct": true },
+                { "value": 42, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 211,
+        "problem_json": {
+            "question": "¿Cuánto es 18 x 11?",
+            "answers": [
+                { "value": 200, "is_correct": false },
+                { "value": 210, "is_correct": false },
+                { "value": 198, "is_correct": true },
+                { "value": 190, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 212,
+        "problem_json": {
+            "question": "¿Cuánto es 26 x 13?",
+            "answers": [
+                { "value": 330, "is_correct": false },
+                { "value": 320, "is_correct": false },
+                { "value": 350, "is_correct": false },
+                { "value": 338, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 213,
+        "problem_json": {
+            "question": "¿Cuánto es 9 x 4?",
+            "answers": [
+                { "value": 34, "is_correct": false },
+                { "value": 38, "is_correct": false },
+                { "value": 36, "is_correct": true },
+                { "value": 32, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 214,
+        "problem_json": {
+            "question": "¿Cuánto es 13 x 8?",
+            "answers": [
+                { "value": 100, "is_correct": false },
+                { "value": 90, "is_correct": false },
+                { "value": 104, "is_correct": true },
+                { "value": 110, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 215,
+        "problem_json": {
+            "question": "¿Cuánto es 22 x 17?",
+            "answers": [
+                { "value": 380, "is_correct": false },
+                { "value": 350, "is_correct": false },
+                { "value": 374, "is_correct": true },
+                { "value": 360, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 216,
+        "problem_json": {
+            "question": "¿Cuánto es 6 x 8?",
+            "answers": [
+                { "value": 45, "is_correct": false },
+                { "value": 42, "is_correct": false },
+                { "value": 50, "is_correct": false },
+                { "value": 48, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 217,
+        "problem_json": {
+            "question": "¿Cuánto es 10 x 14?",
+            "answers": [
+                { "value": 140, "is_correct": true },
+                { "value": 130, "is_correct": false },
+                { "value": 120, "is_correct": false },
+                { "value": 150, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 218,
+        "problem_json": {
+            "question": "¿Cuánto es 8 x 7?",
+            "answers": [
+                { "value": 50, "is_correct": false },
+                { "value": 56, "is_correct": true },
+                { "value": 55, "is_correct": false },
+                { "value": 60, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 219,
+        "problem_json": {
+            "question": "¿Cuánto es 16 x 6?",
+            "answers": [
+                { "value": 92, "is_correct": false },
+                { "value": 96, "is_correct": true },
+                { "value": 100, "is_correct": false },
+                { "value": 90, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 220,
+        "problem_json": {
+            "question": "¿Cuánto es 25 x 24?",
+            "answers": [
+                { "value": 600, "is_correct": true },
+                { "value": 580, "is_correct": false },
+                { "value": 625, "is_correct": false },
+                { "value": 600, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 221,
+        "problem_json": {
+            "question": "¿Cuánto es 4 x 10?",
+            "answers": [
+                { "value": 45, "is_correct": false },
+                { "value": 40, "is_correct": true },
+                { "value": 30, "is_correct": false },
+                { "value": 35, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 222,
+        "problem_json": {
+            "question": "¿Cuánto es 18 x 9?",
+            "answers": [
+                { "value": 140, "is_correct": false },
+                { "value": 145, "is_correct": false },
+                { "value": 162, "is_correct": true },
+                { "value": 150, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 223,
+        "problem_json": {
+            "question": "¿Cuánto es 28 x 17?",
+            "answers": [
+                { "value": 476, "is_correct": true },
+                { "value": 485, "is_correct": false },
+                { "value": 460, "is_correct": false },
+                { "value": 490, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 224,
+        "problem_json": {
+            "question": "¿Cuánto es 6 x 12?",
+            "answers": [
+                { "value": 65, "is_correct": false },
+                { "value": 72, "is_correct": true },
+                { "value": 60, "is_correct": false },
+                { "value": 80, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 225,
+        "problem_json": {
+            "question": "¿Cuánto es 15 x 14?",
+            "answers": [
+                { "value": 210, "is_correct": true },
+                { "value": 225, "is_correct": false },
+                { "value": 200, "is_correct": false },
+                { "value": 215, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 226,
+        "problem_json": {
+            "question": "¿Cuánto es 35 x 24?",
+            "answers": [
+                { "value": 850, "is_correct": false },
+                { "value": 840, "is_correct": false },
+                { "value": 820, "is_correct": false },
+                { "value": 840, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 227,
+        "problem_json": {
+            "question": "¿Cuánto es 5 x 7?",
+            "answers": [
+                { "value": 33, "is_correct": false },
+                { "value": 35, "is_correct": true },
+                { "value": 38, "is_correct": false },
+                { "value": 30, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 228,
+        "problem_json": {
+            "question": "¿Cuánto es 16 x 9?",
+            "answers": [
+                { "value": 140, "is_correct": false },
+                { "value": 144, "is_correct": true },
+                { "value": 145, "is_correct": false },
+                { "value": 150, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 229,
+        "problem_json": {
+            "question": "¿Cuánto es 45 x 14?",
+            "answers": [
+                { "value": 600, "is_correct": false },
+                { "value": 635, "is_correct": false },
+                { "value": 630, "is_correct": true },
+                { "value": 620, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 230,
+        "problem_json": {
+            "question": "¿Cuánto es 6 x 6?",
+            "answers": [
+                { "value": 35, "is_correct": false },
+                { "value": 36, "is_correct": true },
+                { "value": 40, "is_correct": false },
+                { "value": 30, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 231,
+        "problem_json": {
+            "question": "¿Cuánto es 14 x 12?",
+            "answers": [
+                { "value": 168, "is_correct": true },
+                { "value": 160, "is_correct": false },
+                { "value": 155, "is_correct": false },
+                { "value": 180, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 232,
+        "problem_json": {
+            "question": "¿Cuánto es 28 x 22?",
+            "answers": [
+                { "value": 600, "is_correct": false },
+                { "value": 616, "is_correct": true },
+                { "value": 650, "is_correct": false },
+                { "value": 620, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 233,
+        "problem_json": {
+            "question": "¿Cuánto es 5 x 5?",
+            "answers": [
+                { "value": 25, "is_correct": true },
+                { "value": 10, "is_correct": false },
+                { "value": 15, "is_correct": false },
+                { "value": 20, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 234,
+        "problem_json": {
+            "question": "¿Cuánto es 18 x 8?",
+            "answers": [
+                { "value": 144, "is_correct": true },
+                { "value": 130, "is_correct": false },
+                { "value": 135, "is_correct": false },
+                { "value": 150, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 235,
+        "problem_json": {
+            "question": "¿Cuánto es 33 x 19?",
+            "answers": [
+                { "value": 630, "is_correct": false },
+                { "value": 629, "is_correct": false },
+                { "value": 627, "is_correct": true },
+                { "value": 620, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 236,
+        "problem_json": {
+            "question": "¿Cuánto es 4 x 5?",
+            "answers": [
+                { "value": 20, "is_correct": true },
+                { "value": 25, "is_correct": false },
+                { "value": 15, "is_correct": false },
+                { "value": 30, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 237,
+        "problem_json": {
+            "question": "¿Cuánto es 20 x 15?",
+            "answers": [
+                { "value": 300, "is_correct": true },
+                { "value": 290, "is_correct": false },
+                { "value": 310, "is_correct": false },
+                { "value": 280, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 238,
+        "problem_json": {
+            "question": "¿Cuánto es 42 x 15?",
+            "answers": [
+                { "value": 640, "is_correct": false },
+                { "value": 630, "is_correct": true },
+                { "value": 600, "is_correct": false },
+                { "value": 620, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 239,
+        "problem_json": {
+            "question": "¿Cuánto es 7 x 8?",
+            "answers": [
+                { "value": 56, "is_correct": true },
+                { "value": 50, "is_correct": false },
+                { "value": 60, "is_correct": false },
+                { "value": 54, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 240,
+        "problem_json": {
+            "question": "¿Cuánto es 19 x 11?",
+            "answers": [
+                { "value": 209, "is_correct": true },
+                { "value": 210, "is_correct": false },
+                { "value": 220, "is_correct": false },
+                { "value": 200, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 241,
+        "problem_json": {
+            "question": "¿Cuánto es 36 x 18?",
+            "answers": [
+                { "value": 640, "is_correct": false },
+                { "value": 648, "is_correct": true },
+                { "value": 620, "is_correct": false },
+                { "value": 630, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 242,
+        "problem_json": {
+            "question": "¿Cuánto es 3 x 7?",
+            "answers": [
+                { "value": 21, "is_correct": true },
+                { "value": 20, "is_correct": false },
+                { "value": 22, "is_correct": false },
+                { "value": 19, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 243,
+        "problem_json": {
+            "question": "¿Cuánto es 16 x 12?",
+            "answers": [
+                { "value": 185, "is_correct": false },
+                { "value": 190, "is_correct": false },
+                { "value": 192, "is_correct": true },
+                { "value": 200, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 244,
+        "problem_json": {
+            "question": "¿Cuánto es 45 x 17?",
+            "answers": [
+                { "value": 750, "is_correct": false },
+                { "value": 765, "is_correct": true },
+                { "value": 770, "is_correct": false },
+                { "value": 740, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 245,
+        "problem_json": {
+            "question": "¿Cuánto es 4 x 8?",
+            "answers": [
+                { "value": 30, "is_correct": false },
+                { "value": 33, "is_correct": false },
+                { "value": 31, "is_correct": false },
+                { "value": 32, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 246,
+        "problem_json": {
+            "question": "¿Cuánto es 22 x 9?",
+            "answers": [
+                { "value": 198, "is_correct": true },
+                { "value": 200, "is_correct": false },
+                { "value": 190, "is_correct": false },
+                { "value": 210, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 247,
+        "problem_json": {
+            "question": "¿Cuánto es 57 x 14?",
+            "answers": [
+                { "value": 785, "is_correct": false },
+                { "value": 798, "is_correct": true },
+                { "value": 770, "is_correct": false },
+                { "value": 810, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 248,
+        "problem_json": {
+            "question": "¿Cuánto es 2 x 10?",
+            "answers": [
+                { "value": 18, "is_correct": false },
+                { "value": 25, "is_correct": false },
+                { "value": 20, "is_correct": true },
+                { "value": 22, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 249,
+        "problem_json": {
+            "question": "¿Cuánto es 17 x 11?",
+            "answers": [
+                { "value": 177, "is_correct": false },
+                { "value": 117, "is_correct": false },
+                { "value": 167, "is_correct": false },
+                { "value": 187, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 250,
+        "problem_json": {
+            "question": "¿Cuánto es 63 x 19?",
+            "answers": [
+                { "value": 1197, "is_correct": true },
+                { "value": 1185, "is_correct": false },
+                { "value": 1200, "is_correct": false },
+                { "value": 1150, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 251,
+        "problem_json": {
+            "question": "¿Cuánto es 11 x 7?",
+            "answers": [
+                { "value": 70, "is_correct": false },
+                { "value": 77, "is_correct": true },
+                { "value": 80, "is_correct": false },
+                { "value": 75, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 252,
+        "problem_json": {
+            "question": "¿Cuánto es 25 x 14?",
+            "answers": [
+                { "value": 340, "is_correct": false },
+                { "value": 330, "is_correct": false },
+                { "value": 350, "is_correct": true },
+                { "value": 360, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 253,
+        "problem_json": {
+            "question": "¿Cuánto es 72 x 16?",
+            "answers": [
+                { "value": 1100, "is_correct": false },
+                { "value": 1180, "is_correct": false },
+                { "value": 1200, "is_correct": false },
+                { "value": 1152, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 254,
+        "problem_json": {
+            "question": "¿Cuánto es 5 x 6?",
+            "answers": [
+                { "value": 30, "is_correct": true },
+                { "value": 28, "is_correct": false },
+                { "value": 32, "is_correct": false },
+                { "value": 33, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 255,
+        "problem_json": {
+            "question": "¿Cuánto es 13 x 18?",
+            "answers": [
+                { "value": 220, "is_correct": false },
+                { "value": 234, "is_correct": true },
+                { "value": 240, "is_correct": false },
+                { "value": 230, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 256,
+        "problem_json": {
+            "question": "¿Cuánto es 39 x 17?",
+            "answers": [
+                { "value": 650, "is_correct": false },
+                { "value": 670, "is_correct": false },
+                { "value": 663, "is_correct": true },
+                { "value": 700, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 257,
+        "problem_json": {
+            "question": "¿Cuánto es 3 x 5?",
+            "answers": [
+                { "value": 13, "is_correct": false },
+                { "value": 18, "is_correct": false },
+                { "value": 16, "is_correct": false },
+                { "value": 15, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 258,
+        "problem_json": {
+            "question": "¿Cuánto es 19 x 7?",
+            "answers": [
+                { "value": 133, "is_correct": true },
+                { "value": 140, "is_correct": false },
+                { "value": 120, "is_correct": false },
+                { "value": 150, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 259,
+        "problem_json": {
+            "question": "¿Cuánto es 49 x 12?",
+            "answers": [
+                { "value": 600, "is_correct": false },
+                { "value": 588, "is_correct": true },
+                { "value": 580, "is_correct": false },
+                { "value": 590, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 260,
+        "problem_json": {
+            "question": "¿Cuánto es 3 x 3?",
+            "answers": [
+                { "value": 8, "is_correct": false },
+                { "value": 7, "is_correct": false },
+                { "value": 9, "is_correct": true },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 261,
+        "problem_json": {
+            "question": "¿Cuánto es 21 x 9?",
+            "answers": [
+                { "value": 180, "is_correct": false },
+                { "value": 200, "is_correct": false },
+                { "value": 210, "is_correct": false },
+                { "value": 189, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 262,
+        "problem_json": {
+            "question": "¿Cuánto es 54 x 18?",
+            "answers": [
+                { "value": 972, "is_correct": true },
+                { "value": 980, "is_correct": false },
+                { "value": 960, "is_correct": false },
+                { "value": 950, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 263,
+        "problem_json": {
+            "question": "¿Cuánto es 8 x 8?",
+            "answers": [
+                { "value": 66, "is_correct": false },
+                { "value": 64, "is_correct": true },
+                { "value": 60, "is_correct": false },
+                { "value": 16, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 264,
+        "problem_json": {
+            "question": "¿Cuánto es 14 x 11?",
+            "answers": [
+                { "value": 150, "is_correct": false },
+                { "value": 160, "is_correct": false },
+                { "value": 154, "is_correct": true },
+                { "value": 140, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 265,
+        "problem_json": {
+            "question": "¿Cuánto es 72 x 25?",
+            "answers": [
+                { "value": 1700, "is_correct": false },
+                { "value": 1900, "is_correct": false },
+                { "value": 1850, "is_correct": false },
+                { "value": 1800, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 266,
+        "problem_json": {
+            "question": "¿Cuánto es 4 x 7?",
+            "answers": [
+                { "value": 28, "is_correct": true },
+                { "value": 30, "is_correct": false },
+                { "value": 27, "is_correct": false },
+                { "value": 32, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 267,
+        "problem_json": {
+            "question": "¿Cuánto es 16 x 5?",
+            "answers": [
+                { "value": 80, "is_correct": false },
+                { "value": 92, "is_correct": true },
+                { "value": 75, "is_correct": false },
+                { "value": 85, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 268,
+        "problem_json": {
+            "question": "¿Cuánto es 45 x 18?",
+            "answers": [
+                { "value": 800, "is_correct": false },
+                { "value": 820, "is_correct": false },
+                { "value": 810, "is_correct": true },
+                { "value": 850, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 269,
+        "problem_json": {
+            "question": "¿Cuánto es 10 x 5?",
+            "answers": [
+                { "value": 55, "is_correct": false },
+                { "value": 15, "is_correct": false },
+                { "value": 45, "is_correct": false },
+                { "value": 50, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 270,
+        "problem_json": {
+            "question": "¿Cuánto es 18 x 14?",
+            "answers": [
+                { "value": 252, "is_correct": true },
+                { "value": 250, "is_correct": false },
+                { "value": 260, "is_correct": false },
+                { "value": 240, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 271,
+        "problem_json": {
+            "question": "¿Cuánto es 56 x 23?",
+            "answers": [
+                { "value": 1300, "is_correct": false },
+                { "value": 1288, "is_correct": true },
+                { "value": 1260, "is_correct": false },
+                { "value": 1200, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 272,
+        "problem_json": {
+            "question": "¿Cuánto es 9 x 6?",
+            "answers": [
+                { "value": 52, "is_correct": false },
+                { "value": 50, "is_correct": false },
+                { "value": 54, "is_correct": true },
+                { "value": 56, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 273,
+        "problem_json": {
+            "question": "¿Cuánto es 23 x 11?",
+            "answers": [
+                { "value": 240, "is_correct": false },
+                { "value": 270, "is_correct": false },
+                { "value": 250, "is_correct": false },
+                { "value": 253, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 274,
+        "problem_json": {
+            "question": "¿Cuánto es 72 x 29?",
+            "answers": [
+                { "value": 2088, "is_correct": true },
+                { "value": 2000, "is_correct": false },
+                { "value": 2100, "is_correct": false },
+                { "value": 2200, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 275,
+        "problem_json": {
+            "question": "¿Cuánto es 3 x 10?",
+            "answers": [
+                { "value": 28, "is_correct": false },
+                { "value": 30, "is_correct": true },
+                { "value": 35, "is_correct": false },
+                { "value": 33, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 276,
+        "problem_json": {
+            "question": "¿Cuánto es 25 x 15?",
+            "answers": [
+                { "value": 350, "is_correct": false },
+                { "value": 400, "is_correct": false },
+                { "value": 375, "is_correct": true },
+                { "value": 380, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 277,
+        "problem_json": {
+            "question": "¿Cuánto es 63 x 24?",
+            "answers": [
+                { "value": 1500, "is_correct": false },
+                { "value": 1600, "is_correct": false },
+                { "value": 1400, "is_correct": false },
+                { "value": 1512, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 278,
+        "problem_json": {
+            "question": "¿Cuánto es 4 x 4?",
+            "answers": [
+                { "value": 16, "is_correct": true },
+                { "value": 12, "is_correct": false },
+                { "value": 18, "is_correct": false },
+                { "value": 8, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 279,
+        "problem_json": {
+            "question": "¿Cuánto es 14 x 17?",
+            "answers": [
+                { "value": 220, "is_correct": false },
+                { "value": 238, "is_correct": true },
+                { "value": 240, "is_correct": false },
+                { "value": 230, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 280,
+        "problem_json": {
+            "question": "¿Cuánto es 32 x 19?",
+            "answers": [
+                { "value": 620, "is_correct": false },
+                { "value": 600, "is_correct": false },
+                { "value": 608, "is_correct": true },
+                { "value": 610, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 281,
+        "problem_json": {
+            "question": "¿Cuánto es 5 x 12?",
+            "answers": [
+                { "value": 58, "is_correct": false },
+                { "value": 65, "is_correct": false },
+                { "value": 55, "is_correct": false },
+                { "value": 60, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 282,
+        "problem_json": {
+            "question": "¿Cuánto es 21 x 13?",
+            "answers": [
+                { "value": 273, "is_correct": true },
+                { "value": 260, "is_correct": false },
+                { "value": 280, "is_correct": false },
+                { "value": 290, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 283,
+        "problem_json": {
+            "question": "¿Cuánto es 45 x 22?",
+            "answers": [
+                { "value": 1000, "is_correct": false },
+                { "value": 990, "is_correct": true },
+                { "value": 980, "is_correct": false },
+                { "value": 960, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 284,
+        "problem_json": {
+            "question": "¿Cuánto es 7 x 9?",
+            "answers": [
+                { "value": 60, "is_correct": false },
+                { "value": 64, "is_correct": false },
+                { "value": 63, "is_correct": true },
+                { "value": 55, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 285,
+        "problem_json": {
+            "question": "¿Cuánto es 25 x 18?",
+            "answers": [
+                { "value": 440, "is_correct": false },
+                { "value": 460, "is_correct": false },
+                { "value": 430, "is_correct": false },
+                { "value": 450, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 286,
+        "problem_json": {
+            "question": "¿Cuánto es 56 x 24?",
+            "answers": [
+                { "value": 1344, "is_correct": true },
+                { "value": 1300, "is_correct": false },
+                { "value": 1400, "is_correct": false },
+                { "value": 1200, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 287,
+        "problem_json": {
+            "question": "¿Cuánto es 4 x 9?",
+            "answers": [
+                { "value": 30, "is_correct": false },
+                { "value": 36, "is_correct": true },
+                { "value": 38, "is_correct": false },
+                { "value": 35, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 288,
+        "problem_json": {
+            "question": "¿Cuánto es 17 x 15?",
+            "answers": [
+                { "value": 250, "is_correct": false },
+                { "value": 240, "is_correct": false },
+                { "value": 255, "is_correct": true },
+                { "value": 270, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 289,
+        "problem_json": {
+            "question": "¿Cuánto es 63 x 27?",
+            "answers": [
+                { "value": 1600, "is_correct": false },
+                { "value": 1800, "is_correct": false },
+                { "value": 1750, "is_correct": false },
+                { "value": 1701, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 290,
+        "problem_json": {
+            "question": "¿Cuánto es 3 x 8?",
+            "answers": [
+                { "value": 24, "is_correct": true },
+                { "value": 22, "is_correct": false },
+                { "value": 26, "is_correct": false },
+                { "value": 20, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 291,
+        "problem_json": {
+            "question": "¿Cuánto es 16 x 14?",
+            "answers": [
+                { "value": 210, "is_correct": false },
+                { "value": 224, "is_correct": true },
+                { "value": 230, "is_correct": false },
+                { "value": 240, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 292,
+        "problem_json": {
+            "question": "¿Cuánto es 45 x 30?",
+            "answers": [
+                { "value": 1300, "is_correct": false },
+                { "value": 1400, "is_correct": false },
+                { "value": 1350, "is_correct": true },
+                { "value": 1200, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 293,
+        "problem_json": {
+            "question": "¿Cuánto es 7 x 7?",
+            "answers": [
+                { "value": 42, "is_correct": false },
+                { "value": 45, "is_correct": false },
+                { "value": 50, "is_correct": false },
+                { "value": 49, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 294,
+        "problem_json": {
+            "question": "¿Cuánto es 18 x 19?",
+            "answers": [
+                { "value": 342, "is_correct": true },
+                { "value": 330, "is_correct": false },
+                { "value": 350, "is_correct": false },
+                { "value": 340, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 295,
+        "problem_json": {
+            "question": "¿Cuánto es 32 x 17?",
+            "answers": [
+                { "value": 530, "is_correct": false },
+                { "value": 544, "is_correct": true },
+                { "value": 550, "is_correct": false },
+                { "value": 500, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 296,
+        "problem_json": {
+            "question": "¿Cuánto es 5 x 15?",
+            "answers": [
+                { "value": 70, "is_correct": false },
+                { "value": 80, "is_correct": false },
+                { "value": 75, "is_correct": true },
+                { "value": 60, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 297,
+        "problem_json": {
+            "question": "¿Cuánto es 22 x 14?",
+            "answers": [
+                { "value": 300, "is_correct": false },
+                { "value": 320, "is_correct": false },
+                { "value": 310, "is_correct": false },
+                { "value": 308, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 298,
+        "problem_json": {
+            "question": "¿Cuánto es 60 x 22?",
+            "answers": [
+                { "value": 1300, "is_correct": false },
+                { "value": 1320, "is_correct": true },
+                { "value": 1400, "is_correct": false },
+                { "value": 1200, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "difícil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 299,
+        "problem_json": {
+            "question": "¿Cuánto es 4 x 11?",
+            "answers": [
+                { "value": 40, "is_correct": false },
+                { "value": 45, "is_correct": false },
+                { "value": 44, "is_correct": true },
+                { "value": 42, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "fácil",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 300,
+        "problem_json": {
+            "question": "¿Cuánto es 27 x 15?",
+            "answers": [
+                { "value": 400, "is_correct": false },
+                { "value": 420, "is_correct": false },
+                { "value": 430, "is_correct": false },
+                { "value": 405, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "multiplicacion"
+    },
+    {
+        "id": 301,
+        "problem_json": {
+            "question": "¿Cuánto es 6 / 2?",
+            "answers": [
+                { "value": 2, "is_correct": false },
+                { "value": 3, "is_correct": true },
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 302,
+        "problem_json": {
+            "question": "¿Cuánto es 72 / 8?",
+            "answers": [
+                { "value": 9, "is_correct": true },
+                { "value": 7, "is_correct": false },
+                { "value": 8, "is_correct": false },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 303,
+        "problem_json": {
+            "question": "¿Cuánto es 540 / 15?",
+            "answers": [
+                { "value": 34, "is_correct": false },
+                { "value": 36, "is_correct": false },
+                { "value": 38, "is_correct": false },
+                { "value": 36, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 304,
+        "problem_json": {
+            "question": "¿Cuánto es 8 / 4?",
+            "answers": [
+                { "value": 3, "is_correct": false },
+                { "value": 2, "is_correct": true },
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 305,
+        "problem_json": {
+            "question": "¿Cuánto es 96 / 8?",
+            "answers": [
+                { "value": 12, "is_correct": true },
+                { "value": 11, "is_correct": false },
+                { "value": 10, "is_correct": false },
+                { "value": 9, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 306,
+        "problem_json": {
+            "question": "¿Cuánto es 720 / 18?",
+            "answers": [
+                { "value": 39, "is_correct": false },
+                { "value": 40, "is_correct": true },
+                { "value": 45, "is_correct": false },
+                { "value": 35, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 307,
+        "problem_json": {
+            "question": "¿Cuánto es 9 / 3?",
+            "answers": [
+                { "value": 4, "is_correct": false },
+                { "value": 3, "is_correct": false },
+                { "value": 2, "is_correct": false },
+                { "value": 3, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 308,
+        "problem_json": {
+            "question": "¿Cuánto es 144 / 12?",
+            "answers": [
+                { "value": 14, "is_correct": false },
+                { "value": 12, "is_correct": true },
+                { "value": 15, "is_correct": false },
+                { "value": 10, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },  
+    {
+        "id": 309,
+        "problem_json": {
+            "question": "¿Cuánto es 990 / 33?",
+            "answers": [
+                { "value": 25, "is_correct": false },
+                { "value": 30, "is_correct": true },
+                { "value": 27, "is_correct": false },
+                { "value": 20, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 310,
+        "problem_json": {
+            "question": "¿Cuánto es 10 / 5?",
+            "answers": [
+                { "value": 1, "is_correct": false },
+                { "value": 2, "is_correct": true },
+                { "value": 3, "is_correct": false },
+                { "value": 4, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 311,
+        "problem_json": {
+            "question": "¿Cuánto es 84 / 7?",
+            "answers": [
+                { "value": 11, "is_correct": false },
+                { "value": 12, "is_correct": true },
+                { "value": 10, "is_correct": false },
+                { "value": 14, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 312,
+        "problem_json": {
+            "question": "¿Cuánto es 1080 / 36?",
+            "answers": [
+                { "value": 25, "is_correct": false },
+                { "value": 30, "is_correct": true },
+                { "value": 28, "is_correct": false },
+                { "value": 35, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },    
+    {
+        "id": 313,
+        "problem_json": {
+            "question": "¿Cuánto es 15 / 3?",
+            "answers": [
+                { "value": 5, "is_correct": true },
+                { "value": 6, "is_correct": false },
+                { "value": 4, "is_correct": false },
+                { "value": 3, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 314,
+        "problem_json": {
+            "question": "¿Cuánto es 192 / 16?",
+            "answers": [
+                { "value": 12, "is_correct": true },
+                { "value": 15, "is_correct": false },
+                { "value": 10, "is_correct": false },
+                { "value": 14, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    }, 
+    {
+        "id": 315,
+        "problem_json": {
+            "question": "¿Cuánto es 1200 / 24?",
+            "answers": [
+                { "value": 50, "is_correct": true },
+                { "value": 52, "is_correct": false },
+                { "value": 48, "is_correct": false },
+                { "value": 45, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 316,
+        "problem_json": {
+            "question": "¿Cuánto es 14 / 7?",
+            "answers": [
+                { "value": 3, "is_correct": false },
+                { "value": 4, "is_correct": false },
+                { "value": 6, "is_correct": false },
+                { "value": 2, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    }, 
+    {
+        "id": 317,
+        "problem_json": {
+            "question": "¿Cuánto es 120 / 6?",
+            "answers": [
+                { "value": 18, "is_correct": false },
+                { "value": 21, "is_correct": false },
+                { "value": 19, "is_correct": false },
+                { "value": 20, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 318,
+        "problem_json": {
+            "question": "¿Cuánto es 1800 / 45?",
+            "answers": [
+                { "value": 45, "is_correct": false },
+                { "value": 50, "is_correct": false },
+                { "value": 40, "is_correct": true },
+                { "value": 42, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 319,
+        "problem_json": {
+            "question": "¿Cuánto es 12 / 6?",
+            "answers": [
+                { "value": 2, "is_correct": true },
+                { "value": 3, "is_correct": false },
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 320,
+        "problem_json": {
+            "question": "¿Cuánto es 200 / 10?",
+            "answers": [
+                { "value": 20, "is_correct": true },
+                { "value": 15, "is_correct": false },
+                { "value": 25, "is_correct": false },
+                { "value": 10, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 321,
+        "problem_json": {
+            "question": "¿Cuánto es 20 / 5?",
+            "answers": [
+                { "value": 4, "is_correct": true },
+                { "value": 5, "is_correct": false },
+                { "value": 6, "is_correct": false },
+                { "value": 7, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 322,
+        "problem_json": {
+            "question": "¿Cuánto es 180 / 15?",
+            "answers": [
+                { "value": 12, "is_correct": true },
+                { "value": 14, "is_correct": false },
+                { "value": 13, "is_correct": false },
+                { "value": 11, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 323,
+        "problem_json": {
+            "question": "¿Cuánto es 2500 / 25?",
+            "answers": [
+                { "value": 95, "is_correct": false },
+                { "value": 100, "is_correct": true },
+                { "value": 105, "is_correct": false },
+                { "value": 110, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 324,
+        "problem_json": {
+            "question": "¿Cuánto es 6 / 3?",
+            "answers": [
+                { "value": 4, "is_correct": false },
+                { "value": 3, "is_correct": false },
+                { "value": 2, "is_correct": true },
+                { "value": 3, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 325,
+        "problem_json": {
+            "question": "¿Cuánto es 432 / 24?",
+            "answers": [
+                { "value": 16, "is_correct": false },
+                { "value": 15, "is_correct": false },
+                { "value": 18, "is_correct": true },
+                { "value": 17, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    }, 
+    {
+        "id": 326,
+        "problem_json": {
+            "question": "¿Cuánto es 810 / 27?",
+            "answers": [
+                { "value": 32, "is_correct": false },
+                { "value": 34, "is_correct": false },
+                { "value": 31, "is_correct": false },
+                { "value": 30, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 327,
+        "problem_json": {
+            "question": "¿Cuánto es 8 / 2?",
+            "answers": [
+                { "value": 5, "is_correct": false },
+                { "value": 3, "is_correct": false },
+                { "value": 4, "is_correct": true },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 328,
+        "problem_json": {
+            "question": "¿Cuánto es 288 / 16?",
+            "answers": [
+                { "value": 20, "is_correct": false },
+                { "value": 16, "is_correct": false },
+                { "value": 14, "is_correct": false },
+                { "value": 18, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 329,
+        "problem_json": {
+            "question": "¿Cuánto es 1440 / 48?",
+            "answers": [
+                { "value": 30, "is_correct": true },
+                { "value": 28, "is_correct": false },
+                { "value": 32, "is_correct": false },
+                { "value": 33, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },    
+    {
+        "id": 330,
+        "problem_json": {
+            "question": "¿Cuánto es 10 / 2?",
+            "answers": [
+                { "value": 5, "is_correct": true },
+                { "value": 4, "is_correct": false },
+                { "value": 3, "is_correct": false },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 331,
+        "problem_json": {
+            "question": "¿Cuánto es 16 / 4?",
+            "answers": [
+                { "value": 4, "is_correct": true },
+                { "value": 5, "is_correct": false },
+                { "value": 3, "is_correct": false },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 332,
+        "problem_json": {
+            "question": "¿Cuánto es 225 / 15?",
+            "answers": [
+                { "value": 14, "is_correct": false },
+                { "value": 17, "is_correct": false },
+                { "value": 16, "is_correct": false },
+                { "value": 15, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 333,
+        "problem_json": {
+            "question": "¿Cuánto es 1980 / 33?",
+            "answers": [
+                { "value": 60, "is_correct": true },
+                { "value": 55, "is_correct": false },
+                { "value": 62, "is_correct": false },
+                { "value": 65, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 334,
+        "problem_json": {
+            "question": "¿Cuánto es 18 / 3?",
+            "answers": [
+                { "value": 6, "is_correct": true },
+                { "value": 7, "is_correct": false },
+                { "value": 5, "is_correct": false },
+                { "value": 8, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 335,
+        "problem_json": {
+            "question": "¿Cuánto es 288 / 24?",
+            "answers": [
+                { "value": 10, "is_correct": false },
+                { "value": 12, "is_correct": true },
+                { "value": 13, "is_correct": false },
+                { "value": 15, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 336,
+        "problem_json": {
+            "question": "¿Cuánto es 3600 / 90?",
+            "answers": [
+                { "value": 40, "is_correct": true },
+                { "value": 45, "is_correct": false },
+                { "value": 35, "is_correct": false },
+                { "value": 50, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 337,
+        "problem_json": {
+            "question": "¿Cuánto es 12 / 4?",
+            "answers": [
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": false },
+                { "value": 3, "is_correct": true },
+                { "value": 2, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 338,
+        "problem_json": {
+            "question": "¿Cuánto es 640 / 32?",
+            "answers": [
+                { "value": 20, "is_correct": true },
+                { "value": 18, "is_correct": false },
+                { "value": 22, "is_correct": false },
+                { "value": 25, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 339,
+        "problem_json": {
+            "question": "¿Cuánto es 5760 / 144?",
+            "answers": [
+                { "value": 42, "is_correct": false },
+                { "value": 40, "is_correct": false },
+                { "value": 50, "is_correct": true },
+                { "value": 38, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 340,
+        "problem_json": {
+            "question": "¿Cuánto es 10 / 5?",
+            "answers": [
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": false },
+                { "value": 6, "is_correct": false },
+                { "value": 2, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 341,
+        "problem_json": {
+            "question": "¿Cuánto es 14 / 7?",
+            "answers": [
+                { "value": 1, "is_correct": false },
+                { "value": 2, "is_correct": true },
+                { "value": 3, "is_correct": false },
+                { "value": 4, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 342,
+        "problem_json": {
+            "question": "¿Cuánto es 576 / 24?",
+            "answers": [
+                { "value": 22, "is_correct": false },
+                { "value": 26, "is_correct": false },
+                { "value": 25, "is_correct": false },
+                { "value": 24, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 343,
+        "problem_json": {
+            "question": "¿Cuánto es 9900 / 33?",
+            "answers": [
+                { "value": 330, "is_correct": false },
+                { "value": 300, "is_correct": true },
+                { "value": 250, "is_correct": false },
+                { "value": 280, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 344,
+        "problem_json": {
+            "question": "¿Cuánto es 15 / 3?",
+            "answers": [
+                { "value": 5, "is_correct": true },
+                { "value": 6, "is_correct": false },
+                { "value": 7, "is_correct": false },
+                { "value": 4, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    }, 
+    {
+        "id": 345,
+        "problem_json": {
+            "question": "¿Cuánto es 165 / 5?",
+            "answers": [
+                { "value": 30, "is_correct": false },
+                { "value": 33, "is_correct": true },
+                { "value": 35, "is_correct": false },
+                { "value": 40, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 346,
+        "problem_json": {
+            "question": "¿Cuánto es 5184 / 72?",
+            "answers": [
+                { "value": 72, "is_correct": true },
+                { "value": 70, "is_correct": false },
+                { "value": 75, "is_correct": false },
+                { "value": 80, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 347,
+        "problem_json": {
+            "question": "¿Cuánto es 12 / 3?",
+            "answers": [
+                { "value": 1, "is_correct": false },
+                { "value": 2, "is_correct": false },
+                { "value": 3, "is_correct": false },
+                { "value": 4, "is_correct": true }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    }, 
+    {
+        "id": 348,
+        "problem_json": {
+            "question": "¿Cuánto es 312 / 26?",
+            "answers": [
+                { "value": 12, "is_correct": true },
+                { "value": 14, "is_correct": false },
+                { "value": 13, "is_correct": false },
+                { "value": 15, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 349,
+        "problem_json": {
+            "question": "¿Cuánto es 8250 / 75?",
+            "answers": [
+                { "value": 120, "is_correct": false },
+                { "value": 110, "is_correct": true },
+                { "value": 100, "is_correct": false },
+                { "value": 105, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 350,
+        "problem_json": {
+            "question": "¿Cuánto es 8 / 2?",
+            "answers": [
+                { "value": 3, "is_correct": false },
+                { "value": 5, "is_correct": false },
+                { "value": 4, "is_correct": true },
+                { "value": 2, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 351,
+        "problem_json": {
+            "question": "¿Cuánto es 16 / 4?",
+            "answers": [
+                { "value": 3, "is_correct": false },
+                { "value": 5, "is_correct": false },
+                { "value": 4, "is_correct": true },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 352,
+        "problem_json": {
+            "question": "¿Cuánto es 125 / 25?",
+            "answers": [
+                { "value": 4, "is_correct": false },
+                { "value": 5, "is_correct": true },
+                { "value": 6, "is_correct": false },
+                { "value": 3, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 353,
+        "problem_json": {
+            "question": "¿Cuánto es 504 / 42?",
+            "answers": [
+                { "value": 12, "is_correct": true },
+                { "value": 10, "is_correct": false },
+                { "value": 14, "is_correct": false },
+                { "value": 13, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 354,
+        "problem_json": {
+            "question": "¿Cuánto es 32 / 8?",
+            "answers": [
+                { "value": 4, "is_correct": true },
+                { "value": 3, "is_correct": false },
+                { "value": 2, "is_correct": false },
+                { "value": 5, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 355,
+        "problem_json": {
+            "question": "¿Cuánto es 672 / 28?",
+            "answers": [
+                { "value": 22, "is_correct": false },
+                { "value": 24, "is_correct": true },
+                { "value": 26, "is_correct": false },
+                { "value": 25, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 356,
+        "problem_json": {
+            "question": "¿Cuánto es 2100 / 30?",
+            "answers": [
+                { "value": 60, "is_correct": false },
+                { "value": 70, "is_correct": true },
+                { "value": 72, "is_correct": false },
+                { "value": 75, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 357,
+        "problem_json": {
+            "question": "¿Cuánto es 150 / 25?",
+            "answers": [
+                { "value": 5, "is_correct": false },
+                { "value": 6, "is_correct": true },
+                { "value": 4, "is_correct": false },
+                { "value": 3, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 358,
+        "problem_json": {
+            "question": "¿Cuánto es 792 / 24?",
+            "answers": [
+                { "value": 33, "is_correct": true },
+                { "value": 34, "is_correct": false },
+                { "value": 32, "is_correct": false },
+                { "value": 31, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 359,
+        "problem_json": {
+            "question": "¿Cuánto es 9600 / 240?",
+            "answers": [
+                { "value": 35, "is_correct": false },
+                { "value": 40, "is_correct": true },
+                { "value": 45, "is_correct": false },
+                { "value": 30, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 360,
+        "problem_json": {
+            "question": "¿Cuánto es 48 / 6?",
+            "answers": [
+                { "value": 7, "is_correct": false },
+                { "value": 8, "is_correct": true },
+                { "value": 9, "is_correct": false },
+                { "value": 6, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "facil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 361,
+        "problem_json": {
+            "question": "¿Cuánto es 198 / 33?",
+            "answers": [
+                { "value": 6, "is_correct": true },
+                { "value": 7, "is_correct": false },
+                { "value": 5, "is_correct": false },
+                { "value": 8, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "intermedio",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 362,
+        "problem_json": {
+            "question": "¿Cuánto es 3240 / 36?",
+            "answers": [
+                { "value": 90, "is_correct": true },
+                { "value": 80, "is_correct": false },
+                { "value": 85, "is_correct": false },
+                { "value": 92, "is_correct": false }
+            ]
+        },
+        "nivel_dificultad": "dificil",
+        "tipo_operacion": "division"
+    },
+    {
+        "id": 363,
+            "problem_json": {
+                "question": "¿Cuánto es 36 / 9?",
+                "answers": [
+                    { "value": 5, "is_correct": false },
+                    { "value": 4, "is_correct": true },
+                    { "value": 3, "is_correct": false },
+                    { "value": 6, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "facil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 364,
+            "problem_json": {
+                "question": "¿Cuánto es 96 / 12?",
+                "answers": [
+                    { "value": 8, "is_correct": true },
+                    { "value": 12, "is_correct": false },
+                    { "value": 9, "is_correct": false },
+                    { "value": 7, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "facil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 365,
+            "problem_json": {
+                "question": "¿Cuánto es 360 / 18?",
+                "answers": [
+                    { "value": 20, "is_correct": true },
+                    { "value": 22, "is_correct": false },
+                    { "value": 18, "is_correct": false },
+                    { "value": 25, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 366,
+            "problem_json": {
+                "question": "¿Cuánto es 1024 / 32?",
+                "answers": [
+                    { "value": 31, "is_correct": false },
+                    { "value": 33, "is_correct": false },
+                    { "value": 32, "is_correct": true },
+                    { "value": 30, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "dificil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 367,
+            "problem_json": {
+                "question": "¿Cuánto es 90 / 9?",
+                "answers": [
+                    { "value": 12, "is_correct": false },
+                    { "value": 10, "is_correct": true },
+                    { "value": 9, "is_correct": false },
+                    { "value": 11, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "facil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 368,
+            "problem_json": {
+                "question": "¿Cuánto es 625 / 25?",
+                "answers": [
+                    { "value": 25, "is_correct": true },
+                    { "value": 20, "is_correct": false },
+                    { "value": 30, "is_correct": false },
+                    { "value": 35, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 369,
+            "problem_json": {
+                "question": "¿Cuánto es 144 / 18?",
+                "answers": [
+                    { "value": 7, "is_correct": false },
+                    { "value": 9, "is_correct": false },
+                    { "value": 6, "is_correct": false },
+                    { "value": 8, "is_correct": true }
+                ]
+            },
+            "nivel_dificultad": "facil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 370,
+            "problem_json": {
+                "question": "¿Cuánto es 900 / 30?",
+                "answers": [
+                    { "value": 32, "is_correct": false },
+                    { "value": 30, "is_correct": true },
+                    { "value": 28, "is_correct": false },
+                    { "value": 35, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 371,
+            "problem_json": {
+                "question": "¿Cuánto es 256 / 16?",
+                "answers": [
+                    { "value": 15, "is_correct": false },
+                    { "value": 14, "is_correct": false },
+                    { "value": 16, "is_correct": true },
+                    { "value": 18, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 372,
+            "problem_json": {
+                "question": "¿Cuánto es 750 / 25?",
+                "answers": [
+                    { "value": 35, "is_correct": false },
+                    { "value": 28, "is_correct": false },
+                    { "value": 32, "is_correct": false },
+                    { "value": 30, "is_correct": true }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 373,
+            "problem_json": {
+                "question": "¿Cuánto es 480 / 40?",
+                "answers": [
+                    { "value": 12, "is_correct": true },
+                    { "value": 11, "is_correct": false },
+                    { "value": 10, "is_correct": false },
+                    { "value": 13, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 374,
+            "problem_json": {
+                "question": "¿Cuánto es 1024 / 16?",
+                "answers": [
+                    { "value": 60, "is_correct": false },
+                    { "value": 64, "is_correct": true },
+                    { "value": 55, "is_correct": false },
+                    { "value": 70, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "dificil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 375,
+            "problem_json": {
+                "question": "¿Cuánto es 400 / 20?",
+                "answers": [
+                    { "value": 15, "is_correct": false },
+                    { "value": 25, "is_correct": false },
+                    { "value": 20, "is_correct": true },
+                    { "value": 30, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "facil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 376,
+            "problem_json": {
+                "question": "¿Cuánto es 540 / 18?",
+                "answers": [
+                    { "value": 28, "is_correct": false },
+                    { "value": 32, "is_correct": false },
+                    { "value": 25, "is_correct": false },
+                    { "value": 30, "is_correct": true }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 377,
+            "problem_json": {
+                "question": "¿Cuánto es 999 / 3?",
+                "answers": [
+                    { "value": 333, "is_correct": true },
+                    { "value": 332, "is_correct": false },
+                    { "value": 334, "is_correct": false },
+                    { "value": 325, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "dificil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 378,
+            "problem_json": {
+                "question": "¿Cuánto es 121 / 11?",
+                "answers": [
+                    { "value": 12, "is_correct": false },
+                    { "value": 11, "is_correct": true },
+                    { "value": 10, "is_correct": false },
+                    { "value": 13, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "facil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 379,
+            "problem_json": {
+                "question": "¿Cuánto es 625 / 125?",
+                "answers": [
+                    { "value": 6, "is_correct": false },
+                    { "value": 4, "is_correct": false },
+                    { "value": 5, "is_correct": true },
+                    { "value": 7, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 380,
+            "problem_json": {
+                "question": "¿Cuánto es 1000 / 25?",
+                "answers": [
+                    { "value": 45, "is_correct": false },
+                    { "value": 30, "is_correct": false },
+                    { "value": 35, "is_correct": false },
+                    { "value": 40, "is_correct": true }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 381,
+            "problem_json": {
+                "question": "¿Cuánto es 256 / 8?",
+                "answers": [
+                    { "value": 32, "is_correct": true },
+                    { "value": 31, "is_correct": false },
+                    { "value": 34, "is_correct": false },
+                    { "value": 30, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 382,
+            "problem_json": {
+                "question": "¿Cuánto es 512 / 64?",
+                "answers": [
+                    { "value": 7, "is_correct": false },
+                    { "value": 8, "is_correct": true },
+                    { "value": 6, "is_correct": false },
+                    { "value": 9, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 383,
+            "problem_json": {
+                "question": "¿Cuánto es 800 / 25?",
+                "answers": [
+                    { "value": 33, "is_correct": false },
+                    { "value": 31, "is_correct": false },
+                    { "value": 32, "is_correct": true },
+                    { "value": 30, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 384,
+            "problem_json": {
+                "question": "¿Cuánto es 640 / 40?",
+                "answers": [
+                    { "value": 15, "is_correct": false },
+                    { "value": 14, "is_correct": false },
+                    { "value": 18, "is_correct": false },
+                    { "value": 16, "is_correct": true }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 385,
+            "problem_json": {
+                "question": "¿Cuánto es 288 / 12?",
+                "answers": [
+                    { "value": 24, "is_correct": true },
+                    { "value": 25, "is_correct": false },
+                    { "value": 26, "is_correct": false },
+                    { "value": 23, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 386,
+            "problem_json": {
+                "question": "¿Cuánto es 144 / 9?",
+                "answers": [
+                    { "value": 15, "is_correct": false },
+                    { "value": 16, "is_correct": true },
+                    { "value": 18, "is_correct": false },
+                    { "value": 14, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "facil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 387,
+            "problem_json": {
+                "question": "¿Cuánto es 777 / 7?",
+                "answers": [
+                    { "value": 112, "is_correct": false },
+                    { "value": 110, "is_correct": false },
+                    { "value": 111, "is_correct": true },
+                    { "value": 108, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "dificil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 388,
+            "problem_json": {
+                "question": "¿Cuánto es 1000 / 50?",
+                "answers": [
+                    { "value": 22, "is_correct": false },
+                    { "value": 18, "is_correct": false },
+                    { "value": 19, "is_correct": false },
+                    { "value": 20, "is_correct": true }
+                ]
+            },
+            "nivel_dificultad": "facil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 389,
+            "problem_json": {
+                "question": "¿Cuánto es 560 / 28?",
+                "answers": [
+                    { "value": 20, "is_correct": true },
+                    { "value": 22, "is_correct": false },
+                    { "value": 25, "is_correct": false },
+                    { "value": 23, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 390,
+            "problem_json": {
+                "question": "¿Cuánto es 864 / 32?",
+                "answers": [
+                    { "value": 28, "is_correct": false },
+                    { "value": 27, "is_correct": true },
+                    { "value": 30, "is_correct": false },
+                    { "value": 25, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "dificil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 391,
+            "problem_json": {
+                "question": "¿Cuánto es 50 / 5?",
+                "answers": [
+                    { "value": 9, "is_correct": false },
+                    { "value": 11, "is_correct": false },
+                    { "value": 10, "is_correct": true },
+                    { "value": 8, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "facil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 392,
+            "problem_json": {
+                "question": "¿Cuánto es 240 / 12?",
+                "answers": [
+                    { "value": 18, "is_correct": false },
+                    { "value": 22, "is_correct": false },
+                    { "value": 15, "is_correct": false },
+                    { "value": 20, "is_correct": true }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 393,
+            "problem_json": {
+                "question": "¿Cuánto es 625 / 125?",
+                "answers": [
+                    { "value": 5, "is_correct": true },
+                    { "value": 6, "is_correct": false },
+                    { "value": 7, "is_correct": false },
+                    { "value": 4, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 394,
+            "problem_json": {
+                "question": "¿Cuánto es 640 / 32?",
+                "answers": [
+                    { "value": 21, "is_correct": false },
+                    { "value": 20, "is_correct": true },
+                    { "value": 18, "is_correct": false },
+                    { "value": 22, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 395,
+            "problem_json": {
+                "question": "¿Cuánto es 900 / 45?",
+                "answers": [
+                    { "value": 21, "is_correct": false },
+                    { "value": 18, "is_correct": false },
+                    { "value": 20, "is_correct": true },
+                    { "value": 22, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 396,
+            "problem_json": {
+                "question": "¿Cuánto es 840 / 42?",
+                "answers": [
+                    { "value": 19, "is_correct": false },
+                    { "value": 21, "is_correct": false },
+                    { "value": 22, "is_correct": false },
+                    { "value": 20, "is_correct": true }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 397,
+            "problem_json": {
+                "question": "¿Cuánto es 950 / 25?",
+                "answers": [
+                    { "value": 38, "is_correct": true },
+                    { "value": 35, "is_correct": false },
+                    { "value": 36, "is_correct": false },
+                    { "value": 40, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 398,
+            "problem_json": {
+                "question": "¿Cuánto es 512 / 8?",
+                "answers": [
+                    { "value": 62, "is_correct": false },
+                    { "value": 64, "is_correct": true },
+                    { "value": 60, "is_correct": false },
+                    { "value": 58, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "intermedio",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 399,
+            "problem_json": {
+                "question": "¿Cuánto es 400 / 20?",
+                "answers": [
+                    { "value": 25, "is_correct": false },
+                    { "value": 22, "is_correct": false },
+                    { "value": 20, "is_correct": true },
+                    { "value": 18, "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "facil",
+            "tipo_operacion": "division"
+        },
+        {
+            "id": 400,
+            "problem_json": {
+                "question": "¿Cuánto es 123,456 / 1?",
+                "answers": [
+                    { "value": 123.456, "is_correct": true },
+                    { "value": "error", "is_correct": false },
+                    { "value": 124.567, "is_correct": false },
+                    { "value": "π", "is_correct": false }
+                ]
+            },
+            "nivel_dificultad": "facil",
+            "tipo_operacion": "division"
+        }  
+
+
 ]
