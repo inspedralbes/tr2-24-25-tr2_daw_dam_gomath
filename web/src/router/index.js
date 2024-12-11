@@ -8,6 +8,7 @@ import Home from '../components/Homa/HomeScreen.vue'
 import Register from '../components/Login/RegisterScreen.vue'
 import prePartida from '../components/Offline/PartidaOffline/prePartidaScreen.vue'
 import Partida from '../components/Offline/PartidaOffline/PartidaScreen.vue'
+import Logout from '../components/Login/LogoutScreen.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -50,6 +51,11 @@ const router = createRouter({
       path: '/Offline/Partida',
       name: 'Partida',
       component: Partida,
+    },
+    {
+      path: '/logout',
+      name: 'Logout',
+      component: Logout,
     }
   ],
 })

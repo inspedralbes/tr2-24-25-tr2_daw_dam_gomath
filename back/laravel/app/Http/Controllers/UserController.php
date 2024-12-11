@@ -20,13 +20,22 @@ class UserController extends Controller
         }
 
         $token = $user->createToken('auth-token')->plainTextToken;
-
-        return response()->json([
+        $resposta = response()->json([
             'status' => 'success',
             'message' => 'Login exitoso',
             'token' => $token,
             'user' => $user->only(['id', 'name', 'email', 'rol'])
-        ]);
+        ], 201);
+
+
+        return $resposta;
+    }
+
+    public function logoutUser(Request $request) {
+        //dd($request->user());
+        //$request->user()->currentAccessToken()->delete();
+
+        return response()->json(['message' => 'Logout exitoso'], 200);
     }
 
 
@@ -49,48 +58,50 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    // Validar los datos de entrada
-    $data = $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|string|min:6',
-        'rol' => 'required|string|in:student,professor',
-    ]);
-
-    // Crear el usuario con los datos validados
-    try {
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']), // Cifrar contraseña
-            'rol' => $data['rol'],
+    {
+        $data = $request->validate([
+            'username' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6',
+            'rol' => 'required|string|in:student,professor',
         ]);
-    } catch (\Exception $e) {
+        // Validar los datos de entrada
+
+        // Crear el usuario con los datos validados
+        try {
+            $user = User::create([
+                'name' => $data['username'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'rol' => $data['rol'],
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Hubo un error al crear el usuario: ' . $e->getMessage(),
+            ], 500); // Código HTTP 500: Error interno del servidor
+        }
+
+        // Generar un token para el usuario
+        try {
+            $token = $user->createToken('auth-token')->plainTextToken;
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Hubo un error al generar el token: ' . $e->getMessage(),
+            ], 500); // Código HTTP 500: Error interno del servidor
+        }
+
+        // Retornar la respuesta con el token y el usuario creado
         return response()->json([
-            'status' => 'error',
-            'message' => 'Hubo un error al crear el usuario: ' . $e->getMessage(),
-        ], 500); // Código HTTP 500: Error interno del servidor
+            'status' => 'success',
+            'message' => 'Usuario registrado exitosamente',
+            'token' => $token,
+            'user' => $user->only(['id', 'name', 'email', 'rol', 'clase_id']),
+        ], 201); // Código HTTP 201: Creado
+
     }
 
-    // Generar un token para el usuario
-    try {
-        $token = $user->createToken('auth-token')->plainTextToken;
-    } catch (\Exception $e) {
-        return response()->json([
-            'status' => 'error',
-            'message' => 'Hubo un error al generar el token: ' . $e->getMessage(),
-        ], 500); // Código HTTP 500: Error interno del servidor
-    }
-
-    // Retornar la respuesta con el token y el usuario creado
-    return response()->json([
-        'status' => 'success',
-        'message' => 'Usuario registrado exitosamente',
-        'token' => $token,
-        'user' => $user->only(['id', 'name', 'email', 'rol'])
-    ], 201); // Código HTTP 201: Creado
-}
 
 
     /**
