@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('joc_codis', function (Blueprint $table) {
             $table->id(); 
             $table->json('codis_json');
+            $table->string('nivel_dificultad');
         });
     }
 

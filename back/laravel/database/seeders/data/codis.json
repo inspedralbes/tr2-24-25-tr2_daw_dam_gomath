@@ -25,6 +25,7 @@
                     "hint": "Tiene 1 número correcto en la posición correcta."
                 }
             ]
-            }
-        }
-    ]
+        },
+        "nivel_dificultad":""
+    }
+]
