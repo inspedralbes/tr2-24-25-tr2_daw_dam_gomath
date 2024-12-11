@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OperacionController;
 use App\Http\Controllers\ClaseController;
-
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,7 +17,8 @@ Route::get('/operacion', [OperacionController::class, 'index'])->name('operacion
 Route::resource('operacions',OperacionController::class);
 Route::delete('/operacion/{id}',[OperacionController::class,'destroy'])->name('operacions.destroy');
 
-
+Route::resource('users', UserController::class);
+//Route::put('users/{id}', [UserController::class, 'update2']->name('users.update2'));
     
 Route::get('/clases', [ClaseController::class, 'index'])->name('clases.index');
 Route::get('/clases/create', [ClaseController::class, 'create'])->name('clases.create');

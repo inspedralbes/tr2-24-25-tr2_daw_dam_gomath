@@ -34,7 +34,11 @@ class UserController extends Controller
     {
         $user = User::all();
 
-        return response()->json($user);
+        if(request()->is('api/*')){
+            return response()->json($user);
+            
+        }
+        return view('users.index', compact('user'));
     }
 
     /**
@@ -42,7 +46,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -91,8 +95,25 @@ class UserController extends Controller
         'user' => $user->only(['id', 'name', 'email', 'rol'])
     ], 201); // Código HTTP 201: Creado
 }
+    public function store2(){
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'password' => 'required',
+            'rol' => 'required|string', // Nuevo campo para el rol
+        ]);
+
+        // Crea un nuevo usuario
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->rol = $data['rol'];
+        $user->save();
 
 
+        return redirect()->route('users.index')->with('success', 'Usuario creado correctamente');
+    }
     /**
      * Display the specified resource.
      */
@@ -106,7 +127,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('users.index')->with('error', 'Usuario no encontrado.');
+        }
+
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -133,9 +159,33 @@ class UserController extends Controller
         }
         $user -> rol = $data['rol'];
         $user->save();
-
-        return response()->json(['message'=>'Usuario actualizado correctamente']);
+        
+        return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente.');
     }
+    public function update2(Request $request, $id)
+{
+    $user = User::find($id);
+    if (!$user) {
+        return redirect()->route('users.index')->with('error', 'Usuario no encontrado.');
+    }
+
+    $data = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $id,
+        'password' => 'nullable|string|min:6',
+        'rol' => 'required|string|in:student,professor',
+    ]);
+
+    if ($request->filled('password')) {
+        $data['password'] = Hash::make($data['password']);
+    } else {
+        unset($data['password']);
+    }
+
+    $user->update($data);
+
+    return redirect()->route('users.index')->with('success', 'Usuario actualizado exitosamente.');
+}
 
     /**
      * Remove the specified resource from storage.
@@ -146,8 +196,12 @@ class UserController extends Controller
         if (!$user) {
             return response()->json(['error' => 'Usuario no encontrado'], 404);
         }
+        if(request()->is('api/*')){
+            $user->delete();
+            return response()->json(['message'=>'Usuario borrado correctamente']);
+        }
         $user->delete();
-        return response()->json(['message'=>'Usuario borrado correctamente']);
+        return redirect()->route('users.index')->with('success', 'Usuario eliminado exitosamente.');
     }
 }
 
