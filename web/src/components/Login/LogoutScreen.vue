@@ -31,12 +31,6 @@ export default {
         const appStore = useAppStore();
         const token = appStore.loginInfo.token;
         console.log('ya tengo el token: ', token);
-
-
-        if (!token) {
-          this.$router.push('/login');
-          return;
-        }
         console.log('antes del fetch');
 
         const response = await fetch('http://localhost:8000/api/userLogout', {
@@ -58,6 +52,11 @@ export default {
         // Limpiar la sesión en Pinia
         appStore.logout();
 
+
+        if (!token) {
+          this.$router.push('/login');
+          return;
+        }
         //this.$router.push('/login');
       } catch (error) {
         console.error('Error al cerrar sesión:', error);
