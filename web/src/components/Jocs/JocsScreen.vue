@@ -3,7 +3,7 @@
     <router-link to="/jocs/sudoku" class="grid-item">
       <img src="../../assets/img/images.png" alt="Sudoku">
     </router-link>
-    <router-link to="/jocs/otro-juego" class="grid-item">
+    <router-link to="/jocs/codigo" class="grid-item">
       <img src="../../assets/img/codigo.png" alt="Otro juego">
     </router-link>
     <router-link to="/jocs/resta" class="grid-item">

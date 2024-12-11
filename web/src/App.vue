@@ -189,7 +189,7 @@ export default {
 <q-drawer v-if="divActivo === 'jocs'"  show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
   <q-tabs vertical>
     <q-route-tab to="/jocs/sudoku" label="SUDOKU"/>
-    <q-route-tab to="/adivinaCodigo" label="Adivina el codigo"/>
+    <q-route-tab to="/jocs/codigo" label="Adivina el codigo"/>
     <q-route-tab to="/nerdle" label="Nerdle(cambiar nombre)"/>
   </q-tabs>
 </q-drawer>

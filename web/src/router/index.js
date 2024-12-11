@@ -8,7 +8,7 @@ import Home from '../components/Homa/HomeScreen.vue';
 import Register from '../components/Login/RegisterScreen.vue';
 import prePartida from '../components/Offline/PartidaOffline/prePartidaScreen.vue';
 import Partida from '../components/Offline/PartidaOffline/PartidaScreen.vue';
-
+import Codigo from '../components/Jocs/codigo/game.vue'
 // import Sudoku from '../components/Jocs/sudoku/sudoku.vue';
 
 const router = createRouter({
@@ -54,11 +54,11 @@ const router = createRouter({
       name: 'Partida',
       component: Partida,
     },
-    // {
-    //   path: '/Jocs/sudoku',
-    //   name: 'Sudoku',
-    //   component: Sudoku,
-    // }
+    {
+      path: '/Jocs/codigo',
+      name: 'Codigo',
+      component: Codigo,
+    }
   ],
 });
 
