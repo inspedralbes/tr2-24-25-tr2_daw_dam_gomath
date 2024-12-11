@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 const offlineGamesRoutes = require('./routes/offlineGames');
-const onlineGamesRoutes = require('./routes/onlineGames')
+const onlineGamesRoutes = require('./routes/onlineGames');
+const sessionsRoutes = require('./routes/sessions');
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(cors()); // Habilitar CORS per a qualsevol origen
 app.use('/api/offlineGames', offlineGamesRoutes);
 app.use('/api/onlineGames', onlineGamesRoutes);
+app.use('/api/sessions', sessionsRoutes);
 
 // Connexió a la base de dades MongoDB
 mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/GoMath', {
@@ -23,7 +25,7 @@ mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.
 .catch((err) => console.error('Error al connectar a MongoDB', err));
 
 // Iniciar el servidor
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3010;
 app.listen(PORT, () => {
   console.log(`Servidor en funcionament a http://localhost:${PORT}`);
 });
