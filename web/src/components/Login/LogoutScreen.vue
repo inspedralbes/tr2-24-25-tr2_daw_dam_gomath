@@ -11,7 +11,7 @@
             <h6>No podràs unir-te a cap sessió si no t'has loguejat prèviament.</h6>
           </q-card-section>
           <q-card-section class="text-center">
-            <q-btn label="SI" color="red" icon="logout" @click="logout" />
+            <q-btn label="SI" color="red" icon="logout" @click="logout()" />
           </q-card-section>
         </q-card>
       </q-page-container>
@@ -20,36 +20,45 @@
 </template>
 
 <script>
-// Importa Pinia si aún no lo has hecho en tu componente
+// Importa el store de Pinia donde guardas el token
 import { useAppStore } from '@/stores/app';
 
 export default {
-  data() {
-    return {
-      name: 'LogoutPage',
-    };
-  },
   methods: {
     async logout() {
       try {
-        const response = await fetch('127.0.0.1:8000/api/logout', {
+        // Obtener el token desde Pinia
+        const appStore = useAppStore();
+        const token = appStore.loginInfo.token;
+        console.log('ya tengo el token: ', token);
+
+
+        if (!token) {
+          this.$router.push('/login');
+          return;
+        }
+        console.log('antes del fetch');
+
+        const response = await fetch('http://localhost:8000/api/userLogout', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
           },
-          credentials: 'include',
         });
+
+        console.log(response);
 
         if (!response.ok) {
           throw new Error('Error al cerrar sesión');
         }
 
+        console.log('antes de limpiar en pinia');
+
         // Limpiar la sesión en Pinia
-        const appStore = useAppStore();
         appStore.logout();
 
-        // Redirigimos al usuario a la página de login
-        this.$router.push('/login');
+        //this.$router.push('/login');
       } catch (error) {
         console.error('Error al cerrar sesión:', error);
       }

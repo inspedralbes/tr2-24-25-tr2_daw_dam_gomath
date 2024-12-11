@@ -35,7 +35,7 @@
 <script>
 import { ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
-import { useAppStore } from '@/stores/app';
+import { useAppStore } from '@/stores/app.js';
 
 export default {
   name: 'LoginPage',
@@ -73,13 +73,18 @@ export default {
         });
 
         const data = await response.json();
+        console.log(data);
 
         if (response.ok) {
           // Si la respuesta es OK, guardamos los datos en el store
           const appStore = useAppStore();
+          console.log('antes del setter');
+
           appStore.setLoginInfo({
             loggedIn: true,
-            email: email.value,
+            token: data.token,
+            username: data.user.name,
+            email: data.user.email,
             role: data.user.rol,
             image: data.user.image || 'https://randomuser.me/api/portraits/thumb/women/56.jpg', // Si tienes una imagen en la respuesta, reemplázala
           });

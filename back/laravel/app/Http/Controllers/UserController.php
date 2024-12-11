@@ -20,17 +20,20 @@ class UserController extends Controller
         }
 
         $token = $user->createToken('auth-token')->plainTextToken;
-
-        return response()->json([
+        $resposta = response()->json([
             'status' => 'success',
             'message' => 'Login exitoso',
             'token' => $token,
             'user' => $user->only(['id', 'name', 'email', 'rol'])
-        ]);
+        ], 201);
+
+
+        return $resposta;
     }
 
     public function logoutUser(Request $request) {
-        $request->user()->currentAccessToken()->delete();
+        //dd($request->user());
+        //$request->user()->currentAccessToken()->delete();
 
         return response()->json(['message' => 'Logout exitoso'], 200);
     }
@@ -88,7 +91,7 @@ class UserController extends Controller
                 'message' => 'Hubo un error al generar el token: ' . $e->getMessage(),
             ], 500); // Código HTTP 500: Error interno del servidor
         }
-/*
+
         // Retornar la respuesta con el token y el usuario creado
         return response()->json([
             'status' => 'success',
@@ -96,8 +99,7 @@ class UserController extends Controller
             'token' => $token,
             'user' => $user->only(['id', 'name', 'email', 'rol', 'clase_id']),
         ], 201); // Código HTTP 201: Creado
-        */
-        return response()->json(['status'=> 'success','message'=> 'dfsfdsffsd']);
+
     }
 
 
