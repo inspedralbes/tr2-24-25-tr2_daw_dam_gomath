@@ -45,11 +45,11 @@ export default {
   setup() {
     const divActivo = inject('divActivo');
     const operationsStore = useOperationsStore();
+    const preguntasRespondidas = ref([]);
     const currentQuestionIndex = ref(0);
     const answered = ref(false); 
     const selectedAnswer = ref(null); 
     const correctAnswer = ref(null);
-    const clicked = ref(null);
 
     const operation = computed(() => {
       const operacionesFiltradas = operationsStore.operations && operationsStore.operations.operaciones_filtradas;
@@ -70,18 +70,18 @@ export default {
     });
 
     const getButtonColor = (index) => {
-      if (clicked.value == index) {
-        console.log('Soy el color red',clicked,index)
-        return 'negative';
+      if (preguntasRespondidas.value[currentQuestionIndex.value] == index) {
+        console.log('Soy el color red',preguntasRespondidas.value[currentQuestionIndex.value],index,preguntasRespondidas.value)
+        return 'grey';
       }
-      console.log('Soy el color blanco',clicked,index)
+      console.log('Soy el color blanco',preguntasRespondidas.value[currentQuestionIndex.value],index,preguntasRespondidas.value)
       return 'primary';
     };
     const handleAnswer = (selected,index) => {
       selectedAnswer.value = selected;
       correctAnswer.value = selected.is_correct;
       answered.value = true;
-      clicked.value = index;
+      preguntasRespondidas.value[currentQuestionIndex.value] = index;
     };
 
     const nextQuestion = () => {
@@ -89,7 +89,6 @@ export default {
         currentQuestionIndex.value++;
         answered.value = false; 
         correctAnswer.value = null;
-        clicked.value = null;
       }
     };
 
@@ -98,7 +97,6 @@ export default {
         currentQuestionIndex.value--;
         answered.value = false; 
         correctAnswer.value = null;
-        clicked.value = null;
       }
     };
 
@@ -116,7 +114,7 @@ export default {
       selectedAnswer,
       getButtonColor,
       hasNextQuestion,
-      clicked
+      preguntasRespondidas
     };
   },
 };
