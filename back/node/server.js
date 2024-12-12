@@ -167,6 +167,33 @@ io.on('connection', (socket) => {
     }
   });
 
+  socket.on('getRoomUserDetails', (data) => {
+    const { room } = data;
+
+    // Verificar si la sala existeix
+    if (roomUsers[room]) {
+        // Generar la llista d'usuaris amb email i rol
+        const userDetails = roomUsers[room].map(user => ({
+            email: user.email,
+            role: user.role,
+            username: user.username
+        }));
+
+        // Enviar la llista al client que ho ha demanat
+        socket.emit('roomUserDetails', {
+            room: room,
+            users: userDetails,
+        });
+    } else {
+        // Informar que la sala no existeix
+        socket.emit('roomUserDetails', {
+            room: room,
+            users: [],
+            message: 'La sala no existeix o no té usuaris.',
+        });
+    }
+});
+
   // Evento de desconexión
   socket.on('disconnect', () => {
     console.log(`Usuario desconectado: Email ${socket.data.email}`);
