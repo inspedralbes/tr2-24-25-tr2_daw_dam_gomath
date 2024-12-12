@@ -28,7 +28,7 @@ class OperacionController extends Controller
                 'operaciones_filtradas' => $operaciones,
             ]);
         }
-        $operaciones = Operacion::where('tipo_operacion', $operacion)->inRandomOrder()->take(2)->get();
+        $operaciones = Operacion::where('tipo_operacion', $operacion)->inRandomOrder()->get();
 
         return response()->json([
             'filtro_operacion' => $operacion,

@@ -38,7 +38,14 @@ export const useTipoPartidaStore = defineStore('tipoPartida', () => {
     tipoPartida.value.cantidad = cantidad;
     updateLocalStorage();
     console.log('Hola soy cantidad', cantidad, tipoPartida);
-    router.push('/Offline/Partida');
+    if(tipoPartida.value.modo == 'numero'){
+      router.push('/Offline/PartidaNumero');
+    }
+    else if(tipoPartida.value.modo == 'crono'){
+      router.push('/Offline/PartidaCrono');
+    }else if(tipoPartida.value.modo == 'fallos'){
+      router.push('/Offline/PartidaFallos');
+    }
   }
 
   function setDificultat(dificultat) {
