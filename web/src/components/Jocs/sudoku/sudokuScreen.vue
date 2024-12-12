@@ -32,26 +32,29 @@ export default {
   data() {
     return {
       tablero: [
-        [
-          { subgrid: Array(9).fill({ value: '', readonly: false }) },
-          { subgrid: Array(9).fill({ value: '', readonly: false }) },
-          { subgrid: Array(9).fill({ value: '', readonly: false }) }
-        ],
-        [
-          { subgrid: Array(9).fill({ value: '', readonly: false }) },
-          { subgrid: Array(9).fill({ value: '', readonly: false }) },
-          { subgrid: Array(9).fill({ value: '', readonly: false }) }
-        ],
-        [
-          { subgrid: Array(9).fill({ value: '', readonly: false }) },
-          { subgrid: Array(9).fill({ value: '', readonly: false }) },
-          { subgrid: Array(9).fill({ value: '', readonly: false }) }
-        ]
+      [
+        { subgrid: this.createSubgrid() },
+        { subgrid: this.createSubgrid() },
+        { subgrid: this.createSubgrid() }
       ],
-      selectedCell: { row: null, col: null, subcell: null },
-    };
-  },
+      [
+        { subgrid: this.createSubgrid() },
+        { subgrid: this.createSubgrid() },
+        { subgrid: this.createSubgrid() }
+      ],
+      [
+        { subgrid: this.createSubgrid() },
+        { subgrid: this.createSubgrid() },
+        { subgrid: this.createSubgrid() }
+      ]
+    ],
+    selectedCell: { row: null, col: null, subcell: null },
+  };
+},
   methods: {
+    createSubgrid() {
+    return Array.from({ length: 9 }, () => ({ value: '', readonly: false }));
+  },
     seleccionarCelda(row, col) {
       this.selectedCell = { row, col, subcell: null }; // Ahora se incluye la selección de subcelda como null
     },
