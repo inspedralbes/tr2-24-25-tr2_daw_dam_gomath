@@ -103,6 +103,24 @@ class UserController extends Controller
         'user' => $user->only(['id', 'name', 'email', 'rol', 'clase_id']),
     ], 201); // Código HTTP 201: Creado
 }
+    public function store2(Request $request){
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'password' => 'required',
+            'rol' => 'required|string',
+        ]);
+
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->rol = $data['rol'];
+        $user->save();
+
+
+        return redirect()->route('users.index')->with('success', 'Usuario creado correctamente');
+    }
 
 
     /**
@@ -135,7 +153,6 @@ class UserController extends Controller
         $data = $request->validate([
             'name'=>'required',
             'email'=>'required',
-            'password'=>'required',
             'rol'=>'required'
         ]);
 
