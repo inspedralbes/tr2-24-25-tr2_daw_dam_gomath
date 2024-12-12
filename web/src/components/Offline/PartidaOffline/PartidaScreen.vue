@@ -13,7 +13,7 @@
           :disabled="answered && answer !== selectedAnswer"
           style="width: 200px; margin: 5px auto;"
         >
-          {{ answer.value }}
+          {{ answer.value }}  
         </q-btn>
       </div>
 
@@ -36,6 +36,7 @@
   </div>
 </template>
 
+
 <script>
 import { computed, onMounted, ref } from 'vue';
 import { useOperationsStore } from "@/stores/comunicationManager";
@@ -52,11 +53,14 @@ export default {
     const correctAnswer = ref(null);
 
     const operation = computed(() => {
-      const operacionesFiltradas = operationsStore.operations && operationsStore.operations.operaciones_filtradas;
-      if (operacionesFiltradas && operacionesFiltradas[currentQuestionIndex.value]) {
-        const firstOperation = operacionesFiltradas[currentQuestionIndex.value];
+      const preguntasYRespuestas = operationsStore.operations && operationsStore.operations.preguntas_y_respuestas;
+      if (preguntasYRespuestas && preguntasYRespuestas[currentQuestionIndex.value]) {
+        const firstOperation = preguntasYRespuestas[currentQuestionIndex.value];
         try {
-          return JSON.parse(firstOperation.problem_json);
+          return {
+            question: firstOperation.question,
+            answers: firstOperation.respuestas.map((value) => ({ value })),
+          };
         } catch (e) {
           console.error("Error al decodificar el JSON:", e);
           return null;
@@ -71,15 +75,13 @@ export default {
 
     const getButtonColor = (index) => {
       if (preguntasRespondidas.value[currentQuestionIndex.value] == index) {
-        console.log('Soy el color red',preguntasRespondidas.value[currentQuestionIndex.value],index,preguntasRespondidas.value)
         return 'grey';
       }
-      console.log('Soy el color blanco',preguntasRespondidas.value[currentQuestionIndex.value],index,preguntasRespondidas.value)
       return 'primary';
     };
+    
     const handleAnswer = (selected,index) => {
       selectedAnswer.value = selected;
-      correctAnswer.value = selected.is_correct;
       answered.value = true;
       preguntasRespondidas.value[currentQuestionIndex.value] = index;
     };
@@ -101,7 +103,7 @@ export default {
     };
 
     const hasNextQuestion = computed(() => {
-      return currentQuestionIndex.value < operationsStore.operations.operaciones_filtradas.length - 1;
+      return currentQuestionIndex.value < operationsStore.operations.preguntas_y_respuestas.length - 1;
     });
 
     return {

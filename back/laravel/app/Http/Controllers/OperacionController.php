@@ -11,31 +11,55 @@ class OperacionController extends Controller
      * Display a listing of the resource.
      */
     public function operacionsFiltro(Request $request)
-    {
-        $operacion = $request->input('operacion');
-        $modo = $request->input('modo');
-        $cantidad = $request->input('cantidad');
-        $dificultat = $request->input('dificultat');
+{
+    $operacion = $request->input('operacion');
+    $modo = $request->input('modo');
+    $cantidad = $request->input('cantidad');
+    $dificultat = $request->input('dificultat');
 
-        if (!$operacion || !in_array($operacion, ['suma', 'resta', 'multiplicacion', 'division'])) {
-            return response()->json(['error' => 'Operación no válida o no especificada'], 400);
-        }
-        if($modo=='numero'){
-            $operaciones = Operacion::where('tipo_operacion', $operacion)->where('nivel_dificultad', $dificultat)->inRandomOrder()->take($cantidad)->get();
-            return response()->json([
-                'filtro_operacion' => $operacion,
-                'filtro_dificultat' => $dificultat,
-                'operaciones_filtradas' => $operaciones,
-            ]);
-        }
-        $operaciones = Operacion::where('tipo_operacion', $operacion)->inRandomOrder()->take(2)->get();
-
-        return response()->json([
-            'filtro_operacion' => $operacion,
-            'filtro_dificultat' => $dificultat,
-            'operaciones_filtradas' => $operaciones,
-        ]);
+    if (!$operacion || !in_array($operacion, ['suma', 'resta', 'multiplicacion', 'division'])) {
+        return response()->json(['error' => 'Operación no válida o no especificada'], 400);
     }
+
+    // Filtrar operaciones según el modo
+    if ($modo == 'numero') {
+        $operaciones = Operacion::where('tipo_operacion', $operacion)
+            ->where('nivel_dificultad', $dificultat)
+            ->inRandomOrder()
+            ->take($cantidad)
+            ->get();
+    } else {
+        $operaciones = Operacion::where('tipo_operacion', $operacion)
+            ->inRandomOrder()
+            ->get();
+    }
+
+    $resultados = $operaciones->map(function ($operacion) {
+        $problemJson = json_decode($operacion->problem_json, true);
+
+        if (!empty($problemJson['answers'])) {
+            $valoresRespuestas = collect($problemJson['answers'])->pluck('value')->all();
+
+            return [
+                'question' => $problemJson['question'], 
+                'respuestas' => $valoresRespuestas,     
+            ];
+        }
+
+        return [
+            'question' => '',
+            'respuestas' => [],
+        ]; 
+    });
+
+    // Devolver los resultados con solo los valores de las respuestas
+    return response()->json([
+        'filtro_operacion' => $operacion,
+        'filtro_dificultat' => $dificultat,
+        'preguntas_y_respuestas' => $resultados,
+    ]);
+}
+
 
     public function index()
     {
