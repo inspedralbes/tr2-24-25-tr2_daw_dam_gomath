@@ -145,9 +145,6 @@ class UserController extends Controller
         }
         $user -> name = $data['name'];
         $user -> email = $data['email'];
-        if ($data['password'] !== $user->password) {
-            $user->password = Hash::make($data['password']); //password hasheado
-        }
         $user -> rol = $data['rol'];
         $user->save();
         

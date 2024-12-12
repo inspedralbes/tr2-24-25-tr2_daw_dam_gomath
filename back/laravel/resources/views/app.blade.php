@@ -64,7 +64,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ str_contains(Route::current()->getName(), 'users') ? 'active' : '' }}"
-                                href="{{ route('clases.index') }}">CRUD Users</a>
+                                href="{{ route('users.index') }}">CRUD Users</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ str_contains(Route::current()->getName(), 'puntuacuions') ? 'active' : '' }}"
