@@ -9,6 +9,7 @@ import Register from '../components/Login/RegisterScreen.vue'
 import prePartida from '../components/Offline/PartidaOffline/prePartidaScreen.vue'
 import PartidaNumero from '../components/Offline/PartidaOffline/PartidaNumeroScreen.vue'
 import PartidaCrono from '../components/Offline/PartidaOffline/PartidaCronoScreen.vue'
+import FinPartida from '../components/Offline/PartidaOffline/FinPartidaScreen.vue'
 import PartidaFallos from '../components/Offline/PartidaOffline/PartidaFallosScreen.vue'
 import Logout from '../components/Login/LogoutScreen.vue'
 const router = createRouter({
@@ -63,6 +64,11 @@ const router = createRouter({
       path: '/Offline/PartidaFallos',
       name: 'PartidaFallos',
       component: PartidaFallos,
+    },
+    {
+      path: '/Offline/FinPartida',
+      name: 'FinPartida',
+      component: FinPartida,
     },
     {
       path: '/logout',
