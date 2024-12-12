@@ -6,6 +6,7 @@ use App\Http\Controllers\OperacionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClaseController;
 use App\Http\Controllers\PuntuacionController;
+use App\Http\Controllers\CodiJocController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -17,3 +18,4 @@ Route::post('/users/store', [UserController::class, 'store']);
 Route::get('/clases', [ClaseController::class, 'index']);
 Route::get('/puntuaciones', [PuntuacionController::class, 'index']);
 Route::post('/operacionsFiltro', [OperacionController::class, 'operacionsFiltro']);
+Route::get('/codis', [CodiJocController::class, 'index']);
