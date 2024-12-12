@@ -96,7 +96,7 @@
                     "pista": "Tiene 1 número correcto en su posición."
                 },
                 {
-                    "code": "045",
+                    "code": "245",
                     "pista": "Tiene 1 número correcto pero no en la posición correcta."
                 },
                 {
@@ -325,23 +325,23 @@
             "codes": [
                 {
                     "code": "123",
-                    "pista": "Tiene un número correcto en su posición correcto."
+                    "pista": "Tiene 1 número correcto en su posición correcto."
                 },
                 {
                     "code": "781",
-                    "pista": "Tiene un número correcto pero no en su posición."
+                    "pista": "Tiene 1 número correcto pero no en su posición."
                 },
                 {
                     "code": "642",
-                    "pista": "Tiene dos números correctos, uno en su posición correcta."
+                    "pista": "Tiene 2 números correctos, uno en su posición correcta."
                 },
                 {
                     "code": "257",
-                    "pista": "Tiene dos números correctos, uno en su posición correcta."
+                    "pista": "Tiene 2 números correctos, uno en su posición correcta."
                 },
                 {
                     "code": "867",
-                    "pista": "Tiene dos números correctos, uno en su posición correcta."
+                    "pista": "Tiene 2 números correctos, uno en su posición correcta."
                 }
             ]
         },
@@ -354,23 +354,23 @@
             "codes": [
                 {
                     "code": "450",
-                    "pista": "Tiene dos números correctos pero no en su posición correcta."
+                    "pista": "Tiene 2 números correctos pero no en su posición correcta."
                 },
                 {
                     "code": "319",
-                    "pista": "Tiene un número correcto pero no en su posición correcta."
+                    "pista": "Tiene 1 número correcto pero no en su posición correcta."
                 },
                 {
                     "code": "091",
-                    "pista": "Tiene dos números correctos pero no en su posición correcta."
+                    "pista": "Tiene 2 números correctos pero no en su posición correcta."
                 },
                 {
                     "code": "564",
-                    "pista": "Tiene un número correcto en la posición correcta."
+                    "pista": "Tiene 1 número correcto en la posición correcta."
                 },
                 {
                     "code": "804",
-                    "pista": "Tiene dos números correctos en su posición correcta."
+                    "pista": "Tiene 2 números correctos en su posición correcta."
                 }
             ]
         },
@@ -383,23 +383,197 @@
             "codes": [
                 {
                     "code": "318",
-                    "pista": "Tiene dos números correctos pero no en su posición correcta."
+                    "pista": "Tiene 2 números correctos pero no en su posición correcta."
                 },
                 {
                     "code": "157",
-                    "pista": "Tiene dos números correctos, uno en la posición correcta."
+                    "pista": "Tiene 2 números correctos, uno en la posición correcta."
                 },
                 {
                     "code": "739",
-                    "pista": "Tiene dos números correctos pero no en su posición."
+                    "pista": "Tiene 2 números correctos pero no en su posición."
                 },
                 { 
                     "code": "523",
-                    "pista": "Tiene un número correcto en la posición correcta."
+                    "pista": "Tiene 1 número correcto en la posición correcta."
                 },
                 {
                     "code": "372",
-                    "pista": "Tiene dos números correctos, uno en su posición correcta."
+                    "pista": "Tiene 2 números correctos, uno en su posición correcta."
+                }
+            ]
+        },
+        "nivel_dificultad":""
+    },
+    {
+        "id": 15,
+        "codi_json": {
+            "secretCode": "042",
+            "codes": [
+                {
+                    "code": "682",
+                    "pista": "Tiene 1 número correcto en la posición correcta."
+                },
+                {
+                    "code": "614",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                },
+                {
+                    "code": "206",
+                    "pista": "Tiene 2 números correctos pero no en la posición correcta."
+                },
+                { 
+                    "code": "738",
+                    "pista": "Tiene 0 números correctos."
+                },
+                {
+                    "code": "780",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                }
+            ]
+        },
+        "nivel_dificultad":""
+    },
+    {
+        "id": 16,
+        "codi_json": {
+            "secretCode": "718",
+            "codes": [
+                {
+                    "code": "548",
+                    "pista": "Tiene 1 número correcto en la posición correcta."
+                },
+                {
+                    "code": "530",
+                    "pista": "Tiene 0 números correctos."
+                },
+                {
+                    "code": "157",
+                    "pista": "Tiene 2 números correctos pero no en la posición correcta."
+                },
+                { 
+                    "code": "806",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                },
+                {
+                    "code": "647",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                }
+            ]
+        },
+        "nivel_dificultad":""
+    },
+    {
+        "id": 17,
+        "codi_json": {
+            "secretCode": "718",
+            "codes": [
+                {
+                    "code": "256",
+                    "pista": "Tiene 1 número correcto en la posición correcta."
+                },
+                {
+                    "code": "042",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                },
+                {
+                    "code": "803",
+                    "pista": "Tiene 2 números correctos pero no en la posición correcta."
+                },
+                { 
+                    "code": "917",
+                    "pista": "Tiene 0 números correctos."
+                },
+                {
+                    "code": "832",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                }
+            ]
+        },
+        "nivel_dificultad":""
+    },
+    {
+        "id": 18,
+        "codi_json": {
+            "secretCode": "042",
+            "codes": [
+                {
+                    "code": "682",
+                    "pista": "Tiene 1 número correcto en la posición correcta."
+                },
+                {
+                    "code": "614",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                },
+                {
+                    "code": "206",
+                    "pista": "Tiene 2 números correctos pero no en la posición correcta."
+                },
+                { 
+                    "code": "738",
+                    "pista": "Tiene 0 números correctos."
+                },
+                {
+                    "code": "780",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                }
+            ]
+        },
+        "nivel_dificultad":""
+    },
+    {
+        "id": 19,
+        "codi_json": {
+            "secretCode": "619",
+            "codes": [
+                {
+                    "code": "902",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                },
+                {
+                    "code": "135",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                },
+                {
+                    "code": "740",
+                    "pista": "Tiene 0 números correctos."
+                },
+                { 
+                    "code": "291",
+                    "pista": "Tiene 2 números correctos pero no en la posición correcta."
+                },
+                {
+                    "code": "632",
+                    "pista": "Tiene 1 número correcto en la posición correcta."
+                }
+            ]
+        },
+        "nivel_dificultad":""
+    },
+    {
+        "id": 20,
+        "codi_json": {
+            "secretCode": "974",
+            "codes": [
+                {
+                    "code": "146",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                },
+                {
+                    "code": "389",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                },
+                {
+                    "code": "508",
+                    "pista": "Tiene 0 números correctos."
+                },
+                { 
+                    "code": "457",
+                    "pista": "Tiene 2 números correctos pero no en la posición correcta."
+                },
+                {
+                    "code": "920",
+                    "pista": "Tiene 1 número correcto en la posición correcta."
                 }
             ]
         },
