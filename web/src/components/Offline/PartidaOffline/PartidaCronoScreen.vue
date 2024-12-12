@@ -3,14 +3,16 @@
       <div v-if="operation">
         <h2>{{ operation.question }}</h2>
   
+        <div class="crono">Tiempo restante: {{ timeLeft }}s</div>
+  
         <div class="opciones">
           <q-btn
             v-for="(answer, index) in operation.answers"
             :key="index"
             :color="getButtonColor(index)"
             class="opcion-btn"
-            @click="handleAnswer(answer,index)"
-            :disabled="answered && answer !== selectedAnswer"
+            @click="handleAnswer(answer, index)"
+            :disabled="!isTimeRemaining || (answered && answer !== selectedAnswer)"
             style="width: 200px; margin: 5px auto;"
           >
             {{ answer.value }}
@@ -50,6 +52,9 @@
       const answered = ref(false); 
       const selectedAnswer = ref(null); 
       const correctAnswer = ref(null);
+      const timeLeft = ref(30); // Tiempo inicial del cronómetro en segundos
+      const isTimeRemaining = ref(true);
+      let timer = null;
   
       const operation = computed(() => {
         const operacionesFiltradas = operationsStore.operations && operationsStore.operations.operaciones_filtradas;
@@ -67,17 +72,36 @@
   
       onMounted(async () => {
         await operationsStore.fetchOperations();
+        startTimer();
       });
+  
+      const startTimer = () => {
+        timeLeft.value = 30;
+        isTimeRemaining.value = true;
+        if (timer) clearInterval(timer);
+        timer = setInterval(() => {
+          if (timeLeft.value > 0) {
+            timeLeft.value--;
+          } else {
+            isTimeRemaining.value = false;
+            clearInterval(timer);
+          }
+        }, 1000);
+      };
+  
+      const resetTimer = () => {
+        startTimer();
+      };
   
       const getButtonColor = (index) => {
         if (preguntasRespondidas.value[currentQuestionIndex.value] == index) {
-          console.log('Soy el color red',preguntasRespondidas.value[currentQuestionIndex.value],index,preguntasRespondidas.value)
           return 'grey';
         }
-        console.log('Soy el color blanco',preguntasRespondidas.value[currentQuestionIndex.value],index,preguntasRespondidas.value)
         return 'primary';
       };
-      const handleAnswer = (selected,index) => {
+  
+      const handleAnswer = (selected, index) => {
+        if (!isTimeRemaining.value) return;
         selectedAnswer.value = selected;
         correctAnswer.value = selected.is_correct;
         answered.value = true;
@@ -89,6 +113,7 @@
           currentQuestionIndex.value++;
           answered.value = false; 
           correctAnswer.value = null;
+          resetTimer();
         }
       };
   
@@ -97,6 +122,7 @@
           currentQuestionIndex.value--;
           answered.value = false; 
           correctAnswer.value = null;
+          resetTimer();
         }
       };
   
@@ -114,7 +140,9 @@
         selectedAnswer,
         getButtonColor,
         hasNextQuestion,
-        preguntasRespondidas
+        preguntasRespondidas,
+        timeLeft,
+        isTimeRemaining
       };
     },
   };
@@ -151,7 +179,14 @@
     height: 100vh;
     transform: translateY(-100px);
     color: rgb(26, 26, 168);
-    
+  }
+  
+  .crono {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    color: #e63946;
   }
   </style>
   
