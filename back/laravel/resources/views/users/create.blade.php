@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <h1>Crear Usuario</h1>
-    <form action="{{ route('users.store') }}" method="POST">
+    <form action="{{ route('users.store2') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Nombre</label>

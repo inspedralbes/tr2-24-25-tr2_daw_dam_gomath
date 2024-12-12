@@ -20,15 +20,23 @@ class UserController extends Controller
         }
 
         $token = $user->createToken('auth-token')->plainTextToken;
-
-        return response()->json([
+        $resposta = response()->json([
             'status' => 'success',
             'message' => 'Login exitoso',
             'token' => $token,
             'user' => $user->only(['id', 'name', 'email', 'rol'])
-        ]);
+        ], 201);
+
+
+        return $resposta;
     }
 
+    public function logoutUser(Request $request) {
+        //dd($request->user());
+        //$request->user()->currentAccessToken()->delete();
+
+        return response()->json(['message' => 'Logout exitoso'], 200);
+    }
 
     public function index()
     {
@@ -54,20 +62,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
 {
-    // Validar los datos de entrada
     $data = $request->validate([
-        'name' => 'required|string|max:255',
+        'username' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|string|min:6',
         'rol' => 'required|string|in:student,professor',
     ]);
+    // Validar los datos de entrada
 
     // Crear el usuario con los datos validados
     try {
         $user = User::create([
-            'name' => $data['name'],
+            'name' => $data['username'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']), // Cifrar contraseña
+            'password' => Hash::make($data['password']),
             'rol' => $data['rol'],
         ]);
     } catch (\Exception $e) {
@@ -92,18 +100,17 @@ class UserController extends Controller
         'status' => 'success',
         'message' => 'Usuario registrado exitosamente',
         'token' => $token,
-        'user' => $user->only(['id', 'name', 'email', 'rol'])
+        'user' => $user->only(['id', 'name', 'email', 'rol', 'clase_id']),
     ], 201); // Código HTTP 201: Creado
 }
-    public function store2(){
+    public function store2(Request $request){
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'password' => 'required',
-            'rol' => 'required|string', // Nuevo campo para el rol
+            'rol' => 'required|string',
         ]);
 
-        // Crea un nuevo usuario
         $user = new User();
         $user->name = $data['name'];
         $user->email = $data['email'];
@@ -204,5 +211,3 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'Usuario eliminado exitosamente.');
     }
 }
-
-

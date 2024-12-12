@@ -18,7 +18,7 @@ Route::resource('operacions',OperacionController::class);
 Route::delete('/operacion/{id}',[OperacionController::class,'destroy'])->name('operacions.destroy');
 
 Route::resource('users', UserController::class);
-//Route::put('users/{id}', [UserController::class, 'update2']->name('users.update2'));
+Route::post('/usersCreate', [UserController::class, 'store2'])->name('users.store2');
     
 Route::get('/clases', [ClaseController::class, 'index'])->name('clases.index');
 Route::get('/clases/create', [ClaseController::class, 'create'])->name('clases.create');
