@@ -39,6 +39,7 @@ app.post('/api/userLogin',(req, res) => {
 });
 
 const roomUsers = {};
+const detailsRoom = {};
 
 io.on('connection', (socket) => {
   // Asignar email
@@ -75,6 +76,7 @@ io.on('connection', (socket) => {
       message: `${socket.data.username} se unió al room con el rol de ${socket.data.role}.`,
       users: roomUsers[room], // Enviar la lista de usuarios en el room
     });
+    console.log(roomUsers)
   });
 
   // Fer JSON
@@ -197,9 +199,9 @@ io.on('connection', (socket) => {
   // Evento de desconexión
   socket.on('disconnect', () => {
     console.log(`Usuario desconectado: Email ${socket.data.email}`);
-    for (const room in roomUsers) {
-      roomUsers[room] = roomUsers[room].filter(email => email !== socket.data.email);
-
+    for (room in roomUsers) {
+      console.log(roomUsers[room]);
+      roomUsers[room] = roomUsers[room].filter(user => user.email !== socket.data.email);
       // Informar al room sobre la desconexión
       io.to(room).emit('roomMessage', {
         sender: 'Servidor',
@@ -207,6 +209,7 @@ io.on('connection', (socket) => {
         users: roomUsers[room], // Actualizar la lista de usuarios en el room
       });
     }
+    console.log(roomUsers);
   });
 });
 
