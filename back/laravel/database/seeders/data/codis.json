@@ -405,35 +405,35 @@
         },
         "nivel_dificultad":""
     },
-    // {
-    //     "id": 15,
-    //     "codi_json": {
-    //         "secretCode": "042",
-    //         "codes": [
-    //             {
-    //                 "code": "682",
-    //                 "pista": "Tiene 1 número correcto en la posición correcta."
-    //             },
-    //             {
-    //                 "code": "614",
-    //                 "pista": "Tiene 1 número correcto pero no en la posición correcta."
-    //             },
-    //             {
-    //                 "code": "206",
-    //                 "pista": "Tiene 2 números correctos pero no en la posición correcta."
-    //             },
-    //             { 
-    //                 "code": "738",
-    //                 "pista": "Tiene 0 números correctos."
-    //             },
-    //             {
-    //                 "code": "780",
-    //                 "pista": "Tiene 1 número correcto pero no en la posición correcta."
-    //             }
-    //         ]
-    //     },
-    //     "nivel_dificultad":""
-    // },
+    {
+        "id": 15,
+        "codi_json": {
+            "secretCode": "042",
+            "codes": [
+                {
+                    "code": "682",
+                    "pista": "Tiene 1 número correcto en la posición correcta."
+                },
+                {
+                    "code": "614",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                },
+                {
+                    "code": "206",
+                    "pista": "Tiene 2 números correctos pero no en la posición correcta."
+                },
+                { 
+                    "code": "738",
+                    "pista": "Tiene 0 números correctos."
+                },
+                {
+                    "code": "780",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                }
+            ]
+        },
+        "nivel_dificultad":""
+    },
     {
         "id": 16,
         "codi_json": {
@@ -492,35 +492,35 @@
         },
         "nivel_dificultad":""
     },
-    // {
-    //     "id": 18,
-    //     "codi_json": {
-    //         "secretCode": "042",
-    //         "codes": [
-    //             {
-    //                 "code": "682",
-    //                 "pista": "Tiene 1 número correcto en la posición correcta."
-    //             },
-    //             {
-    //                 "code": "614",
-    //                 "pista": "Tiene 1 número correcto pero no en la posición correcta."
-    //             },
-    //             {
-    //                 "code": "206",
-    //                 "pista": "Tiene 2 números correctos pero no en la posición correcta."
-    //             },
-    //             { 
-    //                 "code": "738",
-    //                 "pista": "Tiene 0 números correctos."
-    //             },
-    //             {
-    //                 "code": "780",
-    //                 "pista": "Tiene 1 número correcto pero no en la posición correcta."
-    //             }
-    //         ]
-    //     },
-    //     "nivel_dificultad":""
-    // },
+    {
+        "id": 18,
+        "codi_json": {
+            "secretCode": "042",
+            "codes": [
+                {
+                    "code": "682",
+                    "pista": "Tiene 1 número correcto en la posición correcta."
+                },
+                {
+                    "code": "614",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                },
+                {
+                    "code": "206",
+                    "pista": "Tiene 2 números correctos pero no en la posición correcta."
+                },
+                { 
+                    "code": "738",
+                    "pista": "Tiene 0 números correctos."
+                },
+                {
+                    "code": "780",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                }
+            ]
+        },
+        "nivel_dificultad":""
+    },
     {
         "id": 19,
         "codi_json": {

@@ -7,9 +7,7 @@ use App\Models\jocCodis;
 
 class CodiJocController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
         $codis = jocCodis::all();
