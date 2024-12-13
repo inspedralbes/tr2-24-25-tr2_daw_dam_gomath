@@ -50,3 +50,27 @@ export const useOperationsStore = defineStore('operations', () => {
     fetchOperations
   };
 });
+
+async function fetchCodes() {
+  try {
+    const response = await fetch(`${API_BASE_URL}/codis`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    console.log('Fetched codes from /codis:', data);
+    return data;
+  } catch (err) {
+    console.error('Error fetching codes from /codis:', err);
+    throw err; 
+  }
+}
+
+export { fetchCodes };
