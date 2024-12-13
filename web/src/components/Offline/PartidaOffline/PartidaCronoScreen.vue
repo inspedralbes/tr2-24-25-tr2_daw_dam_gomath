@@ -38,7 +38,7 @@
     </div>
 </template>
   
-<script>
+<script scoped>
 import { computed, onMounted, ref } from 'vue';
 import { useOperationsStore } from "@/stores/comunicationManager";
 import { inject } from 'vue';
@@ -94,7 +94,6 @@ export default {
     };
 
     const redirectToEnd = () => {
-      // Redirigir a la página de fin de partida cuando se termine el tiempo
       router.push('/Offline/FinPartida');
     };
 

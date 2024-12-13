@@ -35,20 +35,27 @@
       </div>
     </div>
   </template>
-<script>
+  
+  <script>
 import { computed, onMounted, ref } from 'vue';
 import { useOperationsStore } from "@/stores/comunicationManager";
 import { inject } from 'vue';
+import { useTipoPartidaStore } from '../../../App.vue';
+import { useRouter } from 'vue-router';
+import { useEstadisticasPartida } from '../../../stores/useEstadisticasPartida';
 
 export default {
   setup() {
+    const estadisticasPartida2 = useEstadisticasPartida(); 
+    const tipoPartidaStore = useTipoPartidaStore();
     const divActivo = inject('divActivo');
     const operationsStore = useOperationsStore();
     const preguntasRespondidas = ref([]);
     const currentQuestionIndex = ref(0);
     const answered = ref(false); 
     const selectedAnswer = ref(null); 
-    const correctAnswerIndex = ref(null); // Índice de la respuesta correcta
+    const correctAnswerIndex = ref(null); 
+    const router = useRouter();
 
     const operation = computed(() => {
       const operacionesFiltradas = operationsStore.operations && operationsStore.operations.operaciones_filtradas;
@@ -66,16 +73,17 @@ export default {
 
     onMounted(async () => {
       await operationsStore.fetchOperations();
+      estadisticasPartida2.setEstadisticasZero();
     });
 
     const getButtonColor = (index) => {
       if (answered.value) {
         if (operation.value.answers[index].is_correct) {
-          return 'green'; // Verde para la respuesta correcta
+          return 'green'; 
         }
-        return 'red'; // Rojo para respuestas incorrectas
+        return 'red'; 
       }
-      return 'primary'; // Color por defecto antes de responder
+      return 'primary'; 
     };
 
     const handleAnswer = (selected, index) => {
@@ -83,8 +91,19 @@ export default {
       selectedAnswer.value = selected;
       correctAnswerIndex.value = operation.value.answers.findIndex(
         (answer) => answer.is_correct
-      ); // Encuentra la respuesta correcta
-      preguntasRespondidas.value[currentQuestionIndex.value] = index; // Guarda la respuesta seleccionada
+      );
+      if (!operation.value.answers[index].is_correct) {
+        estadisticasPartida2.setPreguntaIncorrecta();
+        estadisticasPartida2.setPuntos(-50); 
+        if (estadisticasPartida2.estadisticasPartida.preguntasFalladas == tipoPartidaStore.tipoPartida.cantidad) {
+          router.push('/Offline/FinPartida');
+        }
+      }
+      else{
+        estadisticasPartida2.setPreguntaCorrecta();
+        estadisticasPartida2.setPuntos(100);
+      }
+      preguntasRespondidas.value[currentQuestionIndex.value] = index;
     };
 
     const nextQuestion = () => {
@@ -120,43 +139,45 @@ export default {
       correctAnswerIndex,
       getButtonColor,
       hasNextQuestion,
-      preguntasRespondidas
+      preguntasRespondidas,
     };
   },
 };
 </script>
-<style scoped>
-.opciones {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
-  align-items: center; 
-}
 
-.opcion-btn {
-  width: 100%;
-  text-align: center;
-}
-
-.navegacion {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.q-btn {
-  width: 48%;
-  transition: background-color 0.3s; 
-}
-
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  transform: translateY(-100px);
-  color: rgb(26, 26, 168);
-}
-</style>
+  
+  <style scoped>
+  .opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: center; 
+  }
+  
+  .opcion-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .navegacion {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .q-btn {
+    width: 48%;
+    transition: background-color 0.3s; 
+  }
+  
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transform: translateY(-100px);
+    color: rgb(26, 26, 168);
+  }
+  </style>
   

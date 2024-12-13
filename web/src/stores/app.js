@@ -21,7 +21,6 @@ export const useAppStore = defineStore('app', {
   }),
 
   actions: {
-    // Acción para realizar logout y resetear los datos del login
     logout() {
       this.loginInfo.loggedIn = false;
       this.loginInfo.token = '';
