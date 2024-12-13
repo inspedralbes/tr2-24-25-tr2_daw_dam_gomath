@@ -408,26 +408,26 @@
     {
         "id": 15,
         "codi_json": {
-            "secretCode": "042",
+            "secretCode": "274",
             "codes": [
                 {
-                    "code": "682",
+                    "code": "942",
+                    "pista": "Tiene 2 números correctos en su posición correcta."
+                },
+                {
+                    "code": "170",
                     "pista": "Tiene 1 número correcto en la posición correcta."
                 },
                 {
-                    "code": "614",
+                    "code": "526",
                     "pista": "Tiene 1 número correcto pero no en la posición correcta."
                 },
-                {
-                    "code": "206",
-                    "pista": "Tiene 2 números correctos pero no en la posición correcta."
-                },
                 { 
-                    "code": "738",
+                    "code": "391",
                     "pista": "Tiene 0 números correctos."
                 },
                 {
-                    "code": "780",
+                    "code": "738",
                     "pista": "Tiene 1 número correcto pero no en la posición correcta."
                 }
             ]
@@ -466,26 +466,26 @@
     {
         "id": 17,
         "codi_json": {
-            "secretCode": "718",
+            "secretCode": "478",
             "codes": [
                 {
-                    "code": "256",
+                    "code": "157",
                     "pista": "Tiene 1 número correcto en la posición correcta."
                 },
                 {
-                    "code": "042",
+                    "code": "841",
                     "pista": "Tiene 1 número correcto pero no en la posición correcta."
                 },
                 {
-                    "code": "803",
+                    "code": "128",
                     "pista": "Tiene 2 números correctos pero no en la posición correcta."
                 },
                 { 
-                    "code": "917",
+                    "code": "624",
                     "pista": "Tiene 0 números correctos."
                 },
                 {
-                    "code": "832",
+                    "code": "362",
                     "pista": "Tiene 1 número correcto pero no en la posición correcta."
                 }
             ]
@@ -495,27 +495,27 @@
     {
         "id": 18,
         "codi_json": {
-            "secretCode": "042",
+            "secretCode": "430",
             "codes": [
                 {
-                    "code": "682",
+                    "code": "206",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                },
+                {
+                    "code": "014",
+                    "pista": "Tiene 2 número correcto pero no en la posición correcta."
+                },
+                {
+                    "code": "137",
                     "pista": "Tiene 1 número correcto en la posición correcta."
                 },
-                {
-                    "code": "614",
-                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
-                },
-                {
-                    "code": "206",
-                    "pista": "Tiene 2 números correctos pero no en la posición correcta."
-                },
                 { 
-                    "code": "738",
-                    "pista": "Tiene 0 números correctos."
+                    "code": "549",
+                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
                 },
                 {
-                    "code": "780",
-                    "pista": "Tiene 1 número correcto pero no en la posición correcta."
+                    "code": "921",
+                    "pista": "Tiene 0 números correctos."
                 }
             ]
         },
