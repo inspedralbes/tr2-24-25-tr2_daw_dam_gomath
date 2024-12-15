@@ -24,17 +24,17 @@
     <!-- Dropdown para el cronómetro -->
     <q-btn-dropdown color="primary" label="CRONO" @click="tipoPartidaStore.setModo('crono')">
       <q-list>
-        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad('30s')">
+        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(30)">
           <q-item-section>
             <q-item-label>30seg</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad('60s')">
+        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(60)">
           <q-item-section>
             <q-item-label>1min</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad('180s')">
+        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(180)">
           <q-item-section>
             <q-item-label>3min</q-item-label>
           </q-item-section>
@@ -44,17 +44,17 @@
 
     <q-btn-dropdown color="primary" label="HASTA QUE FALLES" @click="tipoPartidaStore.setModo('fallos')">
       <q-list>
-        <q-item clickable v-close-popup  @click=" tipoPartidaStore.setCantidad('1 fallo')">
+        <q-item clickable v-close-popup  @click=" tipoPartidaStore.setCantidad(1)">
           <q-item-section>
             <q-item-label>1 Fallo</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad('3 fallos')">
+        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(3)">
           <q-item-section>
             <q-item-label>3 Fallos</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable v-close-popup @click="tipoPartidaStore.setCantidad('5 fallos')">
+        <q-item clickable v-close-popup @click="tipoPartidaStore.setCantidad(5)">
           <q-item-section>
             <q-item-label>5 Fallos</q-item-label>
           </q-item-section>

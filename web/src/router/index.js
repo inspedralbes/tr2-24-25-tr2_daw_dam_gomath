@@ -4,10 +4,13 @@ import Offline from '../components/Offline/OfflineScreen.vue'
 import Online from '../components/Online/OnlineScreen.vue'
 import Apunts from '../components/Apuntes/ApuntsScreen.vue'
 import Jocs from '../components/Jocs/JocsScreen.vue'
-import Home from '../components/Homa/HomeScreen.vue'
+import Home from '../components/Home/HomeScreen.vue'
 import Register from '../components/Login/RegisterScreen.vue'
 import prePartida from '../components/Offline/PartidaOffline/prePartidaScreen.vue'
-import Partida from '../components/Offline/PartidaOffline/PartidaScreen.vue'
+import PartidaNumero from '../components/Offline/PartidaOffline/PartidaNumeroScreen.vue'
+import PartidaCrono from '../components/Offline/PartidaOffline/PartidaCronoScreen.vue'
+import FinPartida from '../components/Offline/PartidaOffline/FinPartidaScreen.vue'
+import PartidaFallos from '../components/Offline/PartidaOffline/PartidaFallosScreen.vue'
 import Logout from '../components/Login/LogoutScreen.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,15 +51,30 @@ const router = createRouter({
       component: prePartida,
     },
     {
-      path: '/Offline/Partida',
-      name: 'Partida',
-      component: Partida,
+      path: '/Offline/PartidaNumero',
+      name: 'PartidaNumero',
+      component: PartidaNumero,
+    },
+    {
+      path: '/Offline/PartidaCrono',
+      name: 'PartidaCrono',
+      component: PartidaCrono,
+    },
+    {
+      path: '/Offline/PartidaFallos',
+      name: 'PartidaFallos',
+      component: PartidaFallos,
+    },
+    {
+      path: '/Offline/FinPartida',
+      name: 'FinPartida',
+      component: FinPartida,
     },
     {
       path: '/logout',
       name: 'Logout',
       component: Logout,
-    }
+    },
   ],
 })
 

@@ -9,7 +9,7 @@
           :key="index"
           :color="getButtonColor(index)"
           class="opcion-btn"
-          @click="handleAnswer(answer,index)"
+          @click="handleAnswer(answer, index)"
           :disabled="answered && answer !== selectedAnswer"
           style="width: 200px; margin: 5px auto;"
         >
@@ -24,38 +24,47 @@
           :disabled="currentQuestionIndex === 0"
         />
         <q-btn
+          v-if="siguiente"
           @click="nextQuestion"
           label="Siguiente"
+          :disabled="answered && !selectedAnswer"
+        />
+        <q-btn
+          v-else
+          @click="finalizar"
+          label="Finalizar"
           :disabled="answered && !selectedAnswer"
         />
       </div>
     </div>
     <div v-else class="loading-container">
-      <img src="../../../assets/img/loading.gif" alt="cargando">
+      <img src="../../../assets/img/loading.gif" alt="cargando" />
     </div>
   </div>
 </template>
-
-
 <script>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from "vue";
 import { useOperationsStore } from "@/stores/comunicationManager";
-import { inject } from 'vue';
+import { inject } from "vue";
+import { useTipoPartidaStore } from "../../../App.vue";
+import { useRouter } from 'vue-router';
 
 export default {
   setup() {
-    const divActivo = inject('divActivo');
+    const tipoPartidaStore = useTipoPartidaStore();
+    const divActivo = inject("divActivo");
     const operationsStore = useOperationsStore();
     const preguntasRespondidas = ref([]);
     const currentQuestionIndex = ref(0);
-    const answered = ref(false); 
-    const selectedAnswer = ref(null); 
+    const answered = ref(false);
+    const selectedAnswer = ref(null);
     const correctAnswer = ref(null);
-
+    const router = useRouter();
     const operation = computed(() => {
-      const preguntasYRespuestas = operationsStore.operations && operationsStore.operations.preguntas_y_respuestas;
-      if (preguntasYRespuestas && preguntasYRespuestas[currentQuestionIndex.value]) {
-        const firstOperation = preguntasYRespuestas[currentQuestionIndex.value];
+      const operacionesFiltradas =
+        operationsStore.operations && operationsStore.operations.operaciones_filtradas;
+      if (operacionesFiltradas && operacionesFiltradas[currentQuestionIndex.value]) {
+        const firstOperation = operacionesFiltradas[currentQuestionIndex.value];
         try {
           return {
             question: firstOperation.question,
@@ -69,66 +78,69 @@ export default {
       return null;
     });
 
+    const siguiente = computed(() => {
+      return currentQuestionIndex.value < tipoPartidaStore.tipoPartida.cantidad - 1;
+    });
+
     onMounted(async () => {
       await operationsStore.fetchOperations();
     });
 
     const getButtonColor = (index) => {
-      if (preguntasRespondidas.value[currentQuestionIndex.value] == index) {
-        return 'grey';
-      }
-      return 'primary';
+      return preguntasRespondidas.value[currentQuestionIndex.value] === index
+        ? "grey"
+        : "primary";
     };
-    
-    const handleAnswer = (selected,index) => {
+
+    const handleAnswer = (selected, index) => {
       selectedAnswer.value = selected;
       answered.value = true;
       preguntasRespondidas.value[currentQuestionIndex.value] = index;
     };
-
     const nextQuestion = () => {
-      if (hasNextQuestion.value) {
+      if (siguiente.value) {
         currentQuestionIndex.value++;
-        answered.value = false; 
+        answered.value = false;
         correctAnswer.value = null;
+        selectedAnswer.value = null;
       }
     };
 
     const previousQuestion = () => {
       if (currentQuestionIndex.value > 0) {
         currentQuestionIndex.value--;
-        answered.value = false; 
+        answered.value = false;
         correctAnswer.value = null;
       }
     };
 
-    const hasNextQuestion = computed(() => {
-      return currentQuestionIndex.value < operationsStore.operations.preguntas_y_respuestas.length - 1;
-    });
+    function finalizar () {
+      router.push('/Offline/FinPartida');
+    };
 
     return {
       operation,
       handleAnswer,
       nextQuestion,
       previousQuestion,
+      finalizar,
       currentQuestionIndex,
       answered,
       selectedAnswer,
       getButtonColor,
-      hasNextQuestion,
-      preguntasRespondidas
+      siguiente,
+      preguntasRespondidas,
     };
   },
 };
 </script>
-
 <style scoped>
 .opciones {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: 20px;
-  align-items: center; 
+  align-items: center;
 }
 
 .opcion-btn {
@@ -153,6 +165,5 @@ export default {
   height: 100vh;
   transform: translateY(-100px);
   color: rgb(26, 26, 168);
-  
 }
 </style>

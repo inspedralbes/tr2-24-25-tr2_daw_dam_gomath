@@ -4,13 +4,13 @@ import { useRouter, useRoute } from 'vue-router';
 import { defineStore, storeToRefs } from 'pinia';
 import { useAppStore } from '@/stores/app';
 
-const LOCAL_STORAGE_KEY = 'tipoPartida';
+const localStorageTipoPartida  = 'tipoPartida';
 
-export const useTipoPartidaStore = defineStore('tipoPartida', () => {
+export const useTipoPartidaStore = defineStore(localStorageTipoPartida, () => {
   const router = useRouter();
 
   const tipoPartida = ref(
-    JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) || {
+    JSON.parse(localStorage.getItem(localStorageTipoPartida)) || {
       operacion: 'suma',
       modo: 'numero',
       cantidad: 10,
@@ -19,7 +19,7 @@ export const useTipoPartidaStore = defineStore('tipoPartida', () => {
   );
 
   function updateLocalStorage() {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(tipoPartida.value));
+    localStorage.setItem(localStorageTipoPartida, JSON.stringify(tipoPartida.value));
   };
 
   function setOperacion(operacion) {
@@ -38,7 +38,14 @@ export const useTipoPartidaStore = defineStore('tipoPartida', () => {
     tipoPartida.value.cantidad = cantidad;
     updateLocalStorage();
     console.log('Hola soy cantidad', cantidad, tipoPartida);
-    router.push('/Offline/Partida');
+    if(tipoPartida.value.modo == 'numero'){
+      router.push('/Offline/PartidaNumero');
+    }
+    else if(tipoPartida.value.modo == 'crono'){
+      router.push('/Offline/PartidaCrono');
+    }else if(tipoPartida.value.modo == 'fallos'){
+      router.push('/Offline/PartidaFallos');
+    }
   }
 
   function setDificultat(dificultat) {
@@ -89,7 +96,6 @@ export default {
     });
 
     const { tipoPartida, setDificultat } = useTipoPartidaStore();
-
     const updateDivActivo = () => {
       const currentRoute = route.path;
       divActivo.value = currentRoute === '/login' ? 'login' : '';
