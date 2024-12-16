@@ -32,8 +32,8 @@ export default {
       secretCode: '',
       userGuess: '',
       feedback: '',
-      isCorrect: false
-    };
+      isCorrect: false,
+      };
   },
   methods: {
     checkGuess() {
@@ -51,7 +51,8 @@ export default {
     try {
       const codesData = await fetchCodes();
       if (Array.isArray(codesData) && codesData.length > 0) {
-        const firstItem = codesData[0];
+        const numRand = Math.floor(Math.random() * 20);
+        const firstItem = codesData[numRand];
         if (firstItem.codi_json) {
           const decodedData = JSON.parse(firstItem.codi_json);
           if (decodedData.codes) {
