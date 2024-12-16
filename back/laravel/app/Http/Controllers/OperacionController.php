@@ -53,15 +53,12 @@ class OperacionController extends Controller
     $id = $request->input('id_pregunta');
     $respuestaSeleccionada = $request->input('respuestaSeleccionada');
 
-    // Buscar la operación por su ID
     $pregunta = Operacion::find($id);
 
-    // Verificar si se encontró la operación
     if (!$pregunta) {
         return response()->json(['error' => 'Pregunta no encontrada'], 404);
     }
 
-    // Decodificar el campo problem_json
     $problemJson = json_decode($pregunta->problem_json, true);
 
     if (!$problemJson || empty($problemJson['answers'])) {

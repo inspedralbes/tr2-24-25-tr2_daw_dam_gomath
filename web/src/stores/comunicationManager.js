@@ -53,34 +53,47 @@ export const useOperationsStore = defineStore('operations', () => {
 });
 
 export const useUnaRespuesta = defineStore('respuesta', () => {
-  const useRespuesta2 = useRespuesta();
-  const respuesta = useRespuesta2.respuestaActual;
-  const id_pregunta = useRespuesta2.id_pregunta;
-  const respuestaCorrecta = ref(null);
-  const preguntaRespondida = {
-    'id_pregunta': id_pregunta,
-    'respuestaSeleccionada': respuesta,
-  }
-  async function fetchRespuesta(){
-    const response = await fetch(`${API_BASE_URL}/unaRespuesta`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(preguntaRespondida),
-    });
-    if (!response.ok) {
-      throw new Error(`Error ${response.status}: ${response.statusText}`);
+  const useRespuesta2 = useRespuesta(); 
+  const respuestaCorrecta = ref(null); 
+
+  async function fetchRespuesta() {
+    const preguntaRespondida = {
+      'id_pregunta': useRespuesta2.id_pregunta, 
+      'respuestaSeleccionada': useRespuesta2.respestaActual, 
+    };
+
+    console.log('Objeto enviado a la API:', preguntaRespondida);
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/unaRespuesta`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(preguntaRespondida),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log('Respuesta correcta a la pregunta:', data);
+
+      // Actualizar la tienda principal con la respuesta correcta
+      useRespuesta2.setCorrecta(data.respuesta_correcta);
+
+      // Almacenar la respuesta correcta localmente
+      respuestaCorrecta.value = data.respuesta_correcta;
+    } catch (error) {
+      console.error('Error al obtener la respuesta:', error);
     }
-    const data = await response.json();
-    console.log('Respuesta correcta a la pregunta:', data);
-    useRespuesta2.setCorrecta(data.respuesta_correcta);
-    respuestaCorrecta = data.respuesta_correcta;
   }
+
   return {
     fetchRespuesta,
     respuestaCorrecta,
-  }
+  };
 });
 
 async function fetchCodes() {
