@@ -10,7 +10,7 @@ class CodiJocController extends Controller
    
     public function index()
     {
-        $codis = jocCodis::all();
+        $codis = jocCodis::inRandomOrder()->get();
 
             return response()->json($codis);
         
