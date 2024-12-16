@@ -23,12 +23,10 @@
           <q-btn
             @click="previousQuestion"
             label="Anterior"
-            :disabled="currentQuestionIndex === 0"
           />
           <q-btn
             @click="nextQuestion"
             label="Siguiente"
-            :disabled="answered && !selectedAnswer"
           />
         </div>
       </div>
@@ -38,11 +36,11 @@
     </div>
 </template>
   
-<script scoped>
-import { computed, onMounted, ref } from 'vue';
+<script>
+import { computed, onMounted, ref, onUnmounted } from 'vue';
 import { useOperationsStore } from "@/stores/comunicationManager";
 import { inject } from 'vue';
-import { useRouter } from 'vue-router';  // Importar useRouter
+import { useRouter } from 'vue-router';
 import { useTipoPartidaStore } from '../../../App.vue';
 
 export default {
@@ -52,21 +50,23 @@ export default {
     const operationsStore = useOperationsStore();
     const preguntasRespondidas = ref([]);
     const currentQuestionIndex = ref(0);
-    const answered = ref(false); 
     const selectedAnswer = ref(null); 
     const correctAnswer = ref(null);
     const timeLeft = ref(tipoPartidaStore.tipoPartida.cantidad); 
     const isTimeRemaining = ref(true);
     let timer = null;
-
+    const isActive = ref(true)
     const router = useRouter();
 
     const operation = computed(() => {
-      const operacionesFiltradas = operationsStore.operations && operationsStore.operations.operaciones_filtradas;
+      const operacionesFiltradas = operationsStore.operations.preguntas_y_respuestas;
       if (operacionesFiltradas && operacionesFiltradas[currentQuestionIndex.value]) {
         const firstOperation = operacionesFiltradas[currentQuestionIndex.value];
         try {
-          return JSON.parse(firstOperation.problem_json);
+          return {
+            question: firstOperation.question,
+            answers: firstOperation.respuestas.map((value) => ({ value })),
+          };
         } catch (e) {
           console.error("Error al decodificar el JSON:", e);
           return null;
@@ -79,7 +79,10 @@ export default {
       await operationsStore.fetchOperations();
       startTimer();
     });
-
+    onUnmounted(() => {
+      isActive.value = false; 
+      clearInterval(timer);
+    });
     const startTimer = () => {
       if (timer) clearInterval(timer);
       timer = setInterval(() => {
@@ -88,7 +91,7 @@ export default {
         } else {
           isTimeRemaining.value = false;
           clearInterval(timer);
-          redirectToEnd();  // Llamar a la función para redirigir al finalizar el tiempo
+          redirectToEnd(); 
         }
       }, 1000);
     };
@@ -114,7 +117,6 @@ export default {
     const nextQuestion = () => {
       if (hasNextQuestion.value) {
         currentQuestionIndex.value++;
-        answered.value = false;
         correctAnswer.value = null;
         selectedAnswer.value = null;
       }
@@ -123,7 +125,6 @@ export default {
     const previousQuestion = () => {
       if (currentQuestionIndex.value > 0) {
         currentQuestionIndex.value--;
-        answered.value = false;
         correctAnswer.value = null;
         selectedAnswer.value = null;
       }
@@ -139,7 +140,6 @@ export default {
       nextQuestion,
       previousQuestion,
       currentQuestionIndex,
-      answered,
       selectedAnswer,
       getButtonColor,
       hasNextQuestion,

@@ -21,45 +21,64 @@ class OperacionController extends Controller
             return response()->json(['error' => 'Operación no válida o no especificada'], 400);
         }
 
-        // Filtrar operaciones según el modo
         if ($modo == 'numero') {
-            $operaciones = Operacion::where('tipo_operacion', $operacion)
-                ->where('nivel_dificultad', $dificultat)
-                ->inRandomOrder()
-                ->take($cantidad)
-                ->get();
+            $operaciones = Operacion::where('tipo_operacion', $operacion)->where('nivel_dificultad', $dificultat)->inRandomOrder()->take($cantidad)->get();
         } else {
-            $operaciones = Operacion::where('tipo_operacion', $operacion)
-                ->inRandomOrder()
-                ->get();
+            $operaciones = Operacion::where('tipo_operacion', $operacion)->where('nivel_dificultad', $dificultat)->inRandomOrder()->get();
         }
 
         $resultados = $operaciones->map(function ($operacion) {
-            $problemJson = json_decode($operacion->problem_json, true);
-
+        $problemJson = json_decode($operacion->problem_json, true);
             if (!empty($problemJson['answers'])) {
                 $valoresRespuestas = collect($problemJson['answers'])->pluck('value')->all();
 
                 return [
+                    'id_pregunta' => $operacion->id,
                     'question' => $problemJson['question'], 
                     'respuestas' => $valoresRespuestas,     
                 ];
             }
 
-            return [
-                'question' => '',
-                'respuestas' => [],
-            ]; 
+            return response()->json(['message' => 'Error']); 
         });
 
-        // Devolver los resultados con solo los valores de las respuestas
         return response()->json([
             'filtro_operacion' => $operacion,
             'filtro_dificultat' => $dificultat,
             'preguntas_y_respuestas' => $resultados,
         ]);
     }
+    public function respuestaCorrectaUnaPregunta(Request $request)
+{
+    $id = $request->input('id_pregunta');
+    $respuestaSeleccionada = $request->input('respuestaSeleccionada');
 
+    // Buscar la operación por su ID
+    $pregunta = Operacion::find($id);
+
+    // Verificar si se encontró la operación
+    if (!$pregunta) {
+        return response()->json(['error' => 'Pregunta no encontrada'], 404);
+    }
+
+    // Decodificar el campo problem_json
+    $problemJson = json_decode($pregunta->problem_json, true);
+
+    if (!$problemJson || empty($problemJson['answers'])) {
+        return response()->json(['error' => 'El formato de problem_json es inválido o no tiene respuestas'], 400);
+    }
+
+    $respuestaCorrecta = collect($problemJson['answers'])->firstWhere('is_correct', true);
+
+    if (!$respuestaCorrecta) {
+        return response()->json(['error' => 'No se encontró una respuesta correcta'], 400);
+    }
+
+    return response()->json([
+        'id_pregunta' => $id,
+        'respuesta_correcta' => $respuestaCorrecta['value'],
+    ]);
+}
 
     public function index()
     {

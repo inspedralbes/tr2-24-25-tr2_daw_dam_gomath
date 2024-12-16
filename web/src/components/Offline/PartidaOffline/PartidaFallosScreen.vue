@@ -43,7 +43,8 @@ import { inject } from 'vue';
 import { useTipoPartidaStore } from '../../../App.vue';
 import { useRouter } from 'vue-router';
 import { useEstadisticasPartida } from '../../../stores/useEstadisticasPartida';
-
+import { useRespuesta } from '../../../stores/respuesta'
+import { useUnaRespuesta } from '../../../stores/comunicationManager'
 export default {
   setup() {
     const estadisticasPartida2 = useEstadisticasPartida(); 
@@ -52,17 +53,21 @@ export default {
     const operationsStore = useOperationsStore();
     const preguntasRespondidas = ref([]);
     const currentQuestionIndex = ref(0);
-    const answered = ref(false); 
+    const answered = ref(false);
     const selectedAnswer = ref(null); 
-    const correctAnswerIndex = ref(null); 
     const router = useRouter();
-
+    const unaRespuesta = useUnaRespuesta();
+    const useRespuesta2 = useRespuesta();
     const operation = computed(() => {
-      const operacionesFiltradas = operationsStore.operations && operationsStore.operations.operaciones_filtradas;
+      const operacionesFiltradas = operationsStore.operations.preguntas_y_respuestas;
       if (operacionesFiltradas && operacionesFiltradas[currentQuestionIndex.value]) {
         const firstOperation = operacionesFiltradas[currentQuestionIndex.value];
         try {
-          return JSON.parse(firstOperation.problem_json);
+          return {
+            question: firstOperation.question,
+            answers: firstOperation.respuestas.map((value) => ({ value })),
+            id_pregunta: firstOperation.id_pregunta,
+          };
         } catch (e) {
           console.error("Error al decodificar el JSON:", e);
           return null;
@@ -78,31 +83,33 @@ export default {
 
     const getButtonColor = (index) => {
       if (answered.value) {
-        if (operation.value.answers[index].is_correct) {
+        if (operation.value.answers[index] == useRespuesta2.correcta) {
           return 'green'; 
         }
         return 'red'; 
       }
       return 'primary'; 
     };
-
+    
     const handleAnswer = (selected, index) => {
       answered.value = true;
       selectedAnswer.value = selected;
-      correctAnswerIndex.value = operation.value.answers.findIndex(
-        (answer) => answer.is_correct
-      );
-      if (!operation.value.answers[index].is_correct) {
-        estadisticasPartida2.setPreguntaIncorrecta();
-        estadisticasPartida2.setPuntos(-50); 
-        if (estadisticasPartida2.estadisticasPartida.preguntasFalladas == tipoPartidaStore.tipoPartida.cantidad) {
-          router.push('/Offline/FinPartida');
-        }
-      }
-      else{
-        estadisticasPartida2.setPreguntaCorrecta();
-        estadisticasPartida2.setPuntos(100);
-      }
+      unaRespuesta.fetchRespuesta();
+      useRespuesta2.setRespuesta(operation.value.answers[index].value);
+      useRespuesta2.setId(operation.value.id_pregunta);
+      // Si deseas realizar validaciones adicionales, usa los datos de operation.value
+      // Por ejemplo:
+      // if (!operation.value.answers[index].is_correct) {
+      //   estadisticasPartida2.setPreguntaIncorrecta();
+      //   estadisticasPartida2.setPuntos(-50);
+      //   if (estadisticasPartida2.estadisticasPartida.preguntasFalladas === tipoPartidaStore.tipoPartida.cantidad) {
+      //     router.push('/Offline/FinPartida');
+      //   }
+      // } else {
+      //   estadisticasPartida2.setPreguntaCorrecta();
+      //   estadisticasPartida2.setPuntos(100);
+      // }
+
       preguntasRespondidas.value[currentQuestionIndex.value] = index;
     };
 
@@ -111,7 +118,6 @@ export default {
         currentQuestionIndex.value++;
         answered.value = false;
         selectedAnswer.value = null;
-        correctAnswerIndex.value = null;
       }
     };
 
@@ -120,7 +126,6 @@ export default {
         currentQuestionIndex.value--;
         answered.value = false;
         selectedAnswer.value = null;
-        correctAnswerIndex.value = null;
       }
     };
 
@@ -136,7 +141,6 @@ export default {
       currentQuestionIndex,
       answered,
       selectedAnswer,
-      correctAnswerIndex,
       getButtonColor,
       hasNextQuestion,
       preguntasRespondidas,

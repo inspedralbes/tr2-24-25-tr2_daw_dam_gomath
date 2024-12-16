@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import { useTipoPartidaStore } from '../App.vue'; 
+import { useRespuesta } from '../stores/respuesta'
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const useOperationsStore = defineStore('operations', () => {
@@ -49,4 +50,35 @@ export const useOperationsStore = defineStore('operations', () => {
     error,
     fetchOperations
   };
+});
+
+export const useUnaRespuesta = defineStore('respuesta', () => {
+  const useRespuesta2 = useRespuesta();
+  const respuesta = useRespuesta2.respuestaActual;
+  const id_pregunta = useRespuesta2.id_pregunta;
+  const respuestaCorrecta = ref(null);
+  const preguntaRespondida = {
+    'id_pregunta': id_pregunta,
+    'respuestaSeleccionada': respuesta,
+  }
+  async function fetchRespuesta(){
+    const response = await fetch(`${API_BASE_URL}/unaRespuesta`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(preguntaRespondida),
+    });
+    if (!response.ok) {
+      throw new Error(`Error ${response.status}: ${response.statusText}`);
+    }
+    const data = await response.json();
+    console.log('Respuesta correcta a la pregunta:', data);
+    useRespuesta2.setCorrecta(data.respuesta_correcta);
+    respuestaCorrecta = data.respuesta_correcta;
+  }
+  return {
+    fetchRespuesta,
+    respuestaCorrecta,
+  }
 });

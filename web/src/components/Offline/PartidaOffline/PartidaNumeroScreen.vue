@@ -10,7 +10,6 @@
           :color="getButtonColor(index)"
           class="opcion-btn"
           @click="handleAnswer(answer, index)"
-          :disabled="answered && answer !== selectedAnswer"
           style="width: 200px; margin: 5px auto;"
         >
           {{ answer.value }}  
@@ -27,13 +26,11 @@
           v-if="siguiente"
           @click="nextQuestion"
           label="Siguiente"
-          :disabled="answered && !selectedAnswer"
         />
         <q-btn
           v-else
           @click="finalizar"
           label="Finalizar"
-          :disabled="answered && !selectedAnswer"
         />
       </div>
     </div>
@@ -56,13 +53,11 @@ export default {
     const operationsStore = useOperationsStore();
     const preguntasRespondidas = ref([]);
     const currentQuestionIndex = ref(0);
-    const answered = ref(false);
     const selectedAnswer = ref(null);
     const correctAnswer = ref(null);
     const router = useRouter();
     const operation = computed(() => {
-      const operacionesFiltradas =
-        operationsStore.operations && operationsStore.operations.operaciones_filtradas;
+      const operacionesFiltradas = operationsStore.operations.preguntas_y_respuestas;
       if (operacionesFiltradas && operacionesFiltradas[currentQuestionIndex.value]) {
         const firstOperation = operacionesFiltradas[currentQuestionIndex.value];
         try {
@@ -94,13 +89,11 @@ export default {
 
     const handleAnswer = (selected, index) => {
       selectedAnswer.value = selected;
-      answered.value = true;
       preguntasRespondidas.value[currentQuestionIndex.value] = index;
     };
     const nextQuestion = () => {
       if (siguiente.value) {
         currentQuestionIndex.value++;
-        answered.value = false;
         correctAnswer.value = null;
         selectedAnswer.value = null;
       }
@@ -109,7 +102,6 @@ export default {
     const previousQuestion = () => {
       if (currentQuestionIndex.value > 0) {
         currentQuestionIndex.value--;
-        answered.value = false;
         correctAnswer.value = null;
       }
     };
@@ -125,7 +117,6 @@ export default {
       previousQuestion,
       finalizar,
       currentQuestionIndex,
-      answered,
       selectedAnswer,
       getButtonColor,
       siguiente,
