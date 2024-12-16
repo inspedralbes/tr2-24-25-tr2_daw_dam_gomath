@@ -113,10 +113,9 @@ io.on('connection', (socket) => {
   // Expulsar a un usuario (solo administradores)
   socket.on('kickUser', (data) => {
     const { targetEmail, room } = data;
+    console.log(`Datos recibidos para kickUser: ${JSON.stringify(data)}`);
 
-    // Verificar si el que realiza la acción es un administrador
-    if (socket.data.role === 'admin') {
-      // Buscar al socket con el email objetivo
+     // Buscar al socket con el email objetivo
       const targetSocket = [...io.sockets.sockets.values()].find(
         (s) => s.data.email === targetEmail
       );
@@ -126,7 +125,7 @@ io.on('connection', (socket) => {
         targetSocket.leave(room);
 
         // Eliminar usuario del room
-        roomUsers[room] = roomUsers[room].filter(email => email !== targetEmail);
+        roomUsers[room] = roomUsers[room].filter(user => user.email !== targetEmail);
 
         console.log(`Usuario ${targetUsername} (${targetSocket.data.email}) fue expulsado del room ${room}`);
         io.to(room).emit('roomMessage', {
@@ -135,13 +134,11 @@ io.on('connection', (socket) => {
           users: roomUsers[room], // Actualizar la lista de usuarios en el room
         });
 
+        console.log(roomUsers)
         targetSocket.emit('message', 'Has sido expulsado del room.');
       } else {
         socket.emit('message', 'No se encontró al usuario con ese email.');
       }
-    } else {
-      socket.emit('message', 'No tienes permisos para realizar esta acción.');
-    }
   });
 
   socket.on('leaveRoom', (data) => {
