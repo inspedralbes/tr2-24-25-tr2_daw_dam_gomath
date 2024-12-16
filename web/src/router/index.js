@@ -12,6 +12,8 @@ import PartidaCrono from '../components/Offline/PartidaOffline/PartidaCronoScree
 import FinPartida from '../components/Offline/PartidaOffline/FinPartidaScreen.vue'
 import PartidaFallos from '../components/Offline/PartidaOffline/PartidaFallosScreen.vue'
 import Logout from '../components/Login/LogoutScreen.vue'
+import Codigo from '../components/Jocs/codigo/game.vue'
+import Sudoku from '../components/Jocs/sudoku/hola.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -75,7 +77,17 @@ const router = createRouter({
       name: 'Logout',
       component: Logout,
     },
+    {
+      path: '/Jocs/codigo',
+      name: 'Codigo',
+      component: Codigo,
+    },
+    {
+      path: '/Jocs/sudoku',
+      name: 'Sudoku',
+      component: Sudoku,
+    }
   ],
-})
+});
 
-export default router
+export default router;

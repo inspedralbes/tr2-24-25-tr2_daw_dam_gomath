@@ -4,7 +4,7 @@ import { useRouter, useRoute } from 'vue-router';
 import { defineStore, storeToRefs } from 'pinia';
 import { useAppStore } from '@/stores/app';
 
-const localStorageTipoPartida  = 'tipoPartida';
+const localStorageTipoPartida = 'tipoPartida';
 
 export const useTipoPartidaStore = defineStore(localStorageTipoPartida, () => {
   const router = useRouter();
@@ -38,12 +38,12 @@ export const useTipoPartidaStore = defineStore(localStorageTipoPartida, () => {
     tipoPartida.value.cantidad = cantidad;
     updateLocalStorage();
     console.log('Hola soy cantidad', cantidad, tipoPartida);
-    if(tipoPartida.value.modo == 'numero'){
+    if (tipoPartida.value.modo == 'numero') {
       router.push('/Offline/PartidaNumero');
     }
-    else if(tipoPartida.value.modo == 'crono'){
+    else if (tipoPartida.value.modo == 'crono') {
       router.push('/Offline/PartidaCrono');
-    }else if(tipoPartida.value.modo == 'fallos'){
+    } else if (tipoPartida.value.modo == 'fallos') {
       router.push('/Offline/PartidaFallos');
     }
   }
@@ -202,8 +202,9 @@ export default {
 
     <q-drawer v-if="divActivo === 'jocs'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
       <q-tabs vertical>
-        <q-route-tab to="/ocaMatematica" label="Oca Matematica" />
-        <q-route-tab to="/buscaminas" label="BUSCAMINAS" />
+        <q-route-tab to="/jocs/sudoku" label="SUDOKU" />
+        <q-route-tab to="/jocs/codigo" label="Adivina el codigo" />
+        <q-route-tab to="/nerdle" label="Nerdle(cambiar nombre)" />
       </q-tabs>
     </q-drawer>
 
