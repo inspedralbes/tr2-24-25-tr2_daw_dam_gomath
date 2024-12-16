@@ -42,9 +42,14 @@ import { useOperationsStore } from "@/stores/comunicationManager";
 import { inject } from 'vue';
 import { useRouter } from 'vue-router';
 import { useTipoPartidaStore } from '../../../App.vue';
-
+import { useRespuesta } from '../../../stores/respuesta'
+import { useUnaRespuesta } from '../../../stores/comunicationManager'
+import { useEstadisticasPartida } from '../../../stores/useEstadisticasPartida';
 export default {
   setup() {
+    const estadisticas = useEstadisticasPartida();
+    const unaRespuesta = useUnaRespuesta();
+    const useRespuesta2 = useRespuesta();
     const tipoPartidaStore = useTipoPartidaStore();
     const divActivo = inject('divActivo');
     const operationsStore = useOperationsStore();
@@ -66,6 +71,7 @@ export default {
           return {
             question: firstOperation.question,
             answers: firstOperation.respuestas.map((value) => ({ value })),
+            id_pregunta: firstOperation.id_pregunta,
           };
         } catch (e) {
           console.error("Error al decodificar el JSON:", e);
@@ -78,6 +84,7 @@ export default {
     onMounted(async () => {
       await operationsStore.fetchOperations();
       startTimer();
+      estadisticas.setEstadisticasZero();
     });
     onUnmounted(() => {
       isActive.value = false; 
@@ -107,11 +114,25 @@ export default {
       return 'primary';
     };
 
-    const handleAnswer = (selected, index) => {
+    const handleAnswer = async (selected, index) => {
       if (!isTimeRemaining.value) return;
       selectedAnswer.value = selected;
       correctAnswer.value = selected.is_correct;
       preguntasRespondidas.value[currentQuestionIndex.value] = index;
+      useRespuesta2.setRespuesta(operation.value.answers[index].value);
+      useRespuesta2.setId(operation.value.id_pregunta);
+      await unaRespuesta.fetchRespuesta();
+      console.log('comparacion para correccion', operation.value.answers[index].value, useRespuesta2.correcta);
+      if (operation.value.answers[index].value !== useRespuesta2.correcta) {
+        estadisticas.setPreguntaIncorrecta();
+        estadisticas.setPuntos(-50);
+        if (estadisticas.estadisticasPartida.preguntasFalladas === tipoPartidaStore.tipoPartida.cantidad) {
+          router.push('/Offline/FinPartida');
+        }
+      } else {
+        estadisticas.setPreguntaCorrecta();
+        estadisticas.setPuntos(100);
+      }
     };
 
     const nextQuestion = () => {
@@ -131,7 +152,7 @@ export default {
     };
 
     const hasNextQuestion = computed(() => {
-      return currentQuestionIndex.value < operationsStore.operations.operaciones_filtradas.length - 1;
+      return currentQuestionIndex.value < tipoPartidaStore.tipoPartida.cantidad - 1;
     });
 
     return {
