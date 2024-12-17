@@ -29,7 +29,7 @@
         <q-btn
           @click="nextQuestion"
           label="Siguiente"
-          :disabled="!answered || !hasNextQuestion"
+          :disabled="!answered"
           style="width: 48%;"
         />
       </div>
@@ -124,11 +124,9 @@ export default {
     };
 
     const nextQuestion = () => {
-      if (hasNextQuestion.value) {
-        currentQuestionIndex.value++;
-        answered.value = false;
-        selectedAnswer.value = null;
-      }
+      currentQuestionIndex.value++;
+      answered.value = false;
+      selectedAnswer.value = null;      
     };
 
     const previousQuestion = () => {
@@ -139,10 +137,6 @@ export default {
       }
     };
 
-    const hasNextQuestion = computed(() => {
-      return currentQuestionIndex.value < tipoPartidaStore.tipoPartida.cantidad - 1;
-    });
-
     return {
       operation,
       handleAnswer,
@@ -150,7 +144,6 @@ export default {
       answered,
       selectedAnswer,
       getButtonColor,
-      hasNextQuestion,
       preguntasRespondidas,
       isFetching,
       nextQuestion,
