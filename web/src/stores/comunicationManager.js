@@ -117,5 +117,35 @@ async function fetchCodes() {
     throw err; 
   }
 }
-
 export { fetchCodes };
+
+export const useCodigoSala = defineStore('codigoSala', () => {
+  const codigo = ref('');
+  const emailCreador = ref('');
+  async function fetchCodigo(){
+    await fetch('http://localhost:3000/api/create-room', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          email: 'usuario@example.com',
+      }),
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log('Código de la sala:', data.roomCode);
+      console.log('Correo del usuario:', data.email);
+      codigo.value = data.roomCode;
+      emailCreador.value = data.email;
+  })
+  .catch(error => console.error('Error:', error));
+  
+  }
+  return{
+    codigo,
+    emailCreador,
+    fetchCodigo,
+
+  };
+});

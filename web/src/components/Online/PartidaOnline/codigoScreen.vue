@@ -5,7 +5,7 @@
           <h3>¡Comparte tu código!</h3>
         </div>
         <div class="card-body">
-          <div class="code-display">{{ gameCode }}</div>
+          <div class="code-display">{{ codigoSala }}</div>
           <p>Invita a tus amigos para unirse a la partida.</p>
         </div>
       </div>
@@ -15,8 +15,8 @@
           <h3>Jugadores en la partida</h3>
         </div>
         <div class="card-body players-list">
-          <div v-for="player in players" :key="player" class="player-item">
-            {{ player }}
+          <div v-for="player in players" :key="player.id" class="player-item">
+            {{ player.name }}
           </div>
         </div>
       </div>
@@ -28,24 +28,56 @@
         @click="irPartida"
       />
     </div>
-  </template>
-  
-  <script>
-  import { useRouter } from 'vue-router'
-  export default {
-    setup(){
-        const router = useRouter();
-        function irPartida(){
-            router.push('/Online/PartidaNumero');
-        }
+</template>
 
-        return{
-            irPartida,
-        };
-    },
-  };
-  </script>
-  
+<script>
+import { ref, onMounted, onUnmounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useCodigoSala } from '@/stores/comunicationManager';
+import io from 'socket.io-client';  // Importa socket.io-client
+
+export default {
+  setup() {
+    const sala = useCodigoSala();
+    const codigoSala = ref('');
+    const players = ref([]); // Lista de jugadores
+    
+    // Conexión con el servidor Socket.IO
+    const socket = io('http://localhost:3000'); // Dirección del servidor
+
+    onMounted(async () => {
+      await sala.fetchCodigo();
+      codigoSala.value = sala.codigo;
+
+      // Unirse a la sala cuando se obtiene el código
+      socket.emit('join-room', { roomCode: sala.codigo, username: 'Jugador' });
+
+      // Escuchar el evento `update-users` para actualizar la lista de jugadores
+      socket.on('update-users', (members) => {
+        players.value = members; // Actualizar la lista de jugadores
+      });
+    });
+
+    // Redirigir a la partida
+    const router = useRouter();
+    function irPartida() {
+      router.push('/Online/PartidaNumero');
+    }
+
+    onUnmounted(() => {
+      // Desconectar el socket al salir del componente
+      socket.disconnect();
+    });
+
+    return {
+      irPartida,
+      codigoSala,
+      players,
+    };
+  },
+};
+</script>
+
   <style scoped>
   .container {
     display: flex;
