@@ -1,3 +1,4 @@
+//THIS FILE IS DEPRECATED. DO NOT USE!
 // sudokuService.js
 
 const sudoku = {}; // Lógica de la librería Sudoku

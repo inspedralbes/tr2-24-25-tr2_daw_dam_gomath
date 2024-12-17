@@ -57,16 +57,53 @@ export default {
       this.selectedCell = { row, col }; // Seleccionamos la celda
     },
     updateCell(row, col) {
-  console.log(row, col);
+      console.log(row, col);
 
-  console.log('antes del update');
+      // Comprobamos si la celda no es de solo lectura
+      if (!this.tablero[row][col].readonly) {
+        const num = this.numeroSeleccionado;  // Número seleccionado por el usuario
 
-  // Comprobamos si la celda no es de solo lectura
-  if (!this.tablero[row][col].readonly) {
-    // Actualizamos el valor de la celda con el número seleccionado o vacío si no hay selección
-    this.tablero[row][col].value = this.numeroSeleccionado || '';
-  }
-},
+        // Comprobamos si el número es válido en la fila
+        for (let c = 0; c < 9; c++) {
+          if (this.tablero[row][c].value === num) {
+            console.log(`Número ${num} ya existe en la fila.`);
+            return;  // Si el número ya está en la fila, salimos de la función
+          }
+        }
+
+        // Comprobamos si el número es válido en la columna
+        for (let r = 0; r < 9; r++) {
+          if (this.tablero[r][col].value === num) {
+            console.log(`Número ${num} ya existe en la columna.`);
+            return;  // Si el número ya está en la columna, salimos de la función
+          }
+        }
+
+        // Comprobamos si el número es válido en el subcuadrícula 3x3
+        const startRow = Math.floor(row / 3) * 3;  // Fila inicial de la subcuadrícula 3x3
+        const startCol = Math.floor(col / 3) * 3;  // Columna inicial de la subcuadrícula 3x3
+
+        for (let r = startRow; r < startRow + 3; r++) {
+          for (let c = startCol; c < startCol + 3; c++) {
+            // Asegurarnos de que no estamos verificando la celda seleccionada
+            if (r !== row || c !== col) {
+              if (this.tablero[r][c].value === num) {
+                console.log(`Número ${num} ya existe en la subcuadrícula 3x3.`);
+                return;  // Si el número ya está en la subcuadrícula 3x3, salimos de la función
+              }
+            }
+          }
+        }
+
+
+        // Si pasa todas las comprobaciones, actualizamos el valor de la celda
+        this.tablero[row][col].value = num;
+        console.log(`Número ${num} insertado correctamente en la celda (${row}, ${col}).`);
+      }
+    }
+
+
+    ,
 
     async generarTablero(dificultad) {
       try {
@@ -81,23 +118,23 @@ export default {
       }
     },
     actualizarTablero(boardString) {
-  // Convertir el string generado en el formato esperado por el componente
-  const boardArray = boardString.split('');
-  let index = 0;
+      // Convertir el string generado en el formato esperado por el componente
+      const boardArray = boardString.split('');
+      let index = 0;
 
-  // Iterar sobre las filas (9 filas)
-  for (let row = 0; row < 9; row++) {
-    // Iterar sobre las columnas (9 columnas por fila)
-    for (let col = 0; col < 9; col++) {
-      // Cada celda será un objeto con su valor y si es solo de lectura o no
-      this.tablero[col][row] = {
-        value: boardArray[index] === '.' ? '' : boardArray[index],  // Si es '.', dejamos la celda vacía
-        readonly: boardArray[index] !== '.',  // Si no es '.', la celda es de solo lectura
-      };
-      index++;  // Aumentamos el índice para movernos al siguiente carácter en el string
-    }
-  }
-},
+      // Iterar sobre las filas (9 filas)
+      for (let row = 0; row < 9; row++) {
+        // Iterar sobre las columnas (9 columnas por fila)
+        for (let col = 0; col < 9; col++) {
+          // Cada celda será un objeto con su valor y si es solo de lectura o no
+          this.tablero[col][row] = {
+            value: boardArray[index] === '.' ? '' : boardArray[index],  // Si es '.', dejamos la celda vacía
+            readonly: boardArray[index] !== '.',  // Si no es '.', la celda es de solo lectura
+          };
+          index++;  // Aumentamos el índice para movernos al siguiente carácter en el string
+        }
+      }
+    },
     seleccionarNivel(nivel) {
       console.log(nivel);
       this.dificultad = nivel.toLowerCase();
@@ -149,12 +186,17 @@ export default {
 /* Estilos del tablero */
 .tauler {
   display: grid;
-  grid-template-columns: repeat(9, 1fr);  /* 9 columnas, una por cada celda del tablero */
-  grid-template-rows: repeat(9, 1fr);     /* 9 filas */
-  width: 470px;                           /* Tamaño fijo del tablero */
-  height: 470px;                          /* Asegura que sea cuadrado */
+  grid-template-columns: repeat(9, 1fr);
+  /* 9 columnas, una por cada celda del tablero */
+  grid-template-rows: repeat(9, 1fr);
+  /* 9 filas */
+  width: 470px;
+  /* Tamaño fijo del tablero */
+  height: 470px;
+  /* Asegura que sea cuadrado */
   margin: 50px auto;
-  gap: 1px; /* Espacio entre las celdas */
+  gap: 1px;
+  /* Espacio entre las celdas */
 }
 
 /* Estilos de las celdas del tablero */
@@ -169,8 +211,10 @@ export default {
 }
 
 .sudoku-cell input {
-  width: 99%;   /* Ajusta el tamaño del input dentro de la celda */
-  height: 99%;  /* Mantiene la relación de aspecto dentro de la celda */
+  width: 99%;
+  /* Ajusta el tamaño del input dentro de la celda */
+  height: 99%;
+  /* Mantiene la relación de aspecto dentro de la celda */
   text-align: center;
   border: solid black 0.5px;
   background-color: #f0f0f0;
@@ -179,8 +223,4 @@ export default {
 .sudoku-cell input:focus {
   outline: none;
 }
-
-
-
-
 </style>
