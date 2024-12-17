@@ -9,7 +9,7 @@ const sudoku = {}; // Lógica de la librería Sudoku
  * @param {string[]} B - Segundo arreglo de elementos.
  * @returns {string[]} - Arreglo con todas las combinaciones posibles de A y B.
  */
-sudoku._cross = function(A, B) {
+sudoku._cross = function (A, B) {
   const result = [];
   for (let i = 0; i < A.length; i++) {
     for (let j = 0; j < B.length; j++) {
@@ -21,9 +21,7 @@ sudoku._cross = function(A, B) {
 
 // Constantes clave
 sudoku.DIGITS = "123456789"; // Dígitos permitidos
-const ROWS = "ABCDEFGHI"; // Filas
-const COLS = sudoku.DIGITS; // Columnas
-const SQUARES = sudoku._cross(ROWS, COLS); // Todas las casillas ("A1", "A2", ... "I9")
+
 
 // Niveles de dificultad: Número de casillas visibles
 const DIFFICULTY = {
@@ -42,7 +40,7 @@ sudoku.BLANK_CHAR = "."; // Carácter de casilla vacía
  * @param {any[]} array - El arreglo a barajar.
  * @returns {any[]} - Una copia del arreglo barajado.
  */
-sudoku._shuffle = function(array) {
+sudoku._shuffle = function (array) {
   const shuffled = array.slice();
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -83,22 +81,37 @@ function solveSudoku(board) {
  * @returns {boolean} - True si el movimiento es válido, de lo contrario false.
  */
 function isValidMove(board, row, col, digit) {
+  console.log('on service');
+
   const startRow = Math.floor(row / 3) * 3;
   const startCol = Math.floor(col / 3) * 3;
 
+  // Validar fila
   for (let i = 0; i < 9; i++) {
-    // Validar fila, columna y subcuadrícula
-    if (
-      board[row * 9 + i] === digit || // Fila
-      board[i * 9 + col] === digit || // Columna
-      board[(startRow + Math.floor(i / 3)) * 9 + startCol + (i % 3)] === digit // Subcuadrícula
-    ) {
+    if (board[row][i].value === digit) {
+      return false;
+    }
+  }
+
+  // Validar columna
+  for (let i = 0; i < 9; i++) {
+    if (board[i][col].value === digit) {
+      return false;
+    }
+  }
+
+  // Validar subcuadrícula 3x3
+  for (let i = 0; i < 9; i++) {
+    const subRow = startRow + Math.floor(i / 3);
+    const subCol = startCol + (i % 3);
+    if (board[subRow][subCol].value === digit) {
       return false;
     }
   }
 
   return true;
 }
+
 
 /**
  * Genera un tablero de Sudoku válido según el nivel de dificultad.
@@ -134,15 +147,5 @@ function generarSudoku(dificultad) {
   return board.join("");
 }
 
-
-/**
- * Verifica si una posición específica es válida dentro del tablero.
- * @param {string} square - Posición de la casilla (e.g., "A1").
- * @returns {boolean} - True si la posición es válida, false de lo contrario.
- */
-function isSquareValid(square) {
-  return SQUARES.includes(square);
-}
-
 // Exportar las funciones necesarias
-export { generarSudoku as sudokuGenerator, isSquareValid };
+export { generarSudoku as sudokuGenerator, isValidMove };

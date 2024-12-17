@@ -17,7 +17,6 @@
             <input :value="cell.value" :readonly="cell.readonly" @click="updateCell(rowIndex, colIndex)" />
           </div>
         </div>
-
       </div>
 
       <!-- Insertar número -->
@@ -31,135 +30,134 @@
 </template>
 
 <script>
-import { sudokuGenerator } from "../../../services/sudokuService";
+import { isValidMove, sudokuGenerator } from "../../../services/sudokuService";
+
 
 export default {
   data() {
     return {
+      // Estado inicial del tablero, vacío con 9 filas y 9 columnas
       tablero: Array(9).fill().map(() => Array(9).fill({ value: '', readonly: false })),
       selectedCell: { row: null, col: null },
       dificultad: null,
-      numeroSeleccionado: null, // Para almacenar el número seleccionado
-      nivelSeleccionado: false,
-      niveles: ["Novell", "Vetera", "Elit", "Professional"] // Niveles de dificultad
+      numeroSeleccionado: null, // Número seleccionado para insertar
+      nivelSeleccionado: false, // Indicador de si se ha seleccionado un nivel
+      niveles: ["Novell", "Vetera", "Elit", "Professional"]
     };
   },
+
   methods: {
+    /**
+     * Crea una subgrilla vacía con 9 celdas.
+     * @returns {Array} Subgrilla creada
+     */
     createSubgrid() {
       return Array.from({ length: 9 }, () => ({ value: '', readonly: false }));
     },
+
+    /**
+     * Establece el número seleccionado para usar en el tablero.
+     * @param {number} num - Número seleccionado
+     */
     insertarNumero(num) {
-      this.numeroSeleccionado = num; // Guardamos el número seleccionado
+      this.numeroSeleccionado = num; // Asigna el número seleccionado
       console.log(this.numeroSeleccionado);
-
     },
+
+    /**
+     * Marca una celda como seleccionada para permitir su edición.
+     * @param {number} row - Fila de la celda seleccionada
+     * @param {number} col - Columna de la celda seleccionada
+     */
     seleccionarCelda(row, col) {
-      this.selectedCell = { row, col }; // Seleccionamos la celda
+      this.selectedCell = { row, col }; // Actualiza la celda seleccionada
     },
+
+    /**
+     * Actualiza el valor de una celda si el número es válido según las reglas de Sudoku.
+     * @param {number} row - Fila de la celda a actualizar
+     * @param {number} col - Columna de la celda a actualizar
+     */
     updateCell(row, col) {
-      console.log(row, col);
-
-      // Comprobamos si la celda no es de solo lectura
       if (!this.tablero[row][col].readonly) {
-        const num = this.numeroSeleccionado;  // Número seleccionado por el usuario
+        const num = this.numeroSeleccionado;
 
-        // Comprobamos si el número es válido en la fila
-        for (let c = 0; c < 9; c++) {
-          if (this.tablero[row][c].value === num) {
-            console.log(`Número ${num} ya existe en la fila.`);
-            return;  // Si el número ya está en la fila, salimos de la función
-          }
+        const isMoveOk = isValidMove(this.tablero, row, col, num);
+
+        if (!isMoveOk) {
+          alert(`El número ${num} no es válido en esa posición.`);
+          return;
         }
 
-        // Comprobamos si el número es válido en la columna
-        for (let r = 0; r < 9; r++) {
-          if (this.tablero[r][col].value === num) {
-            console.log(`Número ${num} ya existe en la columna.`);
-            return;  // Si el número ya está en la columna, salimos de la función
-          }
-        }
-
-        // Comprobamos si el número es válido en el subcuadrícula 3x3
-        const startRow = Math.floor(row / 3) * 3;  // Fila inicial de la subcuadrícula 3x3
-        const startCol = Math.floor(col / 3) * 3;  // Columna inicial de la subcuadrícula 3x3
-
-        for (let r = startRow; r < startRow + 3; r++) {
-          for (let c = startCol; c < startCol + 3; c++) {
-            // Asegurarnos de que no estamos verificando la celda seleccionada
-            if (r !== row || c !== col) {
-              if (this.tablero[r][c].value === num) {
-                console.log(`Número ${num} ya existe en la subcuadrícula 3x3.`);
-                return;  // Si el número ya está en la subcuadrícula 3x3, salimos de la función
-              }
-            }
-          }
-        }
-
-
-        // Si pasa todas las comprobaciones, actualizamos el valor de la celda
-        this.tablero[row][col].value = num;
-        console.log(`Número ${num} insertado correctamente en la celda (${row}, ${col}).`);
+        this.tablero[row][col].value = num; // Actualiza el valor si el movimiento es válido
       }
-    }
+    },
 
-
-    ,
-
+    /**
+     * Genera un tablero de Sudoku con el nivel de dificultad seleccionado.
+     * @param {string} dificultad - Dificultad del tablero
+     */
     async generarTablero(dificultad) {
       try {
-        // Generar tablero desde el servicio
-        const generatedBoard = sudokuGenerator(dificultad);
+        const generatedBoard = sudokuGenerator(dificultad); // Llama al generador de Sudoku
         console.log("Tablero generado:", generatedBoard);
-
-        // Actualizar el tablero
-        this.actualizarTablero(generatedBoard);
+        this.actualizarTablero(generatedBoard); // Actualiza el tablero
       } catch (error) {
         console.error("Error al generar el tablero:", error);
       }
     },
+
+    /**
+     * Actualiza el tablero con un nuevo conjunto de valores.
+     * @param {string} boardString - Representación del tablero como un string
+     */
     actualizarTablero(boardString) {
-      // Convertir el string generado en el formato esperado por el componente
-      const boardArray = boardString.split('');
+      const boardArray = boardString.split(''); // Convierte el string en un array
       let index = 0;
 
-      // Iterar sobre las filas (9 filas)
+      // Itera sobre las filas y columnas para actualizar el tablero
       for (let row = 0; row < 9; row++) {
-        // Iterar sobre las columnas (9 columnas por fila)
         for (let col = 0; col < 9; col++) {
-          // Cada celda será un objeto con su valor y si es solo de lectura o no
           this.tablero[col][row] = {
-            value: boardArray[index] === '.' ? '' : boardArray[index],  // Si es '.', dejamos la celda vacía
-            readonly: boardArray[index] !== '.',  // Si no es '.', la celda es de solo lectura
+            value: boardArray[index] === '.' ? '' : boardArray[index], // Si es '.', deja vacío
+            readonly: boardArray[index] !== '.', // Si no es '.', marca como solo lectura
           };
-          index++;  // Aumentamos el índice para movernos al siguiente carácter en el string
+          index++;
         }
       }
     },
+
+    /**
+     * Selecciona el nivel de dificultad y genera el tablero correspondiente.
+     * @param {string} nivel - Nivel de dificultad seleccionado
+     */
     seleccionarNivel(nivel) {
       console.log(nivel);
       this.dificultad = nivel.toLowerCase();
       console.log(this.dificultad);
-      this.nivelSeleccionado = true;
+      this.nivelSeleccionado = true; // Marca que se ha seleccionado un nivel
+
       if (this.nivelSeleccionado) {
+        // Mapeo de los niveles a las opciones correspondientes del servicio
         const dificultadMap = {
           "novell": "easy",
           "vetera": "medium",
           "elit": "hard",
           "professional": "very-hard"
         };
-        //Mapeo del nivel introducido por el usuario
-        const dificultadServicio = dificultadMap[this.dificultad];
+
+        const dificultadServicio = dificultadMap[this.dificultad]; // Obtiene la dificultad mapeada
         console.log(dificultadServicio);
 
         if (dificultadServicio) {
-          this.generarTablero(dificultadServicio);
+          this.generarTablero(dificultadServicio); // Genera el tablero con la dificultad seleccionada
         } else {
-          console.error("Dificultad no válida seleccionada");
+          console.error("Dificultad no válida seleccionada"); // Maneja errores de dificultad no válida
         }
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -169,6 +167,9 @@ export default {
   justify-content: center;
   gap: 1rem;
   margin: 20px 0;
+}
+.readonly {
+  font-weight: bold;
 }
 
 .nivel {
