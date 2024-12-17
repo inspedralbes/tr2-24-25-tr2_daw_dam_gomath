@@ -47,6 +47,19 @@ export const useTipoPartidaStore = defineStore(localStorageTipoPartida, () => {
       router.push('/Offline/PartidaFallos');
     }
   }
+  function setCantidadOnline(cantidad){
+    tipoPartida.value.cantidad = cantidad;
+    updateLocalStorage();
+    console.log('Hola soy cantidad', cantidad, tipoPartida);
+    if (tipoPartida.value.modo == 'numero') {
+      router.push('/Online/CodigoPartida');
+    }
+    else if (tipoPartida.value.modo == 'crono') {
+      router.push('/Online/CodigoPartida');
+    } else if (tipoPartida.value.modo == 'fallos') {
+      router.push('/Online/CodigoPartida');
+    }
+  }
 
   function setDificultat(dificultat) {
     tipoPartida.value.dificultat = dificultat;
@@ -60,6 +73,7 @@ export const useTipoPartidaStore = defineStore(localStorageTipoPartida, () => {
     setModo,
     setCantidad,
     setDificultat,
+    setCantidadOnline,
   };
 });
 
@@ -77,7 +91,7 @@ export default {
       const baseTabs = [
         { to: '/', label: 'HOME' },
         { to: '/Offline', label: 'OFFLINE' },
-        { to: '/Online', label: 'ONLINE' },
+        { to: '/SalaEspera', label: 'ONLINE' },
         { to: '/Jocs', label: 'JOCS' },
         { to: '/Apunts', label: 'APUNTS' },
       ];

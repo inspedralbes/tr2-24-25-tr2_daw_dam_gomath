@@ -14,6 +14,10 @@ import PartidaFallos from '../components/Offline/PartidaOffline/PartidaFallosScr
 import Logout from '../components/Login/LogoutScreen.vue'
 import Codigo from '../components/Jocs/codigo/game.vue'
 import Sudoku from '../components/Jocs/sudoku/hola.vue'
+import PartidaNumeroOnline from '@/components/Online/PartidaOnline/PartidaNumeroOnlineScreen.vue'
+import SalaEspera from '@/components/Online/SalaEsperaScreen.vue'
+import prePartidaOnline from '@/components/Online/PartidaOnline/prePartidaOnline.vue'
+import CodigoPartida from '@/components/Online/PartidaOnline/codigoScreen.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -86,7 +90,27 @@ const router = createRouter({
       path: '/Jocs/sudoku',
       name: 'Sudoku',
       component: Sudoku,
-    }
+    },
+    {
+      path: '/SalaEspera',
+      name: 'SalaEspera',
+      component: SalaEspera,
+    },
+    {
+      path: '/Online/PartidaNumero',
+      name: 'PartidaNumeroOnline',
+      component: PartidaNumeroOnline,
+    },
+    {
+      path: '/Online/prePartidaOnline',
+      name: 'prePartidaOnline',
+      component: prePartidaOnline,
+    },
+    {
+      path: '/Online/CodigoPartida',
+      name: 'CodigoPartida',
+      component: CodigoPartida,
+    },
   ],
 });
 
