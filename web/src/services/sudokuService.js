@@ -134,5 +134,15 @@ function generarSudoku(dificultad) {
   return board.join("");
 }
 
+
+/**
+ * Verifica si una posición específica es válida dentro del tablero.
+ * @param {string} square - Posición de la casilla (e.g., "A1").
+ * @returns {boolean} - True si la posición es válida, false de lo contrario.
+ */
+function isSquareValid(square) {
+  return SQUARES.includes(square);
+}
+
 // Exportar las funciones necesarias
 export { generarSudoku as sudokuGenerator, isSquareValid, isValidMove };
