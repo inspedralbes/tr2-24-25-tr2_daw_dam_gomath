@@ -43,11 +43,11 @@
 import { computed, onMounted, ref, onUnmounted } from 'vue';
 import { useOperationsStore } from "@/stores/comunicationManager";
 import { inject } from "vue";
-import { useTipoPartidaStore } from "../../../App.vue";
+import { useTipoPartidaStore } from "@/App.vue";
 import { useRouter } from 'vue-router';
-import { useRespuesta } from '../../../stores/respuesta'
-import { useUnaRespuesta } from '../../../stores/comunicationManager'
-import { useEstadisticasPartida } from '../../../stores/useEstadisticasPartida';
+import { useRespuesta } from '@/stores/respuesta'
+import { useUnaRespuesta } from '@/stores/comunicationManager'
+import { useEstadisticasPartida } from '@/stores/useEstadisticasPartida';
 
 export default {
   setup() {
