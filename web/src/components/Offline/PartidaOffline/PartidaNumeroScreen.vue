@@ -43,11 +43,11 @@
 import { computed, onMounted, ref, onUnmounted } from 'vue';
 import { useOperationsStore } from "@/stores/comunicationManager";
 import { inject } from "vue";
-import { useTipoPartidaStore } from "@/App.vue";
+import { useTipoPartidaStore } from "../../../App.vue";
 import { useRouter } from 'vue-router';
-import { useRespuesta } from '@/stores/respuesta'
-import { useUnaRespuesta } from '@/stores/comunicationManager'
-import { useEstadisticasPartida } from '@/stores/useEstadisticasPartida';
+import { useRespuesta } from '../../../stores/respuesta'
+import { useUnaRespuesta } from '../../../stores/comunicationManager'
+import { useEstadisticasPartida } from '../../../stores/useEstadisticasPartida';
 
 export default {
   setup() {
@@ -95,20 +95,35 @@ export default {
     };
 
     const handleAnswer = async (selected, index) => {
-      selectedAnswer.value = selected;
-      preguntasRespondidas.value[currentQuestionIndex.value] = index;
-      useRespuesta2.setRespuesta(operation.value.answers[index].value);
-      useRespuesta2.setId(operation.value.id_pregunta);
-      await unaRespuesta.fetchRespuesta();  
-      console.log('comparacion para correccion', operation.value.answers[index].value, useRespuesta2.correcta);
-      if (operation.value.answers[index].value !== useRespuesta2.correcta) {
-        estadisticas.setPreguntaIncorrecta();
-        estadisticas.setPuntos(-50);
-      } else {
-        estadisticas.setPreguntaCorrecta();
-        estadisticas.setPuntos(100);
-      }
-    };
+  const preguntaRespondida = preguntasRespondidas.value[currentQuestionIndex.value];
+
+  selectedAnswer.value = selected;
+  preguntasRespondidas.value[currentQuestionIndex.value] = index;
+
+  useRespuesta2.setRespuesta(operation.value.answers[index].value);
+  useRespuesta2.setId(operation.value.id_pregunta);
+  await unaRespuesta.fetchRespuesta();
+
+  console.log('Comparación para corrección', operation.value.answers[index].value, useRespuesta2.correcta);
+
+  if (preguntaRespondida !== undefined) {
+    console.log("Respuesta ya registrada para esta pregunta. No se actualizan estadísticas.");
+    return;
+  }
+
+  if (operation.value.answers[index].value !== useRespuesta2.correcta) {
+    estadisticas.setPreguntaIncorrecta();
+    estadisticas.setPuntos(-50);
+
+    if (estadisticas.estadisticasPartida.preguntasFalladas === tipoPartidaStore.tipoPartida.cantidad) {
+      router.push('/Offline/FinPartida');
+    }
+  } else {
+    estadisticas.setPreguntaCorrecta();
+    estadisticas.setPuntos(100);
+  }
+};
+
     const nextQuestion = () => {
       if (siguiente.value) {
         currentQuestionIndex.value++;
@@ -139,7 +154,6 @@ export default {
       getButtonColor,
       siguiente,
       preguntasRespondidas,
-      finalizar
     };
   },
 };
