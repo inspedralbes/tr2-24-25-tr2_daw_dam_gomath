@@ -34,38 +34,39 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useCodigoSala } from '@/stores/comunicationManager';
-import io from 'socket.io-client';  // Importa socket.io-client
-
+import io from 'socket.io-client';  
+import { useAppStore } from '@/stores/app'
 export default {
   setup() {
+    const loginInfo = useAppStore();
     const sala = useCodigoSala();
     const codigoSala = ref('');
-    const players = ref([]); // Lista de jugadores
+    const players = ref([]); 
     
-    // Conexión con el servidor Socket.IO
-    const socket = io('http://localhost:3000'); // Dirección del servidor
+    const socket = io('http://localhost:3000');
 
     onMounted(async () => {
       await sala.fetchCodigo();
       codigoSala.value = sala.codigo;
 
-      // Unirse a la sala cuando se obtiene el código
-      socket.emit('join-room', { roomCode: sala.codigo, username: 'Jugador' });
+      if(loginInfo.loginInfo.username){
+          socket.emit('join-room', { roomCode: sala.codigo, username: loginInfo.loginInfo.username });
+        }else{
+          socket.emit('join-room', { roomCode: sala.codigo, username: 'Jugador' });
 
-      // Escuchar el evento `update-users` para actualizar la lista de jugadores
+      }
+
       socket.on('update-users', (members) => {
-        players.value = members; // Actualizar la lista de jugadores
+        players.value = members;
       });
     });
 
-    // Redirigir a la partida
     const router = useRouter();
     function irPartida() {
       router.push('/Online/PartidaNumero');
     }
 
     onUnmounted(() => {
-      // Desconectar el socket al salir del componente
       socket.disconnect();
     });
 
