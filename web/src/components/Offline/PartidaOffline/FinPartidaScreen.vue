@@ -1,7 +1,14 @@
 <template>
     <div class="estadisticas-partida">
       <h2>Estadísticas de la Partida</h2>
-  
+      <div v-if="gifActivo=='easterEgg'"> 
+        <img src="../../../assets/img/easterEgg.webp" alt=""style="width: 250px;"> </div> 
+        <div v-if="gifActivo=='buenaPartida'"> 
+          <img src="../../../assets/img/buenaPartida.gif" alt=""style="width: 250px;"> </div> 
+          <div v-if="gifActivo=='malaPartida'"> 
+            <img src="../../../assets/img/malaPartida.gif" alt=""style="width: 250px;"> </div> 
+          <div v-if="gifActivo=='partidaNula'"> 
+            <img src="../../../assets/img/ningunaRespondida.webp" alt=""style="width: 250px;"> </div> 
       <div class="estadisticas">
         <div class="estadistica">
           <h3>Preguntas Acertadas</h3>
@@ -24,18 +31,40 @@
   </template>
   
   <script>
-  import { useEstadisticasPartida } from "@/stores/useEstadisticasPartida"; 
-  import { computed } from "vue";
   import { useRouter } from "vue-router";  
-  
-  export default {
-    setup() {
-      const estadisticasPartidaStore = useEstadisticasPartida();
-  
-      const estadisticas = computed(() => estadisticasPartidaStore.estadisticasPartida);
-  
-      const router = useRouter();
-  
+  import { watch, ref, computed } from "vue";
+import { useEstadisticasPartida } from "@/stores/useEstadisticasPartida";
+
+export default {
+  setup() {
+    const router = useRouter();
+    const estadisticasPartidaStore = useEstadisticasPartida();
+    const gifActivo = ref("");
+    const estadisticas = computed(() => estadisticasPartidaStore.estadisticasPartida || {
+      preguntasAcertadas: 0,
+      preguntasFalladas: 0,
+      puntos: 0,
+    });
+
+    const actualizarGifActivo = () => {
+      if (estadisticas.value.preguntasAcertadas + estadisticas.value.preguntasFalladas === 0) {
+        gifActivo.value = "partidaNula";
+      } else if (estadisticas.value.puntos >= 1000) {
+        gifActivo.value = "easterEgg";
+      } else if (estadisticas.value.puntos > 300) {
+        gifActivo.value = "buenaPartida";
+      } else {
+        gifActivo.value = "malaPartida";
+      }
+    };
+
+    // Ejecutar una vez al montar
+    actualizarGifActivo();
+
+    // Reactividad en los cambios
+    watch(estadisticas, () => {
+      actualizarGifActivo();
+    });
       const resetEstadisticasYRedirigir = () => {
         estadisticasPartidaStore.setEstadisticasZero();  
         router.push("/Offline");  
@@ -44,6 +73,7 @@
       return {
         estadisticas,
         resetEstadisticasYRedirigir,
+        gifActivo
       };
     },
   };
