@@ -104,9 +104,6 @@ export default {
       if (operation.value.answers[index].value !== useRespuesta2.correcta) {
         estadisticas.setPreguntaIncorrecta();
         estadisticas.setPuntos(-50);
-        if (estadisticas.estadisticasPartida.preguntasFalladas === tipoPartidaStore.tipoPartida.cantidad) {
-          router.push('/Offline/FinPartida');
-        }
       } else {
         estadisticas.setPreguntaCorrecta();
         estadisticas.setPuntos(100);
@@ -142,6 +139,7 @@ export default {
       getButtonColor,
       siguiente,
       preguntasRespondidas,
+      finalizar
     };
   },
 };
