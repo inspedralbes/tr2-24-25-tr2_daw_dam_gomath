@@ -1,66 +1,67 @@
 <template>
-    <div>
-      <div v-if="operation">
-        <h2>{{ operation.question }}</h2>
-  
-        <div class="crono">Tiempo restante: {{ timeLeft }}s</div>
-  
-        <div class="opciones">
-          <q-btn
-            v-for="(answer, index) in operation.answers"
-            :key="index"
-            :color="getButtonColor(index)"
-            class="opcion-btn"
-            @click="handleAnswer(answer, index)"
-            :disabled="!isTimeRemaining"
-            style="width: 200px; margin: 5px auto;"
-          >
-            {{ answer.value }}
-          </q-btn>
-        </div>
-  
-        <div class="navegacion">
-          <q-btn
-            @click="previousQuestion"
-            label="Anterior"
-          />
-          <q-btn
-            @click="nextQuestion"
-            label="Siguiente"
-          />
-        </div>
+  <div>
+    <div v-if="operation">
+      <h2>{{ operation.question }}</h2>
+
+      <div class="crono">Tiempo restante: {{ timeLeft }}s</div>
+
+      <div class="opciones">
+        <q-btn
+          v-for="(answer, index) in operation.answers"
+          :key="index"
+          :color="getButtonColor(index)"
+          class="opcion-btn"
+          @click="handleAnswer(answer, index)"
+          :disabled="!isTimeRemaining"
+          style="width: 200px; margin: 5px auto;"
+        >
+          {{ answer.value }}
+        </q-btn>
       </div>
-      <div v-else class="loading-container">
-        <img src="../../../assets/img/loading.gif" alt="cargando">
+
+      <div class="navegacion">
+        <q-btn
+          @click="previousQuestion"
+          label="Anterior"
+        />
+        <q-btn
+          @click="nextQuestion"
+          label="Siguiente"
+        />
       </div>
     </div>
+    <div v-else class="loading-container">
+      <img src="../../../assets/img/loading.gif" alt="cargando">
+    </div>
+  </div>
 </template>
-  
+
 <script>
-import { computed, onMounted, ref, onUnmounted } from 'vue';
+import { computed, onMounted, ref, onUnmounted } from "vue";
 import { useOperationsStore } from "@/stores/comunicationManager";
-import { inject } from 'vue';
-import { useRouter } from 'vue-router';
-import { useTipoPartidaStore } from '../../../App.vue';
-import { useRespuesta } from '../../../stores/respuesta'
-import { useUnaRespuesta } from '../../../stores/comunicationManager'
-import { useEstadisticasPartida } from '../../../stores/useEstadisticasPartida';
+import { inject } from "vue";
+import { useRouter } from "vue-router";
+import { useTipoPartidaStore } from "../../../App.vue";
+import { useRespuesta } from "../../../stores/respuesta";
+import { useUnaRespuesta } from "../../../stores/comunicationManager";
+import { useEstadisticasPartida } from "../../../stores/useEstadisticasPartida";
+
 export default {
   setup() {
     const estadisticas = useEstadisticasPartida();
     const unaRespuesta = useUnaRespuesta();
     const useRespuesta2 = useRespuesta();
     const tipoPartidaStore = useTipoPartidaStore();
-    const divActivo = inject('divActivo');
+    const divActivo = inject("divActivo");
     const operationsStore = useOperationsStore();
     const preguntasRespondidas = ref([]);
     const currentQuestionIndex = ref(0);
-    const selectedAnswer = ref(null); 
+    const selectedAnswer = ref(null);
     const correctAnswer = ref(null);
-    const timeLeft = ref(tipoPartidaStore.tipoPartida.cantidad); 
+    const timeLeft = ref(tipoPartidaStore.tipoPartida.cantidad);
     const isTimeRemaining = ref(true);
     let timer = null;
-    const isActive = ref(true)
+    const isActive = ref(true);
     const router = useRouter();
 
     const operation = computed(() => {
@@ -86,10 +87,12 @@ export default {
       startTimer();
       estadisticas.setEstadisticasZero();
     });
+
     onUnmounted(() => {
-      isActive.value = false; 
+      isActive.value = false;
       clearInterval(timer);
     });
+
     const startTimer = () => {
       if (timer) clearInterval(timer);
       timer = setInterval(() => {
@@ -98,42 +101,59 @@ export default {
         } else {
           isTimeRemaining.value = false;
           clearInterval(timer);
-          redirectToEnd(); 
+          redirectToEnd();
         }
       }, 1000);
     };
 
     const redirectToEnd = () => {
-      router.push('/Offline/FinPartida');
+      router.push("/Offline/FinPartida");
     };
 
     const getButtonColor = (index) => {
       if (preguntasRespondidas.value[currentQuestionIndex.value] === index) {
-        return 'grey';
+        return "grey";
       }
-      return 'primary';
+      return "primary";
     };
 
     const handleAnswer = async (selected, index) => {
-      if (!isTimeRemaining.value) return;
-      selectedAnswer.value = selected;
-      correctAnswer.value = selected.is_correct;
-      preguntasRespondidas.value[currentQuestionIndex.value] = index;
-      useRespuesta2.setRespuesta(operation.value.answers[index].value);
-      useRespuesta2.setId(operation.value.id_pregunta);
-      await unaRespuesta.fetchRespuesta();
-      console.log('comparacion para correccion', operation.value.answers[index].value, useRespuesta2.correcta);
-      if (operation.value.answers[index].value !== useRespuesta2.correcta) {
-        estadisticas.setPreguntaIncorrecta();
-        estadisticas.setPuntos(-50);
-        if (estadisticas.estadisticasPartida.preguntasFalladas === tipoPartidaStore.tipoPartida.cantidad) {
-          router.push('/Offline/FinPartida');
-        }
-      } else {
-        estadisticas.setPreguntaCorrecta();
-        estadisticas.setPuntos(100);
-      }
-    };
+  if (!isTimeRemaining.value) return;
+
+  const preguntaRespondida = preguntasRespondidas.value[currentQuestionIndex.value];
+
+  if (preguntaRespondida === undefined) {
+    selectedAnswer.value = selected;
+    correctAnswer.value = selected.is_correct;
+    preguntasRespondidas.value[currentQuestionIndex.value] = index;
+
+    useRespuesta2.setRespuesta(operation.value.answers[index].value);
+    useRespuesta2.setId(operation.value.id_pregunta);
+
+    await unaRespuesta.fetchRespuesta();
+    console.log(
+      "Comparación para corrección",
+      operation.value.answers[index].value,
+      useRespuesta2.correcta
+    );
+
+    if (operation.value.answers[index].value !== useRespuesta2.correcta) {
+      estadisticas.setPreguntaIncorrecta();
+      estadisticas.setPuntos(-50);
+    } else {
+      estadisticas.setPreguntaCorrecta();
+      estadisticas.setPuntos(100);
+    }
+  } else {
+    console.log("Cambiando respuesta seleccionada.");
+    selectedAnswer.value = selected;
+    preguntasRespondidas.value[currentQuestionIndex.value] = index;
+  }
+
+  console.log("Respuesta seleccionada:", selected.value);
+  console.log("Índice registrado:", index);
+};
+
 
     const nextQuestion = () => {
       if (hasNextQuestion.value) {
@@ -166,7 +186,7 @@ export default {
       hasNextQuestion,
       preguntasRespondidas,
       timeLeft,
-      isTimeRemaining
+      isTimeRemaining,
     };
   },
 };
@@ -178,7 +198,7 @@ export default {
   flex-direction: column;
   gap: 10px;
   margin-top: 20px;
-  align-items: center; 
+  align-items: center;
 }
 
 .opcion-btn {
