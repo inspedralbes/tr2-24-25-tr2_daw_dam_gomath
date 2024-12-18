@@ -120,16 +120,9 @@ export default {
     const nextQuestion = () => {
       currentQuestionIndex.value++;
       answered.value = false;
-      selectedAnswer.value = null;      
+      selectedAnswer.value = null;
     };
 
-    const previousQuestion = () => {
-      if (currentQuestionIndex.value > 0) {
-        currentQuestionIndex.value--;
-        answered.value = false;
-        selectedAnswer.value = null;
-      }
-    };
 
     return {
       operation,
@@ -141,12 +134,14 @@ export default {
       preguntasRespondidas,
       isFetching,
       nextQuestion,
-      previousQuestion
     };
   },
 };
 </script>
 <style scoped>
+h2{
+  text-align: center;
+}
 .opciones {
   display: flex;
   flex-direction: column;
