@@ -95,32 +95,42 @@ export default {
     };
 
     const handleAnswer = async (selected, index) => {
+
   const preguntaRespondida = preguntasRespondidas.value[currentQuestionIndex.value];
 
-  selectedAnswer.value = selected;
-  preguntasRespondidas.value[currentQuestionIndex.value] = index;
+  if (preguntaRespondida === undefined) {
+    selectedAnswer.value = selected;
+    preguntasRespondidas.value[currentQuestionIndex.value] = index;
 
-  useRespuesta2.setRespuesta(operation.value.answers[index].value);
-  useRespuesta2.setId(operation.value.id_pregunta);
-  await unaRespuesta.fetchRespuesta();
+    useRespuesta2.setRespuesta(operation.value.answers[index].value);
+    useRespuesta2.setId(operation.value.id_pregunta);
 
-  console.log('Comparación para corrección', operation.value.answers[index].value, useRespuesta2.correcta);
+    await unaRespuesta.fetchRespuesta();
 
-  if (preguntaRespondida !== undefined) {
-    console.log("Respuesta ya registrada para esta pregunta. No se actualizan estadísticas.");
-    return;
-  }
-
-  if (operation.value.answers[index].value !== useRespuesta2.correcta) {
-    estadisticas.setPreguntaIncorrecta();
-    estadisticas.setPuntos(-50);
-
-    if (estadisticas.estadisticasPartida.preguntasFalladas === tipoPartidaStore.tipoPartida.cantidad) {
-      router.push('/Offline/FinPartida');
+    if (operation.value.answers[index].value !== useRespuesta2.correcta) {
+      estadisticas.setPreguntaIncorrecta();
+      estadisticas.setPuntos(-50);
+    } else {
+      estadisticas.setPreguntaCorrecta();
+      estadisticas.setPuntos(100);
     }
   } else {
-    estadisticas.setPreguntaCorrecta();
-    estadisticas.setPuntos(100);
+    if (operation.value.answers[preguntaRespondida].value === useRespuesta2.correcta) {
+      estadisticas.unSetPreguntaCorrecta();
+    } else {
+      estadisticas.unSetPreguntaIncorrecta();
+    }
+
+    selectedAnswer.value = selected;
+    preguntasRespondidas.value[currentQuestionIndex.value] = index;
+
+    if (operation.value.answers[index].value !== useRespuesta2.correcta) {
+      estadisticas.setPreguntaIncorrecta();
+      estadisticas.setPuntos(-50);
+    } else {
+      estadisticas.setPreguntaCorrecta();
+      estadisticas.setPuntos(100);
+    }
   }
 };
 

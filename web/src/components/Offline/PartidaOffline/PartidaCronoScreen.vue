@@ -45,6 +45,7 @@ import { useTipoPartidaStore } from "../../../App.vue";
 import { useRespuesta } from "../../../stores/respuesta";
 import { useUnaRespuesta } from "../../../stores/comunicationManager";
 import { useEstadisticasPartida } from "../../../stores/useEstadisticasPartida";
+import { colors } from "quasar";
 
 export default {
   setup() {
@@ -124,18 +125,12 @@ export default {
 
   if (preguntaRespondida === undefined) {
     selectedAnswer.value = selected;
-    correctAnswer.value = selected.is_correct;
     preguntasRespondidas.value[currentQuestionIndex.value] = index;
 
     useRespuesta2.setRespuesta(operation.value.answers[index].value);
     useRespuesta2.setId(operation.value.id_pregunta);
 
     await unaRespuesta.fetchRespuesta();
-    console.log(
-      "Comparación para corrección",
-      operation.value.answers[index].value,
-      useRespuesta2.correcta
-    );
 
     if (operation.value.answers[index].value !== useRespuesta2.correcta) {
       estadisticas.setPreguntaIncorrecta();
@@ -145,14 +140,25 @@ export default {
       estadisticas.setPuntos(100);
     }
   } else {
-    console.log("Cambiando respuesta seleccionada.");
+    if (operation.value.answers[preguntaRespondida].value === useRespuesta2.correcta) {
+      estadisticas.unSetPreguntaCorrecta();
+    } else {
+      estadisticas.unSetPreguntaIncorrecta();
+    }
+
     selectedAnswer.value = selected;
     preguntasRespondidas.value[currentQuestionIndex.value] = index;
-  }
 
-  console.log("Respuesta seleccionada:", selected.value);
-  console.log("Índice registrado:", index);
+    if (operation.value.answers[index].value !== useRespuesta2.correcta) {
+      estadisticas.setPreguntaIncorrecta();
+      estadisticas.setPuntos(-50);
+    } else {
+      estadisticas.setPreguntaCorrecta();
+      estadisticas.setPuntos(100);
+    }
+  }
 };
+
 
 
     const nextQuestion = () => {
