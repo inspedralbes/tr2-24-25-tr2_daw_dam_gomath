@@ -95,23 +95,45 @@ export default {
     };
 
     const handleAnswer = async (selected, index) => {
-      selectedAnswer.value = selected;
-      preguntasRespondidas.value[currentQuestionIndex.value] = index;
-      useRespuesta2.setRespuesta(operation.value.answers[index].value);
-      useRespuesta2.setId(operation.value.id_pregunta);
-      await unaRespuesta.fetchRespuesta();  
-      console.log('comparacion para correccion', operation.value.answers[index].value, useRespuesta2.correcta);
-      if (operation.value.answers[index].value !== useRespuesta2.correcta) {
-        estadisticas.setPreguntaIncorrecta();
-        estadisticas.setPuntos(-50);
-        if (estadisticas.estadisticasPartida.preguntasFalladas === tipoPartidaStore.tipoPartida.cantidad) {
-          router.push('/Offline/FinPartida');
-        }
-      } else {
-        estadisticas.setPreguntaCorrecta();
-        estadisticas.setPuntos(100);
-      }
-    };
+
+  const preguntaRespondida = preguntasRespondidas.value[currentQuestionIndex.value];
+
+  if (preguntaRespondida === undefined) {
+    selectedAnswer.value = selected;
+    preguntasRespondidas.value[currentQuestionIndex.value] = index;
+
+    useRespuesta2.setRespuesta(operation.value.answers[index].value);
+    useRespuesta2.setId(operation.value.id_pregunta);
+
+    await unaRespuesta.fetchRespuesta();
+
+    if (operation.value.answers[index].value !== useRespuesta2.correcta) {
+      estadisticas.setPreguntaIncorrecta();
+      estadisticas.setPuntos(-50);
+    } else {
+      estadisticas.setPreguntaCorrecta();
+      estadisticas.setPuntos(100);
+    }
+  } else {
+    if (operation.value.answers[preguntaRespondida].value === useRespuesta2.correcta) {
+      estadisticas.unSetPreguntaCorrecta();
+    } else {
+      estadisticas.unSetPreguntaIncorrecta();
+    }
+
+    selectedAnswer.value = selected;
+    preguntasRespondidas.value[currentQuestionIndex.value] = index;
+
+    if (operation.value.answers[index].value !== useRespuesta2.correcta) {
+      estadisticas.setPreguntaIncorrecta();
+      estadisticas.setPuntos(-50);
+    } else {
+      estadisticas.setPreguntaCorrecta();
+      estadisticas.setPuntos(100);
+    }
+  }
+};
+
     const nextQuestion = () => {
       if (siguiente.value) {
         currentQuestionIndex.value++;

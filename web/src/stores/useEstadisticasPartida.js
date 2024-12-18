@@ -41,11 +41,24 @@ export const useEstadisticasPartida = defineStore('estadisticasPartida', () => {
     console.log(estadisticasPartida.value);
   }
 
+  function unSetPreguntaCorrecta() {
+    estadisticasPartida.value.preguntasAcertadas--;
+    estadisticasPartida.value.puntos -= 100;
+    updateLocalStorage();
+  }
+
+  function unSetPreguntaIncorrecta() {
+    estadisticasPartida.value.preguntasFalladas--;
+    estadisticasPartida.value.puntos += +50;
+    updateLocalStorage();
+  }
   return {
     estadisticasPartida,
     setPreguntaCorrecta,
     setPreguntaIncorrecta,
     setPuntos,
     setEstadisticasZero,
+    unSetPreguntaCorrecta,
+    unSetPreguntaIncorrecta
   };
 });

@@ -21,12 +21,6 @@
       <!-- Botones de navegación -->
       <div class="navegacion">
         <q-btn
-          @click="previousQuestion"
-          label="Anterior"
-          :disabled="currentQuestionIndex === 0"
-          style="width: 48%;"
-        />
-        <q-btn
           @click="nextQuestion"
           label="Siguiente"
           :disabled="!answered"
@@ -43,11 +37,11 @@
 import { computed, onMounted, ref, onUnmounted } from 'vue';
 import { useOperationsStore } from "@/stores/comunicationManager";
 import { inject } from 'vue';
-import { useTipoPartidaStore } from '../../../App.vue';
+import { useTipoPartidaStore } from '@/App.vue';
 import { useRouter } from 'vue-router';
-import { useEstadisticasPartida } from '../../../stores/useEstadisticasPartida';
-import { useRespuesta } from '../../../stores/respuesta'
-import { useUnaRespuesta } from '../../../stores/comunicationManager'
+import { useEstadisticasPartida } from '@/stores/useEstadisticasPartida';
+import { useRespuesta } from '@/stores/respuesta'
+import { useUnaRespuesta } from '@/stores/comunicationManager'
 
 export default {
   setup() {
@@ -126,16 +120,9 @@ export default {
     const nextQuestion = () => {
       currentQuestionIndex.value++;
       answered.value = false;
-      selectedAnswer.value = null;      
+      selectedAnswer.value = null;
     };
 
-    const previousQuestion = () => {
-      if (currentQuestionIndex.value > 0) {
-        currentQuestionIndex.value--;
-        answered.value = false;
-        selectedAnswer.value = null;
-      }
-    };
 
     return {
       operation,
@@ -147,12 +134,14 @@ export default {
       preguntasRespondidas,
       isFetching,
       nextQuestion,
-      previousQuestion
     };
   },
 };
 </script>
 <style scoped>
+h2{
+  text-align: center;
+}
 .opciones {
   display: flex;
   flex-direction: column;
@@ -189,7 +178,7 @@ export default {
 .navegacion {
   margin-top: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .q-btn {
