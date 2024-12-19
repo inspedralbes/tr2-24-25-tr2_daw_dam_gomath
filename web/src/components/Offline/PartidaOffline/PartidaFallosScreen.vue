@@ -22,7 +22,7 @@
       <div class="navegacion">
         <q-btn
           @click="nextQuestion"
-          label="Siguiente"
+          label="Següent"
           :disabled="!answered"
           style="width: 48%;"
         />

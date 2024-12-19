@@ -25,12 +25,12 @@
         <q-btn
           v-if="siguiente"
           @click="nextQuestion"
-          label="Siguiente"
+          label="Següent"
         />
         <q-btn
           v-else
           @click="finalizar"
-          label="Finalizar"
+          label="Finalitzar"
         />
       </div>
     </div>

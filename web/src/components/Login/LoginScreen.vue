@@ -2,8 +2,8 @@
   <q-page class="flex flex-center">
     <q-card class="q-pa-md" style="width: 300px;">
       <q-card-section>
-        <div class="text-h6">Iniciar sesión</div>
-        <div class="text-subtitle2">Ingresa les teves credencials</div>
+        <div class="text-h6">Iniciar sessió</div>
+        <div class="text-subtitle2">Introdueix les teves credencials</div>
       </q-card-section>
 
       <q-card-section>
@@ -43,8 +43,8 @@ export default {
     const email = ref('');
     const password = ref('');
     const router = useRouter();
-    const isLoading = ref(false);  // Para controlar el estado de carga
-    const errorMessage = ref('');  // Para manejar los errores
+    const isLoading = ref(false);  
+    const errorMessage = ref(''); 
 
     const isValidEmail = computed(() => {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -93,7 +93,7 @@ export default {
           router.push('/Offline');
         } else {
           // Si la respuesta no es OK, muestra el mensaje de error
-          errorMessage.value = data.message || 'Credenciales incorrectas';
+          errorMessage.value = data.message || 'Credenciales incorrectes';
         }
       } catch (error) {
         console.error('Error de conexión o al hacer el fetch:', error);

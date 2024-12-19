@@ -3,7 +3,7 @@
     <q-card class="q-pa-md" style="width: 300px;">
       <q-card-section>
         <div class="text-h6">Registra't</div>
-        <div class="text-subtitle2">Ingresa les teves credencials</div>
+        <div class="text-subtitle2">Introdueix les teves credencials</div>
       </q-card-section>
 
       <q-card-section>

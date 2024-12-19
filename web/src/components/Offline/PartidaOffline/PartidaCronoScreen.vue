@@ -3,7 +3,7 @@
     <div v-if="operation">
       <h2>{{ operation.question }}</h2>
 
-      <div class="crono">Tiempo restante: {{ timeLeft }}s</div>
+      <div class="crono">Temps restant: {{ timeLeft }}s</div>
 
       <div class="opciones">
         <q-btn

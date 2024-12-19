@@ -1,13 +1,13 @@
 <template>
     <div class="estadisticas-partida">
-      <h4>Estadísticas de la Partida</h4>
+      <h4>Estadístiques de la Partida</h4>
       <div v-if="gifActivo=='easterEgg'"> 
         <img src="../../../assets/img/easterEgg.webp" alt=""style="width: 250px;"> </div> 
         <div v-if="gifActivo=='buenaPartida'"> 
-          <p>Bona partida</p>
+          <p>Bona partida!</p>
           <img src="../../../assets/img/buenaPartida.gif" alt=""style="width: 250px;"> </div> 
           <div v-if="gifActivo=='malaPartida'"> 
-            <p>Has de practicar més</p>
+            <p>Has de practicar més!</p>
             <img src="../../../assets/img/malaPartida.gif" alt=""style="width: 250px;"> </div> 
           <div v-if="gifActivo=='partidaNula'"> 
             <img src="../../../assets/img/ningunaRespondida.webp" alt=""style="width: 250px;"> </div> 
@@ -23,12 +23,12 @@
         </div>
   
         <div class="estadistica">
-          <h3>Punts</h3>
+          <h3>Puntuació</h3>
           <p>{{ estadisticas.puntos }}</p>
         </div>
       </div>
   
-      <q-btn @click="resetEstadisticasYRedirigir" label="Volver a jugar" color="secondary" />
+      <q-btn @click="resetEstadisticasYRedirigir" label="Tornar a jugar" color="secondary" />
     </div>
   </template>
   

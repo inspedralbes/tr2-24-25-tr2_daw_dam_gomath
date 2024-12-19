@@ -7,8 +7,8 @@
       <q-page-container>
         <q-card class="q-pa-md q-ma-md shadow-2">
           <q-card-section style="text-align: center;">
-            <h3>¿Segur que vols tancar sesión?</h3>
-            <h6>No podràs unir-te a cap sessió si no t'has loguejat prèviament.</h6>
+            <h3>Estàs segur que vols tancar la sessió?</h3>
+            <h6>No podràs unir-te a cap sessió si no has iniciat sessió prèviament.</h6>
           </q-card-section>
           <q-card-section class="text-center">
             <q-btn label="SI" color="red" icon="logout" @click="logout()" />

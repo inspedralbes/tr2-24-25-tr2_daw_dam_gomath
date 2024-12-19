@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md botones-container">
     <!-- Dropdown para el número de preguntas -->
-    <q-btn-dropdown color="primary" label="NUMERO DE PREGUNTAS" @click="tipoPartidaStore.setModo('numero')">
+    <q-btn-dropdown color="primary" label="NÚMERO DE PREGUNTAS" @click="tipoPartidaStore.setModo('numero')">
       <q-list>
         <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(10)">
           <q-item-section>
@@ -42,21 +42,21 @@
       </q-list>
     </q-btn-dropdown>
 
-    <q-btn-dropdown color="primary" label="HASTA QUE FALLES" @click="tipoPartidaStore.setModo('fallos')">
+    <q-btn-dropdown color="primary" label="FINS QUE FALLIS" @click="tipoPartidaStore.setModo('fallos')">
       <q-list>
         <q-item clickable v-close-popup  @click=" tipoPartidaStore.setCantidad(1)">
           <q-item-section>
-            <q-item-label>1 Fallo</q-item-label>
+            <q-item-label>1 Error</q-item-label>
           </q-item-section>
         </q-item>
         <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(3)">
           <q-item-section>
-            <q-item-label>3 Fallos</q-item-label>
+            <q-item-label>3 Errors</q-item-label>
           </q-item-section>
         </q-item>
         <q-item clickable v-close-popup @click="tipoPartidaStore.setCantidad(5)">
           <q-item-section>
-            <q-item-label>5 Fallos</q-item-label>
+            <q-item-label>5 Errors</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>

@@ -154,9 +154,9 @@ export default {
     <q-drawer v-if="divActivo === 'login' || divActivo === 'register'" show-if-above v-model="isLeftDrawerOpen"
       side="left" bordered>
       <q-tabs vertical>
-        <q-route-tab to="/register" label="REGISTRATE" />
-        <q-route-tab to="/Puntuacions" label="Puntuaciones" />
-        <q-route-tab to="/Configuracio" label="CONFIGURACIÓ" />
+        <q-route-tab to="/register" label="Registra't" />
+        <q-route-tab to="/Puntuacions" label="Puntuacions" />
+        <q-route-tab to="/Configuracio" label="Configuració" />
         <q-route-tab to="/Cerrar-sesion" label="Tancar sessió" class="text-red" />
       </q-tabs>
     </q-drawer>
@@ -170,7 +170,7 @@ export default {
                 @update:model-value="setDificultat('fácil')" />
             </q-item-section>
             <q-item-section>
-              <q-item-label>Fácil</q-item-label>
+              <q-item-label>Fàcil</q-item-label>
             </q-item-section>
           </q-item>
 
@@ -180,7 +180,7 @@ export default {
                 @update:model-value="setDificultat('intermedio')" />
             </q-item-section>
             <q-item-section>
-              <q-item-label>Intermedio</q-item-label>
+              <q-item-label>Intermig</q-item-label>
             </q-item-section>
           </q-item>
 
@@ -199,10 +199,10 @@ export default {
 
     <q-drawer v-if="divActivo === 'offline'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
       <q-tabs vertical>
-        <q-route-tab to="/Offline/prePartida" label="SUMA" />
-        <q-route-tab to="/Offline/prePartida" label="RESTA" />
-        <q-route-tab to="/Offline/prePartida" label="MULTIPLICACION" />
-        <q-route-tab to="/Offline/prePartida" label="DIVISION" />
+        <q-route-tab to="/Offline/prePartida" label="SUMES" />
+        <q-route-tab to="/Offline/prePartida" label="RESTES" />
+        <q-route-tab to="/Offline/prePartida" label="MULTIPLICACIÓNS" />
+        <q-route-tab to="/Offline/prePartida" label="DIVISIÓNS" />
       </q-tabs>
     </q-drawer>
 
@@ -224,10 +224,10 @@ export default {
 
     <q-drawer v-if="divActivo === 'online'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
       <q-tabs vertical>
-        <q-route-tab to="/sumaOffline" label="SUMA" />
+        <q-route-tab to="/sumaOffline" label="SUMES" />
         <q-route-tab to="/restaOffline" label="RESTA" />
-        <q-route-tab to="/multiplicacionOffline" label="MULTIPLICACION" />
-        <q-route-tab to="/divisionOffline" label="DIVISION" />
+        <q-route-tab to="/multiplicacionOffline" label="MULTIPLICACIÓNS" />
+        <q-route-tab to="/divisionOffline" label="DIVISIÓNS" />
       </q-tabs>
     </q-drawer>
 
@@ -239,7 +239,7 @@ export default {
               <q-radio v-model="color" val="teal" color="blue" @update:model-value="setDificultat('fácil')" />
             </q-item-section>
             <q-item-section>
-              <q-item-label>Fácil</q-item-label>
+              <q-item-label>Fàcil</q-item-label>
             </q-item-section>
           </q-item>
 
@@ -248,7 +248,7 @@ export default {
               <q-radio v-model="color" val="orange" color="orange" @update:model-value="setDificultat('intermedio')" />
             </q-item-section>
             <q-item-section>
-              <q-item-label>Intermedio</q-item-label>
+              <q-item-label>Intermig</q-item-label>
             </q-item-section>
           </q-item>
 
@@ -270,11 +270,11 @@ export default {
 
     <q-footer elevated style="height: calc(50px + 5px);">
       <div class="text-center py-2">
-        <p>&#169; 2024 GoMath. Todos los derechos reservados. <a href="https://www.institutpedralbes.cat"
+        <p>&#169; 2024 GoMath. Tots els drets reservats. <a href="https://www.institutpedralbes.cat"
             target="_blank" class="text-white">institutpedralbes.cat</a></p>
         <p style="font-size: 10px; color: #F7FFF7;">
-          La información contenida en esta aplicación es solo para fines educativos. No nos responsabilizamos por su uso
-          inapropiado.
+          La informació continguda en aquesta aplicació és només per a fins educatius.
+          No ens responsabilitzem pel seu ús inapropiat.
         </p>
       </div>
     </q-footer>
