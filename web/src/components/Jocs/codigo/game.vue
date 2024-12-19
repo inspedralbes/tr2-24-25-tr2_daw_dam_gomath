@@ -1,9 +1,9 @@
 <template>
   <div class="game-container">
-    <h1>Adivina el código secreto</h1>
+    <h1>Endevina el codi secret</h1>
 
     <div v-if="codes.length > 0" class="codes-list">
-      <p><strong>Pistas para el código secreto:</strong></p>
+      <p><strong>Pistes per al codi secret:</strong></p>
       <ul>
         <li v-for="(codeItem, index) in codes" :key="index" class="code-item">
           {{ codeItem.code  }}
@@ -16,7 +16,7 @@
     </div>
 
     <div v-else>
-      <p>Cargando las pistas...</p>
+      <p>Carregant les pistes...</p>
     </div>
   </div>
 </template>
@@ -32,8 +32,8 @@ export default {
       secretCode: '',
       userGuess: '',
       feedback: '',
-      isCorrect: false
-    };
+      isCorrect: false,
+      };
   },
   methods: {
     checkGuess() {
@@ -51,7 +51,8 @@ export default {
     try {
       const codesData = await fetchCodes();
       if (Array.isArray(codesData) && codesData.length > 0) {
-        const firstItem = codesData[0];
+        const numRand = Math.floor(Math.random() * 20);
+        const firstItem = codesData[numRand];
         if (firstItem.codi_json) {
           const decodedData = JSON.parse(firstItem.codi_json);
           if (decodedData.codes) {
