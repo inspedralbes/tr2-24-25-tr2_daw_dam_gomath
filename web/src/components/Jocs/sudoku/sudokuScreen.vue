@@ -1,7 +1,10 @@
 <template>
   <div>
     <!-- Selector de Nivel -->
-    <div class="leveler" v-if="!nivelSeleccionado">
+     <div class="leveler1" v-if="!nivelSeleccionado">
+      <h1>Nivell</h1>
+     </div>
+    <div class="leveler2" v-if="!nivelSeleccionado">
       <q-btn color="primary" class="nivel" v-for="nivel in niveles" :key="nivel" @click="seleccionarNivel(nivel)">
         {{ nivel }}
       </q-btn>
@@ -235,11 +238,18 @@ export default {
 
 <style scoped>
 /*Estilos del selector de nivel*/
-.leveler {
+.leveler1 {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin: 20px 0;
+  margin-top: 100px;
+}
+
+.leveler2 {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 20px;
 }
 
 .readonly {
@@ -311,6 +321,43 @@ export default {
   transition: background-color 0.3s;
   flex: 0%;
   margin: 5px;
+}
+
+/*Estilos del Panel de Control */
+.temps {
+    font-family: 'Aller', sans-serif;
+    font-size: 2rem;
+    color:rgb(77, 133, 236); /* Un color destacado para el tiempo */
+    text-align: center;
+    margin-top: 1rem;
+    animation: blink 1s infinite alternate; /* Animación para dar efecto de parpadeo */
+}
+
+/* Animación opcional para el tiempo */
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
+
+.errors {
+    font-family: 'Blogger Sans', sans-serif;
+    font-size: 1.5rem;
+    color: #F05050; /* Un color rojo suave para indicar errores */
+    background-color: #ffffff; /* Fondo claro para resaltar el texto */
+    border: 2px solid #F05050;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    margin-top: 1rem;
+    width: fit-content; /* Tamaño ajustado al contenido */
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35); /* Sombra suave */
 }
 
 </style>
