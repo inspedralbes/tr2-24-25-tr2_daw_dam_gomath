@@ -2,9 +2,9 @@
   <div>
     <!-- Selector de Nivel -->
     <div class="leveler" v-if="!nivelSeleccionado">
-      <div class="nivel" v-for="nivel in niveles" :key="nivel" @click="seleccionarNivel(nivel)">
+      <q-btn color="primary" class="nivel" v-for="nivel in niveles" :key="nivel" @click="seleccionarNivel(nivel)">
         {{ nivel }}
-      </div>
+      </q-btn>
     </div>
 
     <!-- Tablero de Sudoku -->
@@ -23,9 +23,9 @@
 
       <!-- Insertar número -->
       <div class="numeros">
-        <button v-for="num in numeros" :key="num" @click="insertarNumero(num)">
+        <q-btn color="primary" v-for="num in numeros" :key="num" @click="insertarNumero(num)">
           {{ num }}
-        </button>
+        </q-btn>
       </div>
 
       <!-- Control Panel -->
@@ -57,6 +57,7 @@ export default {
       tablero: Array(81).fill({ value: '', readonly: false }),
       selectedCell: { row: null, col: null },
       dificultad: null,
+      OriginVides: null,
       vides: null,
       maxTime: null,
       numeroSeleccionado: null, // Número seleccionado para insertar
@@ -75,8 +76,8 @@ export default {
      * @param {string} nivel - Nivel de dificultad seleccionado
      * novell = 6err
      * vetera = 4err
-     * elit = 3err 5'maxTime
-     * professional = 2err 4'maxTime
+     * elit = 3err & 5'maxTime
+     * professional = 2err & 4'maxTime
      */
     seleccionarNivel(nivel) {
       console.log(nivel);
@@ -97,20 +98,20 @@ export default {
         switch (this.dificultad) {
           case "novell":
             this.vides = 6;
-            this.OriginError = 6
+            this.OriginVides = 6
             break;
           case "vetera":
             this.vides = 4;
-            this.OriginError = 4
+            this.OriginVides = 4
             break;
           case "elit":
             this.vides = 3;
-            this.OriginError = 3
+            this.OriginVides = 3
             this.maxTime = 5;
             break;
           case "professional":
             this.vides = 2;
-            this.OriginError = 2
+            this.OriginVides = 2
             this.maxTime = 4;
             break;
           default:
@@ -206,7 +207,7 @@ export default {
           return;
         }
 
-    
+
         this.contadorNumeros[num]++;
 
 
@@ -226,7 +227,7 @@ export default {
 
     jocAcabat() {
       this.gameOver = true;
-      console.log(`Juego terminado. Errores cometidos: ${this.errors}/${this.OriginError}`);
+      console.log(`Juego terminado. vidas restantes: ${this.vides}/${this.OriginVides}`);
     }
   }
 }
@@ -293,6 +294,8 @@ export default {
   outline: none;
 }
 
+/*Estilos de los numeros a escojer*/
+
 .numeros {
   display: flex;
   flex-wrap: wrap;
@@ -300,14 +303,14 @@ export default {
   gap: 10px;
 }
 
-.numeros button {
+.numeros q-btn {
   padding: 10px;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
   border: 1px solid #000;
-  background-color: #f0f0f0;
   transition: background-color 0.3s;
   flex: 0%;
   margin: 5px;
 }
+
 </style>
