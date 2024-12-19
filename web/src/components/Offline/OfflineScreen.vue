@@ -41,7 +41,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
     gap: 20px; 
-    max-width: 600px; 
+    max-width: 400px; 
     margin: 20px auto 0; 
   }
   
