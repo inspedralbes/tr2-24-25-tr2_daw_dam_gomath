@@ -2,7 +2,7 @@
     {
         "id": 1,
         "problem_json": {
-            "question": "¿Cuánto es 3 + 5?",
+            "question": "Quant és 3 + 5?",
             "answers": [
                 { "value": 7, "is_correct": false },
                 { "value": 6, "is_correct": false },
@@ -16,7 +16,7 @@
     {
         "id": 2,
         "problem_json": {
-            "question": "¿Cuánto es 7 + 2?",
+            "question": "Quant és 7 + 2?",
             "answers": [
                 { "value": 9, "is_correct": true },
                 { "value": 8, "is_correct": false },
@@ -30,7 +30,7 @@
     {
         "id": 3,
         "problem_json": {
-            "question": "¿Cuánto es 12 + 23?",
+            "question": "Quant és 12 + 23?",
             "answers": [
                 { "value": 34, "is_correct": false },
                 { "value": 36, "is_correct": false },
@@ -44,7 +44,7 @@
     {
         "id": 4,
         "problem_json": {
-            "question": "¿Cuánto es 18 + 24?",
+            "question": "Quant és 18 + 24?",
             "answers": [
                 { "value": 41, "is_correct": false },
                 { "value": 42, "is_correct": true },
@@ -58,7 +58,7 @@
     {
         "id": 5,
         "problem_json": {
-            "question": "¿Cuánto es 102 + 203?",
+            "question": "Quant és 102 + 203?",
             "answers": [
                 { "value": 304, "is_correct": false },
                 { "value": 306, "is_correct": false },
@@ -72,7 +72,7 @@
     {
         "id": 6,
         "problem_json": {
-            "question": "¿Cuánto es 350 + 420?",
+            "question": "Quant és 350 + 420?",
             "answers": [
                 { "value": 760, "is_correct": false },
                 { "value": 780, "is_correct": false },
@@ -86,7 +86,7 @@
     {
         "id": 7,
         "problem_json": {
-            "question": "¿Cuánto es 4 + 6?",
+            "question": "Quant és 4 + 6?",
             "answers": [
                 { "value": 10, "is_correct": true },
                 { "value": 9, "is_correct": false },
@@ -100,7 +100,7 @@
     {
         "id": 8,
         "problem_json": {
-            "question": "¿Cuánto es 13 + 27?",
+            "question": "Quant és 13 + 27?",
             "answers": [
                 { "value": 41, "is_correct": false },
                 { "value": 40, "is_correct": true },
@@ -114,7 +114,7 @@
     {
         "id": 9,
         "problem_json": {
-            "question": "¿Cuánto es 6 + 1?",
+            "question": "Quant és 6 + 1?",
             "answers": [
                 { "value": 6, "is_correct": false },
                 { "value": 8, "is_correct": false },
@@ -128,7 +128,7 @@
     {
         "id": 10,
         "problem_json": {
-            "question": "¿Cuánto es 530 + 290?",
+            "question": "Quant és 530 + 290?",
             "answers": [
                 { "value": 810, "is_correct": false },
                 { "value": 830, "is_correct": false },
@@ -142,7 +142,7 @@
     {
         "id": 11,
         "problem_json": {
-            "question": "¿Cuánto es 2 + 6?",
+            "question": "Quant és 2 + 6?",
             "answers": [
                 { "value": 8, "is_correct": true },
                 { "value": 7, "is_correct": false },
@@ -156,7 +156,7 @@
     {
         "id": 12,
         "problem_json": {
-            "question": "¿Cuánto es 4 + 5?",
+            "question": "Quant és 4 + 5?",
             "answers": [
                 { "value": 8, "is_correct": false },
                 { "value": 9, "is_correct": true },
@@ -170,7 +170,7 @@
     {
         "id": 13,
         "problem_json": {
-            "question": "¿Cuánto es 14 + 25?",
+            "question": "Quant és 14 + 25?",
             "answers": [
                 { "value": 38, "is_correct": false },
                 { "value": 40, "is_correct": false },
@@ -184,7 +184,7 @@
     {
         "id": 14,
         "problem_json": {
-            "question": "¿Cuánto es 31 + 42?",
+            "question": "Quant és 31 + 42?",
             "answers": [
                 { "value": 72, "is_correct": false },
                 { "value": 74, "is_correct": false },
@@ -198,7 +198,7 @@
     {
         "id": 15,
         "problem_json": {
-            "question": "¿Cuánto es 123 + 456?",
+            "question": "Quant és 123 + 456?",
             "answers": [
                 { "value": 579, "is_correct": true },
                 { "value": 578, "is_correct": false },
@@ -212,7 +212,7 @@
     {
         "id": 16,
         "problem_json": {
-            "question": "¿Cuánto es 789 + 345?",
+            "question": "Quant és 789 + 345?",
             "answers": [
                 { "value": 1133, "is_correct": false },
                 { "value": 1134, "is_correct": true },
@@ -226,7 +226,7 @@
     {
         "id": 17,
         "problem_json": {
-            "question": "¿Cuánto es 8 + 3?",
+            "question": "Quant és 8 + 3?",
             "answers": [
                 { "value": 10, "is_correct": false },
                 { "value": 12, "is_correct": false },
@@ -240,7 +240,7 @@
     {
         "id": 18,
         "problem_json": {
-            "question": "¿Cuánto es 45 + 62?",
+            "question": "Quant és 45 + 62?",
             "answers": [
                 { "value": 106, "is_correct": false },
                 { "value": 108, "is_correct": false },
@@ -254,7 +254,7 @@
     {
         "id": 19,
         "problem_json": {
-            "question": "¿Cuánto es 56 + 78?",
+            "question": "Quant és 56 + 78?",
             "answers": [
                 { "value": 134, "is_correct": true },
                 { "value": 133, "is_correct": false },
@@ -268,7 +268,7 @@
     {
         "id": 20,
         "problem_json": {
-            "question": "¿Cuánto es 234 + 678?",
+            "question": "Quant és 234 + 678?",
             "answers": [
                 { "value": 911, "is_correct": false },
                 { "value": 913, "is_correct": false },
@@ -282,7 +282,7 @@
     {
         "id": 21,
         "problem_json": {
-            "question": "¿Cuánto es 345 + 567?",
+            "question": "Quant és 345 + 567?",
             "answers": [
                 { "value": 910, "is_correct": false },
                 { "value": 913, "is_correct": false },
@@ -296,7 +296,7 @@
     {
         "id": 22,
         "problem_json": {
-            "question": "¿Cuánto es 5 + 4?",
+            "question": "Quant és 5 + 4?",
             "answers": [
                 { "value": 8, "is_correct": false },
                 { "value": 10, "is_correct": false },
@@ -310,7 +310,7 @@
     {
         "id": 23,
         "problem_json": {
-            "question": "¿Cuánto es 28 + 35?",
+            "question": "Quant és 28 + 35?",
             "answers": [
                 { "value": 62, "is_correct": false },
                 { "value": 63, "is_correct": true },
@@ -324,7 +324,7 @@
     {
         "id": 24,
         "problem_json": {
-            "question": "¿Cuánto es 189 + 176?",
+            "question": "Quant és 189 + 176?",
             "answers": [
                 { "value": 365, "is_correct": false },
                 { "value": 367, "is_correct": false },
@@ -338,7 +338,7 @@
     {
         "id": 25,
         "problem_json": {
-            "question": "¿Cuánto es 3 + 7?",
+            "question": "Quant és 3 + 7?",
             "answers": [
                 { "value": 9, "is_correct": false },
                 { "value": 11, "is_correct": false },
@@ -352,7 +352,7 @@
     {
         "id": 26,
         "problem_json": {
-            "question": "¿Cuánto es 6 + 2?",
+            "question": "Quant és 6 + 2?",
             "answers": [
                 { "value": 8, "is_correct": true },
                 { "value": 7, "is_correct": false },
@@ -366,7 +366,7 @@
     {
         "id": 27,
         "problem_json": {
-            "question": "¿Cuánto es 18 + 27?",
+            "question": "Quant és 18 + 27?",
             "answers": [
                 { "value": 44, "is_correct": false },
                 { "value": 45, "is_correct": true },
@@ -380,7 +380,7 @@
     {
         "id": 28,
         "problem_json": {
-            "question": "¿Cuánto es 34 + 49?",
+            "question": "Quant és 34 + 49?",
             "answers": [
                 { "value": 82, "is_correct": false },
                 { "value": 84, "is_correct": false },
@@ -394,7 +394,7 @@
     {
         "id": 29,
         "problem_json": {
-            "question": "¿Cuánto es 567 + 234?",
+            "question": "Quant és 567 + 234?",
             "answers": [
                 { "value": 800, "is_correct": false },
                 { "value": 801, "is_correct": true },
@@ -408,7 +408,7 @@
     {
         "id": 30,
         "problem_json": {
-            "question": "¿Cuánto es 789 + 432?",
+            "question": "Quant és 789 + 432?",
             "answers": [
                 { "value": 1222, "is_correct": true },
                 { "value": 1220, "is_correct": false },
@@ -422,7 +422,7 @@
     {
         "id": 31,
         "problem_json": {
-            "question": "¿Cuánto es 9 + 1?",
+            "question": "Quant és 9 + 1?",
             "answers": [
                 { "value": 11, "is_correct": false },
                 { "value": 10, "is_correct": true },
@@ -436,7 +436,7 @@
     {
         "id": 32,
         "problem_json": {
-            "question": "¿Cuánto es 13 + 24?",
+            "question": "Quant és 13 + 24?",
             "answers": [
                 { "value": 36, "is_correct": false },
                 { "value": 38, "is_correct": false },
@@ -450,7 +450,7 @@
     {
         "id": 33,
         "problem_json": {
-            "question": "¿Cuánto es 81 + 92?",
+            "question": "Quant és 81 + 92?",
             "answers": [
                 { "value": 172, "is_correct": false },
                 { "value": 174, "is_correct": false },
@@ -464,7 +464,7 @@
     {
         "id": 34,
         "problem_json": {
-            "question": "¿Cuánto es 124 + 389?",
+            "question": "Quant és 124 + 389?",
             "answers": [
                 { "value": 513, "is_correct": true },
                 { "value": 512, "is_correct": false },
@@ -478,7 +478,7 @@
     {
         "id": 35,
         "problem_json": {
-            "question": "¿Cuánto es 9 + 8?",
+            "question": "Quant és 9 + 8?",
             "answers": [
                 { "value": 16, "is_correct": false },
                 { "value": 17, "is_correct": true },
@@ -492,7 +492,7 @@
     {
         "id": 36,
         "problem_json": {
-            "question": "¿Cuánto es 45 + 67?",
+            "question": "Quant és 45 + 67?",
             "answers": [
                 { "value": 111, "is_correct": false },
                 { "value": 112, "is_correct": false },
@@ -506,7 +506,7 @@
     {
         "id": 37,
         "problem_json": {
-            "question": "¿Cuánto es 653 + 748?",
+            "question": "Quant és 653 + 748?",
             "answers": [
                 { "value": 1400, "is_correct": false },
                 { "value": 1401, "is_correct": false },
@@ -520,7 +520,7 @@
     {
         "id": 38,
         "problem_json": {
-            "question": "¿Cuánto es 345 + 234?",
+            "question": "Quant és 345 + 234?",
             "answers": [
                 { "value": 579, "is_correct": true },
                 { "value": 578, "is_correct": false },
@@ -534,7 +534,7 @@
     {
         "id": 39,
         "problem_json": {
-            "question": "¿Cuánto es 4 + 5?",
+            "question": "Quant és 4 + 5?",
             "answers": [
                 { "value": 8, "is_correct": false },
                 { "value": 9, "is_correct": true },
@@ -548,7 +548,7 @@
     {
         "id": 40,
         "problem_json": {
-            "question": "¿Cuánto es 7 + 2?",
+            "question": "Quant és 7 + 2?",
             "answers": [
                 { "value": 8, "is_correct": false },
                 { "value": 10, "is_correct": false },
@@ -562,7 +562,7 @@
     {
         "id": 41,
         "problem_json": {
-            "question": "¿Cuánto es 22 + 16?",
+            "question": "Quant és 22 + 16?",
             "answers": [
                 { "value": 37, "is_correct": false },
                 { "value": 38, "is_correct": false },
@@ -576,7 +576,7 @@
     {
         "id": 42,
         "problem_json": {
-            "question": "¿Cuánto es 30 + 42?",
+            "question": "Quant és 30 + 42?",
             "answers": [
                 { "value": 72, "is_correct": true },
                 { "value": 71, "is_correct": false },
@@ -590,7 +590,7 @@
     {
         "id": 43,
         "problem_json": {
-            "question": "¿Cuánto es 892 + 479?",
+            "question": "Quant és 892 + 479?",
             "answers": [
                 { "value": 1370, "is_correct": false },
                 { "value": 1371, "is_correct": true },
@@ -604,7 +604,7 @@
     {
         "id": 44,
         "problem_json": {
-            "question": "¿Cuánto es 781 + 348?",
+            "question": "Quant és 781 + 348?",
             "answers": [
                 { "value": 1128, "is_correct": false },
                 { "value": 1130, "is_correct": false },
@@ -618,7 +618,7 @@
     {
         "id": 45,
         "problem_json": {
-            "question": "¿Cuánto es 5 + 6?",
+            "question": "Quant és 5 + 6?",
             "answers": [
                 { "value": 10, "is_correct": false },
                 { "value": 12, "is_correct": false },
@@ -632,7 +632,7 @@
     {
         "id": 46,
         "problem_json": {
-            "question": "¿Cuánto es 19 + 23?",
+            "question": "Quant és 19 + 23?",
             "answers": [
                 { "value": 42, "is_correct": true },
                 { "value": 41, "is_correct": false },
@@ -646,7 +646,7 @@
     {
         "id": 47,
         "problem_json": {
-            "question": "¿Cuánto es 654 + 321?",
+            "question": "Quant és 654 + 321?",
             "answers": [
                 { "value": 974, "is_correct": false },
                 { "value": 975, "is_correct": true },
@@ -660,7 +660,7 @@
     {
         "id": 48,
         "problem_json": {
-            "question": "¿Cuánto es 437 + 285?",
+            "question": "Quant és 437 + 285?",
             "answers": [
                 { "value": 721, "is_correct": false },
                 { "value": 723, "is_correct": false },
@@ -674,7 +674,7 @@
     {
         "id": 49,
         "problem_json": {
-            "question": "¿Cuánto es 8 + 3?",
+            "question": "Quant és 8 + 3?",
             "answers": [
                 { "value": 10, "is_correct": false },
                 { "value": 12, "is_correct": false },
@@ -688,7 +688,7 @@
     {
         "id": 50,
         "problem_json": {
-            "question": "¿Cuánto es 6 + 2?",
+            "question": "Quant és 6 + 2?",
             "answers": [
                 { "value": 8, "is_correct": true },
                 { "value": 7, "is_correct": false },
@@ -702,7 +702,7 @@
     {
         "id": 51,
         "problem_json": {
-            "question": "¿Cuánto es 27 + 14?",
+            "question": "Quant és 27 + 14?",
             "answers": [
                 { "value": 40, "is_correct": false },
                 { "value": 41, "is_correct": true },
@@ -716,7 +716,7 @@
     {
         "id": 52,
         "problem_json": {
-            "question": "¿Cuánto es 34 + 19?",
+            "question": "Quant és 34 + 19?",
             "answers": [
                 { "value": 52, "is_correct": false },
                 { "value": 54, "is_correct": false },
@@ -730,7 +730,7 @@
     {
         "id": 53,
         "problem_json": {
-            "question": "¿Cuánto es 726 + 194?",
+            "question": "Quant és 726 + 194?",
             "answers": [
                 { "value": 919, "is_correct": false },
                 { "value": 921, "is_correct": false },
@@ -744,7 +744,7 @@
     {
         "id": 54,
         "problem_json": {
-            "question": "¿Cuánto es 318 + 447?",
+            "question": "Quant és 318 + 447?",
             "answers": [
                 { "value": 765, "is_correct": true },
                 { "value": 764, "is_correct": false },
@@ -758,7 +758,7 @@
     {
         "id": 55,
         "problem_json": {
-            "question": "¿Cuánto es 9 + 4?",
+            "question": "Quant és 9 + 4?",
             "answers": [
                 { "value": 12, "is_correct": false },
                 { "value": 13, "is_correct": true },
@@ -772,7 +772,7 @@
     {
         "id": 56,
         "problem_json": {
-            "question": "¿Cuánto es 15 + 28?",
+            "question": "Quant és 15 + 28?",
             "answers": [
                 { "value": 42, "is_correct": false },
                 { "value": 44, "is_correct": false },
@@ -786,7 +786,7 @@
     {
         "id": 57,
         "problem_json": {
-            "question": "¿Cuánto es 583 + 217?",
+            "question": "Quant és 583 + 217?",
             "answers": [
                 { "value": 799, "is_correct": false },
                 { "value": 801, "is_correct": false },
@@ -800,7 +800,7 @@
     {
         "id": 58,
         "problem_json": {
-            "question": "¿Cuánto es 441 + 365?",
+            "question": "Quant és 441 + 365?",
             "answers": [
                 { "value": 805, "is_correct": false },
                 { "value": 804, "is_correct": false },
@@ -814,7 +814,7 @@
     {
         "id": 59,
         "problem_json": {
-            "question": "¿Cuánto es 2 + 5?",
+            "question": "Quant és 2 + 5?",
             "answers": [
                 { "value": 8, "is_correct": false },
                 { "value": 7, "is_correct": true },
@@ -828,7 +828,7 @@
     {
         "id": 60,
         "problem_json": {
-            "question": "¿Cuánto es 4 + 4?",
+            "question": "Quant és 4 + 4?",
             "answers": [
                 { "value": 7, "is_correct": false },
                 { "value": 9, "is_correct": false },
@@ -842,7 +842,7 @@
     {
         "id": 61,
         "problem_json": {
-            "question": "¿Cuánto es 23 + 16?",
+            "question": "Quant és 23 + 16?",
             "answers": [
                 { "value": 38, "is_correct": false },
                 { "value": 40, "is_correct": false },
@@ -856,7 +856,7 @@
     {
         "id": 62,
         "problem_json": {
-            "question": "¿Cuánto es 45 + 18?",
+            "question": "Quant és 45 + 18?",
             "answers": [
                 { "value": 63, "is_correct": true },
                 { "value": 62, "is_correct": false },
@@ -870,7 +870,7 @@
     {
         "id": 63,
         "problem_json": {
-            "question": "¿Cuánto es 782 + 213?",
+            "question": "Quant és 782 + 213?",
             "answers": [
                 { "value": 994, "is_correct": false },
                 { "value": 995, "is_correct": true },
@@ -884,7 +884,7 @@
     {
         "id": 64,
         "problem_json": {
-            "question": "¿Cuánto es 619 + 431?",
+            "question": "Quant és 619 + 431?",
             "answers": [
                 { "value": 1049, "is_correct": false },
                 { "value": 1051, "is_correct": false },
@@ -898,7 +898,7 @@
     {
         "id": 65,
         "problem_json": {
-            "question": "¿Cuánto es 7 + 6?",
+            "question": "Quant és 7 + 6?",
             "answers": [
                 { "value": 12, "is_correct": false },
                 { "value": 14, "is_correct": false },
@@ -912,7 +912,7 @@
     {
         "id": 66,
         "problem_json": {
-            "question": "¿Cuánto es 17 + 24?",
+            "question": "Quant és 17 + 24?",
             "answers": [
                 { "value": 41, "is_correct": true },
                 { "value": 40, "is_correct": false },
@@ -926,7 +926,7 @@
     {
         "id": 67,
         "problem_json": {
-            "question": "¿Cuánto es 853 + 176?",
+            "question": "Quant és 853 + 176?",
             "answers": [
                 { "value": 1028, "is_correct": false },
                 { "value": 1029, "is_correct": true },
@@ -940,7 +940,7 @@
     {
         "id": 68,
         "problem_json": {
-            "question": "¿Cuánto es 489 + 320?",
+            "question": "Quant és 489 + 320?",
             "answers": [
                 { "value": 808, "is_correct": false },
                 { "value": 810, "is_correct": false },
@@ -954,7 +954,7 @@
     {
         "id": 69,
         "problem_json": {
-            "question": "¿Cuánto es 1 + 7?",
+            "question": "Quant és 1 + 7?",
             "answers": [
                 { "value": 6, "is_correct": false },
                 { "value": 9, "is_correct": false },
@@ -968,7 +968,7 @@
     {
         "id": 70,
         "problem_json": {
-            "question": "¿Cuánto es 8 + 2?",
+            "question": "Quant és 8 + 2?",
             "answers": [
                 { "value": 10, "is_correct": true },
                 { "value": 11, "is_correct": false },
@@ -982,7 +982,7 @@
     {
         "id": 71,
         "problem_json": {
-            "question": "¿Cuánto es 21 + 13?",
+            "question": "Quant és 21 + 13?",
             "answers": [
                 { "value": 33, "is_correct": false },
                 { "value": 34, "is_correct": true },
@@ -996,7 +996,7 @@
     {
         "id": 72,
         "problem_json": {
-            "question": "¿Cuánto es 38 + 27?",
+            "question": "Quant és 38 + 27?",
             "answers": [
                 { "value": 64, "is_correct": false },
                 { "value": 66, "is_correct": false },
@@ -1010,7 +1010,7 @@
     {
         "id": 73,
         "problem_json": {
-            "question": "¿Cuánto es 649 + 482?",
+            "question": "Quant és 649 + 482?",
             "answers": [
                 { "value": 1130, "is_correct": false },
                 { "value": 1132, "is_correct": false },
@@ -1024,7 +1024,7 @@
     {
         "id": 74,
         "problem_json": {
-            "question": "¿Cuánto es 523 + 197?",
+            "question": "Quant és 523 + 197?",
             "answers": [
                 { "value": 720, "is_correct": true },
                 { "value": 719, "is_correct": false },
@@ -1038,7 +1038,7 @@
     {
         "id": 75,
         "problem_json": {
-            "question": "¿Cuánto es 3 + 4?",
+            "question": "Quant és 3 + 4?",
             "answers": [
                 { "value": 6, "is_correct": false },
                 { "value": 7, "is_correct": true },
@@ -1052,7 +1052,7 @@
     {
         "id": 76,
         "problem_json": {
-            "question": "¿Cuánto es 29 + 14?",
+            "question": "Quant és 29 + 14?",
             "answers": [
                 { "value": 42, "is_correct": false },
                 { "value": 44, "is_correct": false },
@@ -1066,7 +1066,7 @@
     {
         "id": 77,
         "problem_json": {
-            "question": "¿Cuánto es 372 + 259?",
+            "question": "Quant és 372 + 259?",
             "answers": [
                 { "value": 630, "is_correct": false },
                 { "value": 632, "is_correct": false },
@@ -1080,7 +1080,7 @@
     {
         "id": 78,
         "problem_json": {
-            "question": "¿Cuánto es 794 + 385?",
+            "question": "Quant és 794 + 385?",
             "answers": [
                 { "value": 1179, "is_correct": true },
                 { "value": 1178, "is_correct": false },
@@ -1094,7 +1094,7 @@
     {
         "id": 79,
         "problem_json": {
-            "question": "¿Cuánto es 6 + 9?",
+            "question": "Quant és 6 + 9?",
             "answers": [
                 { "value": 14, "is_correct": false },
                 { "value": 15, "is_correct": true },
@@ -1108,7 +1108,7 @@
     {
         "id": 80,
         "problem_json": {
-            "question": "¿Cuánto es 8 + 3?",
+            "question": "Quant és 8 + 3?",
             "answers": [
                 { "value": 10, "is_correct": false },
                 { "value": 12, "is_correct": false },
@@ -1122,7 +1122,7 @@
     {
         "id": 81,
         "problem_json": {
-            "question": "¿Cuánto es 32 + 18?",
+            "question": "Quant és 32 + 18?",
             "answers": [
                 { "value": 49, "is_correct": false },
                 { "value": 51, "is_correct": false },
@@ -1136,7 +1136,7 @@
     {
         "id": 82,
         "problem_json": {
-            "question": "¿Cuánto es 46 + 29?",
+            "question": "Quant és 46 + 29?",
             "answers": [
                 { "value": 75, "is_correct": true },
                 { "value": 74, "is_correct": false },
@@ -1150,7 +1150,7 @@
     {
         "id": 83,
         "problem_json": {
-            "question": "¿Cuánto es 857 + 194?",
+            "question": "Quant és 857 + 194?",
             "answers": [
                 { "value": 1050, "is_correct": false },
                 { "value": 1049, "is_correct": true },
@@ -1164,7 +1164,7 @@
     {
         "id": 84,
         "problem_json": {
-            "question": "¿Cuánto es 648 + 529?",
+            "question": "Quant és 648 + 529?",
             "answers": [
                 { "value": 1176, "is_correct": false },
                 { "value": 1178, "is_correct": false },
@@ -1178,7 +1178,7 @@
     {
         "id": 85,
         "problem_json": {
-            "question": "¿Cuánto es 4 + 7?",
+            "question": "Quant és 4 + 7?",
             "answers": [
                 { "value": 10, "is_correct": false },
                 { "value": 12, "is_correct": false },
@@ -1192,7 +1192,7 @@
     {
         "id": 86,
         "problem_json": {
-            "question": "¿Cuánto es 25 + 17?",
+            "question": "Quant és 25 + 17?",
             "answers": [
                 { "value": 42, "is_correct": true },
                 { "value": 41, "is_correct": false },
@@ -1206,7 +1206,7 @@
     {
         "id": 87,
         "problem_json": {
-            "question": "¿Cuánto es 489 + 377?",
+            "question": "Quant és 489 + 377?",
             "answers": [
                 { "value": 865, "is_correct": false },
                 { "value": 866, "is_correct": true },
@@ -1220,7 +1220,7 @@
     {
         "id": 88,
         "problem_json": {
-            "question": "¿Cuánto es 743 + 416?",
+            "question": "Quant és 743 + 416?",
             "answers": [
                 { "value": 1158, "is_correct": false },
                 { "value": 1160, "is_correct": false },
@@ -1234,7 +1234,7 @@
     {
         "id": 89,
         "problem_json": {
-            "question": "¿Cuánto es 7 + 2?",
+            "question": "Quant és 7 + 2?",
             "answers": [
                 { "value": 8, "is_correct": false },
                 { "value": 10, "is_correct": false },
@@ -1248,7 +1248,7 @@
     {
         "id": 90,
         "problem_json": {
-            "question": "¿Cuánto es 6 + 5?",
+            "question": "Quant és 6 + 5?",
             "answers": [
                 { "value": 11, "is_correct": true },
                 { "value": 10, "is_correct": false },
@@ -1262,7 +1262,7 @@
     {
         "id": 91,
         "problem_json": {
-            "question": "¿Cuánto es 27 + 14?",
+            "question": "Quant és 27 + 14?",
             "answers": [
                 { "value": 40, "is_correct": false },
                 { "value": 41, "is_correct": true },
@@ -1276,7 +1276,7 @@
     {
         "id": 92,
         "problem_json": {
-            "question": "¿Cuánto es 39 + 23?",
+            "question": "Quant és 39 + 23?",
             "answers": [
                 { "value": 61, "is_correct": false },
                 { "value": 63, "is_correct": false },
@@ -1290,7 +1290,7 @@
     {
         "id": 93,
         "problem_json": {
-            "question": "¿Cuánto es 652 + 318?",
+            "question": "Quant és 652 + 318?",
             "answers": [
                 { "value": 969, "is_correct": false },
                 { "value": 971, "is_correct": false },
@@ -1304,7 +1304,7 @@
     {
         "id": 94,
         "problem_json": {
-            "question": "¿Cuánto es 587 + 412?",
+            "question": "Quant és 587 + 412?",
             "answers": [
                 { "value": 999, "is_correct": true },
                 { "value": 998, "is_correct": false },
@@ -1318,7 +1318,7 @@
     {
         "id": 95,
         "problem_json": {
-            "question": "¿Cuánto es 3 + 9?",
+            "question": "Quant és 3 + 9?",
             "answers": [
                 { "value": 11, "is_correct": false },
                 { "value": 12, "is_correct": true },
@@ -1332,7 +1332,7 @@
     {
         "id": 96,
         "problem_json": {
-            "question": "¿Cuánto es 18 + 29?",
+            "question": "Quant és 18 + 29?",
             "answers": [
                 { "value": 46, "is_correct": false },
                 { "value": 48, "is_correct": false },
@@ -1346,7 +1346,7 @@
     {
         "id": 97,
         "problem_json": {
-            "question": "¿Cuánto es 321 + 478?",
+            "question": "Quant és 321 + 478?",
             "answers": [
                 { "value": 798, "is_correct": false },
                 { "value": 800, "is_correct": false },
@@ -1360,7 +1360,7 @@
     {
         "id": 98,
         "problem_json": {
-            "question": "¿Cuánto es 918 + 374?",
+            "question": "Quant és 918 + 374?",
             "answers": [
                 { "value": 1292, "is_correct": true },
                 { "value": 1291, "is_correct": false },
@@ -1374,7 +1374,7 @@
     {
         "id": 99,
         "problem_json": {
-            "question": "¿Cuánto es 8 + 6?",
+            "question": "Quant és 8 + 6?",
             "answers": [
                 { "value": 13, "is_correct": false },
                 { "value": 14, "is_correct": true },
@@ -1388,7 +1388,7 @@
     {
         "id": 100,
         "problem_json": {
-            "question": "¿Cuánto es 24 + 19?",
+            "question": "Quant és 24 + 19?",
             "answers": [
                 { "value": 42, "is_correct": false },
                 { "value": 44, "is_correct": false },
@@ -1402,7 +1402,7 @@
     {
         "id": 101,
         "problem_json": {
-            "question": "¿Cuánto es 9 - 4?",
+            "question": "Quant és 9 - 4?",
             "answers": [
                 { "value": 6, "is_correct": false },
                 { "value": 5, "is_correct": false },
@@ -1416,7 +1416,7 @@
     {
         "id": 102,
         "problem_json": {
-            "question": "¿Cuánto es 57 - 23?",
+            "question": "Quant és 57 - 23?",
             "answers": [
                 { "value": 35, "is_correct": false },
                 { "value": 34, "is_correct": true },
@@ -1430,7 +1430,7 @@
     {
         "id": 103,
         "problem_json": {
-            "question": "¿Cuánto es 345 - 123?",
+            "question": "Quant és 345 - 123?",
             "answers": [
                 { "value": 221, "is_correct": false },
                 { "value": 222, "is_correct": true },
@@ -1444,7 +1444,7 @@
     {
         "id": 104,
         "problem_json": {
-            "question": "¿Cuánto es 8 - 2?",
+            "question": "Quant és 8 - 2?",
             "answers": [
                 { "value": 10, "is_correct": false },
                 { "value": 7, "is_correct": false },
@@ -1458,7 +1458,7 @@
     {
         "id": 105,
         "problem_json": {
-            "question": "¿Cuánto es 65 - 27?",
+            "question": "Quant és 65 - 27?",
             "answers": [
                 { "value": 37, "is_correct": false },
                 { "value": 36, "is_correct": false },
@@ -1472,7 +1472,7 @@
     {
         "id": 106,
         "problem_json": {
-            "question": "¿Cuánto es 723 - 387?",
+            "question": "Quant és 723 - 387?",
             "answers": [
                 { "value": 335, "is_correct": false },
                 { "value": 334, "is_correct": false },
@@ -1486,7 +1486,7 @@
     {
         "id": 107,
         "problem_json": {
-            "question": "¿Cuánto es 7 - 2?",
+            "question": "Quant és 7 - 2?",
             "answers": [
                 { "value": 6, "is_correct": false },
                 { "value": 5, "is_correct": true },
@@ -1500,7 +1500,7 @@
     {
         "id": 108,
         "problem_json": {
-            "question": "¿Cuánto es 45 - 29?",
+            "question": "Quant és 45 - 29?",
             "answers": [
                 { "value": 16, "is_correct": true },
                 { "value": 15, "is_correct": false },
@@ -1514,7 +1514,7 @@
     {
         "id": 109,
         "problem_json": {
-            "question": "¿Cuánto es 412 - 125?",
+            "question": "Quant és 412 - 125?",
             "answers": [
                 { "value": 287, "is_correct": true },
                 { "value": 290, "is_correct": false },
@@ -1528,7 +1528,7 @@
     {
         "id": 110,
         "problem_json": {
-            "question": "¿Cuánto es 8 - 3?",
+            "question": "Quant és 8 - 3?",
             "answers": [
                 { "value": 5, "is_correct": true },
                 { "value": 6, "is_correct": false },
@@ -1542,7 +1542,7 @@
     {
         "id": 111,
         "problem_json": {
-            "question": "¿Cuánto es 67 - 33?",
+            "question": "Quant és 67 - 33?",
             "answers": [
                 { "value": 35, "is_correct": false },
                 { "value": 34, "is_correct": false },
@@ -1556,7 +1556,7 @@
     {
         "id": 112,
         "problem_json": {
-            "question": "¿Cuánto es 973 - 487?",
+            "question": "Quant és 973 - 487?",
             "answers": [
                 { "value": 486, "is_correct": true },
                 { "value": 485, "is_correct": false },
@@ -1570,7 +1570,7 @@
     {
         "id": 113,
         "problem_json": {
-            "question": "¿Cuánto es 4 - 1?",
+            "question": "Quant és 4 - 1?",
             "answers": [
                 { "value": 3, "is_correct": true },
                 { "value": 2, "is_correct": false },
@@ -1584,7 +1584,7 @@
     {
         "id": 114,
         "problem_json": {
-            "question": "¿Cuánto es 56 - 24?",
+            "question": "Quant és 56 - 24?",
             "answers": [
                 { "value": 80, "is_correct": false },
                 { "value": 31, "is_correct": false },
@@ -1598,7 +1598,7 @@
     {
         "id": 115,
         "problem_json": {
-            "question": "¿Cuánto es 789 - 432?",
+            "question": "Quant és 789 - 432?",
             "answers": [
                 { "value": 356, "is_correct": false },
                 { "value": 357, "is_correct": true },
@@ -1612,7 +1612,7 @@
     {
         "id": 116,
         "problem_json": {
-            "question": "¿Cuánto es 5 - 1?",
+            "question": "Quant és 5 - 1?",
             "answers": [
                 { "value": 4, "is_correct": true },
                 { "value": 3, "is_correct": false },
@@ -1626,7 +1626,7 @@
     {
         "id": 117,
         "problem_json": {
-            "question": "¿Cuánto es 53 - 18?",
+            "question": "Quant és 53 - 18?",
             "answers": [
                 { "value": 35, "is_correct": true },
                 { "value": 36, "is_correct": false },
@@ -1640,7 +1640,7 @@
     {
         "id": 118,
         "problem_json": {
-            "question": "¿Cuánto es 853 - 692?",
+            "question": "Quant és 853 - 692?",
             "answers": [
                 { "value": 161, "is_correct": true },
                 { "value": 160, "is_correct": false },
@@ -1654,7 +1654,7 @@
     {
         "id": 119,
         "problem_json": {
-            "question": "¿Cuánto es 9 - 5?",
+            "question": "Quant és 9 - 5?",
             "answers": [
                 { "value": 4, "is_correct": true },
                 { "value": 5, "is_correct": false },
@@ -1668,7 +1668,7 @@
     {
         "id": 120,
         "problem_json": {
-            "question": "¿Cuánto es 82 - 27?",
+            "question": "Quant és 82 - 27?",
             "answers": [
                 { "value": 55, "is_correct": true },
                 { "value": 56, "is_correct": false },
@@ -1682,7 +1682,7 @@
     {
         "id": 121,
         "problem_json": {
-            "question": "¿Cuánto es 918 - 563?",
+            "question": "Quant és 918 - 563?",
             "answers": [
                 { "value": 355, "is_correct": true },
                 { "value": 356, "is_correct": false },
@@ -1696,7 +1696,7 @@
     {
         "id": 122,
         "problem_json": {
-            "question": "¿Cuánto es 6 - 3?",
+            "question": "Quant és 6 - 3?",
             "answers": [
                 { "value": 4, "is_correct": false },
                 { "value": 3, "is_correct": true },
@@ -1710,7 +1710,7 @@
     {
         "id": 123,
         "problem_json": {
-            "question": "¿Cuánto es 76 - 45?",
+            "question": "Quant és 76 - 45?",
             "answers": [
                 { "value": 31, "is_correct": true },
                 { "value": 32, "is_correct": false },
@@ -1724,7 +1724,7 @@
     {
         "id": 124,
         "problem_json": {
-            "question": "¿Cuánto es 991 - 547?",
+            "question": "Quant és 991 - 547?",
             "answers": [
                 { "value": 445, "is_correct": false },
                 { "value": 444, "is_correct": true },
@@ -1739,7 +1739,7 @@
     {
         "id": 125,
         "problem_json": {
-            "question": "¿Cuánto es 7 - 4?",
+            "question": "Quant és 7 - 4?",
             "answers": [
                 { "value": 3, "is_correct": true },
                 { "value": 4, "is_correct": false },
@@ -1753,7 +1753,7 @@
     {
         "id": 126,
         "problem_json": {
-            "question": "¿Cuánto es 64 - 21?",
+            "question": "Quant és 64 - 21?",
             "answers": [
                 { "value": 42, "is_correct": false },
                 { "value": 43, "is_correct": true },
@@ -1767,7 +1767,7 @@
     {
         "id": 127,
         "problem_json": {
-            "question": "¿Cuánto es 742 - 519?",
+            "question": "Quant és 742 - 519?",
             "answers": [
                 { "value": 223, "is_correct": true },
                 { "value": 224, "is_correct": false },
@@ -1781,7 +1781,7 @@
     {
         "id": 128,
         "problem_json": {
-            "question": "¿Cuánto es 3 - 1?",
+            "question": "Quant és 3 - 1?",
             "answers": [
                 { "value": 2, "is_correct": true },
                 { "value": 3, "is_correct": false },
@@ -1795,7 +1795,7 @@
     {
         "id": 129,
         "problem_json": {
-            "question": "¿Cuánto es 53 - 14?",
+            "question": "Quant és 53 - 14?",
             "answers": [
                 { "value": 39, "is_correct": true },
                 { "value": 40, "is_correct": false },
@@ -1809,7 +1809,7 @@
     {
         "id": 130,
         "problem_json": {
-            "question": "¿Cuánto es 893 - 632?",
+            "question": "Quant és 893 - 632?",
             "answers": [
                 { "value": 261, "is_correct": true },
                 { "value": 260, "is_correct": false },
@@ -1823,7 +1823,7 @@
     {
         "id": 131,
         "problem_json": {
-            "question": "¿Cuánto es 9 - 7?",
+            "question": "Quant és 9 - 7?",
             "answers": [
                 { "value": 2, "is_correct": true },
                 { "value": 3, "is_correct": false },
@@ -1837,7 +1837,7 @@
     {
         "id": 132,
         "problem_json": {
-            "question": "¿Cuánto es 57 - 40?",
+            "question": "Quant és 57 - 40?",
             "answers": [
                 { "value": 16, "is_correct": false },
                 { "value": 17, "is_correct": true },
@@ -1851,7 +1851,7 @@
     {
         "id": 133,
         "problem_json": {
-            "question": "¿Cuánto es 831 - 482?",
+            "question": "Quant és 831 - 482?",
             "answers": [
                 { "value": 349, "is_correct": true },
                 { "value": 350, "is_correct": false },
@@ -1867,7 +1867,7 @@
     {
         "id": 134,
         "problem_json": {
-            "question": "¿Cuánto es 6 - 4?",
+            "question": "Quant és 6 - 4?",
             "answers": [
                 { "value": 3, "is_correct": false },
                 { "value": 1, "is_correct": false },
@@ -1881,7 +1881,7 @@
     {
         "id": 135,
         "problem_json": {
-            "question": "¿Cuánto es 68 - 32?",
+            "question": "Quant és 68 - 32?",
             "answers": [
                 { "value": 37, "is_correct": false },
                 { "value": 36, "is_correct": true },
@@ -1895,7 +1895,7 @@
     {
         "id": 136,
         "problem_json": {
-            "question": "¿Cuánto es 765 - 489?",
+            "question": "Quant és 765 - 489?",
             "answers": [
                 { "value": 275, "is_correct": false },
                 { "value": 277, "is_correct": false },
@@ -1909,7 +1909,7 @@
     {
         "id": 137,
         "problem_json": {
-            "question": "¿Cuánto es 8 - 6?",
+            "question": "Quant és 8 - 6?",
             "answers": [
                 { "value": 3, "is_correct": false },
                 { "value": 2, "is_correct": true },
@@ -1923,7 +1923,7 @@
     {
         "id": 138,
         "problem_json": {
-            "question": "¿Cuánto es 75 - 41?",
+            "question": "Quant és 75 - 41?",
             "answers": [
                 { "value": 33, "is_correct": false },
                 { "value": 35, "is_correct": false },
@@ -1937,7 +1937,7 @@
     {
         "id": 139,
         "problem_json": {
-            "question": "¿Cuánto es 894 - 762?",
+            "question": "Quant és 894 - 762?",
             "answers": [
                 { "value": 132, "is_correct": true },
                 { "value": 131, "is_correct": false },
@@ -1951,7 +1951,7 @@
     {
         "id": 140,
         "problem_json": {
-            "question": "¿Cuánto es 5 - 2?",
+            "question": "Quant és 5 - 2?",
             "answers": [
                 { "value": 4, "is_correct": false },
                 { "value": 2, "is_correct": false },
@@ -1965,7 +1965,7 @@
     {
         "id": 141,
         "problem_json": {
-            "question": "¿Cuánto es 93 - 58?",
+            "question": "Quant és 93 - 58?",
             "answers": [
                 { "value": 36, "is_correct": false },
                 { "value": 34, "is_correct": false },
@@ -1979,7 +1979,7 @@
     {
         "id": 142,
         "problem_json": {
-            "question": "¿Cuánto es 634 - 475?",
+            "question": "Quant és 634 - 475?",
             "answers": [
                 { "value": 160, "is_correct": false },
                 { "value": 159, "is_correct": true },
@@ -1993,7 +1993,7 @@
     {
         "id": 143,
         "problem_json": {
-            "question": "¿Cuánto es 4 - 3?",
+            "question": "Quant és 4 - 3?",
             "answers": [
                 { "value": 2, "is_correct": false },
                 { "value": 3, "is_correct": false },
@@ -2007,7 +2007,7 @@
     {
         "id": 144,
         "problem_json": {
-            "question": "¿Cuánto es 84 - 59?",
+            "question": "Quant és 84 - 59?",
             "answers": [
                 { "value": 26, "is_correct": false },
                 { "value": 24, "is_correct": false },
@@ -2021,7 +2021,7 @@
     {
         "id": 145,
         "problem_json": {
-            "question": "¿Cuánto es 732 - 498?",
+            "question": "Quant és 732 - 498?",
             "answers": [
                 { "value": 235, "is_correct": false },
                 { "value": 234, "is_correct": true },
@@ -2035,7 +2035,7 @@
     {
         "id": 146,
         "problem_json": {
-            "question": "¿Cuánto es 10 - 7?",
+            "question": "Quant és 10 - 7?",
             "answers": [
                 { "value": 4, "is_correct": false },
                 { "value": 2, "is_correct": false },
@@ -2049,7 +2049,7 @@
     {
         "id": 147,
         "problem_json": {
-            "question": "¿Cuánto es 92 - 47?",
+            "question": "Quant és 92 - 47?",
             "answers": [
                 { "value": 44, "is_correct": false },
                 { "value": 46, "is_correct": false },
@@ -2063,7 +2063,7 @@
     {
         "id": 148,
         "problem_json": {
-            "question": "¿Cuánto es 982 - 637?",
+            "question": "Quant és 982 - 637?",
             "answers": [
                 { "value": 345, "is_correct": true },
                 { "value": 344, "is_correct": false },
@@ -2077,7 +2077,7 @@
     {
         "id": 149,
         "problem_json": {
-            "question": "¿Cuánto es 3 - 2?",
+            "question": "Quant és 3 - 2?",
             "answers": [
                 { "value": 2, "is_correct": false },
                 { "value": 1, "is_correct": true },
@@ -2091,7 +2091,7 @@
     {
         "id": 150,
         "problem_json": {
-            "question": "¿Cuánto es 63 - 28?",
+            "question": "Quant és 63 - 28?",
             "answers": [
                 { "value": 36, "is_correct": false },
                 { "value": 34, "is_correct": false },
@@ -2105,7 +2105,7 @@
     {
         "id": 151,
         "problem_json": {
-            "question": "¿Cuánto es 743 - 516?",
+            "question": "Quant és 743 - 516?",
             "answers": [
                 { "value": 226, "is_correct": false },
                 { "value": 228, "is_correct": false },
@@ -2119,7 +2119,7 @@
     {
         "id": 152,
         "problem_json": {
-            "question": "¿Cuánto es 9 - 4?",
+            "question": "Quant és 9 - 4?",
             "answers": [
                 { "value": 4, "is_correct": false },
                 { "value": 5, "is_correct": true },
@@ -2133,7 +2133,7 @@
     {
         "id": 153,
         "problem_json": {
-            "question": "¿Cuánto es 81 - 37?",
+            "question": "Quant és 81 - 37?",
             "answers": [
                 { "value": 44, "is_correct": true },
                 { "value": 43, "is_correct": false },
@@ -2147,7 +2147,7 @@
     {
         "id": 154,
         "problem_json": {
-            "question": "¿Cuánto es 978 - 683?",
+            "question": "Quant és 978 - 683?",
             "answers": [
                 { "value": 295, "is_correct": true },
                 { "value": 294, "is_correct": false },
@@ -2161,7 +2161,7 @@
     {
         "id": 155,
         "problem_json": {
-            "question": "¿Cuánto es 7 - 5?",
+            "question": "Quant és 7 - 5?",
             "answers": [
                 { "value": 1, "is_correct": false },
                 { "value": 2, "is_correct": true },
@@ -2175,7 +2175,7 @@
     {
         "id": 156,
         "problem_json": {
-            "question": "¿Cuánto es 95 - 47?",
+            "question": "Quant és 95 - 47?",
             "answers": [
                 { "value": 47, "is_correct": false },
                 { "value": 48, "is_correct": true },
@@ -2189,7 +2189,7 @@
     {
         "id": 157,
         "problem_json": {
-            "question": "¿Cuánto es 843 - 594?",
+            "question": "Quant és 843 - 594?",
             "answers": [
                 { "value": 249, "is_correct": true },
                 { "value": 248, "is_correct": false },
@@ -2203,7 +2203,7 @@
     {
         "id": 158,
         "problem_json": {
-            "question": "¿Cuánto es 10 - 3?",
+            "question": "Quant és 10 - 3?",
             "answers": [
                 { "value": 6, "is_correct": false },
                 { "value": 7, "is_correct": true },
@@ -2217,7 +2217,7 @@
     {
         "id": 159,
         "problem_json": {
-            "question": "¿Cuánto es 83 - 59?",
+            "question": "Quant és 83 - 59?",
             "answers": [
                 { "value": 25, "is_correct": false },
                 { "value": 24, "is_correct": true },
@@ -2231,7 +2231,7 @@
     {
         "id": 160,
         "problem_json": {
-            "question": "¿Cuánto es 932 - 712?",
+            "question": "Quant és 932 - 712?",
             "answers": [
                 { "value": 220, "is_correct": true },
                 { "value": 221, "is_correct": false },
@@ -2245,7 +2245,7 @@
     {
         "id": 161,
         "problem_json": {
-            "question": "¿Cuánto es 8 - 3?",
+            "question": "Quant és 8 - 3?",
             "answers": [
                 { "value": 4, "is_correct": false },
                 { "value": 5, "is_correct": true },
@@ -2259,7 +2259,7 @@
     {
         "id": 162,
         "problem_json": {
-            "question": "¿Cuánto es 72 - 39?",
+            "question": "Quant és 72 - 39?",
             "answers": [
                 { "value": 34, "is_correct": false },
                 { "value": 33, "is_correct": true },
@@ -2273,7 +2273,7 @@
     {
         "id": 163,
         "problem_json": {
-            "question": "¿Cuánto es 496 - 274?",
+            "question": "Quant és 496 - 274?",
             "answers": [
                 { "value": 222, "is_correct": true },
                 { "value": 221, "is_correct": false },
@@ -2287,7 +2287,7 @@
     {
         "id": 164,
         "problem_json": {
-            "question": "¿Cuánto es 6 - 4?",
+            "question": "Quant és 6 - 4?",
             "answers": [
                 { "value": 1, "is_correct": false },
                 { "value": 2, "is_correct": true },
@@ -2301,7 +2301,7 @@
     {
         "id": 165,
         "problem_json": {
-            "question": "¿Cuánto es 85 - 44?",
+            "question": "Quant és 85 - 44?",
             "answers": [
                 { "value": 41, "is_correct": true },
                 { "value": 40, "is_correct": false },
@@ -2315,7 +2315,7 @@
     {
         "id": 166,
         "problem_json": {
-            "question": "¿Cuánto es 748 - 524?",
+            "question": "Quant és 748 - 524?",
             "answers": [
                 { "value": 224, "is_correct": true },
                 { "value": 223, "is_correct": false },
@@ -2329,7 +2329,7 @@
     {
         "id": 167,
         "problem_json": {
-            "question": "¿Cuánto es 9 - 6?",
+            "question": "Quant és 9 - 6?",
             "answers": [
                 { "value": 3, "is_correct": true },
                 { "value": 2, "is_correct": false },
@@ -2343,7 +2343,7 @@
     {
         "id": 168,
         "problem_json": {
-            "question": "¿Cuánto es 63 - 28?",
+            "question": "Quant és 63 - 28?",
             "answers": [
                 { "value": 34, "is_correct": false },
                 { "value": 35, "is_correct": true },
@@ -2357,7 +2357,7 @@
     {
         "id": 169,
         "problem_json": {
-            "question": "¿Cuánto es 913 - 486?",
+            "question": "Quant és 913 - 486?",
             "answers": [
                 { "value": 426, "is_correct": false },
                 { "value": 427, "is_correct": true },
@@ -2371,7 +2371,7 @@
     {
         "id": 170,
         "problem_json": {
-            "question": "¿Cuánto es 14 - 9?",
+            "question": "Quant és 14 - 9?",
             "answers": [
                 { "value": 6, "is_correct": false },
                 { "value": 4, "is_correct": false },
@@ -2385,7 +2385,7 @@
     {
         "id": 171,
         "problem_json": {
-            "question": "¿Cuánto es 52 - 17?",
+            "question": "Quant és 52 - 17?",
             "answers": [
                 { "value": 34, "is_correct": false },
                 { "value": 35, "is_correct": true },
@@ -2399,7 +2399,7 @@
     {
         "id": 172,
         "problem_json": {
-            "question": "¿Cuánto es 324 - 198?",
+            "question": "Quant és 324 - 198?",
             "answers": [
                 { "value": 127, "is_correct": false },
                 { "value": 129, "is_correct": false },
@@ -2413,7 +2413,7 @@
     {
         "id": 173,
         "problem_json": {
-            "question": "¿Cuánto es 10 - 2?",
+            "question": "Quant és 10 - 2?",
             "answers": [
                 { "value": 8, "is_correct": true },
                 { "value": 7, "is_correct": false },
@@ -2427,7 +2427,7 @@
     {
         "id": 174,
         "problem_json": {
-            "question": "¿Cuánto es 90 - 45?",
+            "question": "Quant és 90 - 45?",
             "answers": [
                 { "value": 35, "is_correct": false },
                 { "value": 34, "is_correct": false },
@@ -2441,7 +2441,7 @@
     {
         "id": 175,
         "problem_json": {
-            "question": "¿Cuánto es 205 - 150?",
+            "question": "Quant és 205 - 150?",
             "answers": [
                 { "value": 55, "is_correct": true },
                 { "value": 54, "is_correct": false },
@@ -2455,7 +2455,7 @@
     {
         "id": 176,
         "problem_json": {
-            "question": "¿Cuánto es 18 - 7?",
+            "question": "Quant és 18 - 7?",
             "answers": [
                 { "value": 12, "is_correct": false },
                 { "value": 11, "is_correct": true },
@@ -2469,7 +2469,7 @@
     {
         "id": 177,
         "problem_json": {
-            "question": "¿Cuánto es 68 - 32?",
+            "question": "Quant és 68 - 32?",
             "answers": [
                 { "value": 36, "is_correct": true },
                 { "value": 35, "is_correct": false },
@@ -2483,7 +2483,7 @@
     {
         "id": 178,
         "problem_json": {
-            "question": "¿Cuánto es 402 - 198?",
+            "question": "Quant és 402 - 198?",
             "answers": [
                 { "value": 204, "is_correct": true },
                 { "value": 205, "is_correct": false },
@@ -2497,7 +2497,7 @@
     {
         "id": 179,
         "problem_json": {
-            "question": "¿Cuánto es 7 - 3?",
+            "question": "Quant és 7 - 3?",
             "answers": [
                 { "value": 4, "is_correct": true },
                 { "value": 5, "is_correct": false },
@@ -2511,7 +2511,7 @@
     {
         "id": 180,
         "problem_json": {
-            "question": "¿Cuánto es 80 - 48?",
+            "question": "Quant és 80 - 48?",
             "answers": [
                 { "value": 31, "is_correct": false },
                 { "value": 32, "is_correct": true },
@@ -2525,7 +2525,7 @@
     {
         "id": 181,
         "problem_json": {
-            "question": "¿Cuánto es 100 - 56?",
+            "question": "Quant és 100 - 56?",
             "answers": [
                 { "value": 35, "is_correct": false },
                 { "value": 34, "is_correct": false },
@@ -2539,7 +2539,7 @@
     {
         "id": 182,
         "problem_json": {
-            "question": "¿Cuánto es 15 - 7?",
+            "question": "Quant és 15 - 7?",
             "answers": [
                 { "value": 9, "is_correct": false },
                 { "value": 8, "is_correct": true },
@@ -2553,7 +2553,7 @@
     {
         "id": 183,
         "problem_json": {
-            "question": "¿Cuánto es 225 - 174?",
+            "question": "Quant és 225 - 174?",
             "answers": [
                 { "value": 50, "is_correct": false },
                 { "value": 51, "is_correct": true },
@@ -2567,7 +2567,7 @@
     {
         "id": 184,
         "problem_json": {
-            "question": "¿Cuánto es 36 - 19?",
+            "question": "Quant és 36 - 19?",
             "answers": [
                 { "value": 17, "is_correct": true },
                 { "value": 18, "is_correct": false },
@@ -2581,7 +2581,7 @@
     {
         "id": 185,
         "problem_json": {
-            "question": "¿Cuánto es 9 - 6?",
+            "question": "Quant és 9 - 6?",
             "answers": [
                 { "value": 4, "is_correct": false },
                 { "value": 3, "is_correct": true },
@@ -2595,7 +2595,7 @@
     {
         "id": 186,
         "problem_json": {
-            "question": "¿Cuánto es 128 - 95?",
+            "question": "Quant és 128 - 95?",
             "answers": [
                 { "value": 33, "is_correct": true },
                 { "value": 32, "is_correct": false },
@@ -2609,7 +2609,7 @@
     {
         "id": 187,
         "problem_json": {
-            "question": "¿Cuánto es 600 - 425?",
+            "question": "Quant és 600 - 425?",
             "answers": [
                 { "value": 175, "is_correct": true },
                 { "value": 176, "is_correct": false },
@@ -2623,7 +2623,7 @@
     {
         "id": 188,
         "problem_json": {
-            "question": "¿Cuánto es 14 - 5?",
+            "question": "Quant és 14 - 5?",
             "answers": [
                 { "value": 10, "is_correct": false },
                 { "value": 9, "is_correct": true },
@@ -2637,7 +2637,7 @@
     {
         "id": 189,
         "problem_json": {
-            "question": "¿Cuánto es 58 - 22?",
+            "question": "Quant és 58 - 22?",
             "answers": [
                 { "value": 35, "is_correct": false },
                 { "value": 36, "is_correct": true },
@@ -2651,7 +2651,7 @@
     {
         "id": 190,
         "problem_json": {
-            "question": "¿Cuánto es 500 - 299?",
+            "question": "Quant és 500 - 299?",
             "answers": [
                 { "value": 200, "is_correct": false },
                 { "value": 201, "is_correct": true },
@@ -2665,7 +2665,7 @@
     {
         "id": 191,
         "problem_json": {
-            "question": "¿Cuánto es 35 - 18?",
+            "question": "Quant és 35 - 18?",
             "answers": [
                 { "value": 17, "is_correct": true },
                 { "value": 16, "is_correct": false },
@@ -2679,7 +2679,7 @@
     {
         "id": 192,
         "problem_json": {
-            "question": "¿Cuánto es 1000 - 850?",
+            "question": "Quant és 1000 - 850?",
             "answers": [
                 { "value": 150, "is_correct": true },
                 { "value": 149, "is_correct": false },
@@ -2693,7 +2693,7 @@
     {
         "id": 193,
         "problem_json": {
-            "question": "¿Cuánto es 60 - 27?",
+            "question": "Quant és 60 - 27?",
             "answers": [
                 { "value": 34, "is_correct": false },
                 { "value": 32, "is_correct": false },
@@ -2707,7 +2707,7 @@
     {
         "id": 194,
         "problem_json": {
-            "question": "¿Cuánto es 22 - 12?",
+            "question": "Quant és 22 - 12?",
             "answers": [
                 { "value": 10, "is_correct": true },
                 { "value": 11, "is_correct": false },
@@ -2721,7 +2721,7 @@
     {
         "id": 195,
         "problem_json": {
-            "question": "¿Cuánto es 150 - 47?",
+            "question": "Quant és 150 - 47?",
             "answers": [
                 { "value": 102, "is_correct": false },
                 { "value": 103, "is_correct": true },
@@ -2735,7 +2735,7 @@
     {
         "id": 196,
         "problem_json": {
-            "question": "¿Cuánto es 200 - 89?",
+            "question": "Quant és 200 - 89?",
             "answers": [
                 { "value": 110, "is_correct": false },
                 { "value": 111, "is_correct": true },
@@ -2749,7 +2749,7 @@
     {
         "id": 197,
         "problem_json": {
-            "question": "¿Cuánto es 12 - 5?",
+            "question": "Quant és 12 - 5?",
             "answers": [
                 { "value": 8, "is_correct": false },
                 { "value": 6, "is_correct": false },
@@ -2763,7 +2763,7 @@
     {
         "id": 198,
         "problem_json": {
-            "question": "¿Cuánto es 85 - 39?",
+            "question": "Quant és 85 - 39?",
             "answers": [
                 { "value": 47, "is_correct": false },
                 { "value": 46, "is_correct": true },
@@ -2777,7 +2777,7 @@
     {
         "id": 199,
         "problem_json": {
-            "question": "¿Cuánto es 500 - 275?",
+            "question": "Quant és 500 - 275?",
             "answers": [
                 { "value": 224, "is_correct": false },
                 { "value": 225, "is_correct": true },
@@ -2791,7 +2791,7 @@
     {
         "id": 200,
         "problem_json": {
-            "question": "¿Cuánto es 19 - 8?",
+            "question": "Quant és 19 - 8?",
             "answers": [
                 { "value": 11, "is_correct": true },
                 { "value": 12, "is_correct": false },
@@ -2805,7 +2805,7 @@
     {
         "id": 201,
         "problem_json": {
-            "question": "¿Cuánto es 8 x 6?",
+            "question": "Quant és 8 x 6?",
             "answers": [
                 { "value": 48, "is_correct": true },
                 { "value": 45, "is_correct": false },
@@ -2819,7 +2819,7 @@
     {
         "id": 202,
         "problem_json": {
-            "question": "¿Cuánto es 12 x 6?",
+            "question": "Quant és 12 x 6?",
             "answers": [
                 { "value": 75, "is_correct": false },
                 { "value": 70, "is_correct": false },
@@ -2833,7 +2833,7 @@
     {
         "id": 203,
         "problem_json": {
-            "question": "¿Cuánto es 24 x 12?",
+            "question": "Quant és 24 x 12?",
             "answers": [
                 { "value": 280, "is_correct": false },
                 { "value": 295, "is_correct": false },
@@ -2847,7 +2847,7 @@
     {
         "id": 204,
         "problem_json": {
-            "question": "¿Cuánto es 7 x 5?",
+            "question": "Quant és 7 x 5?",
             "answers": [
                 { "value": 30, "is_correct": false },
                 { "value": 25, "is_correct": false },
@@ -2861,7 +2861,7 @@
     {
         "id": 205,
         "problem_json": {
-            "question": "¿Cuánto es 14 x 8?",
+            "question": "Quant és 14 x 8?",
             "answers": [
                 { "value": 110, "is_correct": false },
                 { "value": 120, "is_correct": false },
@@ -2875,7 +2875,7 @@
     {
         "id": 206,
         "problem_json": {
-            "question": "¿Cuánto es 30 x 18?",
+            "question": "Quant és 30 x 18?",
             "answers": [
                 { "value": 520, "is_correct": false },
                 { "value": 530, "is_correct": false },
@@ -2889,7 +2889,7 @@
     {
         "id": 207,
         "problem_json": {
-            "question": "¿Cuánto es 4 x 7?",
+            "question": "Quant és 4 x 7?",
             "answers": [
                 { "value": 30, "is_correct": false },
                 { "value": 32, "is_correct": false },
@@ -2903,7 +2903,7 @@
     {
         "id": 208,
         "problem_json": {
-            "question": "¿Cuánto es 15 x 9?",
+            "question": "Quant és 15 x 9?",
             "answers": [
                 { "value": 130, "is_correct": false },
                 { "value": 140, "is_correct": false },
@@ -2917,7 +2917,7 @@
     {
         "id": 209,
         "problem_json": {
-            "question": "¿Cuánto es 25 x 16?",
+            "question": "Quant és 25 x 16?",
             "answers": [
                 { "value": 420, "is_correct": false },
                 { "value": 380, "is_correct": false },
@@ -2931,7 +2931,7 @@
     {
         "id": 210,
         "problem_json": {
-            "question": "¿Cuánto es 5 x 9?",
+            "question": "Quant és 5 x 9?",
             "answers": [
                 { "value": 40, "is_correct": false },
                 { "value": 50, "is_correct": false },
@@ -2945,7 +2945,7 @@
     {
         "id": 211,
         "problem_json": {
-            "question": "¿Cuánto es 18 x 11?",
+            "question": "Quant és 18 x 11?",
             "answers": [
                 { "value": 200, "is_correct": false },
                 { "value": 210, "is_correct": false },
@@ -2959,7 +2959,7 @@
     {
         "id": 212,
         "problem_json": {
-            "question": "¿Cuánto es 26 x 13?",
+            "question": "Quant és 26 x 13?",
             "answers": [
                 { "value": 330, "is_correct": false },
                 { "value": 320, "is_correct": false },
@@ -2973,7 +2973,7 @@
     {
         "id": 213,
         "problem_json": {
-            "question": "¿Cuánto es 9 x 4?",
+            "question": "Quant és 9 x 4?",
             "answers": [
                 { "value": 34, "is_correct": false },
                 { "value": 38, "is_correct": false },
@@ -2987,7 +2987,7 @@
     {
         "id": 214,
         "problem_json": {
-            "question": "¿Cuánto es 13 x 8?",
+            "question": "Quant és 13 x 8?",
             "answers": [
                 { "value": 100, "is_correct": false },
                 { "value": 90, "is_correct": false },
@@ -3001,7 +3001,7 @@
     {
         "id": 215,
         "problem_json": {
-            "question": "¿Cuánto es 22 x 17?",
+            "question": "Quant és 22 x 17?",
             "answers": [
                 { "value": 380, "is_correct": false },
                 { "value": 350, "is_correct": false },
@@ -3015,7 +3015,7 @@
     {
         "id": 216,
         "problem_json": {
-            "question": "¿Cuánto es 6 x 8?",
+            "question": "Quant és 6 x 8?",
             "answers": [
                 { "value": 45, "is_correct": false },
                 { "value": 42, "is_correct": false },
@@ -3029,7 +3029,7 @@
     {
         "id": 217,
         "problem_json": {
-            "question": "¿Cuánto es 10 x 14?",
+            "question": "Quant és 10 x 14?",
             "answers": [
                 { "value": 140, "is_correct": true },
                 { "value": 130, "is_correct": false },
@@ -3043,7 +3043,7 @@
     {
         "id": 218,
         "problem_json": {
-            "question": "¿Cuánto es 8 x 7?",
+            "question": "Quant és 8 x 7?",
             "answers": [
                 { "value": 50, "is_correct": false },
                 { "value": 56, "is_correct": true },
@@ -3057,7 +3057,7 @@
     {
         "id": 219,
         "problem_json": {
-            "question": "¿Cuánto es 16 x 6?",
+            "question": "Quant és 16 x 6?",
             "answers": [
                 { "value": 92, "is_correct": false },
                 { "value": 96, "is_correct": true },
@@ -3071,7 +3071,7 @@
     {
         "id": 220,
         "problem_json": {
-            "question": "¿Cuánto es 25 x 24?",
+            "question": "Quant és 25 x 24?",
             "answers": [
                 { "value": 600, "is_correct": true },
                 { "value": 580, "is_correct": false },
@@ -3085,7 +3085,7 @@
     {
         "id": 221,
         "problem_json": {
-            "question": "¿Cuánto es 4 x 10?",
+            "question": "Quant és 4 x 10?",
             "answers": [
                 { "value": 45, "is_correct": false },
                 { "value": 40, "is_correct": true },
@@ -3099,7 +3099,7 @@
     {
         "id": 222,
         "problem_json": {
-            "question": "¿Cuánto es 18 x 9?",
+            "question": "Quant és 18 x 9?",
             "answers": [
                 { "value": 140, "is_correct": false },
                 { "value": 145, "is_correct": false },
@@ -3113,7 +3113,7 @@
     {
         "id": 223,
         "problem_json": {
-            "question": "¿Cuánto es 28 x 17?",
+            "question": "Quant és 28 x 17?",
             "answers": [
                 { "value": 476, "is_correct": true },
                 { "value": 485, "is_correct": false },
@@ -3127,7 +3127,7 @@
     {
         "id": 224,
         "problem_json": {
-            "question": "¿Cuánto es 6 x 12?",
+            "question": "Quant és 6 x 12?",
             "answers": [
                 { "value": 65, "is_correct": false },
                 { "value": 72, "is_correct": true },
@@ -3141,7 +3141,7 @@
     {
         "id": 225,
         "problem_json": {
-            "question": "¿Cuánto es 15 x 14?",
+            "question": "Quant és 15 x 14?",
             "answers": [
                 { "value": 210, "is_correct": true },
                 { "value": 225, "is_correct": false },
@@ -3155,7 +3155,7 @@
     {
         "id": 226,
         "problem_json": {
-            "question": "¿Cuánto es 35 x 24?",
+            "question": "Quant és 35 x 24?",
             "answers": [
                 { "value": 850, "is_correct": false },
                 { "value": 840, "is_correct": false },
@@ -3169,7 +3169,7 @@
     {
         "id": 227,
         "problem_json": {
-            "question": "¿Cuánto es 5 x 7?",
+            "question": "Quant és 5 x 7?",
             "answers": [
                 { "value": 33, "is_correct": false },
                 { "value": 35, "is_correct": true },
@@ -3183,7 +3183,7 @@
     {
         "id": 228,
         "problem_json": {
-            "question": "¿Cuánto es 16 x 9?",
+            "question": "Quant és 16 x 9?",
             "answers": [
                 { "value": 140, "is_correct": false },
                 { "value": 144, "is_correct": true },
@@ -3197,7 +3197,7 @@
     {
         "id": 229,
         "problem_json": {
-            "question": "¿Cuánto es 45 x 14?",
+            "question": "Quant és 45 x 14?",
             "answers": [
                 { "value": 600, "is_correct": false },
                 { "value": 635, "is_correct": false },
@@ -3211,7 +3211,7 @@
     {
         "id": 230,
         "problem_json": {
-            "question": "¿Cuánto es 6 x 6?",
+            "question": "Quant és 6 x 6?",
             "answers": [
                 { "value": 35, "is_correct": false },
                 { "value": 36, "is_correct": true },
@@ -3225,7 +3225,7 @@
     {
         "id": 231,
         "problem_json": {
-            "question": "¿Cuánto es 14 x 12?",
+            "question": "Quant és 14 x 12?",
             "answers": [
                 { "value": 168, "is_correct": true },
                 { "value": 160, "is_correct": false },
@@ -3239,7 +3239,7 @@
     {
         "id": 232,
         "problem_json": {
-            "question": "¿Cuánto es 28 x 22?",
+            "question": "Quant és 28 x 22?",
             "answers": [
                 { "value": 600, "is_correct": false },
                 { "value": 616, "is_correct": true },
@@ -3253,7 +3253,7 @@
     {
         "id": 233,
         "problem_json": {
-            "question": "¿Cuánto es 5 x 5?",
+            "question": "Quant és 5 x 5?",
             "answers": [
                 { "value": 25, "is_correct": true },
                 { "value": 10, "is_correct": false },
@@ -3267,7 +3267,7 @@
     {
         "id": 234,
         "problem_json": {
-            "question": "¿Cuánto es 18 x 8?",
+            "question": "Quant és 18 x 8?",
             "answers": [
                 { "value": 144, "is_correct": true },
                 { "value": 130, "is_correct": false },
@@ -3281,7 +3281,7 @@
     {
         "id": 235,
         "problem_json": {
-            "question": "¿Cuánto es 33 x 19?",
+            "question": "Quant és 33 x 19?",
             "answers": [
                 { "value": 630, "is_correct": false },
                 { "value": 629, "is_correct": false },
@@ -3295,7 +3295,7 @@
     {
         "id": 236,
         "problem_json": {
-            "question": "¿Cuánto es 4 x 5?",
+            "question": "Quant és 4 x 5?",
             "answers": [
                 { "value": 20, "is_correct": true },
                 { "value": 25, "is_correct": false },
@@ -3309,7 +3309,7 @@
     {
         "id": 237,
         "problem_json": {
-            "question": "¿Cuánto es 20 x 15?",
+            "question": "Quant és 20 x 15?",
             "answers": [
                 { "value": 300, "is_correct": true },
                 { "value": 290, "is_correct": false },
@@ -3323,7 +3323,7 @@
     {
         "id": 238,
         "problem_json": {
-            "question": "¿Cuánto es 42 x 15?",
+            "question": "Quant és 42 x 15?",
             "answers": [
                 { "value": 640, "is_correct": false },
                 { "value": 630, "is_correct": true },
@@ -3337,7 +3337,7 @@
     {
         "id": 239,
         "problem_json": {
-            "question": "¿Cuánto es 7 x 8?",
+            "question": "Quant és 7 x 8?",
             "answers": [
                 { "value": 56, "is_correct": true },
                 { "value": 50, "is_correct": false },
@@ -3351,7 +3351,7 @@
     {
         "id": 240,
         "problem_json": {
-            "question": "¿Cuánto es 19 x 11?",
+            "question": "Quant és 19 x 11?",
             "answers": [
                 { "value": 209, "is_correct": true },
                 { "value": 210, "is_correct": false },
@@ -3365,7 +3365,7 @@
     {
         "id": 241,
         "problem_json": {
-            "question": "¿Cuánto es 36 x 18?",
+            "question": "Quant és 36 x 18?",
             "answers": [
                 { "value": 640, "is_correct": false },
                 { "value": 648, "is_correct": true },
@@ -3379,7 +3379,7 @@
     {
         "id": 242,
         "problem_json": {
-            "question": "¿Cuánto es 3 x 7?",
+            "question": "Quant és 3 x 7?",
             "answers": [
                 { "value": 21, "is_correct": true },
                 { "value": 20, "is_correct": false },
@@ -3393,7 +3393,7 @@
     {
         "id": 243,
         "problem_json": {
-            "question": "¿Cuánto es 16 x 12?",
+            "question": "Quant és 16 x 12?",
             "answers": [
                 { "value": 185, "is_correct": false },
                 { "value": 190, "is_correct": false },
@@ -3407,7 +3407,7 @@
     {
         "id": 244,
         "problem_json": {
-            "question": "¿Cuánto es 45 x 17?",
+            "question": "Quant és 45 x 17?",
             "answers": [
                 { "value": 750, "is_correct": false },
                 { "value": 765, "is_correct": true },
@@ -3421,7 +3421,7 @@
     {
         "id": 245,
         "problem_json": {
-            "question": "¿Cuánto es 4 x 8?",
+            "question": "Quant és 4 x 8?",
             "answers": [
                 { "value": 30, "is_correct": false },
                 { "value": 33, "is_correct": false },
@@ -3435,7 +3435,7 @@
     {
         "id": 246,
         "problem_json": {
-            "question": "¿Cuánto es 22 x 9?",
+            "question": "Quant és 22 x 9?",
             "answers": [
                 { "value": 198, "is_correct": true },
                 { "value": 200, "is_correct": false },
@@ -3449,7 +3449,7 @@
     {
         "id": 247,
         "problem_json": {
-            "question": "¿Cuánto es 57 x 14?",
+            "question": "Quant és 57 x 14?",
             "answers": [
                 { "value": 785, "is_correct": false },
                 { "value": 798, "is_correct": true },
@@ -3463,7 +3463,7 @@
     {
         "id": 248,
         "problem_json": {
-            "question": "¿Cuánto es 2 x 10?",
+            "question": "Quant és 2 x 10?",
             "answers": [
                 { "value": 18, "is_correct": false },
                 { "value": 25, "is_correct": false },
@@ -3477,7 +3477,7 @@
     {
         "id": 249,
         "problem_json": {
-            "question": "¿Cuánto es 17 x 15?",
+            "question": "Quant és 17 x 15?",
             "answers": [
                 { "value": 250, "is_correct": false },
                 { "value": 240, "is_correct": false },
@@ -3491,7 +3491,7 @@
     {
         "id": 250,
         "problem_json": {
-            "question": "¿Cuánto es 63 x 19?",
+            "question": "Quant és 63 x 19?",
             "answers": [
                 { "value": 1197, "is_correct": true },
                 { "value": 1185, "is_correct": false },
@@ -3505,7 +3505,7 @@
     {
         "id": 251,
         "problem_json": {
-            "question": "¿Cuánto es 11 x 7?",
+            "question": "Quant és 11 x 7?",
             "answers": [
                 { "value": 70, "is_correct": false },
                 { "value": 77, "is_correct": true },
@@ -3519,7 +3519,7 @@
     {
         "id": 252,
         "problem_json": {
-            "question": "¿Cuánto es 25 x 14?",
+            "question": "Quant és 25 x 14?",
             "answers": [
                 { "value": 340, "is_correct": false },
                 { "value": 330, "is_correct": false },
@@ -3533,7 +3533,7 @@
     {
         "id": 253,
         "problem_json": {
-            "question": "¿Cuánto es 72 x 16?",
+            "question": "Quant és 72 x 16?",
             "answers": [
                 { "value": 1100, "is_correct": false },
                 { "value": 1180, "is_correct": false },
@@ -3547,7 +3547,7 @@
     {
         "id": 254,
         "problem_json": {
-            "question": "¿Cuánto es 5 x 6?",
+            "question": "Quant és 5 x 6?",
             "answers": [
                 { "value": 30, "is_correct": true },
                 { "value": 28, "is_correct": false },
@@ -3561,7 +3561,7 @@
     {
         "id": 255,
         "problem_json": {
-            "question": "¿Cuánto es 13 x 18?",
+            "question": "Quant és 13 x 18?",
             "answers": [
                 { "value": 220, "is_correct": false },
                 { "value": 234, "is_correct": true },
@@ -3575,7 +3575,7 @@
     {
         "id": 256,
         "problem_json": {
-            "question": "¿Cuánto es 39 x 17?",
+            "question": "Quant és 39 x 17?",
             "answers": [
                 { "value": 650, "is_correct": false },
                 { "value": 670, "is_correct": false },
@@ -3589,7 +3589,7 @@
     {
         "id": 257,
         "problem_json": {
-            "question": "¿Cuánto es 3 x 5?",
+            "question": "Quant és 3 x 5?",
             "answers": [
                 { "value": 13, "is_correct": false },
                 { "value": 18, "is_correct": false },
@@ -3603,7 +3603,7 @@
     {
         "id": 258,
         "problem_json": {
-            "question": "¿Cuánto es 19 x 7?",
+            "question": "Quant és 19 x 7?",
             "answers": [
                 { "value": 133, "is_correct": true },
                 { "value": 140, "is_correct": false },
@@ -3617,7 +3617,7 @@
     {
         "id": 259,
         "problem_json": {
-            "question": "¿Cuánto es 49 x 12?",
+            "question": "Quant és 49 x 12?",
             "answers": [
                 { "value": 600, "is_correct": false },
                 { "value": 588, "is_correct": true },
@@ -3631,7 +3631,7 @@
     {
         "id": 260,
         "problem_json": {
-            "question": "¿Cuánto es 3 x 3?",
+            "question": "Quant és 3 x 3?",
             "answers": [
                 { "value": 8, "is_correct": false },
                 { "value": 7, "is_correct": false },
@@ -3645,7 +3645,7 @@
     {
         "id": 261,
         "problem_json": {
-            "question": "¿Cuánto es 21 x 9?",
+            "question": "Quant és 21 x 9?",
             "answers": [
                 { "value": 180, "is_correct": false },
                 { "value": 200, "is_correct": false },
@@ -3659,7 +3659,7 @@
     {
         "id": 262,
         "problem_json": {
-            "question": "¿Cuánto es 54 x 18?",
+            "question": "Quant és 54 x 18?",
             "answers": [
                 { "value": 972, "is_correct": true },
                 { "value": 980, "is_correct": false },
@@ -3673,7 +3673,7 @@
     {
         "id": 263,
         "problem_json": {
-            "question": "¿Cuánto es 8 x 8?",
+            "question": "Quant és 8 x 8?",
             "answers": [
                 { "value": 66, "is_correct": false },
                 { "value": 64, "is_correct": true },
@@ -3687,7 +3687,7 @@
     {
         "id": 264,
         "problem_json": {
-            "question": "¿Cuánto es 14 x 11?",
+            "question": "Quant és 14 x 11?",
             "answers": [
                 { "value": 150, "is_correct": false },
                 { "value": 160, "is_correct": false },
@@ -3701,7 +3701,7 @@
     {
         "id": 265,
         "problem_json": {
-            "question": "¿Cuánto es 72 x 25?",
+            "question": "Quant és 72 x 25?",
             "answers": [
                 { "value": 1700, "is_correct": false },
                 { "value": 1900, "is_correct": false },
@@ -3715,7 +3715,7 @@
     {
         "id": 266,
         "problem_json": {
-            "question": "¿Cuánto es 4 x 7?",
+            "question": "Quant és 4 x 7?",
             "answers": [
                 { "value": 28, "is_correct": true },
                 { "value": 30, "is_correct": false },
@@ -3729,7 +3729,7 @@
     {
         "id": 267,
         "problem_json": {
-            "question": "¿Cuánto es 16 x 5?",
+            "question": "Quant és 16 x 5?",
             "answers": [
                 { "value": 80, "is_correct": false },
                 { "value": 92, "is_correct": true },
@@ -3743,7 +3743,7 @@
     {
         "id": 268,
         "problem_json": {
-            "question": "¿Cuánto es 45 x 18?",
+            "question": "Quant és 45 x 18?",
             "answers": [
                 { "value": 800, "is_correct": false },
                 { "value": 820, "is_correct": false },
@@ -3757,7 +3757,7 @@
     {
         "id": 269,
         "problem_json": {
-            "question": "¿Cuánto es 10 x 5?",
+            "question": "Quant és 10 x 5?",
             "answers": [
                 { "value": 55, "is_correct": false },
                 { "value": 15, "is_correct": false },
@@ -3771,7 +3771,7 @@
     {
         "id": 270,
         "problem_json": {
-            "question": "¿Cuánto es 18 x 14?",
+            "question": "Quant és 18 x 14?",
             "answers": [
                 { "value": 252, "is_correct": true },
                 { "value": 250, "is_correct": false },
@@ -3785,7 +3785,7 @@
     {
         "id": 271,
         "problem_json": {
-            "question": "¿Cuánto es 56 x 23?",
+            "question": "Quant és 56 x 23?",
             "answers": [
                 { "value": 1300, "is_correct": false },
                 { "value": 1288, "is_correct": true },
@@ -3799,7 +3799,7 @@
     {
         "id": 272,
         "problem_json": {
-            "question": "¿Cuánto es 9 x 6?",
+            "question": "Quant és 9 x 6?",
             "answers": [
                 { "value": 52, "is_correct": false },
                 { "value": 50, "is_correct": false },
@@ -3813,7 +3813,7 @@
     {
         "id": 273,
         "problem_json": {
-            "question": "¿Cuánto es 23 x 11?",
+            "question": "Quant és 23 x 11?",
             "answers": [
                 { "value": 240, "is_correct": false },
                 { "value": 270, "is_correct": false },
@@ -3827,7 +3827,7 @@
     {
         "id": 274,
         "problem_json": {
-            "question": "¿Cuánto es 72 x 29?",
+            "question": "Quant és 72 x 29?",
             "answers": [
                 { "value": 2088, "is_correct": true },
                 { "value": 2000, "is_correct": false },
@@ -3841,7 +3841,7 @@
     {
         "id": 275,
         "problem_json": {
-            "question": "¿Cuánto es 3 x 10?",
+            "question": "Quant és 3 x 10?",
             "answers": [
                 { "value": 28, "is_correct": false },
                 { "value": 30, "is_correct": true },
@@ -3855,7 +3855,7 @@
     {
         "id": 276,
         "problem_json": {
-            "question": "¿Cuánto es 25 x 15?",
+            "question": "Quant és 25 x 15?",
             "answers": [
                 { "value": 350, "is_correct": false },
                 { "value": 400, "is_correct": false },
@@ -3869,7 +3869,7 @@
     {
         "id": 277,
         "problem_json": {
-            "question": "¿Cuánto es 63 x 24?",
+            "question": "Quant és 63 x 24?",
             "answers": [
                 { "value": 1500, "is_correct": false },
                 { "value": 1600, "is_correct": false },
@@ -3883,7 +3883,7 @@
     {
         "id": 278,
         "problem_json": {
-            "question": "¿Cuánto es 4 x 4?",
+            "question": "Quant és 4 x 4?",
             "answers": [
                 { "value": 16, "is_correct": true },
                 { "value": 12, "is_correct": false },
@@ -3897,7 +3897,7 @@
     {
         "id": 279,
         "problem_json": {
-            "question": "¿Cuánto es 14 x 17?",
+            "question": "Quant és 14 x 17?",
             "answers": [
                 { "value": 220, "is_correct": false },
                 { "value": 238, "is_correct": true },
@@ -3911,7 +3911,7 @@
     {
         "id": 280,
         "problem_json": {
-            "question": "¿Cuánto es 32 x 19?",
+            "question": "Quant és 32 x 19?",
             "answers": [
                 { "value": 620, "is_correct": false },
                 { "value": 600, "is_correct": false },
@@ -3925,7 +3925,7 @@
     {
         "id": 281,
         "problem_json": {
-            "question": "¿Cuánto es 5 x 12?",
+            "question": "Quant és 5 x 12?",
             "answers": [
                 { "value": 58, "is_correct": false },
                 { "value": 65, "is_correct": false },
@@ -3939,7 +3939,7 @@
     {
         "id": 282,
         "problem_json": {
-            "question": "¿Cuánto es 21 x 13?",
+            "question": "Quant és 21 x 13?",
             "answers": [
                 { "value": 273, "is_correct": true },
                 { "value": 260, "is_correct": false },
@@ -3953,7 +3953,7 @@
     {
         "id": 283,
         "problem_json": {
-            "question": "¿Cuánto es 45 x 22?",
+            "question": "Quant és 45 x 22?",
             "answers": [
                 { "value": 1000, "is_correct": false },
                 { "value": 990, "is_correct": true },
@@ -3967,7 +3967,7 @@
     {
         "id": 284,
         "problem_json": {
-            "question": "¿Cuánto es 7 x 9?",
+            "question": "Quant és 7 x 9?",
             "answers": [
                 { "value": 60, "is_correct": false },
                 { "value": 64, "is_correct": false },
@@ -3981,7 +3981,7 @@
     {
         "id": 285,
         "problem_json": {
-            "question": "¿Cuánto es 25 x 18?",
+            "question": "Quant és 25 x 18?",
             "answers": [
                 { "value": 440, "is_correct": false },
                 { "value": 460, "is_correct": false },
@@ -3995,7 +3995,7 @@
     {
         "id": 286,
         "problem_json": {
-            "question": "¿Cuánto es 56 x 24?",
+            "question": "Quant és 56 x 24?",
             "answers": [
                 { "value": 1344, "is_correct": true },
                 { "value": 1300, "is_correct": false },
@@ -4009,7 +4009,7 @@
     {
         "id": 287,
         "problem_json": {
-            "question": "¿Cuánto es 4 x 9?",
+            "question": "Quant és 4 x 9?",
             "answers": [
                 { "value": 30, "is_correct": false },
                 { "value": 36, "is_correct": true },
@@ -4023,7 +4023,7 @@
     {
         "id": 288,
         "problem_json": {
-            "question": "¿Cuánto es 17 x 15?",
+            "question": "Quant és 17 x 15?",
             "answers": [
                 { "value": 250, "is_correct": false },
                 { "value": 240, "is_correct": false },
@@ -4037,7 +4037,7 @@
     {
         "id": 289,
         "problem_json": {
-            "question": "¿Cuánto es 63 x 27?",
+            "question": "Quant és 63 x 27?",
             "answers": [
                 { "value": 1600, "is_correct": false },
                 { "value": 1800, "is_correct": false },
@@ -4051,7 +4051,7 @@
     {
         "id": 290,
         "problem_json": {
-            "question": "¿Cuánto es 3 x 8?",
+            "question": "Quant és 3 x 8?",
             "answers": [
                 { "value": 24, "is_correct": true },
                 { "value": 22, "is_correct": false },
@@ -4065,7 +4065,7 @@
     {
         "id": 291,
         "problem_json": {
-            "question": "¿Cuánto es 16 x 14?",
+            "question": "Quant és 16 x 14?",
             "answers": [
                 { "value": 210, "is_correct": false },
                 { "value": 224, "is_correct": true },
@@ -4079,7 +4079,7 @@
     {
         "id": 292,
         "problem_json": {
-            "question": "¿Cuánto es 45 x 30?",
+            "question": "Quant és 45 x 30?",
             "answers": [
                 { "value": 1300, "is_correct": false },
                 { "value": 1400, "is_correct": false },
@@ -4093,7 +4093,7 @@
     {
         "id": 293,
         "problem_json": {
-            "question": "¿Cuánto es 7 x 7?",
+            "question": "Quant és 7 x 7?",
             "answers": [
                 { "value": 42, "is_correct": false },
                 { "value": 45, "is_correct": false },
@@ -4107,7 +4107,7 @@
     {
         "id": 294,
         "problem_json": {
-            "question": "¿Cuánto es 18 x 19?",
+            "question": "Quant és 18 x 19?",
             "answers": [
                 { "value": 342, "is_correct": true },
                 { "value": 330, "is_correct": false },
@@ -4121,7 +4121,7 @@
     {
         "id": 295,
         "problem_json": {
-            "question": "¿Cuánto es 32 x 17?",
+            "question": "Quant és 32 x 17?",
             "answers": [
                 { "value": 530, "is_correct": false },
                 { "value": 544, "is_correct": true },
@@ -4135,7 +4135,7 @@
     {
         "id": 296,
         "problem_json": {
-            "question": "¿Cuánto es 5 x 15?",
+            "question": "Quant és 5 x 15?",
             "answers": [
                 { "value": 70, "is_correct": false },
                 { "value": 80, "is_correct": false },
@@ -4149,7 +4149,7 @@
     {
         "id": 297,
         "problem_json": {
-            "question": "¿Cuánto es 22 x 14?",
+            "question": "Quant és 22 x 14?",
             "answers": [
                 { "value": 300, "is_correct": false },
                 { "value": 320, "is_correct": false },
@@ -4163,7 +4163,7 @@
     {
         "id": 298,
         "problem_json": {
-            "question": "¿Cuánto es 60 x 22?",
+            "question": "Quant és 60 x 22?",
             "answers": [
                 { "value": 1300, "is_correct": false },
                 { "value": 1320, "is_correct": true },
@@ -4177,7 +4177,7 @@
     {
         "id": 299,
         "problem_json": {
-            "question": "¿Cuánto es 4 x 11?",
+            "question": "Quant és 4 x 11?",
             "answers": [
                 { "value": 40, "is_correct": false },
                 { "value": 45, "is_correct": false },
@@ -4191,7 +4191,7 @@
     {
         "id": 300,
         "problem_json": {
-            "question": "¿Cuánto es 27 x 15?",
+            "question": "Quant és 27 x 15?",
             "answers": [
                 { "value": 400, "is_correct": false },
                 { "value": 420, "is_correct": false },
@@ -4205,7 +4205,7 @@
     {
         "id": 301,
         "problem_json": {
-            "question": "¿Cuánto es 6 / 2?",
+            "question": "Quant és 6 / 2?",
             "answers": [
                 { "value": 2, "is_correct": false },
                 { "value": 3, "is_correct": true },
@@ -4219,7 +4219,7 @@
     {
         "id": 302,
         "problem_json": {
-            "question": "¿Cuánto es 72 / 8?",
+            "question": "Quant és 72 / 8?",
             "answers": [
                 { "value": 9, "is_correct": true },
                 { "value": 7, "is_correct": false },
@@ -4233,7 +4233,7 @@
     {
         "id": 303,
         "problem_json": {
-            "question": "¿Cuánto es 540 / 15?",
+            "question": "Quant és 540 / 15?",
             "answers": [
                 { "value": 34, "is_correct": false },
                 { "value": 36, "is_correct": false },
@@ -4247,7 +4247,7 @@
     {
         "id": 304,
         "problem_json": {
-            "question": "¿Cuánto es 8 / 4?",
+            "question": "Quant és 8 / 4?",
             "answers": [
                 { "value": 3, "is_correct": false },
                 { "value": 2, "is_correct": true },
@@ -4261,7 +4261,7 @@
     {
         "id": 305,
         "problem_json": {
-            "question": "¿Cuánto es 96 / 8?",
+            "question": "Quant és 96 / 8?",
             "answers": [
                 { "value": 12, "is_correct": true },
                 { "value": 11, "is_correct": false },
@@ -4275,7 +4275,7 @@
     {
         "id": 306,
         "problem_json": {
-            "question": "¿Cuánto es 720 / 18?",
+            "question": "Quant és 720 / 18?",
             "answers": [
                 { "value": 39, "is_correct": false },
                 { "value": 40, "is_correct": true },
@@ -4289,7 +4289,7 @@
     {
         "id": 307,
         "problem_json": {
-            "question": "¿Cuánto es 9 / 3?",
+            "question": "Quant és 9 / 3?",
             "answers": [
                 { "value": 4, "is_correct": false },
                 { "value": 3, "is_correct": false },
@@ -4303,7 +4303,7 @@
     {
         "id": 308,
         "problem_json": {
-            "question": "¿Cuánto es 144 / 12?",
+            "question": "Quant és 144 / 12?",
             "answers": [
                 { "value": 14, "is_correct": false },
                 { "value": 12, "is_correct": true },
@@ -4317,7 +4317,7 @@
     {
         "id": 309,
         "problem_json": {
-            "question": "¿Cuánto es 990 / 33?",
+            "question": "Quant és 990 / 33?",
             "answers": [
                 { "value": 25, "is_correct": false },
                 { "value": 30, "is_correct": true },
@@ -4331,7 +4331,7 @@
     {
         "id": 310,
         "problem_json": {
-            "question": "¿Cuánto es 10 / 5?",
+            "question": "Quant és 10 / 5?",
             "answers": [
                 { "value": 1, "is_correct": false },
                 { "value": 2, "is_correct": true },
@@ -4345,7 +4345,7 @@
     {
         "id": 311,
         "problem_json": {
-            "question": "¿Cuánto es 84 / 7?",
+            "question": "Quant és 84 / 7?",
             "answers": [
                 { "value": 11, "is_correct": false },
                 { "value": 12, "is_correct": true },
@@ -4359,7 +4359,7 @@
     {
         "id": 312,
         "problem_json": {
-            "question": "¿Cuánto es 1080 / 36?",
+            "question": "Quant és 1080 / 36?",
             "answers": [
                 { "value": 25, "is_correct": false },
                 { "value": 30, "is_correct": true },
@@ -4373,7 +4373,7 @@
     {
         "id": 313,
         "problem_json": {
-            "question": "¿Cuánto es 15 / 3?",
+            "question": "Quant és 15 / 3?",
             "answers": [
                 { "value": 5, "is_correct": true },
                 { "value": 6, "is_correct": false },
@@ -4387,7 +4387,7 @@
     {
         "id": 314,
         "problem_json": {
-            "question": "¿Cuánto es 192 / 16?",
+            "question": "Quant és 192 / 16?",
             "answers": [
                 { "value": 12, "is_correct": true },
                 { "value": 15, "is_correct": false },
@@ -4401,7 +4401,7 @@
     {
         "id": 315,
         "problem_json": {
-            "question": "¿Cuánto es 1200 / 24?",
+            "question": "Quant és 1200 / 24?",
             "answers": [
                 { "value": 50, "is_correct": true },
                 { "value": 52, "is_correct": false },
@@ -4415,7 +4415,7 @@
     {
         "id": 316,
         "problem_json": {
-            "question": "¿Cuánto es 14 / 7?",
+            "question": "Quant és 14 / 7?",
             "answers": [
                 { "value": 3, "is_correct": false },
                 { "value": 4, "is_correct": false },
@@ -4429,7 +4429,7 @@
     {
         "id": 317,
         "problem_json": {
-            "question": "¿Cuánto es 120 / 6?",
+            "question": "Quant és 120 / 6?",
             "answers": [
                 { "value": 18, "is_correct": false },
                 { "value": 21, "is_correct": false },
@@ -4443,7 +4443,7 @@
     {
         "id": 318,
         "problem_json": {
-            "question": "¿Cuánto es 1800 / 45?",
+            "question": "Quant és 1800 / 45?",
             "answers": [
                 { "value": 45, "is_correct": false },
                 { "value": 50, "is_correct": false },
@@ -4457,7 +4457,7 @@
     {
         "id": 319,
         "problem_json": {
-            "question": "¿Cuánto es 12 / 6?",
+            "question": "Quant és 12 / 6?",
             "answers": [
                 { "value": 2, "is_correct": true },
                 { "value": 3, "is_correct": false },
@@ -4471,7 +4471,7 @@
     {
         "id": 320,
         "problem_json": {
-            "question": "¿Cuánto es 200 / 10?",
+            "question": "Quant és 200 / 10?",
             "answers": [
                 { "value": 20, "is_correct": true },
                 { "value": 15, "is_correct": false },
@@ -4485,7 +4485,7 @@
     {
         "id": 321,
         "problem_json": {
-            "question": "¿Cuánto es 20 / 5?",
+            "question": "Quant és 20 / 5?",
             "answers": [
                 { "value": 4, "is_correct": true },
                 { "value": 5, "is_correct": false },
@@ -4499,7 +4499,7 @@
     {
         "id": 322,
         "problem_json": {
-            "question": "¿Cuánto es 180 / 15?",
+            "question": "Quant és 180 / 15?",
             "answers": [
                 { "value": 12, "is_correct": true },
                 { "value": 14, "is_correct": false },
@@ -4513,7 +4513,7 @@
     {
         "id": 323,
         "problem_json": {
-            "question": "¿Cuánto es 2500 / 25?",
+            "question": "Quant és 2500 / 25?",
             "answers": [
                 { "value": 95, "is_correct": false },
                 { "value": 100, "is_correct": true },
@@ -4527,7 +4527,7 @@
     {
         "id": 324,
         "problem_json": {
-            "question": "¿Cuánto es 6 / 3?",
+            "question": "Quant és 6 / 3?",
             "answers": [
                 { "value": 4, "is_correct": false },
                 { "value": 3, "is_correct": false },
@@ -4541,7 +4541,7 @@
     {
         "id": 325,
         "problem_json": {
-            "question": "¿Cuánto es 432 / 24?",
+            "question": "Quant és 432 / 24?",
             "answers": [
                 { "value": 16, "is_correct": false },
                 { "value": 15, "is_correct": false },
@@ -4555,7 +4555,7 @@
     {
         "id": 326,
         "problem_json": {
-            "question": "¿Cuánto es 810 / 27?",
+            "question": "Quant és 810 / 27?",
             "answers": [
                 { "value": 32, "is_correct": false },
                 { "value": 34, "is_correct": false },
@@ -4569,7 +4569,7 @@
     {
         "id": 327,
         "problem_json": {
-            "question": "¿Cuánto es 8 / 2?",
+            "question": "Quant és 8 / 2?",
             "answers": [
                 { "value": 5, "is_correct": false },
                 { "value": 3, "is_correct": false },
@@ -4583,7 +4583,7 @@
     {
         "id": 328,
         "problem_json": {
-            "question": "¿Cuánto es 288 / 16?",
+            "question": "Quant és 288 / 16?",
             "answers": [
                 { "value": 20, "is_correct": false },
                 { "value": 16, "is_correct": false },
@@ -4597,7 +4597,7 @@
     {
         "id": 329,
         "problem_json": {
-            "question": "¿Cuánto es 1440 / 48?",
+            "question": "Quant és 1440 / 48?",
             "answers": [
                 { "value": 30, "is_correct": true },
                 { "value": 28, "is_correct": false },
@@ -4611,7 +4611,7 @@
     {
         "id": 330,
         "problem_json": {
-            "question": "¿Cuánto es 10 / 2?",
+            "question": "Quant és 10 / 2?",
             "answers": [
                 { "value": 5, "is_correct": true },
                 { "value": 4, "is_correct": false },
@@ -4625,7 +4625,7 @@
     {
         "id": 331,
         "problem_json": {
-            "question": "¿Cuánto es 16 / 4?",
+            "question": "Quant és 16 / 4?",
             "answers": [
                 { "value": 4, "is_correct": true },
                 { "value": 5, "is_correct": false },
@@ -4639,7 +4639,7 @@
     {
         "id": 332,
         "problem_json": {
-            "question": "¿Cuánto es 225 / 15?",
+            "question": "Quant és 225 / 15?",
             "answers": [
                 { "value": 14, "is_correct": false },
                 { "value": 17, "is_correct": false },
@@ -4653,7 +4653,7 @@
     {
         "id": 333,
         "problem_json": {
-            "question": "¿Cuánto es 1980 / 33?",
+            "question": "Quant és 1980 / 33?",
             "answers": [
                 { "value": 60, "is_correct": true },
                 { "value": 55, "is_correct": false },
@@ -4667,7 +4667,7 @@
     {
         "id": 334,
         "problem_json": {
-            "question": "¿Cuánto es 18 / 3?",
+            "question": "Quant és 18 / 3?",
             "answers": [
                 { "value": 6, "is_correct": true },
                 { "value": 7, "is_correct": false },
@@ -4681,7 +4681,7 @@
     {
         "id": 335,
         "problem_json": {
-            "question": "¿Cuánto es 288 / 24?",
+            "question": "Quant és 288 / 24?",
             "answers": [
                 { "value": 10, "is_correct": false },
                 { "value": 12, "is_correct": true },
@@ -4695,7 +4695,7 @@
     {
         "id": 336,
         "problem_json": {
-            "question": "¿Cuánto es 3600 / 90?",
+            "question": "Quant és 3600 / 90?",
             "answers": [
                 { "value": 40, "is_correct": true },
                 { "value": 45, "is_correct": false },
@@ -4709,7 +4709,7 @@
     {
         "id": 337,
         "problem_json": {
-            "question": "¿Cuánto es 12 / 4?",
+            "question": "Quant és 12 / 4?",
             "answers": [
                 { "value": 4, "is_correct": false },
                 { "value": 5, "is_correct": false },
@@ -4723,7 +4723,7 @@
     {
         "id": 338,
         "problem_json": {
-            "question": "¿Cuánto es 640 / 32?",
+            "question": "Quant és 640 / 32?",
             "answers": [
                 { "value": 20, "is_correct": true },
                 { "value": 18, "is_correct": false },
@@ -4737,7 +4737,7 @@
     {
         "id": 339,
         "problem_json": {
-            "question": "¿Cuánto es 5760 / 144?",
+            "question": "Quant és 5760 / 144?",
             "answers": [
                 { "value": 42, "is_correct": false },
                 { "value": 40, "is_correct": false },
@@ -4751,7 +4751,7 @@
     {
         "id": 340,
         "problem_json": {
-            "question": "¿Cuánto es 10 / 5?",
+            "question": "Quant és 10 / 5?",
             "answers": [
                 { "value": 4, "is_correct": false },
                 { "value": 5, "is_correct": false },
@@ -4765,7 +4765,7 @@
     {
         "id": 341,
         "problem_json": {
-            "question": "¿Cuánto es 14 / 7?",
+            "question": "Quant és 14 / 7?",
             "answers": [
                 { "value": 1, "is_correct": false },
                 { "value": 2, "is_correct": true },
@@ -4779,7 +4779,7 @@
     {
         "id": 342,
         "problem_json": {
-            "question": "¿Cuánto es 576 / 24?",
+            "question": "Quant és 576 / 24?",
             "answers": [
                 { "value": 22, "is_correct": false },
                 { "value": 26, "is_correct": false },
@@ -4793,7 +4793,7 @@
     {
         "id": 343,
         "problem_json": {
-            "question": "¿Cuánto es 9900 / 33?",
+            "question": "Quant és 9900 / 33?",
             "answers": [
                 { "value": 330, "is_correct": false },
                 { "value": 300, "is_correct": true },
@@ -4807,7 +4807,7 @@
     {
         "id": 344,
         "problem_json": {
-            "question": "¿Cuánto es 15 / 3?",
+            "question": "Quant és 15 / 3?",
             "answers": [
                 { "value": 5, "is_correct": true },
                 { "value": 6, "is_correct": false },
@@ -4821,7 +4821,7 @@
     {
         "id": 345,
         "problem_json": {
-            "question": "¿Cuánto es 165 / 5?",
+            "question": "Quant és 165 / 5?",
             "answers": [
                 { "value": 30, "is_correct": false },
                 { "value": 33, "is_correct": true },
@@ -4835,7 +4835,7 @@
     {
         "id": 346,
         "problem_json": {
-            "question": "¿Cuánto es 5184 / 72?",
+            "question": "Quant és 5184 / 72?",
             "answers": [
                 { "value": 72, "is_correct": true },
                 { "value": 70, "is_correct": false },
@@ -4849,7 +4849,7 @@
     {
         "id": 347,
         "problem_json": {
-            "question": "¿Cuánto es 12 / 3?",
+            "question": "Quant és 12 / 3?",
             "answers": [
                 { "value": 1, "is_correct": false },
                 { "value": 2, "is_correct": false },
@@ -4863,7 +4863,7 @@
     {
         "id": 348,
         "problem_json": {
-            "question": "¿Cuánto es 312 / 26?",
+            "question": "Quant és 312 / 26?",
             "answers": [
                 { "value": 12, "is_correct": true },
                 { "value": 14, "is_correct": false },
@@ -4877,7 +4877,7 @@
     {
         "id": 349,
         "problem_json": {
-            "question": "¿Cuánto es 8250 / 75?",
+            "question": "Quant és 8250 / 75?",
             "answers": [
                 { "value": 120, "is_correct": false },
                 { "value": 110, "is_correct": true },
@@ -4891,7 +4891,7 @@
     {
         "id": 350,
         "problem_json": {
-            "question": "¿Cuánto es 8 / 2?",
+            "question": "Quant és 8 / 2?",
             "answers": [
                 { "value": 3, "is_correct": false },
                 { "value": 5, "is_correct": false },
@@ -4905,7 +4905,7 @@
     {
         "id": 351,
         "problem_json": {
-            "question": "¿Cuánto es 16 / 4?",
+            "question": "Quant és 16 / 4?",
             "answers": [
                 { "value": 3, "is_correct": false },
                 { "value": 5, "is_correct": false },
@@ -4919,7 +4919,7 @@
     {
         "id": 352,
         "problem_json": {
-            "question": "¿Cuánto es 125 / 25?",
+            "question": "Quant és 125 / 25?",
             "answers": [
                 { "value": 4, "is_correct": false },
                 { "value": 5, "is_correct": true },
@@ -4933,7 +4933,7 @@
     {
         "id": 353,
         "problem_json": {
-            "question": "¿Cuánto es 504 / 42?",
+            "question": "Quant és 504 / 42?",
             "answers": [
                 { "value": 12, "is_correct": true },
                 { "value": 10, "is_correct": false },
@@ -4947,7 +4947,7 @@
     {
         "id": 354,
         "problem_json": {
-            "question": "¿Cuánto es 32 / 8?",
+            "question": "Quant és 32 / 8?",
             "answers": [
                 { "value": 4, "is_correct": true },
                 { "value": 3, "is_correct": false },
@@ -4961,7 +4961,7 @@
     {
         "id": 355,
         "problem_json": {
-            "question": "¿Cuánto es 672 / 28?",
+            "question": "Quant és 672 / 28?",
             "answers": [
                 { "value": 22, "is_correct": false },
                 { "value": 24, "is_correct": true },
@@ -4975,7 +4975,7 @@
     {
         "id": 356,
         "problem_json": {
-            "question": "¿Cuánto es 2100 / 30?",
+            "question": "Quant és 2100 / 30?",
             "answers": [
                 { "value": 60, "is_correct": false },
                 { "value": 70, "is_correct": true },
@@ -4989,7 +4989,7 @@
     {
         "id": 357,
         "problem_json": {
-            "question": "¿Cuánto es 150 / 25?",
+            "question": "Quant és 150 / 25?",
             "answers": [
                 { "value": 5, "is_correct": false },
                 { "value": 6, "is_correct": true },
@@ -5003,7 +5003,7 @@
     {
         "id": 358,
         "problem_json": {
-            "question": "¿Cuánto es 792 / 24?",
+            "question": "Quant és 792 / 24?",
             "answers": [
                 { "value": 33, "is_correct": true },
                 { "value": 34, "is_correct": false },
@@ -5017,7 +5017,7 @@
     {
         "id": 359,
         "problem_json": {
-            "question": "¿Cuánto es 9600 / 240?",
+            "question": "Quant és 9600 / 240?",
             "answers": [
                 { "value": 35, "is_correct": false },
                 { "value": 40, "is_correct": true },
@@ -5031,7 +5031,7 @@
     {
         "id": 360,
         "problem_json": {
-            "question": "¿Cuánto es 48 / 6?",
+            "question": "Quant és 48 / 6?",
             "answers": [
                 { "value": 7, "is_correct": false },
                 { "value": 8, "is_correct": true },
@@ -5045,7 +5045,7 @@
     {
         "id": 361,
         "problem_json": {
-            "question": "¿Cuánto es 198 / 33?",
+            "question": "Quant és 198 / 33?",
             "answers": [
                 { "value": 6, "is_correct": true },
                 { "value": 7, "is_correct": false },
@@ -5059,7 +5059,7 @@
     {
         "id": 362,
         "problem_json": {
-            "question": "¿Cuánto es 3240 / 36?",
+            "question": "Quant és 3240 / 36?",
             "answers": [
                 { "value": 90, "is_correct": true },
                 { "value": 80, "is_correct": false },
@@ -5073,7 +5073,7 @@
     {
         "id": 363,
             "problem_json": {
-                "question": "¿Cuánto es 36 / 9?",
+                "question": "Quant és 36 / 9?",
                 "answers": [
                     { "value": 5, "is_correct": false },
                     { "value": 4, "is_correct": true },
@@ -5087,7 +5087,7 @@
         {
             "id": 364,
             "problem_json": {
-                "question": "¿Cuánto es 96 / 12?",
+                "question": "Quant és 96 / 12?",
                 "answers": [
                     { "value": 8, "is_correct": true },
                     { "value": 12, "is_correct": false },
@@ -5101,7 +5101,7 @@
         {
             "id": 365,
             "problem_json": {
-                "question": "¿Cuánto es 360 / 18?",
+                "question": "Quant és 360 / 18?",
                 "answers": [
                     { "value": 20, "is_correct": true },
                     { "value": 22, "is_correct": false },
@@ -5115,7 +5115,7 @@
         {
             "id": 366,
             "problem_json": {
-                "question": "¿Cuánto es 1024 / 32?",
+                "question": "Quant és 1024 / 32?",
                 "answers": [
                     { "value": 31, "is_correct": false },
                     { "value": 33, "is_correct": false },
@@ -5129,7 +5129,7 @@
         {
             "id": 367,
             "problem_json": {
-                "question": "¿Cuánto es 90 / 9?",
+                "question": "Quant és 90 / 9?",
                 "answers": [
                     { "value": 12, "is_correct": false },
                     { "value": 10, "is_correct": true },
@@ -5143,7 +5143,7 @@
         {
             "id": 368,
             "problem_json": {
-                "question": "¿Cuánto es 625 / 25?",
+                "question": "Quant és 625 / 25?",
                 "answers": [
                     { "value": 25, "is_correct": true },
                     { "value": 20, "is_correct": false },
@@ -5157,7 +5157,7 @@
         {
             "id": 369,
             "problem_json": {
-                "question": "¿Cuánto es 144 / 18?",
+                "question": "Quant és 144 / 18?",
                 "answers": [
                     { "value": 7, "is_correct": false },
                     { "value": 9, "is_correct": false },
@@ -5171,7 +5171,7 @@
         {
             "id": 370,
             "problem_json": {
-                "question": "¿Cuánto es 900 / 30?",
+                "question": "Quant és 900 / 30?",
                 "answers": [
                     { "value": 32, "is_correct": false },
                     { "value": 30, "is_correct": true },
@@ -5185,7 +5185,7 @@
         {
             "id": 371,
             "problem_json": {
-                "question": "¿Cuánto es 256 / 16?",
+                "question": "Quant és 256 / 16?",
                 "answers": [
                     { "value": 15, "is_correct": false },
                     { "value": 14, "is_correct": false },
@@ -5199,7 +5199,7 @@
         {
             "id": 372,
             "problem_json": {
-                "question": "¿Cuánto es 750 / 25?",
+                "question": "Quant és 750 / 25?",
                 "answers": [
                     { "value": 35, "is_correct": false },
                     { "value": 28, "is_correct": false },
@@ -5213,7 +5213,7 @@
         {
             "id": 373,
             "problem_json": {
-                "question": "¿Cuánto es 480 / 40?",
+                "question": "Quant és 480 / 40?",
                 "answers": [
                     { "value": 12, "is_correct": true },
                     { "value": 11, "is_correct": false },
@@ -5227,7 +5227,7 @@
         {
             "id": 374,
             "problem_json": {
-                "question": "¿Cuánto es 1024 / 16?",
+                "question": "Quant és 1024 / 16?",
                 "answers": [
                     { "value": 60, "is_correct": false },
                     { "value": 64, "is_correct": true },
@@ -5241,7 +5241,7 @@
         {
             "id": 375,
             "problem_json": {
-                "question": "¿Cuánto es 400 / 20?",
+                "question": "Quant és 400 / 20?",
                 "answers": [
                     { "value": 15, "is_correct": false },
                     { "value": 25, "is_correct": false },
@@ -5255,7 +5255,7 @@
         {
             "id": 376,
             "problem_json": {
-                "question": "¿Cuánto es 540 / 18?",
+                "question": "Quant és 540 / 18?",
                 "answers": [
                     { "value": 28, "is_correct": false },
                     { "value": 32, "is_correct": false },
@@ -5269,7 +5269,7 @@
         {
             "id": 377,
             "problem_json": {
-                "question": "¿Cuánto es 999 / 3?",
+                "question": "Quant és 999 / 3?",
                 "answers": [
                     { "value": 333, "is_correct": true },
                     { "value": 332, "is_correct": false },
@@ -5283,7 +5283,7 @@
         {
             "id": 378,
             "problem_json": {
-                "question": "¿Cuánto es 121 / 11?",
+                "question": "Quant és 121 / 11?",
                 "answers": [
                     { "value": 12, "is_correct": false },
                     { "value": 11, "is_correct": true },
@@ -5297,7 +5297,7 @@
         {
             "id": 379,
             "problem_json": {
-                "question": "¿Cuánto es 625 / 125?",
+                "question": "Quant és 625 / 125?",
                 "answers": [
                     { "value": 6, "is_correct": false },
                     { "value": 4, "is_correct": false },
@@ -5311,7 +5311,7 @@
         {
             "id": 380,
             "problem_json": {
-                "question": "¿Cuánto es 1000 / 25?",
+                "question": "Quant és 1000 / 25?",
                 "answers": [
                     { "value": 45, "is_correct": false },
                     { "value": 30, "is_correct": false },
@@ -5325,7 +5325,7 @@
         {
             "id": 381,
             "problem_json": {
-                "question": "¿Cuánto es 256 / 8?",
+                "question": "Quant és 256 / 8?",
                 "answers": [
                     { "value": 32, "is_correct": true },
                     { "value": 31, "is_correct": false },
@@ -5339,7 +5339,7 @@
         {
             "id": 382,
             "problem_json": {
-                "question": "¿Cuánto es 512 / 64?",
+                "question": "Quant és 512 / 64?",
                 "answers": [
                     { "value": 7, "is_correct": false },
                     { "value": 8, "is_correct": true },
@@ -5353,7 +5353,7 @@
         {
             "id": 383,
             "problem_json": {
-                "question": "¿Cuánto es 800 / 25?",
+                "question": "Quant és 800 / 25?",
                 "answers": [
                     { "value": 33, "is_correct": false },
                     { "value": 31, "is_correct": false },
@@ -5367,7 +5367,7 @@
         {
             "id": 384,
             "problem_json": {
-                "question": "¿Cuánto es 640 / 40?",
+                "question": "Quant és 640 / 40?",
                 "answers": [
                     { "value": 15, "is_correct": false },
                     { "value": 14, "is_correct": false },
@@ -5381,7 +5381,7 @@
         {
             "id": 385,
             "problem_json": {
-                "question": "¿Cuánto es 288 / 12?",
+                "question": "Quant és 288 / 12?",
                 "answers": [
                     { "value": 24, "is_correct": true },
                     { "value": 25, "is_correct": false },
@@ -5395,7 +5395,7 @@
         {
             "id": 386,
             "problem_json": {
-                "question": "¿Cuánto es 144 / 9?",
+                "question": "Quant és 144 / 9?",
                 "answers": [
                     { "value": 15, "is_correct": false },
                     { "value": 16, "is_correct": true },
@@ -5409,7 +5409,7 @@
         {
             "id": 387,
             "problem_json": {
-                "question": "¿Cuánto es 777 / 7?",
+                "question": "Quant és 777 / 7?",
                 "answers": [
                     { "value": 112, "is_correct": false },
                     { "value": 110, "is_correct": false },
@@ -5423,7 +5423,7 @@
         {
             "id": 388,
             "problem_json": {
-                "question": "¿Cuánto es 1000 / 50?",
+                "question": "Quant és 1000 / 50?",
                 "answers": [
                     { "value": 22, "is_correct": false },
                     { "value": 18, "is_correct": false },
@@ -5437,7 +5437,7 @@
         {
             "id": 389,
             "problem_json": {
-                "question": "¿Cuánto es 560 / 28?",
+                "question": "Quant és 560 / 28?",
                 "answers": [
                     { "value": 20, "is_correct": true },
                     { "value": 22, "is_correct": false },
@@ -5451,7 +5451,7 @@
         {
             "id": 390,
             "problem_json": {
-                "question": "¿Cuánto es 864 / 32?",
+                "question": "Quant és 864 / 32?",
                 "answers": [
                     { "value": 28, "is_correct": false },
                     { "value": 27, "is_correct": true },
@@ -5465,7 +5465,7 @@
         {
             "id": 391,
             "problem_json": {
-                "question": "¿Cuánto es 50 / 5?",
+                "question": "Quant és 50 / 5?",
                 "answers": [
                     { "value": 9, "is_correct": false },
                     { "value": 11, "is_correct": false },
@@ -5479,7 +5479,7 @@
         {
             "id": 392,
             "problem_json": {
-                "question": "¿Cuánto es 240 / 12?",
+                "question": "Quant és 240 / 12?",
                 "answers": [
                     { "value": 18, "is_correct": false },
                     { "value": 22, "is_correct": false },
@@ -5493,7 +5493,7 @@
         {
             "id": 393,
             "problem_json": {
-                "question": "¿Cuánto es 625 / 125?",
+                "question": "Quant és 625 / 125?",
                 "answers": [
                     { "value": 5, "is_correct": true },
                     { "value": 6, "is_correct": false },
@@ -5507,7 +5507,7 @@
         {
             "id": 394,
             "problem_json": {
-                "question": "¿Cuánto es 640 / 32?",
+                "question": "Quant és 640 / 32?",
                 "answers": [
                     { "value": 21, "is_correct": false },
                     { "value": 20, "is_correct": true },
@@ -5521,7 +5521,7 @@
         {
             "id": 395,
             "problem_json": {
-                "question": "¿Cuánto es 900 / 45?",
+                "question": "Quant és 900 / 45?",
                 "answers": [
                     { "value": 21, "is_correct": false },
                     { "value": 18, "is_correct": false },
@@ -5535,7 +5535,7 @@
         {
             "id": 396,
             "problem_json": {
-                "question": "¿Cuánto es 840 / 42?",
+                "question": "Quant és 840 / 42?",
                 "answers": [
                     { "value": 19, "is_correct": false },
                     { "value": 21, "is_correct": false },
@@ -5549,7 +5549,7 @@
         {
             "id": 397,
             "problem_json": {
-                "question": "¿Cuánto es 950 / 25?",
+                "question": "Quant és 950 / 25?",
                 "answers": [
                     { "value": 38, "is_correct": true },
                     { "value": 35, "is_correct": false },
@@ -5563,7 +5563,7 @@
         {
             "id": 398,
             "problem_json": {
-                "question": "¿Cuánto es 512 / 8?",
+                "question": "Quant és 512 / 8?",
                 "answers": [
                     { "value": 62, "is_correct": false },
                     { "value": 64, "is_correct": true },
@@ -5577,7 +5577,7 @@
         {
             "id": 399,
             "problem_json": {
-                "question": "¿Cuánto es 400 / 20?",
+                "question": "Quant és 400 / 20?",
                 "answers": [
                     { "value": 25, "is_correct": false },
                     { "value": 22, "is_correct": false },
@@ -5591,7 +5591,7 @@
         {
             "id": 400,
             "problem_json": {
-                "question": "¿Cuánto es 123,456 / 1?",
+                "question": "Quant és 123,456 / 1?",
                 "answers": [
                     { "value": 123.456, "is_correct": true },
                     { "value": "error", "is_correct": false },
