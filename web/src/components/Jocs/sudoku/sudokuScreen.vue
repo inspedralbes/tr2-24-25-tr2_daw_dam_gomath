@@ -22,8 +22,8 @@
       </div>
 
       <!-- Insertar número -->
-      <div>
-        <button v-for="num in [1, 2, 3, 4, 5, 6, 7, 8, 9]" :key="num" @click="insertarNumero(num)">
+      <div class="numeros">
+        <button v-for="num in numeros" :key="num" @click="insertarNumero(num)">
           {{ num }}
         </button>
       </div>
@@ -31,7 +31,7 @@
       <!-- Control Panel -->
       <div>
         <div class="temps" id="tempPanel">Temps: 00:00</div>
-        <div class="errors" id="errorPanel">Errors: 0</div>
+        <div class="errors" id="errorPanel">Vides: {{ vides }}</div>
       </div>
 
     </div>
@@ -57,11 +57,13 @@ export default {
       tablero: Array(81).fill({ value: '', readonly: false }),
       selectedCell: { row: null, col: null },
       dificultad: null,
-      errors: null,
+      vides: null,
       maxTime: null,
       numeroSeleccionado: null, // Número seleccionado para insertar
       nivelSeleccionado: false, // Indicador de si se ha seleccionado un nivel
       niveles: ["Novell", "Vetera", "Elit", "Professional"],
+      numeros: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      contadorNumeros: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 },
       gameOver: false,
     };
   },
@@ -94,25 +96,25 @@ export default {
         // Inicialización de la variable errors según el nivel seleccionado
         switch (this.dificultad) {
           case "novell":
-            this.errors = 6;
+            this.vides = 6;
             this.OriginError = 6
             break;
           case "vetera":
-            this.errors = 4;
+            this.vides = 4;
             this.OriginError = 4
             break;
           case "elit":
-            this.errors = 3;
+            this.vides = 3;
             this.OriginError = 3
             this.maxTime = 5;
             break;
           case "professional":
-            this.errors = 2;
+            this.vides = 2;
             this.OriginError = 2
             this.maxTime = 4;
             break;
           default:
-            this.errors = 0;
+            this.vides = 0;
             break;
         }
 
@@ -169,12 +171,15 @@ export default {
     seleccionarCelda(row, col) {
       this.selectedCell = { row, col }; // Actualiza la celda seleccionada
     },
+
     /**
      * Establece el número seleccionado para usar en el tablero.
      * @param {number} num - Número seleccionado
      */
     insertarNumero(num) {
-      this.numeroSeleccionado = num; // Asigna el número seleccionado
+      if (!this.numeros.includes(num)) return; // Si el número ya ha sido eliminado, no hacer nada
+
+      this.numeroSeleccionado = num;
       console.log(this.numeroSeleccionado);
     },
 
@@ -192,13 +197,23 @@ export default {
         const isMoveOk = isValidMove(boardString, row, col, num);
         if (!isMoveOk) {
           alert(`El número ${num} no es válido en esa posición.`);
-          if (this.errors == 0) {
+          if (this.vides == 0) {
             console.log('GAME OVER');
+            this.gameOver = true;
           } else {
-            this.errors--;
+            this.vides--;
           }
           return;
         }
+
+    
+        this.contadorNumeros[num]++;
+
+
+        if (this.contadorNumeros[num] == 9) {
+          this.numeros = this.numeros.filter(n => n !== num);
+        }
+
         this.tablero[index].value = num;
         const resultado = this.convertirTableroAStrIng(this.tablero)
         console.log('tablero cambiado: ', resultado);
@@ -246,16 +261,13 @@ export default {
 .tauler {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
-  /* 9 columnas, una por cada celda del tablero */
   grid-template-rows: repeat(9, 1fr);
-  /* 9 filas */
   width: 470px;
-  /* Tamaño fijo del tablero */
   height: 470px;
-  /* Asegura que sea cuadrado */
-  margin: 50px auto;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
   gap: 1px;
-  /* Espacio entre las celdas */
 }
 
 /* Estilos de las celdas del tablero */
@@ -271,9 +283,7 @@ export default {
 
 .sudoku-cell input {
   width: 99%;
-  /* Ajusta el tamaño del input dentro de la celda */
   height: 99%;
-  /* Mantiene la relación de aspecto dentro de la celda */
   text-align: center;
   border: solid black 0.5px;
   background-color: #f0f0f0;
@@ -281,5 +291,23 @@ export default {
 
 .sudoku-cell input:focus {
   outline: none;
+}
+
+.numeros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.numeros button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #000;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s;
+  flex: 0%;
+  margin: 5px;
 }
 </style>
