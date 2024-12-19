@@ -7,23 +7,23 @@
           <p>Bona partida</p>
           <img src="../../../assets/img/buenaPartida.gif" alt=""style="width: 250px;"> </div> 
           <div v-if="gifActivo=='malaPartida'"> 
-            <h1>Has de practicar més</h1>
+            <p>Has de practicar més</p>
             <img src="../../../assets/img/malaPartida.gif" alt=""style="width: 250px;"> </div> 
           <div v-if="gifActivo=='partidaNula'"> 
             <img src="../../../assets/img/ningunaRespondida.webp" alt=""style="width: 250px;"> </div> 
       <div class="estadisticas">
         <div class="estadistica">
-          <h3>Preguntas Acertadas</h3>
+          <h3>Preguntes Encertades</h3>
           <p>{{ estadisticas.preguntasAcertadas }}</p>
         </div>
   
         <div class="estadistica">
-          <h3>Preguntas Falladas</h3>
+          <h3>Preguntes Fallades</h3>
           <p>{{ estadisticas.preguntasFalladas }}</p>
         </div>
   
         <div class="estadistica">
-          <h3>Puntos</h3>
+          <h3>Punts</h3>
           <p>{{ estadisticas.puntos }}</p>
         </div>
       </div>
