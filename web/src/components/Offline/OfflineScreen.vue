@@ -1,6 +1,6 @@
 <script>
   import { inject, onMounted } from 'vue';
-  import { useTipoPartidaStore } from '../../App.vue';
+  import { useTipoPartidaStore } from '@/App.vue';
 
   export default {
     setup() {

@@ -1,4 +1,11 @@
 <template>
+  <div class="explicacions">
+    <p><strong>Els nostres jocs:</strong> Aquí pots trobar una selecció de jocs educatius per a passar una bona estona mentre millores les teves habilitats:</p>
+    <ul>
+      <li><strong>Sudoku:</strong> Un joc clàssic de lògica per a posar a prova la teva capacitat de raonament. Completa les cel·les amb els números correctes sense repetir-ne cap.</li>
+      <li><strong>Codi:</strong> Un joc d'enigmes on hauràs de desxifrar codis i resoldre trencaclosques per avançar.</li>
+    </ul>
+  </div>
   <div class="grid-container">
     <router-link to="/jocs/sudoku" class="grid-item">
       <img src="../../assets/img/images.png" alt="Sudoku">
@@ -56,5 +63,33 @@ export default {
 .grid-item img {  
   width: 100%;
   height: auto;
+}
+
+.explicacions {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.explicacions p {
+  margin-bottom: 10px;
+}
+
+.explicacions ul {
+  padding-left: 20px;
+}
+
+.explicacions li {
+  margin-bottom: 8px;
+}
+
+.explicacions strong {
+  color: #0056b3;
+  font-weight: bold;
 }
 </style>
