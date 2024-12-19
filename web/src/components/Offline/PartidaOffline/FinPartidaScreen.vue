@@ -1,11 +1,13 @@
 <template>
     <div class="estadisticas-partida">
-      <h2>Estadísticas de la Partida</h2>
+      <h4>Estadísticas de la Partida</h4>
       <div v-if="gifActivo=='easterEgg'"> 
         <img src="../../../assets/img/easterEgg.webp" alt=""style="width: 250px;"> </div> 
         <div v-if="gifActivo=='buenaPartida'"> 
+          <p>Bona partida</p>
           <img src="../../../assets/img/buenaPartida.gif" alt=""style="width: 250px;"> </div> 
           <div v-if="gifActivo=='malaPartida'"> 
+            <h1>Has de practicar més</h1>
             <img src="../../../assets/img/malaPartida.gif" alt=""style="width: 250px;"> </div> 
           <div v-if="gifActivo=='partidaNula'"> 
             <img src="../../../assets/img/ningunaRespondida.webp" alt=""style="width: 250px;"> </div> 
@@ -49,11 +51,11 @@ export default {
     const actualizarGifActivo = () => {
       if (estadisticas.value.preguntasAcertadas + estadisticas.value.preguntasFalladas === 0) {
         gifActivo.value = "partidaNula";
-      } else if (estadisticas.value.puntos >= 1000) {
+      } else if (estadisticas.value.puntos >= 3000) {
         gifActivo.value = "easterEgg";
-      } else if (estadisticas.value.puntos > 300) {
+      } else if (estadisticas.value.puntos > 700) {
         gifActivo.value = "buenaPartida";
-      } else {
+      } else if (estadisticas.value.puntos < 300){
         gifActivo.value = "malaPartida";
       }
     };
@@ -81,7 +83,7 @@ export default {
   
   <style scoped>
   .estadisticas-partida {
-    padding: 20px;
+    padding: 3px;
     text-align: center;
     border: 1px solid #ccc;
     border-radius: 8px;
