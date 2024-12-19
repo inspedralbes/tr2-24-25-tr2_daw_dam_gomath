@@ -7,14 +7,14 @@ use App\Models\jocCodis;
 
 class CodiJocController extends Controller
 {
-   
+
     public function index()
     {
-        $codis = jocCodis::inRandomOrder()->get();
+        $codi = jocCodis::inRandomOrder()->first();
 
-            return response()->json($codis);
-        
+        return response()->json($codi);
     }
+
 
     /**
      * Show the form for creating a new resource.

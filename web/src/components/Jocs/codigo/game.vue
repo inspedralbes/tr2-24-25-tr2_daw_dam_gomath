@@ -1,6 +1,6 @@
 <template>
   <div class="game-container">
-    <h1>Endevina el codi secret</h1>
+    <h4>Endevina el codi secret</h4>
 
     <div v-if="codes.length > 0" class="codes-list">
       <p><strong>Pistes per al codi secret:</strong></p>
@@ -13,6 +13,7 @@
       <input v-model="userGuess" type="text" maxlength="3" placeholder="Escribe tu código" />
       <button @click="checkGuess">Intentar</button>
       <p v-if="feedback" :class="{ success: isCorrect, error: !isCorrect }">{{ feedback }}</p>
+      <button @click="fetchNewCode" :disabled="!isCorrect">Jugar amb un altre codi</button>
     </div>
 
     <div v-else>
@@ -33,7 +34,7 @@ export default {
       userGuess: '',
       feedback: '',
       isCorrect: false,
-      };
+    };
   },
   methods: {
     checkGuess() {
@@ -45,28 +46,30 @@ export default {
         this.isCorrect = false;
       }
       this.userGuess = '';
-    }
-  },
-  async created() {
-    try {
-      const codesData = await fetchCodes();
-      if (Array.isArray(codesData) && codesData.length > 0) {
-        const numRand = Math.floor(Math.random() * 20);
-        const firstItem = codesData[numRand];
-        if (firstItem.codi_json) {
-          const decodedData = JSON.parse(firstItem.codi_json);
+    },
+    async fetchNewCode() {
+      try {
+        const codesData = await fetchCodes();
+        if (codesData && codesData.codi_json) {
+          const decodedData = JSON.parse(codesData.codi_json);
           if (decodedData.codes) {
             this.codes = decodedData.codes;
           }
           if (decodedData.secretCode) {
             this.secretCode = decodedData.secretCode;
           }
+          this.feedback = '';
+          this.isCorrect = false;
+          this.userGuess = '';
         }
+      } catch (error) {
+        console.error('Error al cargar un nuevo código:', error);
       }
-    } catch (error) {
-      console.error('Error al cargar los códigos:', error);
-    }
-  }
+    },
+  },
+  async created() {
+    this.fetchNewCode();
+  },
 };
 </script>
 
