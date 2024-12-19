@@ -6,6 +6,8 @@ const cors = require("cors");
 
 const app = express();
 const server = http.createServer(app);
+const offlineGamesRoutes = require('./routes/offlineGames');
+const onlineGamesRoutes = require('./routes/onlineGames');
 
 const io = new Server(server, {
     cors: {
@@ -24,6 +26,14 @@ app.use(cors({
     credentials: true              
 }));
 app.use(express.static("public")); 
+app.use('/api/offlineGames', offlineGamesRoutes);
+app.use('/api/onlineGames', onlineGamesRoutes);
+
+// Connexió a la base de dades MongoDB
+mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/GoMath', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
 
 const rooms = {};
 
