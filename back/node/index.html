@@ -1,114 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Socket.IO Rooms</title>
-  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salas y Chat</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #chat-screen { display: none; }
+        #chat { height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+        li { margin-bottom: 5px; }
+        button { cursor: pointer; margin-top: 10px; }
+    </style>
 </head>
 <body>
-  <h1>Socket.IO Rooms</h1>
-  <div>
-    <input id="roomInput" type="text" placeholder="Room name">
-    <input id="usernameInput" type="text" placeholder="Username">
-    <input id="emailInput" type="email" placeholder="Email">
-    <select id="roleSelect">
-      <option value="user">User</option>
-      <option value="admin">Admin</option>
-    </select>
-    <button id="joinBtn">Join Room</button>
-  </div>
+    <!-- Pantalla principal -->
+    <div id="main-screen">
+        <h1>Salas con Chat</h1>
+        <h2>Crear una Sala</h2>
+        <input type="text" id="username-create" placeholder="Tu nombre">
+        <button id="create-room-btn">Crear Sala</button>
+        <p id="room-code">Código de sala: --</p>
 
-  <div>
-    <input id="messageInput" type="text" placeholder="Type your message here">
-    <button id="sendBtn">Send Message</button>
-  </div>
+        <h2>Unirse a una Sala</h2>
+        <input type="text" id="username-join" placeholder="Tu nombre">
+        <input type="text" id="room-code-input" placeholder="Código de sala">
+        <button id="join-room-btn">Unirse</button>
+        <p id="error-message" style="color: red;"></p>
+    </div>
 
-  <div id="messages" style="margin-top: 20px;"></div>
+    <!-- Pantalla del chat -->
+    <div id="chat-screen">
+        <h2>Chat de la Sala</h2>
+        <button id="leave-room-btn" style="color: white; background-color: red;">Salir</button>
+        <h3>Usuarios en la sala:</h3>
+        <ul id="user-list"></ul>
+        <div id="chat"></div>
+        <input type="text" id="message-input" placeholder="Escribe un mensaje">
+        <button id="send-message-btn">Enviar</button>
+    </div>
 
-  <div>
-    <input id="kickUserEmail" type="email" placeholder="Enter email to Kick">
-    <button id="kickBtn">Kick User</button>
-  </div>
-  <div>
-    <button id="leaveBtn">Leave Room</button>
-  </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
 
-  <script>
-    const socket = io('http://localhost:3010'); // URL del servidor
-    var room = '';
-    var username = '';
-    var email = '';
-    var role = '';
+        // Elementos del DOM
+        const mainScreen = document.getElementById("main-screen");
+        const chatScreen = document.getElementById("chat-screen");
+        const createRoomBtn = document.getElementById("create-room-btn");
+        const joinRoomBtn = document.getElementById("join-room-btn");
+        const leaveRoomBtn = document.getElementById("leave-room-btn");
+        const roomCodeDisplay = document.getElementById("room-code");
+        const errorMessage = document.getElementById("error-message");
+        const userList = document.getElementById("user-list");
+        const chatBox = document.getElementById("chat");
+        const messageInput = document.getElementById("message-input");
+        const sendMessageBtn = document.getElementById("send-message-btn");
 
-    // Unirse a un room
-    document.getElementById('joinBtn').onclick = () => {
-      room = document.getElementById('roomInput').value;
-      username = document.getElementById('usernameInput').value;
-      email = document.getElementById('emailInput').value;
-      role = document.getElementById('roleSelect').value;
+        let username = "";
+        let currentRoom = "";
 
-      if (room.trim() !== '' && username.trim() !== '' && email.trim() !== '') {
-        socket.emit('joinRoom', { room, username, role, email });
+        // Crear sala
+        createRoomBtn.addEventListener("click", () => {
+            username = document.getElementById("username-create").value.trim();
+            if (username) {
+                socket.emit("create-room", username);
+            } else {
+                alert("Por favor ingresa tu nombre.");
+            }
+        });
 
-        // Si el rol és admin, demana la llista d'usuaris de la sala
-        if (role === 'admin') {
-            socket.emit('requestUserList', { room });
+        socket.on("room-created", (roomCode) => {
+            roomCodeDisplay.textContent = `Código de sala: ${roomCode}`;
+            alert("Sala creada. Comparte este código: " + roomCode);
+            enterChatScreen(roomCode);
+        });
+
+        // Unirse a sala
+        joinRoomBtn.addEventListener("click", () => {
+            username = document.getElementById("username-join").value.trim();
+            const roomCode = document.getElementById("room-code-input").value.trim();
+            if (username && roomCode) {
+                socket.emit("join-room", { roomCode, username });
+            } else {
+                alert("Por favor ingresa tu nombre y el código de la sala.");
+            }
+        });
+
+        socket.on("joined-success", ({ roomCode, members, messages }) => {
+            enterChatScreen(roomCode);
+            updateUserList(members);
+            messages.forEach(displayMessage);
+        });
+
+        socket.on("update-users", (members) => {
+            updateUserList(members);
+        });
+
+        socket.on("error", (message) => {
+            errorMessage.textContent = message;
+        });
+
+        // Salir de la sala
+        leaveRoomBtn.addEventListener("click", () => {
+            if (currentRoom) {
+                socket.emit("leave-room", { roomCode: currentRoom, username });
+                leaveChatScreen();
+            }
+        });
+
+        // Enviar mensaje
+        sendMessageBtn.addEventListener("click", () => {
+            const message = messageInput.value.trim();
+            if (message) {
+                socket.emit("send-message", { roomCode: currentRoom, message, username });
+                messageInput.value = "";
+            }
+        });
+
+        socket.on("new-message", (message) => {
+            displayMessage(message);
+        });
+
+        // Mostrar la pantalla del chat
+        function enterChatScreen(roomCode) {
+            mainScreen.style.display = "none";
+            chatScreen.style.display = "block";
+            currentRoom = roomCode;
+            chatBox.innerHTML = ""; // Limpiar chat
         }
-      } else {
-        alert('Por favor, completa todos los campos.');
-      }
-    };
 
-    // Recepció de la llista d'usuaris des del servidor
-    socket.on('userList', (userList) => {
-      console.log('Llista d\'usuaris de la sala:', userList);
-      alert(JSON.stringify(userList, null, 2)); // Mostra el JSON amb format
-    });
+        // Volver a la pantalla principal
+        function leaveChatScreen() {
+            mainScreen.style.display = "block";
+            chatScreen.style.display = "none";
+            currentRoom = "";
+            chatBox.innerHTML = "";
+            userList.innerHTML = "";
+        }
 
-    // Salir de la room
-    document.getElementById('leaveBtn').onclick = () => {
-      if (room.trim() !== '' && email.trim() !== '') {
-        socket.emit('leaveRoom', { room, username, role, email });
-      } else {
-        alert('Por favor, completa todos los campos.');
-      }
-    };
+        // Actualizar lista de usuarios
+        function updateUserList(members) {
+            userList.innerHTML = "";
+            members.forEach((member) => {
+                const li = document.createElement("li");
+                li.textContent = member.name;
+                userList.appendChild(li);
+            });
+        }
 
-    // Enviar mensaje al room
-    document.getElementById('sendBtn').onclick = () => {
-      const message = document.getElementById('messageInput').value;
-
-      if (room.trim() !== '' && message.trim() !== '') {
-        socket.emit('sendMessage', { room, message });
-      } else {
-        alert('Por favor, escribe un mensaje.');
-      }
-    };
-
-    // Expulsar a un usuario por email
-    document.getElementById('kickBtn').onclick = () => {
-      const targetEmail = document.getElementById('kickUserEmail').value;
-
-      if (targetEmail.trim() !== '' && room.trim() !== '') {
-        socket.emit('kickUser', { targetEmail, room });
-      } else {
-        alert('Por favor, ingresa el email del usuario y el room.');
-      }
-    };
-
-    // Mostrar mensajes del room
-    socket.on('roomMessage', (data) => {
-      const messagesDiv = document.getElementById('messages');
-      const newMessage = document.createElement('p');
-      newMessage.textContent = `[${data.sender} (${data.role})]: ${data.message}`;
-      messagesDiv.appendChild(newMessage);
-    });
-
-    // Mostrar mensajes generales del servidor
-    socket.on('message', (message) => {
-      alert(message);
-    });
-  </script>
+        // Mostrar mensaje en el chat
+        function displayMessage(message) {
+            const div = document.createElement("div");
+            div.textContent = `[${message.timestamp}] ${message.user}: ${message.text}`;
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll
+        }
+    </script>
 </body>
 </html>
