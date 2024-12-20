@@ -39,9 +39,9 @@
         <button id="send-message-btn">Enviar</button>
     </div>
 
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
     <script>
-        const socket = io();
+        const socket = io('http://localhost:3011');
 
         // Elementos del DOM
         const mainScreen = document.getElementById("main-screen");
@@ -62,6 +62,8 @@
         // Crear sala
         createRoomBtn.addEventListener("click", () => {
             username = document.getElementById("username-create").value.trim();
+            console.log(username + "Que pasa");
+            
             if (username) {
                 socket.emit("create-room", username);
             } else {
@@ -79,6 +81,7 @@
         joinRoomBtn.addEventListener("click", () => {
             username = document.getElementById("username-join").value.trim();
             const roomCode = document.getElementById("room-code-input").value.trim();
+            console.log(username)
             if (username && roomCode) {
                 socket.emit("join-room", { roomCode, username });
             } else {
