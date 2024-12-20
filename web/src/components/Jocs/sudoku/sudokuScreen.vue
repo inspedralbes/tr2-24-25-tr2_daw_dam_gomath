@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- Selector de Nivel -->
-     <div class="leveler1" v-if="!nivelSeleccionado">
+    <div class="leveler1" v-if="!nivelSeleccionado">
       <h1>Nivell</h1>
-     </div>
+    </div>
     <div class="leveler2" v-if="!nivelSeleccionado">
       <q-btn color="primary" class="nivel" v-for="nivel in niveles" :key="nivel" @click="seleccionarNivel(nivel)">
         {{ nivel }}
@@ -33,7 +33,7 @@
 
       <!-- Control Panel -->
       <div>
-        <div class="temps" id="tempPanel">Temps: 00:00</div>
+        <div class="temps" id="tempPanel">Temps: {{ timeFormatted }}</div>
         <div class="errors" id="errorPanel">Vides: {{ vides }}</div>
       </div>
 
@@ -56,15 +56,16 @@ import { isValidMove, sudokuGenerator } from "../../../services/sudokuService";
 export default {
   data() {
     return {
-      // Estado inicial del tablero, vacío con 9 filas y 9 columnas
       tablero: Array(81).fill({ value: '', readonly: false }),
       selectedCell: { row: null, col: null },
       dificultad: null,
       OriginVides: null,
       vides: null,
       maxTime: null,
-      numeroSeleccionado: null, // Número seleccionado para insertar
-      nivelSeleccionado: false, // Indicador de si se ha seleccionado un nivel
+      temporizador: null,
+      timeFormatted: null,
+      numeroSeleccionado: null,
+      nivelSeleccionado: false,
       niveles: ["Novell", "Vetera", "Elit", "Professional"],
       numeros: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       contadorNumeros: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 },
@@ -101,21 +102,23 @@ export default {
         switch (this.dificultad) {
           case "novell":
             this.vides = 6;
-            this.OriginVides = 6
+            this.OriginVides = 6;
+            this.maxTime = 600000;
             break;
           case "vetera":
             this.vides = 4;
-            this.OriginVides = 4
+            this.OriginVides = 4;
+            this.maxTime = 600000;
             break;
           case "elit":
             this.vides = 3;
-            this.OriginVides = 3
-            this.maxTime = 5;
+            this.OriginVides = 3;
+            this.maxTime = 300000;
             break;
           case "professional":
             this.vides = 2;
-            this.OriginVides = 2
-            this.maxTime = 4;
+            this.OriginVides = 2;
+            this.maxTime = 240000;
             break;
           default:
             this.vides = 0;
@@ -142,6 +145,7 @@ export default {
         const generatedBoard = sudokuGenerator(dificultad); // Llama al generador de Sudoku
         console.log("Tablero generado:", generatedBoard);
         this.actualizarTablero(generatedBoard); // Actualiza el tablero
+        this.setTemporizador();  // Inicia el temporizador
       } catch (error) {
         console.error("Error al generar el tablero:", error);
       }
@@ -157,6 +161,34 @@ export default {
         value: char === '.' ? '' : char,
         readonly: char !== '.',
       }));
+    },
+
+    /**
+     * Crea y configura el temporizador del juego
+     */
+    setTemporizador() {
+      this.temporizador = setInterval(() => {
+          this.maxTime -= 1000; // Reduce un segundo (1000ms)
+          this.timeFormatted = this.formatearTiempo(this.maxTime);
+          console.log(`Tiempo restante: ${Math.floor(this.maxTime / 1000)}s`);
+          if (this.maxTime <= 0) {
+            clearInterval(this.temporizador);
+            console.log("¡Tiempo agotado!");
+            this.finalizarJuego(false); // Finaliza el juego
+          }
+        }, 1000); // Intervalo de 1 segundo
+    },
+
+    /**
+     * Formatea el tiempo de milisegundos a formato mm:ss
+     * @param {integer} ms - Current time
+     * @returns {string} - Tiempo formateado
+     */
+     formatearTiempo(ms) {
+      let minutos = Math.floor(ms / 60000); // Convertir a minutos
+      let segundos = Math.floor((ms % 60000) / 1000); // Obtener los segundos restantes
+      segundos = segundos < 10 ? '0' + segundos : segundos; // Asegurar que los segundos sean dos dígitos
+      return `${minutos}:${segundos}`;
     },
 
     /**
@@ -325,39 +357,45 @@ export default {
 
 /*Estilos del Panel de Control */
 .temps {
-    font-family: 'Aller', sans-serif;
-    font-size: 2rem;
-    color:rgb(77, 133, 236); /* Un color destacado para el tiempo */
-    text-align: center;
-    margin-top: 1rem;
-    animation: blink 1s infinite alternate; /* Animación para dar efecto de parpadeo */
+  font-family: 'Aller', sans-serif;
+  font-size: 2rem;
+  color: rgb(77, 133, 236);
+  /* Un color destacado para el tiempo */
+  text-align: center;
+  margin-top: 1rem;
+  animation: blink 1s infinite alternate;
+  /* Animación para dar efecto de parpadeo */
 }
 
 /* Animación opcional para el tiempo */
 @keyframes blink {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0.5;
-    }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.5;
+  }
 }
 
 
 .errors {
-    font-family: 'Blogger Sans', sans-serif;
-    font-size: 1.5rem;
-    color: #F05050; /* Un color rojo suave para indicar errores */
-    background-color: #ffffff; /* Fondo claro para resaltar el texto */
-    border: 2px solid #F05050;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    text-align: center;
-    margin-top: 1rem;
-    width: fit-content; /* Tamaño ajustado al contenido */
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35); /* Sombra suave */
+  font-family: 'Blogger Sans', sans-serif;
+  font-size: 1.5rem;
+  color: #F05050;
+  /* Un color rojo suave para indicar errores */
+  background-color: #ffffff;
+  /* Fondo claro para resaltar el texto */
+  border: 2px solid #F05050;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  margin-top: 1rem;
+  width: fit-content;
+  /* Tamaño ajustado al contenido */
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
+  /* Sombra suave */
 }
-
 </style>
