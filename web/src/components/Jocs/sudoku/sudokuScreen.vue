@@ -11,7 +11,7 @@
     </div>
 
     <!-- Tablero de Sudoku -->
-    <div v-if="nivelSeleccionado && !gameOver">
+    <div v-if="nivelSeleccionado && !gameOver" class="game-container">
       <div class="tauler">
         <div v-for="colIndex in 9" :key="colIndex" class="sudoku-row">
           <div v-for="rowIndex in 9" :key="rowIndex" class="sudoku-cell"
@@ -32,18 +32,17 @@
       </div>
 
       <!-- Control Panel -->
-      <div>
+      <div class="control-panel">
         <div class="temps" id="tempPanel">Temps: {{ timeFormatted }}</div>
-        <div class="errors" id="errorPanel">Vides: {{ vides }}</div>
+        <div class="vides" id="errorPanel">Vides: {{ vides }}</div>
       </div>
-
     </div>
 
     <!-- Pantalla final -->
-    <div v-if="gameOver">
+    <div v-if="gameOver" class="final">
       <h2>¡Juego terminado!</h2>
-      <p>Errores cometidos: {{ errors }}</p>
-      <button>Salir</button>
+      <p>Errores cometidos: {{ OriginVides - vides }}</p>
+      <q-btn color="primary" @click="salir">Salir</q-btn>
     </div>
   </div>
 </template>
@@ -168,15 +167,15 @@ export default {
      */
     setTemporizador() {
       this.temporizador = setInterval(() => {
-          this.maxTime -= 1000; // Reduce un segundo (1000ms)
-          this.timeFormatted = this.formatearTiempo(this.maxTime);
-          console.log(`Tiempo restante: ${Math.floor(this.maxTime / 1000)}s`);
-          if (this.maxTime <= 0) {
-            clearInterval(this.temporizador);
-            console.log("¡Tiempo agotado!");
-            this.finalizarJuego(false); // Finaliza el juego
-          }
-        }, 1000); // Intervalo de 1 segundo
+        this.maxTime -= 1000; // Reduce un segundo (1000ms)
+        this.timeFormatted = this.formatearTiempo(this.maxTime);
+        console.log(`Tiempo restante: ${Math.floor(this.maxTime / 1000)}s`);
+        if (this.maxTime <= 0) {
+          clearInterval(this.temporizador);
+          console.log("¡Tiempo agotado!");
+          this.finalizarJuego(false); // Finaliza el juego
+        }
+      }, 1000); // Intervalo de 1 segundo
     },
 
     /**
@@ -184,7 +183,7 @@ export default {
      * @param {integer} ms - Current time
      * @returns {string} - Tiempo formateado
      */
-     formatearTiempo(ms) {
+    formatearTiempo(ms) {
       let minutos = Math.floor(ms / 60000); // Convertir a minutos
       let segundos = Math.floor((ms % 60000) / 1000); // Obtener los segundos restantes
       segundos = segundos < 10 ? '0' + segundos : segundos; // Asegurar que los segundos sean dos dígitos
@@ -263,6 +262,10 @@ export default {
     jocAcabat() {
       this.gameOver = true;
       console.log(`Juego terminado. vidas restantes: ${this.vides}/${this.OriginVides}`);
+    },
+
+    salir() {
+      this.$router.push('/jocs');
     }
   }
 }
@@ -300,6 +303,13 @@ export default {
   background-color: #ddd;
 }
 
+/* Contenedor principal del tablero y el panel de control */
+.game-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
 /* Estilos del tablero */
 .tauler {
   display: grid;
@@ -308,8 +318,8 @@ export default {
   width: 470px;
   height: 470px;
   margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 50px;
+  margin-right: 20px;
   gap: 1px;
 }
 
@@ -336,26 +346,50 @@ export default {
   outline: none;
 }
 
-/*Estilos de los numeros a escojer*/
-
+/* Estilos de los números a escoger */
 .numeros {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Crea una cuadrícula de 3 columnas */
   gap: 10px;
+  justify-items: center; /* Centra los botones dentro de cada celda */
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  max-width: 150px; /* Limita el ancho máximo si es necesario */
+  margin: 0 auto; /* Centra la cuadrícula en su contenedor */
+  margin-top: 180px;
 }
 
 .numeros q-btn {
-  padding: 10px;
+  padding: 15px;
   font-size: 20px;
   cursor: pointer;
   border: 1px solid #000;
   transition: background-color 0.3s;
-  flex: 0%;
-  margin: 5px;
+  width: 50px; /* Ajusta el tamaño de los botones */
+  height: 50px; /* Ajusta el tamaño de los botones */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Estilos del Panel de Control a la derecha */
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 200px;
+  padding: 10px;
+  margin-top: 180px;
+  margin-right: 50px;
+  background-color: #f7f7f7;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /*Estilos del Panel de Control */
+
 .temps {
   font-family: 'Aller', sans-serif;
   font-size: 2rem;
@@ -379,23 +413,51 @@ export default {
 }
 
 
-.errors {
+.vides {
   font-family: 'Blogger Sans', sans-serif;
   font-size: 1.5rem;
   color: #F05050;
-  /* Un color rojo suave para indicar errores */
   background-color: #ffffff;
-  /* Fondo claro para resaltar el texto */
   border: 2px solid #F05050;
   border-radius: 5px;
   padding: 0.5rem 1rem;
   text-align: center;
   margin-top: 1rem;
   width: fit-content;
-  /* Tamaño ajustado al contenido */
   margin-left: auto;
   margin-right: auto;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
-  /* Sombra suave */
+}
+
+/* Estilos de la pantalla final*/
+
+.final {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightgrey;
+  /* Fondo oscuro */
+  color: black;
+  /* Texto claro */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+  z-index: 100;
+}
+
+.final h2 {
+  font-family: 'Blogger Sans', sans-serif;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.final p {
+  font-family: 'Aller', sans-serif;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 </style>
