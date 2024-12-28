@@ -24,7 +24,7 @@
     <!-- Dropdown para el cronómetro -->
     <q-btn-dropdown color="primary" label="CRONO" @click="tipoPartidaStore.setModo('crono')">
       <q-list>
-        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(30)">
+        <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(5)">
           <q-item-section>
             <q-item-label>30seg</q-item-label>
           </q-item-section>

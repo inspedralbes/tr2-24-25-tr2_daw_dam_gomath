@@ -1,37 +1,28 @@
 <template>
   <div>
-    <div v-if="operation">
-      <h2>{{ operation.question }}</h2>
+    <div v-if="!loading">
+      <div v-if="operation">
+        <h2>{{ operation.question }}</h2>
+        <div class="crono">Temps restant: {{ timeLeft }}s</div>
+        <div class="opciones">
+          <q-btn v-for="(answer, index) in operation.answers" :key="index" :color="getButtonColor(index)"
+            class="opcion-btn" @click="handleAnswer(answer, index)" :disabled="!isTimeRemaining"
+            style="width: 200px; margin: 5px auto;">
+            {{ answer.value }}
+          </q-btn>
+        </div>
 
-      <div class="crono">Temps restant: {{ timeLeft }}s</div>
-
-      <div class="opciones">
-        <q-btn
-          v-for="(answer, index) in operation.answers"
-          :key="index"
-          :color="getButtonColor(index)"
-          class="opcion-btn"
-          @click="handleAnswer(answer, index)"
-          :disabled="!isTimeRemaining"
-          style="width: 200px; margin: 5px auto;"
-        >
-          {{ answer.value }}
-        </q-btn>
+        <div class="navegacion">
+          <q-btn @click="previousQuestion" label="Anterior" />
+          <q-btn @click="nextQuestion" label="Siguiente" />
+        </div>
       </div>
-
-      <div class="navegacion">
-        <q-btn
-          @click="previousQuestion"
-          label="Anterior"
-        />
-        <q-btn
-          @click="nextQuestion"
-          label="Siguiente"
-        />
+      <div v-else class="loading-container">
+        <img src="../../../assets/img/loading.gif" alt="cargando">
       </div>
     </div>
     <div v-else class="loading-container">
-      <img src="../../../assets/img/loading.gif" alt="cargando">
+      <img src="../../../assets/img/loading.gif" alt="Cargando respuestas" />
     </div>
   </div>
 </template>
@@ -49,6 +40,8 @@ import { colors } from "quasar";
 
 export default {
   setup() {
+    const loading = ref(false);
+    const respuestasPendientes = ref([]);
     const estadisticas = useEstadisticasPartida();
     const unaRespuesta = useUnaRespuesta();
     const useRespuesta2 = useRespuesta();
@@ -102,6 +95,7 @@ export default {
         } else {
           isTimeRemaining.value = false;
           clearInterval(timer);
+          corregirRespuests();
           redirectToEnd();
         }
       }, 1000);
@@ -109,6 +103,30 @@ export default {
 
     const redirectToEnd = () => {
       router.push("/Offline/FinPartida");
+    };
+    const corregirRespuests = async () => {
+      loading.value = true;
+      try {
+        const respuestasPromises = respuestasPendientes.value.map(async (respuesta) => {
+          useRespuesta2.setRespuesta(respuesta.respuesta);
+          useRespuesta2.setId(respuesta.id_pregunta);
+          await unaRespuesta.fetchRespuesta();
+
+          if (respuesta.respuesta !== useRespuesta2.correcta) {
+            estadisticas.setPreguntaIncorrecta();
+            estadisticas.setPuntos(-50);
+          } else {
+            estadisticas.setPreguntaCorrecta();
+            estadisticas.setPuntos(100);
+          }
+        });
+
+        await Promise.all(respuestasPromises);
+      } catch (error) {
+        console.error("Error al corregir respuestas:", error);
+      } finally {
+        loading.value = false;
+      }
     };
 
     const getButtonColor = (index) => {
@@ -119,45 +137,24 @@ export default {
     };
 
     const handleAnswer = async (selected, index) => {
-  if (!isTimeRemaining.value) return;
 
-  const preguntaRespondida = preguntasRespondidas.value[currentQuestionIndex.value];
+      if (!isTimeRemaining.value) return;
+      const preguntaRespondida = preguntasRespondidas.value[currentQuestionIndex.value];
 
-  if (preguntaRespondida === undefined) {
-    selectedAnswer.value = selected;
-    preguntasRespondidas.value[currentQuestionIndex.value] = index;
-
-    useRespuesta2.setRespuesta(operation.value.answers[index].value);
-    useRespuesta2.setId(operation.value.id_pregunta);
-
-    await unaRespuesta.fetchRespuesta();
-
-    if (operation.value.answers[index].value !== useRespuesta2.correcta) {
-      estadisticas.setPreguntaIncorrecta();
-      estadisticas.setPuntos(-50);
-    } else {
-      estadisticas.setPreguntaCorrecta();
-      estadisticas.setPuntos(100);
+      if (preguntaRespondida === undefined) {
+        preguntasRespondidas.value[currentQuestionIndex.value] = index;
+        respuestasPendientes.value.push({
+          id_pregunta: operation.value.id_pregunta,
+          respuesta: operation.value.answers[index].value
+        });
+      } else {
+        respuestasPendientes.value = respuestasPendientes.value.filter(r => r.id_pregunta !== operation.value.id_pregunta);
+        respuestasPendientes.value.push({
+          id_pregunta: operation.value.id_pregunta,
+          respuesta: operation.value.answers[index].value
+        });
+      }
     }
-  } else {
-    if (operation.value.answers[preguntaRespondida].value === useRespuesta2.correcta) {
-      estadisticas.unSetPreguntaCorrecta();
-    } else {
-      estadisticas.unSetPreguntaIncorrecta();
-    }
-
-    selectedAnswer.value = selected;
-    preguntasRespondidas.value[currentQuestionIndex.value] = index;
-
-    if (operation.value.answers[index].value !== useRespuesta2.correcta) {
-      estadisticas.setPreguntaIncorrecta();
-      estadisticas.setPuntos(-50);
-    } else {
-      estadisticas.setPreguntaCorrecta();
-      estadisticas.setPuntos(100);
-    }
-  }
-};
 
 
 
@@ -193,6 +190,7 @@ export default {
       preguntasRespondidas,
       timeLeft,
       isTimeRemaining,
+      loading,
     };
   },
 };
