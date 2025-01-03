@@ -4,19 +4,9 @@
     <div class="card">
       <h2>Unirse a partida</h2>
       <p class="description">Ingresa el código para unirte a una partida existente.</p>
-      <q-input
-        v-model="inputValue"
-        outlined
-        label="Código de partida"
-        placeholder="Introduce el código aquí"
-        class="input-large"
-      />
-      <q-btn
-        label="Unirse"
-        color="primary"
-        class="btn-large"
-        @click="handleJoin"
-      />
+      <q-input v-model="inputValue" outlined label="Código de partida" placeholder="Introduce el código aquí"
+        class="input-large" />
+      <q-btn label="Unirse" color="primary" class="btn-large" @click="handleJoin" />
       <div v-if="submittedValue" class="result">
         <p>Intentando unirse con el código: <strong>{{ submittedValue }}</strong></p>
       </div>
@@ -25,36 +15,71 @@
     <div class="card">
       <h2>Crear partida</h2>
       <p class="description">Genera una nueva partida y comparte el código con tus amigos.</p>
-      <q-btn
-        label="Crear partida"
-        color="secondary"
-        class="btn-large"
-        @click="irACrearPartida"
-      />
+      <q-btn label="Crear partida" color="secondary" class="btn-large" @click="irACrearPartida" />
     </div>
+
+    <!-- Mensaje de error -->
+    <q-dialog v-model="showError" persistent>
+      <q-card class="bg-red text-white">
+        <q-card-section>
+          <div class="text-h6">Error</div>
+          <p>{{ errorMessage }}</p>
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat label="Cerrar" color="white" @click="showError = false" />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
-
 <script>
 import { ref } from "vue";
-import { useRouter } from "vue-router"
+import { useRouter } from "vue-router";
+import { useCodigoSala } from "@/stores/comunicationManager";
+import { useEstadoOnline } from "@/stores/estadoOnline"
 export default {
   setup() {
-    const inputValue = ref(""); 
-    const submittedValue = ref(""); 
+    const estadoOnline = useEstadoOnline();
     const router = useRouter();
-    const handleJoin = () => {
-      submittedValue.value = inputValue.value;
-      console.log("Unirse con código:", inputValue.value);
+    const inputValue = ref("");
+    const showError = ref(false);
+    const errorMessage = ref("");
+    const sala = useCodigoSala();
+
+    const handleJoin = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/salas/${inputValue.value}`);
+        if (!response.ok) {
+          throw new Error("No se pudo verificar la sala.");
+        }
+        const data = await response.json();
+        if (data.existe) {
+          sala.codigo = inputValue.value;
+          estadoOnline.setPropietario('otro');
+          estadoOnline.setcodigoUnion(inputValue.value);
+          console.log('aqui añado valor al codigounion',inputValue.value);
+          
+          router.push("/Online/CodigoPartida");
+        } else {
+          throw new Error("El código no corresponde a una sala existente.");
+        }
+      } catch (error) {
+        errorMessage.value = "Código incorrecto, sala no existente";
+        showError.value = true;
+      }
     };
 
-    function irACrearPartida () {
-      router.push('/Online');
-    };
+    function irACrearPartida() {
+      estadoOnline.setPropietario('yo');
+      console.log(estadoOnline.propietario);
+      
+      router.push("/Online");
+    }
 
     return {
       inputValue,
-      submittedValue,
+      showError,
+      errorMessage,
       handleJoin,
       irACrearPartida,
     };
