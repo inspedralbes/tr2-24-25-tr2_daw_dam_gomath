@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Operacion;
+
 class OperacionController extends Controller
 {
     /**
@@ -20,14 +21,61 @@ class OperacionController extends Controller
             return response()->json(['error' => 'Operación no válida o no especificada'], 400);
         }
 
-        $operaciones = Operacion::where('tipo_operacion', $operacion)->inRandomOrder()->get();
-        $operaciones = Operacion::where('nivel_dificultad', $dificultat)->get();
+        if ($modo == 'numero') {
+            $operaciones = Operacion::where('tipo_operacion', $operacion)->where('nivel_dificultad', $dificultat)->inRandomOrder()->take($cantidad)->get();
+        } else {
+            $operaciones = Operacion::where('tipo_operacion', $operacion)->where('nivel_dificultad', $dificultat)->inRandomOrder()->get();
+        }
+
+        $resultados = $operaciones->map(function ($operacion) {
+        $problemJson = json_decode($operacion->problem_json, true);
+            if (!empty($problemJson['answers'])) {
+                $valoresRespuestas = collect($problemJson['answers'])->pluck('value')->all();
+
+                return [
+                    'id_pregunta' => $operacion->id,
+                    'question' => $problemJson['question'], 
+                    'respuestas' => $valoresRespuestas,     
+                ];
+            }
+
+            return response()->json(['message' => 'Error']); 
+        });
+
         return response()->json([
             'filtro_operacion' => $operacion,
             'filtro_dificultat' => $dificultat,
-            'operaciones_filtradas' => $operaciones,
+            'preguntas_y_respuestas' => $resultados,
         ]);
     }
+    public function respuestaCorrectaUnaPregunta(Request $request)
+{
+    $id = $request->input('id_pregunta');
+    $respuestaSeleccionada = $request->input('respuestaSeleccionada');
+
+    $pregunta = Operacion::find($id);
+
+    if (!$pregunta) {
+        return response()->json(['error' => 'Pregunta no encontrada'], 404);
+    }
+
+    $problemJson = json_decode($pregunta->problem_json, true);
+
+    if (!$problemJson || empty($problemJson['answers'])) {
+        return response()->json(['error' => 'El formato de problem_json es inválido o no tiene respuestas'], 400);
+    }
+
+    $respuestaCorrecta = collect($problemJson['answers'])->firstWhere('is_correct', true);
+
+    if (!$respuestaCorrecta) {
+        return response()->json(['error' => 'No se encontró una respuesta correcta'], 400);
+    }
+
+    return response()->json([
+        'id_pregunta' => $id,
+        'respuesta_correcta' => $respuestaCorrecta['value'],
+    ]);
+}
 
     public function index()
     {
@@ -36,11 +84,12 @@ class OperacionController extends Controller
         if (request()->is('api/*')) {
             return response()->json($operaciones);
         }
+
         foreach ($operaciones as $operacion) {
             $operacion->decoded_problem = json_decode($operacion->problem_json);
         }
 
-        return view('operacions', compact('operaciones'));
+        return view('operacions.index', compact('operaciones')); // assuming the view is operacions/index
     }
 
     /**
@@ -48,7 +97,7 @@ class OperacionController extends Controller
      */
     public function create()
     {
-
+    
     }
 
     /**
@@ -56,7 +105,6 @@ class OperacionController extends Controller
      */
     public function store(Request $request)
     {
-        // Validación de los datos
         $request->validate([
             'question' => 'required|string',
             'answers' => 'required|array',
@@ -64,7 +112,6 @@ class OperacionController extends Controller
             'operation_type' => 'required|string|in:suma,resta,multiplicación,division',
         ]);
 
-        // Crear el objeto de la pregunta en formato JSON
         $problem_json = [
             'question' => $request->question,
             'answers' => array_map(function ($answer, $index) use ($request) {
@@ -75,7 +122,6 @@ class OperacionController extends Controller
             }, $request->input('answers', []), array_keys($request->input('answers'))),
         ];
 
-        // Guardar la operación
         Operacion::create([
             'problem_json' => json_encode($problem_json),
             'nivel_dificultad' => $request->difficulty,    
@@ -85,13 +131,12 @@ class OperacionController extends Controller
         return redirect()->route('operacions.index')->with('success', 'Problema agregado correctamente.');
     }
 
-
     /**
-     * Display the specified resource.
+     * Show the specified resource.
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -100,13 +145,10 @@ class OperacionController extends Controller
     public function edit($id)
     {
         $operacion = Operacion::findOrFail($id);
-
-        // Decodificar el problem_json como un array
         $operacion->decoded_problem = json_decode($operacion->problem_json, true);
 
-        return view('operacions.edit', compact('operacion'));
+        return view('operacions.edit', compact('operacion')); // Assuming you have an edit view
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -132,7 +174,7 @@ class OperacionController extends Controller
         foreach ($request->input('problem_json.answers') as $index => $answer) {
             $answers[] = [
                 'value' => $answer['value'],
-                'is_correct' => ($index == $request->input('correct_answer'))  // Marcar la respuesta correcta
+                'is_correct' => ($index == $request->input('correct_answer')),  // Mark the correct answer
             ];
         }
 
@@ -148,10 +190,8 @@ class OperacionController extends Controller
             return response()->json(['message' => 'Operación actualizada correctamente']);
         }
 
-        return redirect()->route('operacions')->with('success', 'Operación actualizada correctamente');
+        return redirect()->route('operacions.index')->with('success', 'Operación actualizada correctamente');
     }
-
-
 
     /**
      * Remove the specified resource from storage.
@@ -160,12 +200,18 @@ class OperacionController extends Controller
     {
         $operacion = Operacion::find($id);
         if (!$operacion) {
-            return response()->json(['error' => 'Operacion no encontrada'], 404);
+            return response()->json(['error' => 'Operación no encontrada'], 404);
         }
         $operacion->delete();
+
         if (request()->is('api/*')) {
-            return response()->json(['message' => 'Operacion borrada correctamente']);
+            return response()->json(['message' => 'Operación eliminada correctamente']);
         }
-        return redirect()->route('operacions')->with('success', 'Operación eliminada correctamente.');
+
+        return redirect()->route('operacions.index')->with('success', 'Operación eliminada correctamente.');
     }
+
+    /**
+     * Filter operaciones based on parameters.
+     */
 }

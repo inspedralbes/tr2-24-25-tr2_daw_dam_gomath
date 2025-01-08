@@ -2,15 +2,15 @@
   <div id="home-screen" class="home-screen-container">
     <div class="content">
       <main>
-        <h1 class="title">Bienvenido a GoMath</h1>
+        <h1 class="title">Benvingut a GoMath!</h1>
         <p class="description">
-          ¡Descubre tu nivel de matemáticas, desafía tus límites y mejora tus habilidades mientras te diviertes!
+          Descobreix el teu nivell de matemàtiques, desafia els teus límits i millora les teves habilitats mentre et diverteixes!
         </p>
-        <button class="cta-button" @click="goToRegister">¡Regístrate ahora!</button>
+        <button class="cta-button" @click="goToRegister">Registra't ara!</button>
       </main>
       <footer>
-        <p class="footer-text">¿Ya tienes una cuenta?
-          <a href="#" @click="goToLogin">Inicia sesión aquí</a>
+        <p class="footer-text">Ja tens un compte?
+          <a href="#" @click="goToLogin">Inicia sessió aquí</a>
         </p>
       </footer>
     </div>
