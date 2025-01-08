@@ -1,6 +1,5 @@
 <template>
   <div class="q-pa-md botones-container">
-    <!-- Dropdown para el número de preguntas -->
     <q-btn-dropdown color="primary" label="NÚMERO DE PREGUNTAS" @click="tipoPartidaStore.setModo('numero')">
       <q-list>
         <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(10)">
@@ -21,7 +20,6 @@
       </q-list>
     </q-btn-dropdown>
 
-    <!-- Dropdown para el cronómetro -->
     <q-btn-dropdown color="primary" label="CRONO" @click="tipoPartidaStore.setModo('crono')">
       <q-list>
         <q-item clickable v-close-popup @click=" tipoPartidaStore.setCantidad(30)">

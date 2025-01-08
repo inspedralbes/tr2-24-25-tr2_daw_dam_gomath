@@ -10,47 +10,77 @@ const onlineGamesRoutes = require('./routes/onlineGames')
 
 const app = express();
 const server = http.createServer(app);
+
 const io = new Server(server, {
-  cors: {
-      origin: "http://localhost:5173", 
-      methods: ["GET", "POST"],       
-      credentials: true               
-  }
+    cors: {
+        origin: "http://localhost:5173",
+        methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
+        credentials: true,
+    },
 });
 
-// Middleware
 app.use(express.json());
-app.use(cors()); // Habilitar CORS per a qualsevol origen
-app.use('/api/offlineGames', offlineGamesRoutes);
-app.use('/api/onlineGames', onlineGamesRoutes);
+app.use(cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
+    credentials: true,
+}));
 
-// Connexió a la base de dades MongoDB
-mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/GoMath', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Connectat a MongoDB'))
-.catch((err) => console.error('Error al connectar a MongoDB', err));
-
-// Rutes
-app.get('/', (req, res) => {
-  res.send('Benvingut al servidor de jocs offline');
-});
-
-app.post('/api/userLogin',(req, res) => {
-  const {email} = req.body;
-
-  res.json({"email": email, "role": "admin"});
-});
+const rooms = {};
 
 app.post('/api/create-room', (req, res) => {
-  const { email } = req.body;
+    const { email } = req.body;
+    if (!email) {
+        return res.status(400).json({ success: false, message: "Email es requerido" });
+    }
 
-  const roomCode = uuidv4().slice(0, 6);
+    const roomCode = uuidv4().slice(0, 6);
 
-  rooms[roomCode] = { members: [], messages: [] };
+    rooms[roomCode] = { members: [], messages: [] };
 
   res.json({ roomCode, email });
+});
+
+app.get('/api/salas/:roomCode', (req, res) => {
+    const { roomCode } = req.params;
+
+    if (rooms[roomCode]) {
+        res.json({ existe: true, roomCode });
+    } else {
+        res.status(404).json({ existe: false, mensaje: "La sala no existe" });
+    }
+});
+
+app.delete('/api/salas/:roomCode', (req, res) => {
+    const { roomCode } = req.params;
+
+    if (rooms[roomCode]) {
+        delete rooms[roomCode];
+        res.json({ success: true, message: "Sala eliminada exitosamente" });
+    } else {
+        res.status(404).json({ success: false, message: "Sala no encontrada" });
+    }
+});
+
+app.get('/api/salas/:roomCode', (req, res) => {
+    const { roomCode } = req.params;
+
+    if (rooms[roomCode]) {
+        res.json({ existe: true, roomCode });
+    } else {
+        res.status(404).json({ existe: false, mensaje: "La sala no existe" });
+    }
+});
+
+app.delete('/api/salas/:roomCode', (req, res) => {
+    const { roomCode } = req.params;
+
+    if (rooms[roomCode]) {
+        delete rooms[roomCode];
+        res.json({ success: true, message: "Sala eliminada exitosamente" });
+    } else {
+        res.status(404).json({ success: false, message: "Sala no encontrada" });
+    }
 });
 
 const rooms = {};
@@ -59,58 +89,90 @@ const detailsRoom = {};
 io.on('connection', (socket) => {
   console.log(`Usuario conectado: ${socket.id}`);
 
-  socket.on("create-room", (username) => {
-    const roomCode = uuidv4().slice(0, 6); 
-    rooms[roomCode] = { members: [{ id: socket.id, name: username }], messages: [] };
-    socket.join(roomCode); 
-    console.log(`${username} creó la sala ${roomCode}`);
-    socket.emit("room-created", roomCode); 
-  });
-  
-  socket.on('join-room', ({ roomCode, username }) => {
-      
-      socket.data.username = username || "Usuario_" + socket.id;  // Nombre por defecto
-      
-      console.log(roomCode + " " + username)
+    socket.on("create-room", (username) => {
+        if (!username) {
+            return socket.emit("error", "El nombre de usuario es requerido para crear la sala");
+        }
 
-      if (!rooms[roomCode]) {
-        socket.emit("error", "La sala no existe.");
-        return;
-      }
-    
-      const user = { id: socket.id, name: socket.data.username };
-      rooms[roomCode].members.push(user);
-      
-      socket.join(roomCode);
-      console.log(`Usuario ${socket.data.username} se unió a la sala: ${roomCode}`);
-    
-      // Notificar a todos los usuarios de la sala
-      io.to(roomCode).emit('userJoined', {
-        roomCode,
-        members: rooms[roomCode].members
-      });
-  });
-  
+        const roomCode = uuidv4().slice(0, 6);
+        rooms[roomCode] = {
+            members: [{ id: socket.id, name: username, isHost: true }],
+            messages: [],
+            tipoPartida: null,
+        };
 
-  socket.on('kickUser', () => {
-    const { roomCode, idUser } = data;
-    if (rooms[roomCode]) {
-      rooms[roomCode] = rooms[roomCode].filter(user => user.id !== idUser);
-      console.log(`Usuario con id ${idUser} fue expulsado de la sala ${roomCode}`);
-    }
-  });
+        socket.join(roomCode);
+        console.log(`${username} creó la sala ${roomCode}`);
+        socket.emit("room-created", roomCode);
+    });
 
-  socket.on('disconnect', () => {
-    for (const roomCode in rooms) {
-      rooms[roomCode].members = rooms[roomCode].members.filter((member) => member.id !== socket.id);
-      io.to(roomCode).emit("update-users", JSON.stringify(rooms[roomCode].members));
+    socket.on("join-room", ({ roomCode, username }) => {
+        if (!username) {
+            return socket.emit("error", "El nombre de usuario es requerido para unirse a la sala");
+        }
 
-      if (rooms[roomCode].members.length === 0) {
-        delete rooms[roomCode];
-      }
-    }
-    console.log(`Cliente desconectado: ${socket.id}`);
-  });
+        if (rooms[roomCode]) {
+            const isAlreadyMember = rooms[roomCode].members.some((member) => member.id === socket.id);
+            if (!isAlreadyMember) {
+                rooms[roomCode].members.push({ id: socket.id, name: username, isHost: false });
+                console.log(`${username} se unió a la sala ${roomCode}`);
+            }
+
+            socket.join(roomCode);
+            io.to(roomCode).emit("update-users", rooms[roomCode].members);
+            socket.emit("joined-success", {
+                roomCode,
+                members: rooms[roomCode].members,
+                messages: rooms[roomCode].messages,
+                tipoPartida: rooms[roomCode].tipoPartida,
+            });
+        } else {
+            socket.emit("error", "La sala no existe");
+        }
+    });
+
+    socket.on("update-tipoPartida", ({ roomCode, tipoPartida }) => {
+        if (rooms[roomCode]) {
+            rooms[roomCode].tipoPartida = tipoPartida;
+            io.to(roomCode).emit("tipoPartida-updated", tipoPartida);
+        } else {
+            socket.emit("error", "La sala no existe");
+        }
+    });
+
+    socket.on("start-game", (roomCode) => {
+        console.log("Evento 'start-game' recibido con los siguientes datos:", roomCode, roomCode.roomCode)
+        const room = roomCode.roomCode;
+            console.log(`Iniciando partida en la sala: ${room}`);
+            io.to(room).emit("game-started");
+    });
+
+    socket.on("disconnect", () => {
+        for (const roomCode in rooms) {
+            const room = rooms[roomCode];
+            const member = room.members.find((m) => m.id === socket.id);
+
+            if (member) {
+                room.members = room.members.filter((m) => m.id !== socket.id);
+                io.to(roomCode).emit("update-users", room.members);
+
+                if (member.isHost) {
+                    console.log(`El host se desconectó de la sala ${roomCode}`);
+                    if (room.members.length > 0) {
+                        // Asignar nuevo host si quedan miembros
+                        room.members[0].isHost = true;
+                        io.to(roomCode).emit("new-host", room.members[0]);
+                    } else {
+                        // Eliminar la sala si está vacía
+                        delete rooms[roomCode];
+                    }
+                } else {
+                    console.log(`${member.name} se desconectó de la sala ${roomCode}`);
+                }
+            }
+        }
+        console.log(`Cliente desconectado: ${socket.id}`);
+    });
 });
 
 // Iniciar el servidor

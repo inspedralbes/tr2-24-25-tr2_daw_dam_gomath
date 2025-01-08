@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/Login/LoginScreen.vue'
 import Offline from '../components/Offline/OfflineScreen.vue'
 import Online from '../components/Online/OnlineScreen.vue'
-import Apunts from '../components/Apuntes/ApuntsScreen.vue'
+//import Apunts from '../components/Apuntes/ApuntsScreen.vue'
 import Jocs from '../components/Jocs/JocsScreen.vue'
 import Home from '../components/Home/HomeScreen.vue'
 import Register from '../components/Login/RegisterScreen.vue'
@@ -13,11 +13,13 @@ import FinPartida from '../components/Offline/PartidaOffline/FinPartidaScreen.vu
 import PartidaFallos from '../components/Offline/PartidaOffline/PartidaFallosScreen.vue'
 import Logout from '../components/Login/LogoutScreen.vue'
 import Codigo from '../components/Jocs/codigo/game.vue'
-import Sudoku from '../components/Jocs/sudoku/hola.vue'
+import Sudoku from '../components/Jocs/sudoku/sudokuScreen.vue';
 import PartidaNumeroOnline from '@/components/Online/PartidaOnline/PartidaNumeroOnlineScreen.vue'
 import SalaEspera from '@/components/Online/SalaEsperaScreen.vue'
 import prePartidaOnline from '@/components/Online/PartidaOnline/prePartidaOnline.vue'
 import CodigoPartida from '@/components/Online/PartidaOnline/codigoScreen.vue'
+import PartidaCronoOnline from '@/components/Online/PartidaOnline/PartidaCronoOnlineScreen.vue'
+import PartidaFallosOnline from '@/components/Online/PartidaOnline/PartidaFallosOnlineScreen.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -97,9 +99,19 @@ const router = createRouter({
       component: SalaEspera,
     },
     {
-      path: '/Online/PartidaNumero',
+      path: '/Online/PartidaNumeroOnline',
       name: 'PartidaNumeroOnline',
       component: PartidaNumeroOnline,
+    },
+    {
+      path: '/Online/PartidaCronoOnline',
+      name: 'PartidaCronoOnline',
+      component: PartidaCronoOnline,
+    },
+    {
+      path: '/Online/PartidaFallosOnline',
+      name: 'PartidaFallosOnline',
+      component: PartidaFallosOnline,
     },
     {
       path: '/Online/prePartidaOnline',

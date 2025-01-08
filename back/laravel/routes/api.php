@@ -21,5 +21,9 @@ Route::get('/puntuaciones', [PuntuacionController::class, 'index']);
 Route::post('/userLogin', [UserController::class,'loginUser']);
 Route::post('/userLogout', [UserController::class, 'logoutUser'])->middleware('auth:sanctum');
 Route::post('/operacionsFiltro', [OperacionController::class, 'operacionsFiltro']);
+
+Route::post('/userLogin', [UserController::class,'loginUser']);
+Route::post('/userLogout', [UserController::class, 'logoutUser'])->middleware('auth:sanctum');
+Route::post('/operacionsFiltro', [OperacionController::class, 'operacionsFiltro']);
 Route::post('/unaRespuesta', [OperacionController::class, 'respuestaCorrectaUnaPregunta']);
 Route::get('/codis', [CodiJocController::class, 'index']);
