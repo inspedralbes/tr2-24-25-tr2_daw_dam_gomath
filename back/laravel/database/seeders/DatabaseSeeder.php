@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             ClaseSeeder::class,
             UserSeeder::class,
             OperacionsSeeder::class,
+            CodisJocSeeder::class,
         ]);
     }
 }

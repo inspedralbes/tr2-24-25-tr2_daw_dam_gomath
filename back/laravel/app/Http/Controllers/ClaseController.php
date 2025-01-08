@@ -10,19 +10,25 @@ class ClaseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $clase = Clase::all();
-
-        return response()->json($clase);
+        $query = $request->input('query');
+    
+        $clases = Clase::when($query, function ($queryBuilder) use ($query) {
+            return $queryBuilder->where('nombre_clase', 'LIKE', '%' . $query . '%');
+        })->get();
+    
+        return view('clases.index', compact('clases'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        
+        // Retornar la vista 'create' para mostrar el formulario de creación
+        return view('clases.create');
     }
 
     /**
@@ -30,15 +36,18 @@ class ClaseController extends Controller
      */
     public function store(Request $request)
     {
+        // Validación de los datos del formulario
         $data = $request->validate([
-            'nombre_clase'=>'required',
+            'nombre_clase' => 'required|string|max:255',
         ]);
 
+        // Crear una nueva clase
         $clase = new Clase();
-        $clase -> nombre_clase = $data['nombre_clase'];
+        $clase->nombre_clase = $data['nombre_clase'];
         $clase->save();
 
-        return response()->json(['message'=>'Clase creada correctamente']);
+        // Redirigir a la lista de clases con un mensaje de éxito
+        return redirect()->route('clases.index')->with('success', 'Clase creada correctamente');
     }
 
     /**
@@ -46,7 +55,16 @@ class ClaseController extends Controller
      */
     public function show($id)
     {
-        //
+        // Buscar la clase por su ID
+        $clase = Clase::find($id);
+
+        // Verificar si la clase existe
+        if (!$clase) {
+            return redirect()->route('clases.index')->with('error', 'Clase no encontrada');
+        }
+
+        // Retornar la vista de mostrar clase con los datos de la clase
+        return view('clases.show', compact('clase'));
     }
 
     /**
@@ -54,7 +72,16 @@ class ClaseController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Buscar la clase por su ID
+        $clase = Clase::find($id);
+
+        // Verificar si la clase existe
+        if (!$clase) {
+            return redirect()->route('clases.index')->with('error', 'Clase no encontrada');
+        }
+
+        // Retornar la vista de edición de la clase
+        return view('clases.edit', compact('clase'));
     }
 
     /**
@@ -62,18 +89,25 @@ class ClaseController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // Validación de los datos
         $data = $request->validate([
-            'nombre_clase'=>'required',
+            'nombre_clase' => 'required|string|max:255',
         ]);
 
-        $puntuacion = Operacion::find($id);
-        if (!$puntuacion) {
-            return response()->json(['error' => 'Clase no encontrada'], 404);
+        // Buscar la clase por su ID
+        $clase = Clase::find($id);
+
+        // Verificar si la clase existe
+        if (!$clase) {
+            return redirect()->route('clases.index')->with('error', 'Clase no encontrada');
         }
-        $clase -> nombre_clase = $data['nombre_clase'];
+
+        // Actualizar los datos de la clase
+        $clase->nombre_clase = $data['nombre_clase'];
         $clase->save();
 
-        return response()->json(['message'=>'Clase actualizada correctamente']);
+        // Redirigir a la lista de clases con un mensaje de éxito
+        return redirect()->route('clases.index')->with('success', 'Clase actualizada correctamente');
     }
 
     /**
@@ -81,11 +115,18 @@ class ClaseController extends Controller
      */
     public function destroy($id)
     {
-        $clase = Clase::find($id); 
+        // Buscar la clase por su ID
+        $clase = Clase::find($id);
+
+        // Verificar si la clase existe
         if (!$clase) {
-            return response()->json(['error' => 'Clase no encontrada'], 404);
+            return redirect()->route('clases.index')->with('error', 'Clase no encontrada');
         }
-        $clase->delete(); 
-        return response()->json(['message'=>'Clase borrada correctamente']);
+
+        // Eliminar la clase
+        $clase->delete();
+
+        // Redirigir a la lista de clases con un mensaje de éxito
+        return redirect()->route('clases.index')->with('success', 'Clase eliminada correctamente');
     }
 }

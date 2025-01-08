@@ -4,9 +4,20 @@ import Offline from '../components/Offline/OfflineScreen.vue'
 import Online from '../components/Online/OnlineScreen.vue'
 import Apunts from '../components/Apuntes/ApuntsScreen.vue'
 import Jocs from '../components/Jocs/JocsScreen.vue'
-import Home from '../components/Homa/HomeScreen.vue'
+import Home from '../components/Home/HomeScreen.vue'
 import Register from '../components/Login/RegisterScreen.vue'
-import Partida from '../components/Offline/PartidaOffline/PartidaScreen.vue'
+import prePartida from '../components/Offline/PartidaOffline/prePartidaScreen.vue'
+import PartidaNumero from '../components/Offline/PartidaOffline/PartidaNumeroScreen.vue'
+import PartidaCrono from '../components/Offline/PartidaOffline/PartidaCronoScreen.vue'
+import FinPartida from '../components/Offline/PartidaOffline/FinPartidaScreen.vue'
+import PartidaFallos from '../components/Offline/PartidaOffline/PartidaFallosScreen.vue'
+import Logout from '../components/Login/LogoutScreen.vue'
+import Codigo from '../components/Jocs/codigo/game.vue'
+import Sudoku from '../components/Jocs/sudoku/hola.vue'
+import PartidaNumeroOnline from '@/components/Online/PartidaOnline/PartidaNumeroOnlineScreen.vue'
+import SalaEspera from '@/components/Online/SalaEsperaScreen.vue'
+import prePartidaOnline from '@/components/Online/PartidaOnline/prePartidaOnline.vue'
+import CodigoPartida from '@/components/Online/PartidaOnline/codigoScreen.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -28,14 +39,7 @@ const router = createRouter({
     {
       path: '/Offline',
       name: 'Offline',
-      component: Offline, 
-      children: [
-        {
-          path: '/Partida', 
-          name: 'partidaOffline',
-          component: Partida,
-        },
-      ],
+      component: Offline,
     },
     {
       path: '/Online',
@@ -48,11 +52,66 @@ const router = createRouter({
       component: Jocs,
     },
     {
-      path: '/Offline/Partida',
-      name: 'Partida',
-      component: Partida,
-    }
+      path: '/Offline/prePartida',
+      name: 'prePartida',
+      component: prePartida,
+    },
+    {
+      path: '/Offline/PartidaNumero',
+      name: 'PartidaNumero',
+      component: PartidaNumero,
+    },
+    {
+      path: '/Offline/PartidaCrono',
+      name: 'PartidaCrono',
+      component: PartidaCrono,
+    },
+    {
+      path: '/Offline/PartidaFallos',
+      name: 'PartidaFallos',
+      component: PartidaFallos,
+    },
+    {
+      path: '/Offline/FinPartida',
+      name: 'FinPartida',
+      component: FinPartida,
+    },
+    {
+      path: '/logout',
+      name: 'Logout',
+      component: Logout,
+    },
+    {
+      path: '/Jocs/codigo',
+      name: 'Codigo',
+      component: Codigo,
+    },
+    {
+      path: '/Jocs/sudoku',
+      name: 'Sudoku',
+      component: Sudoku,
+    },
+    {
+      path: '/SalaEspera',
+      name: 'SalaEspera',
+      component: SalaEspera,
+    },
+    {
+      path: '/Online/PartidaNumero',
+      name: 'PartidaNumeroOnline',
+      component: PartidaNumeroOnline,
+    },
+    {
+      path: '/Online/prePartidaOnline',
+      name: 'prePartidaOnline',
+      component: prePartidaOnline,
+    },
+    {
+      path: '/Online/CodigoPartida',
+      name: 'CodigoPartida',
+      component: CodigoPartida,
+    },
   ],
-})
+});
 
-export default router
+export default router;

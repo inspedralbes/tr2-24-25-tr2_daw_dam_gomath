@@ -1,18 +1,39 @@
+<script>
+  import { inject, onMounted } from 'vue';
+  import { useTipoPartidaStore } from '../../App.vue';
+
+  export default {
+    setup() {
+      const tipoPartidaStore = useTipoPartidaStore();
+      const divActivo = inject('divActivo');
+
+      onMounted(() => {
+        if (divActivo) {
+          divActivo.value = 'offline';
+        }
+      });
+
+      return {
+        tipoPartidaStore,
+      };
+    },
+  };
+</script>
 <template>
-    <div  class="grid-container">
-      <div @click="" class="grid-item">
-        <img src="../../assets/img/suma.svg" alt="Suma">
-      </div>
-      <div @click="" class="grid-item">
-        <img src="../../assets/img/resta.svg" alt="Resta">
-      </div>
-      <div @click="" class="grid-item">
-        <img src="../../assets/img/mult.svg" alt="Multiplicación">
-      </div>
-      <div @click="" class="grid-item">
-        <img src="../../assets/img/div.svg" alt="División">
-      </div>
-    </div>
+    <div class="grid-container">
+    <router-link to="/Online/prePartidaOnline" class="grid-item" @click="tipoPartidaStore.setOperacion('suma')">
+      <img src="../../assets/img/suma.svg" alt="Suma">
+    </router-link>
+    <router-link to="/Online/prePartidaOnline" class="grid-item" @click="tipoPartidaStore.setOperacion('resta')">
+      <img src="../../assets/img/resta.svg" alt="Resta">
+    </router-link>
+    <router-link to="/Online/prePartidaOnline" class="grid-item" @click="tipoPartidaStore.setOperacion('multiplicacion')">
+      <img src="../../assets/img/mult.svg" alt="Multiplicación">
+    </router-link>
+    <router-link to="/Online/prePartidaOnline" class="grid-item" @click="tipoPartidaStore.setOperacion('division')">
+      <img src="../../assets/img/div.svg" alt="División">
+    </router-link>
+  </div>
   </template>
   
   <style scoped>
@@ -43,21 +64,4 @@
     height: auto;
   }
   </style>
-  <script>
-  import { inject, onMounted } from 'vue';
-  
-  export default {
-    setup() {
-      const divActivo = inject('divActivo'); 
-  
-      onMounted(() => {
-        if (divActivo) {
-          divActivo.value = 'online';
-        }
-      });
-  
-      return {};
-    },
-  };
-  </script>
   
