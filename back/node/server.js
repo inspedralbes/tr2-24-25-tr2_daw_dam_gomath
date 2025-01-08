@@ -9,6 +9,14 @@ const offlineGamesRoutes = require('./routes/offlineGames');
 const onlineGamesRoutes = require('./routes/onlineGames')
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+      origin: "http://localhost:5173", 
+      methods: ["GET", "POST"],       
+      credentials: true               
+  }
+});
 
 // Middleware
 app.use(express.json());
@@ -23,12 +31,6 @@ mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.
 })
 .then(() => console.log('Connectat a MongoDB'))
 .catch((err) => console.error('Error al connectar a MongoDB', err));
-
-// Iniciar el servidor
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor en funcionament a http://localhost:${PORT}`);
-});
 
 // Rutes
 app.get('/', (req, res) => {
