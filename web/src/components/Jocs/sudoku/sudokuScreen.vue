@@ -144,6 +144,7 @@ export default {
         const generatedBoard = sudokuGenerator(dificultad); // Llama al generador de Sudoku
         console.log("Tablero generado:", generatedBoard);
         this.actualizarTablero(generatedBoard); // Actualiza el tablero
+        this.inicializarContNum(generatedBoard); //Inicia el contador de numeros en la tabla
         this.setTemporizador();  // Inicia el temporizador
       } catch (error) {
         console.error("Error al generar el tablero:", error);
@@ -176,6 +177,17 @@ export default {
           this.finalizarJuego(false); // Finaliza el juego
         }
       }, 1000); // Intervalo de 1 segundo
+    },
+
+    /**
+     * Cuenta cada numero en el tablero para garantizar el correcto funcionamiento de la variable
+     */
+    inicializarContNum(boardString) {
+      for (let i = 0; i < boardString.length; i++) {
+        let num = parseInt(boardString[i]);
+        this.contadorNumeros[num]++;
+      }
+      console.log(this.contadorNumeros);
     },
 
     /**
@@ -241,7 +253,6 @@ export default {
           return;
         }
 
-
         this.contadorNumeros[num]++;
 
 
@@ -250,6 +261,7 @@ export default {
         }
 
         this.tablero[index].value = num;
+        this.tablero[index].readonly = true;
         const resultado = this.convertirTableroAStrIng(this.tablero)
         console.log('tablero cambiado: ', resultado);
         if (!resultado.includes('.')) {
