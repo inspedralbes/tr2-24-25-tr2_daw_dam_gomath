@@ -21,78 +21,121 @@
       </div>
     </div>
 
-    <q-btn v-if="empezarPartidaBtn" class="start-btn" label="Comenzar partida" color="primary" @click="irPartida" />
+    <q-btn
+      v-if="empezarPartidaBtn"
+      class="start-btn"
+      label="Comenzar partida"
+      color="primary"
+      @click="hostEmpiezaPartida"
+    />
   </div>
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted } from 'vue';
-import { useRouter } from 'vue-router';
-import { useCodigoSala } from '@/stores/comunicationManager';
-import io from 'socket.io-client';
-import { useAppStore } from '@/stores/app'
-import { useEstadoOnline } from "@/stores/estadoOnline"
+import { ref, onMounted, onUnmounted } from "vue";
+import { useRouter } from "vue-router";
+import io from "socket.io-client";
+import { useCodigoSala } from "@/stores/comunicationManager";
+import { useAppStore } from "@/stores/app";
+import { useEstadoOnline } from "@/stores/estadoOnline";
+import { useTipoPartidaStore } from "@/App.vue";
+
 export default {
   setup() {
-    const loginInfo = useAppStore();
-    const sala = useCodigoSala();
-    const codigoSala = ref('');
+    const router = useRouter();
+    const socket = io("http://localhost:3000", {
+      transports: ["websocket"],
+    });
+
+    const codigoSala = ref("");
     const players = ref([]);
-    const estadoOnline = useEstadoOnline();
-    const socket = io('http://localhost:3000');
     const empezarPartidaBtn = ref(false);
-    onMounted(async () => {
-      if (estadoOnline.propietario == 'yo') {
-        await sala.fetchCodigo();
-        codigoSala.value = sala.codigo;
-        empezarPartidaBtn.value = true;
-      } else if(estadoOnline.propietario == 'otro'){
+    const tipoPartidaNode = ref(null);
+
+    const tipoPartida = useTipoPartidaStore();
+    const loginInfo = useAppStore();
+    const estadoOnline = useEstadoOnline();
+    const sala = useCodigoSala();
+
+    onMounted(() => {
+      if (estadoOnline.propietario === "yo") {
+        sala.fetchCodigo().then(() => {
+          codigoSala.value = sala.codigo;
+          empezarPartidaBtn.value = true;
+
+          socket.emit("join-room", {
+            roomCode: codigoSala.value,
+            username: loginInfo.loginInfo.username || "Jugador",
+          });
+        });
+      } else if (estadoOnline.propietario === "otro") {
         codigoSala.value = estadoOnline.codigoUnion;
-        console.log('el propietario es otro y el codigo guardado es =>',estadoOnline.codigoUnion);
         empezarPartidaBtn.value = false;
+
+        socket.on("tipoPartidaHost", (data) => {
+          if (data && data.tipoPartida) {
+            tipoPartidaNode.value = data.tipoPartida;
+            tipoPartida.setModo(tipoPartidaNode.value.modo);
+          } else {
+            console.error("Datos de tipoPartidaHost inválidos:", data);
+          }
+        });
+
+        socket.emit("join-room", {
+          roomCode: codigoSala.value,
+          username: loginInfo.loginInfo.username || "Jugador",
+        });
       }
 
-      if (loginInfo.loginInfo.username) {
-        socket.emit('join-room', { roomCode: codigoSala.value, username: loginInfo.loginInfo.username });
-      } else {
-        socket.emit('join-room', { roomCode: codigoSala.value, username: 'Jugador' });
-
-      }
-      socket.on('update-users', (members) => {
+      socket.on("update-users", (members) => {
         players.value = members;
+      });
+
+      socket.on("game-started", () => {
+        const modo = tipoPartida.tipoPartida.modo;
+        if (modo === "numero") {
+          router.push("/Online/PartidaNumeroOnline");
+        } else if (modo === "crono") {
+          router.push("/Online/PartidaCronoOnline");
+        } else if (modo === "fallos") {
+          router.push("/Online/PartidaFallosOnline");
+        } else {
+          console.error("Modo de partida no definido:", modo);
+        }
       });
     });
 
-    const router = useRouter();
-    function irPartida() {
-      router.push('/Online/PartidaNumero');
-    }
+    const hostEmpiezaPartida = () => {
+      const modo = tipoPartida.tipoPartida.modo;
+      console.log("Emitiendo el evento 'start-game' con el código de sala:", codigoSala.value, "y el modo:", modo);
 
-    onUnmounted(async () => {
+      socket.emit("start-game", {
+        roomCode: codigoSala.value,
+        modo: modo,
+      });
+
+      socket.on("game-started", () => {
+        console.log("La partida ha comenzado correctamente.");
+      });
+    };
+
+    onUnmounted(() => {
       socket.disconnect();
 
       if (estadoOnline.propietario === "yo") {
-        try {
-          const response = await fetch(`http://localhost:3000/api/salas/${estadoOnline.codigoUnion}`, {
-            method: "DELETE",
-          });
-
-          if (!response.ok) {
-            console.error("Error al eliminar la sala:", await response.json());
-          } else {
-            console.log("Sala eliminada exitosamente.");
-          }
-        } catch (error) {
-          console.error("Error al intentar eliminar la sala:", error);
-        }
+        fetch(`http://localhost:3000/api/salas/${estadoOnline.codigoUnion}`, {
+          method: "DELETE",
+        }).catch((error) => {
+          console.error("Error al eliminar la sala:", error);
+        });
       }
     });
 
     return {
-      irPartida,
       codigoSala,
       players,
       empezarPartidaBtn,
+      hostEmpiezaPartida,
     };
   },
 };

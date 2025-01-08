@@ -68,11 +68,9 @@ export default {
         showError.value = true;
       }
     };
-
     function irACrearPartida() {
       estadoOnline.setPropietario('yo');
       console.log(estadoOnline.propietario);
-      
       router.push("/Online");
     }
 
