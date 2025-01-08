@@ -45,10 +45,9 @@ app.post('/api/create-room', (req, res) => {
     }
 
     const roomCode = uuidv4().slice(0, 6);
+    rooms[roomCode] = { members: [], messages: [], tipoPartida: null };
 
-    rooms[roomCode] = { members: [], messages: [] };
-
-  res.json({ roomCode, email });
+    res.json({ roomCode, email });
 });
 
 app.get('/api/salas/:roomCode', (req, res) => {
@@ -72,8 +71,8 @@ app.delete('/api/salas/:roomCode', (req, res) => {
     }
 });
 
-io.on('connection', (socket) => {
-  console.log(`Usuario conectado: ${socket.id}`);
+io.on("connection", (socket) => {
+    console.log("Nuevo cliente conectado:", socket.id);
 
     socket.on("create-room", (username) => {
         if (!username) {
@@ -99,7 +98,7 @@ io.on('connection', (socket) => {
 
         if (rooms[roomCode]) {
             const isAlreadyMember = rooms[roomCode].members.some((member) => member.id === socket.id);
-            if (!isAlreadyMember && username !== "Android") {
+            if (!isAlreadyMember) {
                 rooms[roomCode].members.push({ id: socket.id, name: username, isHost: false });
                 console.log(`${username} se unió a la sala ${roomCode}`);
             }
@@ -129,8 +128,8 @@ io.on('connection', (socket) => {
     socket.on("start-game", (roomCode) => {
         console.log("Evento 'start-game' recibido con los siguientes datos:", roomCode, roomCode.roomCode)
         const room = roomCode.roomCode;
-            console.log(`Iniciando partida en la sala: ${room}`);
-            io.to(room).emit("game-started");
+        console.log(`Iniciando partida en la sala: ${room}`);
+        io.to(room).emit("game-started");
     });
 
     socket.on('kickUser', ({ roomCode, id }) => {
