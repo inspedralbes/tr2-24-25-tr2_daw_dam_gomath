@@ -87,15 +87,15 @@ export default {
       clearInterval(timer);
     });
 
-    const startTimer = () => {
+    function startTimer () {
       if (timer) clearInterval(timer);
-      timer = setInterval(() => {
+      timer = setInterval(async() => {
         if (timeLeft.value > 0) {
           timeLeft.value--;
         } else {
           isTimeRemaining.value = false;
           clearInterval(timer);
-          corregirRespuests();
+          await corregirRespuests();
           redirectToEnd();
         }
       }, 1000);
