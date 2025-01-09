@@ -302,7 +302,7 @@ export default {
         this.gameData = {
           boardString: boardString,
           nivell: this.nivelSeleccionado,
-          vides: `${this.vides}/${this.OriginVides}`,
+          vides: `${this.vides}`,
           temps: `${this.gameTime}`,
         }
 

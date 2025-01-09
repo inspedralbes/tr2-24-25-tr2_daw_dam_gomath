@@ -7,7 +7,7 @@ use App\Http\Controllers\OperacionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClaseController;
 use App\Http\Controllers\PuntuacionController;
-use App\Http\Controllers\SudokuResultsController
+use App\Http\Controllers\sudokuResultsController;
 
 
 Route::get('/user', function (Request $request) {
@@ -29,4 +29,4 @@ Route::post('/operacionsFiltro', [OperacionController::class, 'operacionsFiltro'
 Route::post('/unaRespuesta', [OperacionController::class, 'respuestaCorrectaUnaPregunta']);
 Route::get('/codis', [CodiJocController::class, 'index']);
 
-Route::post('/SudokuResults', [SudokuResultsController::class, 'store'])
+Route::post('/SudokuResults', [SudokuResultsController::class, 'store']);

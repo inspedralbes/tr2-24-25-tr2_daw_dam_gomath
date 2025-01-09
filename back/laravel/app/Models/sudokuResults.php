@@ -11,12 +11,9 @@ class sudokuResults extends Model
 
     // Campos asignables en masa
     protected $fillable = [
-        'nivel',    // Nivel del juego
-        'tiempo',   // Tiempo tardado en segundos
-        'errores',  // Cantidad de errores cometidos
+        'boardString', //tablero en una dimension
+        'nivell',    // Nivel del juego
+        'vides',   // Tiempo tardado en segundos
+        'temps',  // Cantidad de errores cometidos
     ];
-
-    // Si no deseas utilizar los campos de timestamps (created_at y updated_at)
-    // puedes desactivar esta funcionalidad:
-    // public $timestamps = false;
 }

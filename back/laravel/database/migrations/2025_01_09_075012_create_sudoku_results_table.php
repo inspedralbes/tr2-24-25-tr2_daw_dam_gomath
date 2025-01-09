@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('sudoku_results', function (Blueprint $table) {
             $table->id(); // ID autoincremental
-            $table->string('nivel'); // Nivel del juego (fácil, medio, difícil)
-            $table->integer('tiempo'); // Tiempo tardado en segundos
-            $table->integer('errores'); // Cantidad de errores cometidos
+            $table->text('boardString');
+            $table->string('nivell'); // Nivel del juego (fácil, medio, difícil)
+            $table->integer('vides'); // Tiempo tardado en segundos
+            $table->integer('temps'); // Cantidad de errores cometidos
             $table->timestamps(); // Para almacenar created_at y updated_at
         });
     }
