@@ -3,12 +3,14 @@ import { ref, provide, onMounted, computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { defineStore, storeToRefs } from 'pinia';
 import { useAppStore } from '@/stores/app';
-
+import io from 'socket.io-client';
 const localStorageTipoPartida = 'tipoPartida';
 
 export const useTipoPartidaStore = defineStore(localStorageTipoPartida, () => {
   const router = useRouter();
-
+  const socket = io('http://localhost:3000', {
+      transports: ['websocket'],
+    });
   const tipoPartida = ref(
     JSON.parse(localStorage.getItem(localStorageTipoPartida)) || {
       operacion: 'suma',
@@ -56,9 +58,11 @@ export const useTipoPartidaStore = defineStore(localStorageTipoPartida, () => {
     }
     else if (tipoPartida.value.modo == 'crono') {
       router.push('/Online/CodigoPartida');
-    } else if (tipoPartida.value.modo == 'fallos') {
+    } 
+    else if (tipoPartida.value.modo == 'fallos') {
       router.push('/Online/CodigoPartida');
     }
+    socket.emit('tipoPartidaHost', { tipoPartida: tipoPartida.tipoPartida });
   }
 
   function setDificultat(dificultat) {

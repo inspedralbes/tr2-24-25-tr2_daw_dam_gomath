@@ -39,7 +39,6 @@ export const useAppStore = defineStore('app', {
       this.loginInfo.role = role;
       this.loginInfo.image = image;
     },
-
     // Acción para establecer la información de registro (puede ser utilizada en otros casos)
     setRegistrationInfo({ loggedIn, token, username, role, image }) {
       this.registrationInfo.loggedIn = loggedIn;

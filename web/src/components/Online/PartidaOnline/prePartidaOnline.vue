@@ -63,8 +63,9 @@
   </template>
   
   <script> 
-  import { useTipoPartidaStore } from '../../../App.vue';
   import { inject, onMounted, ref } from 'vue';
+  import { useTipoPartidaStore } from "@/App.vue"
+
   export default {
     setup() {
         const tipoPartidaStore = useTipoPartidaStore();
