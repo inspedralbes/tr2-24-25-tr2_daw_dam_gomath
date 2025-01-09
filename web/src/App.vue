@@ -214,7 +214,6 @@ export default {
       <q-tabs vertical>
         <q-route-tab to="/jocs/sudoku" label="SUDOKU" />
         <q-route-tab to="/jocs/codigo" label="Adivina el codigo" />
-        <q-route-tab to="/nerdle" label="Nerdle(cambiar nombre)" />
       </q-tabs>
     </q-drawer>
 
