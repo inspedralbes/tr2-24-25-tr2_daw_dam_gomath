@@ -97,7 +97,7 @@ export default {
         { to: '/Offline', label: 'OFFLINE' },
         { to: '/SalaEspera', label: 'ONLINE' },
         { to: '/Jocs', label: 'JOCS' },
-        { to: '/Apunts', label: 'APUNTS' },
+        { to: '/Apuntes', label: 'APUNTS' },
       ];
 
       if (!isLoggedIn.value) {
@@ -207,14 +207,6 @@ export default {
         <q-route-tab to="/Offline/prePartida" label="RESTES" />
         <q-route-tab to="/Offline/prePartida" label="MULTIPLICACIÓNS" />
         <q-route-tab to="/Offline/prePartida" label="DIVISIÓNS" />
-      </q-tabs>
-    </q-drawer>
-
-    <q-drawer v-if="divActivo === 'apunts'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
-      <q-tabs vertical>
-        <q-route-tab to="/tablasMultiplicar" label="TAULES DE MULTIPLICAR" />
-        <q-route-tab to="/equacions" label="EQUACIONS" />
-        <q-route-tab to="/pitagoras" label="PITAGORAS" />
       </q-tabs>
     </q-drawer>
 

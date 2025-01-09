@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/Login/LoginScreen.vue'
 import Offline from '../components/Offline/OfflineScreen.vue'
 import Online from '../components/Online/OnlineScreen.vue'
-//import Apunts from '../components/Apuntes/ApuntsScreen.vue'
+import Apunts from '../components/Apuntes/apunts.vue'
 import Jocs from '../components/Jocs/JocsScreen.vue'
 import Home from '../components/Home/HomeScreen.vue'
 import Register from '../components/Login/RegisterScreen.vue'
@@ -122,6 +122,11 @@ const router = createRouter({
       path: '/Online/CodigoPartida',
       name: 'CodigoPartida',
       component: CodigoPartida,
+    },
+    {
+      path: '/Apuntes',
+      name: 'Apunts',
+      component: Apunts,
     },
   ],
 });
