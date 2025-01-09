@@ -271,11 +271,24 @@ export default {
       }
     },
 
+    /**
+    * Marca el final del juego.
+    * Cambia el estado de `gameOver` a `true` y muestra en la consola
+    * un mensaje indicando que el juego ha terminado junto con las vidas restantes.
+    *
+    * @returns {void}
+    */
     jocAcabat() {
       this.gameOver = true;
       console.log(`Juego terminado. vidas restantes: ${this.vides}/${this.OriginVides}`);
     },
 
+    /**
+    * Redirige al usuario a la página de selección de juegos.
+    * Utiliza el router para navegar a la ruta `/jocs`.
+    *
+    * @returns {void}
+    */
     salir() {
       this.$router.push('/jocs');
     }
@@ -361,12 +374,12 @@ export default {
 /* Estilos de los números a escoger */
 .numeros {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Crea una cuadrícula de 3 columnas */
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  justify-items: center; /* Centra los botones dentro de cada celda */
-  width: 100%; /* Asegura que ocupe todo el ancho disponible */
-  max-width: 150px; /* Limita el ancho máximo si es necesario */
-  margin: 0 auto; /* Centra la cuadrícula en su contenedor */
+  justify-items: center;
+  width: 100%;
+  max-width: 150px;
+  margin: 0 auto;
   margin-top: 180px;
 }
 
@@ -376,8 +389,10 @@ export default {
   cursor: pointer;
   border: 1px solid #000;
   transition: background-color 0.3s;
-  width: 50px; /* Ajusta el tamaño de los botones */
-  height: 50px; /* Ajusta el tamaño de los botones */
+  width: 50px;
+  /* Ajusta el tamaño de los botones */
+  height: 50px;
+  /* Ajusta el tamaño de los botones */
   display: flex;
   align-items: center;
   justify-content: center;
