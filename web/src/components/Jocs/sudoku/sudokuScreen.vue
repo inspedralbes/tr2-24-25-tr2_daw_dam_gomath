@@ -49,7 +49,7 @@
 
 
 <script>
-import { isValidMove, sudokuGenerator } from "../../../services/sudokuService";
+import * as sudokuService from "../../../services/sudokuService";
 
 
 export default {
@@ -69,6 +69,8 @@ export default {
       numeros: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       contadorNumeros: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 },
       gameOver: false,
+      gameTime: [],
+      gameData: {},
     };
   },
 
@@ -141,7 +143,7 @@ export default {
      */
     async generarTablero(dificultad) {
       try {
-        const generatedBoard = sudokuGenerator(dificultad); // Llama al generador de Sudoku
+        const generatedBoard = sudokuService.sudokuGenerator(dificultad); // Llama al generador de Sudoku
         console.log("Tablero generado:", generatedBoard);
         this.actualizarTablero(generatedBoard); // Actualiza el tablero
         this.inicializarContNum(generatedBoard); //Inicia el contador de numeros en la tabla
@@ -167,17 +169,29 @@ export default {
      * Crea y configura el temporizador del juego
      */
     setTemporizador() {
+      const startTime = Date.now();
       this.temporizador = setInterval(() => {
         this.maxTime -= 1000; // Reduce un segundo (1000ms)
         this.timeFormatted = this.formatearTiempo(this.maxTime);
         console.log(`Tiempo restante: ${Math.floor(this.maxTime / 1000)}s`);
+
+        // Si el tiempo se agota, termina el juego
         if (this.maxTime <= 0) {
           clearInterval(this.temporizador);
           console.log("¡Tiempo agotado!");
+          this.gameTime = (Date.now() - startTime) / 1000; // Calculamos el tiempo transcurrido en segundos
+          this.finalizarJuego(false); // Finaliza el juego
+        }
+
+        // Si las vidas se acaban, termina el juego
+        if (this.vides === 0) {
+          clearInterval(this.temporizador);
+          this.gameTime = (Date.now() - startTime) / 1000; // Calculamos el tiempo transcurrido en segundos
           this.finalizarJuego(false); // Finaliza el juego
         }
       }, 1000); // Intervalo de 1 segundo
     },
+
 
     /**
      * Cuenta cada numero en el tablero para garantizar el correcto funcionamiento de la variable
@@ -241,7 +255,7 @@ export default {
         const num = this.numeroSeleccionado;
         const boardString = this.convertirTableroAStrIng(this.tablero);
         console.log('tablero String: ', boardString);
-        const isMoveOk = isValidMove(boardString, row, col, num);
+        const isMoveOk = sudokuService.isValidMove(boardString, row, col, num);
         if (!isMoveOk) {
           alert(`El número ${num} no es válido en esa posición.`);
           if (this.vides == 0) {
@@ -266,21 +280,38 @@ export default {
         console.log('tablero cambiado: ', resultado);
         if (!resultado.includes('.')) {
           console.log('¡Felicidades! El tablero está resuelto.');
-          this.jocAcabat();
+          this.jocAcabat(boardString);
         }
       }
     },
 
     /**
-    * Marca el final del juego.
-    * Cambia el estado de `gameOver` a `true` y muestra en la consola
-    * un mensaje indicando que el juego ha terminado junto con las vidas restantes.
+    * Marca el final del juego, actualiza el estado de `gameOver` a `true` y guarda los datos de la partida.
+    * Muestra en la consola un mensaje indicando que el juego ha terminado, junto con las vidas restantes y el tiempo jugado.
+    * Si ocurre un error durante el proceso, lo captura y lo muestra en la consola para su depuración.
     *
-    * @returns {void}
+    * @param {string} boardString - Representación en cadena del tablero al final del juego.
+    * @returns {boolean} - Retorna `true` si el proceso finalizó correctamente.
     */
-    jocAcabat() {
-      this.gameOver = true;
-      console.log(`Juego terminado. vidas restantes: ${this.vides}/${this.OriginVides}`);
+    jocAcabat(boardString) {
+
+      try {
+        this.gameOver = true;
+        console.log(`Juego terminado. vidas restantes: ${this.vides}/${this.OriginVides}`);
+
+        this.gameData = {
+          boardString: boardString,
+          nivell: this.nivelSeleccionado,
+          vides: `${this.vides}/${this.OriginVides}`,
+          temps: `${this.gameTime}`,
+        }
+
+        sudokuService.guardarDades(this.gameData);
+      } catch (error) {
+        console.error('Error al finalizar el juego:', error);
+      }
+
+      return true;
     },
 
     /**

@@ -169,5 +169,43 @@ function isSquareValid(square) {
   return SQUARES.includes(square);
 }
 
+/**
+ * Guarda los datos del estado actual del juego en la BBDD a través de una llamada fetch.
+ * @param {Object} gameData - Objeto que contiene los datos del juego.
+ * @param {string[]} gameData.board - Tablero actual del juego representado como un arreglo de 81 caracteres.
+ * @param {string} gameData.nivell - Nivel del juego (e.g., "easy", "medium", "hard").
+ * @param {number} gameData.vides - Vidas restantes al finalizar el juego.
+ * @param {number} gameData.temps - Tiempo total jugado hasta finalizar la partida.
+ */
+function guardarDades(gameData) {
+  // URL del endpoint de la API donde se enviarán los datos
+  const url = 'http://localhost:8000/api/SudokuResults';
+
+  // Configuración de la solicitud
+  const opciones = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json', // Indicamos que los datos serán enviados como JSON
+    },
+    body: JSON.stringify(gameData), // Convertimos el objeto gameData a JSON
+  };
+
+  // Realizamos la llamada fetch al backend
+  fetch(url, opciones)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al guardar los datos en la base de datos');
+      }
+      return response.json(); // Suponemos que el backend retorna un JSON con el resultado
+    })
+    .then(data => {
+      console.log('Datos guardados correctamente:', data); // Muestra el resultado del backend
+    })
+    .catch(error => {
+      console.error('Error al guardar los datos:', error); // Maneja cualquier error durante la solicitud
+    });
+}
+
+
 // Exportar las funciones necesarias
-export { generarSudoku as sudokuGenerator, isSquareValid, isValidMove };
+export { generarSudoku as sudokuGenerator, isSquareValid, isValidMove, guardarDades };
