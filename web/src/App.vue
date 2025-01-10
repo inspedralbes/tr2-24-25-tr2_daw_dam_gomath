@@ -137,7 +137,7 @@ export default {
 </script>
 
 <template>
-  <q-layout view="hHh lpR fFf">
+  <q-layout>
     <q-header elevated class="bg-primary text-white" height-hint="98">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleDrawer" />
@@ -252,18 +252,27 @@ export default {
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <router-view /> 
     </q-page-container>
 
-    <q-footer elevated style="height: calc(50px + 5px);">
-      <div class="text-center py-2">
-        <p>&#169; 2024 GoMath. Tots els drets reservats. <a href="https://www.institutpedralbes.cat"
-            target="_blank" class="text-white">institutpedralbes.cat</a></p>
-        <p style="font-size: 10px; color: #F7FFF7;">
-          La informació continguda en aquesta aplicació és només per a fins educatius.
-          No ens responsabilitzem pel seu ús inapropiat.
-        </p>
-      </div>
-    </q-footer>
+    <q-footer elevated class="bg-primary text-white" style="padding: 10px 0; margin-top: 20px;">
+  <div class="text-center">
+    <!-- Copyright i enllaç -->
+    <p class="q-mb-xs" style="font-size: 14px;">
+      &#169; 2024 GoMath. Tots els drets reservats. 
+      <a href="https://www.institutpedralbes.cat" target="_blank" 
+         class="text-white hover:text-primary" 
+         style="text-decoration: none; font-weight: bold;">
+        institutpedralbes.cat
+      </a>
+    </p>
+    <!-- Nota d'avís -->
+    <p style="font-size: 10px; color: #F7FFF7;">
+      La informació continguda en aquesta aplicació és només per a fins educatius.
+      No ens responsabilitzem pel seu ús inapropiat.
+    </p>
+  </div>
+</q-footer>
+
   </q-layout>
 </template>

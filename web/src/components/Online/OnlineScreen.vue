@@ -37,12 +37,14 @@
   </template>
   
   <style scoped>
+
   .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
     gap: 20px; 
     max-width: 600px; 
     margin: 20px auto 0; 
+    padding-bottom: 60px; 
   }
   
   .grid-item {

@@ -16,7 +16,7 @@ class UserController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['status' => 'error', 'message' => 'Correo o contraseña incorrectos'], 401);
+            return response()->json(['status' => 'error', 'message' => 'Correu o contrasenya invàlids.'], 401);
         }
 
         $token = $user->createToken('auth-token')->plainTextToken;

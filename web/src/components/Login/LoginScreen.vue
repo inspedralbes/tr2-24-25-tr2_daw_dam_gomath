@@ -13,16 +13,21 @@
           outlined
           dense
           :error="!isValidEmail && email !== ''"
-          error-message="Introduce un correo válido"
+          error-message="Introdueix un correu electrònic vàlid"
         />
         <q-input
           v-model="password"
-          label="Contraseña"
+          label="Contrasenya"
           type="password"
           outlined
           dense
           class="q-mt-md"
         />
+        
+        <!-- Mostrar missatge d'error -->
+        <div v-if="errorMessage" class="text-negative text-caption q-mt-md">
+          {{ errorMessage }}
+        </div>
       </q-card-section>
 
       <q-card-actions align="right">
@@ -44,7 +49,7 @@ export default {
     const password = ref('');
     const router = useRouter();
     const isLoading = ref(false);  
-    const errorMessage = ref(''); 
+    const errorMessage = ref(''); // Variable per emmagatzemar el missatge d'error
 
     const isValidEmail = computed(() => {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -52,16 +57,18 @@ export default {
     });
 
     async function login() {
+      // Validació del correu electrònic
       if (!isValidEmail.value) {
-        alert('Por favor introduce un email válido.');
+        errorMessage.value = 'Correu o contrasenya invàlids.';
         return;
       }
 
-      isLoading.value = true;  // Activamos el estado de carga
-      errorMessage.value = ''; // Limpiamos cualquier mensaje de error anterior
+      // Esborrar missatge d'error abans d'intentar l'inici de sessió
+      errorMessage.value = '';
+      isLoading.value = true;
 
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/userLogin', {  // Cambia la URL por la de tu API
+        const response = await fetch('http://127.0.0.1:8000/api/userLogin', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -76,30 +83,28 @@ export default {
         console.log(data);
 
         if (response.ok) {
-          // Si la respuesta es OK, guardamos los datos en el store
+          // Guardar dades al store si la resposta és correcta
           const appStore = useAppStore();
-          console.log('antes del setter');
-
           appStore.setLoginInfo({
             loggedIn: true,
             token: data.token,
             username: data.user.name,
             email: data.user.email,
             role: data.user.rol,
-            image: data.user.image || 'https://randomuser.me/api/portraits/thumb/women/56.jpg', // Si tienes una imagen en la respuesta, reemplázala
+            image: data.user.image || 'https://randomuser.me/api/portraits/thumb/women/56.jpg',
           });
 
-          // Redirige a la página de votaciones (u otra página)
+          // Redirigir l'usuari
           router.push('/Offline');
         } else {
-          // Si la respuesta no es OK, muestra el mensaje de error
-          errorMessage.value = data.message || 'Credenciales incorrectes';
+          // Mostrar missatge d'error si les credencials són incorrectes
+          errorMessage.value = data.message || 'Credencials incorrectes.';
         }
       } catch (error) {
-        console.error('Error de conexión o al hacer el fetch:', error);
-        errorMessage.value = 'Hubo un error al conectar con el servidor.';
+        console.error('Error en l\'inici de sessió:', error);
+        errorMessage.value = 'Hi ha hagut un problema en connectar amb el servidor.';
       } finally {
-        isLoading.value = false;  // Desactivamos el estado de carga
+        isLoading.value = false; // Desactivar l'estat de càrrega
       }
     }
 
