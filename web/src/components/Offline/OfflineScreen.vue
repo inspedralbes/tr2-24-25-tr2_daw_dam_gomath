@@ -35,14 +35,14 @@
     <router-link to="/Offline/prePartida" class="grid-item" @click="tipoPartidaStore.setOperacion('resta')">
       <img src="../../assets/img/resta.svg" alt="Resta">
     </router-link>
+    <router-link to="/Offline/jocs/sudoku" class="grid-item">
+      <img src="../../assets/img/images.png" alt="Sudoku">
+    </router-link>
     <router-link to="/Offline/prePartida" class="grid-item" @click="tipoPartidaStore.setOperacion('multiplicacion')">
       <img src="../../assets/img/mult.svg" alt="Multiplicación">
     </router-link>
     <router-link to="/Offline/prePartida" class="grid-item" @click="tipoPartidaStore.setOperacion('division')">
       <img src="../../assets/img/div.svg" alt="División">
-    </router-link>
-    <router-link to="/Offline/jocs/sudoku" class="grid-item">
-      <img src="../../assets/img/images.png" alt="Sudoku">
     </router-link>
     <router-link to="/Offline/jocs/codigo" class="grid-item">
       <img src="../../assets/img/codigo.png" alt="Otro juego">
