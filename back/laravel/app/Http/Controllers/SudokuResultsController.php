@@ -39,7 +39,7 @@ class SudokuResultsController extends Controller
         // Crear el nuevo registro en la base de datos
         try {
             $gameData = sudokuResults::create([
-                'boardString' => $request->boardString, // Tablero 2D
+                'boardString ' => $request->boardString, // Tablero 2D
                 'nivell' => $request->nivell, // Nivel
                 'vides' => $request->vides, // Vidas restantes
                 'temps' => $request->temps, // Tiempo usado
