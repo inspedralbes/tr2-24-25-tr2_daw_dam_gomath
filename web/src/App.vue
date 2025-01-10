@@ -219,5 +219,4 @@ export default {
     </q-footer>
   </q-layout>
 
-
 </template>
