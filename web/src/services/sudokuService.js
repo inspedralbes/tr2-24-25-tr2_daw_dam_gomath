@@ -66,7 +66,7 @@ function solveSudoku(board) {
     if (isValidMove(board, row, col, digit)) {
       board[findEmpty] = digit;
       if (solveSudoku(board)) return board;
-      board[findEmpty] = sudoku.BLANK_CHAR; // Backtracking
+      board[findEmpty] = sudoku.BLANK_CHAR;
     }
   }
 
@@ -84,44 +84,50 @@ function solveSudoku(board) {
  * @returns {boolean} - Retorna `true` si el movimiento es válido según las reglas del Sudoku; de lo contrario, `false`.
  */
 function isValidMove(board, row, col, digit) {
-  console.log('on service');
-
-  console.log('tabla compartida:', board);
+  console.log('Verificando movimiento:', { row, col, digit });
 
   const startRow = Math.floor(row / 3) * 3;
   const startCol = Math.floor(col / 3) * 3;
 
   // Validar fila
-  console.log('Validation 1');
+  console.log('Validando fila...');
   for (let i = 0; i < 9; i++) {
-    if (board[row * 9 + i] == digit) {
+    if (board[row * 9 + i] === digit) {
+      console.log(`Dígito ${digit} ya está en la fila ${row} en la columna ${i}`);
       return false;
     }
   }
 
   // Validar columna
-  console.log('Validation 2');
+  console.log('Validando columna...');
   for (let i = 0; i < 9; i++) {
-    if (board[i * 9 + col] == digit) {
+    if (board[i * 9 + col] === digit) {
+      console.log(`Dígito ${digit} ya está en la columna ${col} en la fila ${i}`);
       return false;
     }
   }
 
   // Validar subcuadrícula 3x3
-  console.log('Validation 3');
+  console.log('Validando subcuadrícula 3x3...');
   for (let i = 0; i < 9; i++) {
     const subRow = startRow + Math.floor(i / 3);
     const subCol = startCol + (i % 3);
-    console.log(`Checking subgrid position: row=${subRow}, col=${subCol}, value:${board[i]}`); // Depuración
-    if (board[subRow * 9 + subCol] == digit) {
+    const subGridValue = board[subRow * 9 + subCol];
+    console.log(
+      `Comprobando posición subgrid: row=${subRow}, col=${subCol}, valor=${subGridValue}`
+    );
+    if (subGridValue === digit) {
+      console.log(
+        `Dígito ${digit} ya está en la subcuadrícula que comienza en row=${startRow}, col=${startCol}`
+      );
       return false;
     }
   }
 
-  console.log('Final');
-
+  console.log(`Movimiento válido: ${digit} en row=${row}, col=${col}`);
   return true;
 }
+
 
 
 
