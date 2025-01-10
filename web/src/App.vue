@@ -212,7 +212,7 @@ export default {
 
         <p style="font-size: 10px; color: #F7FFF7;">
           La información contenida en esta aplicación es solo para fines educativos. No nos responsabilizamos por su uso
-          inapropiado.
+          inapropiado.a
         </p>
 
       </div>
