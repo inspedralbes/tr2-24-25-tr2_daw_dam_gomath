@@ -13,6 +13,7 @@
       <input v-model="userGuess" type="text" maxlength="3" placeholder="Escribe tu código" />
       <button @click="checkGuess">Intentar</button>
       <p v-if="feedback" :class="{ success: isCorrect, error: !isCorrect }">{{ feedback }}</p>
+      <br>
       <button @click="fetchNewCode" :disabled="!isCorrect">Jugar amb un altre codi</button>
     </div>
 

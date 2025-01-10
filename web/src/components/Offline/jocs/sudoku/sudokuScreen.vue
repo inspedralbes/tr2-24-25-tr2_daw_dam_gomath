@@ -49,7 +49,7 @@
 
 
 <script>
-import { isValidMove, sudokuGenerator } from "../../../services/sudokuService";
+import { isValidMove, sudokuGenerator } from "@/services/sudokuService";
 
 
 export default {

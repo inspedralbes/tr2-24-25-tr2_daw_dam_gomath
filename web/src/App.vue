@@ -96,7 +96,6 @@ export default {
         { to: '/', label: 'HOME' },
         { to: '/Offline', label: 'OFFLINE' },
         { to: '/SalaEspera', label: 'ONLINE' },
-        { to: '/Jocs', label: 'JOCS' },
         { to: '/Apuntes', label: 'APUNTS' },
       ];
 
@@ -159,8 +158,6 @@ export default {
       side="left" bordered>
       <q-tabs vertical>
         <q-route-tab to="/register" label="Registra't" />
-        <q-route-tab to="/Puntuacions" label="Puntuacions" />
-        <q-route-tab to="/Configuracio" label="Configuració" />
         <q-route-tab to="/Cerrar-sesion" label="Tancar sessió" class="text-red" />
       </q-tabs>
     </q-drawer>
@@ -207,13 +204,8 @@ export default {
         <q-route-tab to="/Offline/prePartida" label="RESTES" />
         <q-route-tab to="/Offline/prePartida" label="MULTIPLICACIÓNS" />
         <q-route-tab to="/Offline/prePartida" label="DIVISIÓNS" />
-      </q-tabs>
-    </q-drawer>
-
-    <q-drawer v-if="divActivo === 'jocs'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
-      <q-tabs vertical>
-        <q-route-tab to="/jocs/sudoku" label="SUDOKU" />
-        <q-route-tab to="/jocs/codigo" label="Adivina el codigo" />
+        <q-route-tab to="/Offline/jocs/sudoku" label="SUDOKU" />
+        <q-route-tab to="/Offline/jocs/codigo" label="Adivina el codigo" />
       </q-tabs>
     </q-drawer>
 
