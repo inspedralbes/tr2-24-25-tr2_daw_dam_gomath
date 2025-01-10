@@ -103,9 +103,8 @@ export default {
         baseTabs.push({ to: '/login', label: 'LOGIN' });
       } else {
         baseTabs.push({
-          to: '/logout',
-          label: 'LOGOUT',
-          style: 'background-color: #ff4d4d; color: white; border-top-left-radius: 5px; border-top-right-radius: 5px;'
+          to: '/Profile',
+          label: 'Profile',
         });
       }
 
@@ -157,8 +156,8 @@ export default {
     <q-drawer v-if="divActivo === 'login' || divActivo === 'register'" show-if-above v-model="isLeftDrawerOpen"
       side="left" bordered>
       <q-tabs vertical>
-        <q-route-tab to="/register" label="Registra't" />
-        <q-route-tab to="/Cerrar-sesion" label="Tancar sessió" class="text-red" />
+        <q-route-tab to="/login" label="Login" />
+        <q-route-tab to="/register" label="Registra't"/>
       </q-tabs>
     </q-drawer>
 

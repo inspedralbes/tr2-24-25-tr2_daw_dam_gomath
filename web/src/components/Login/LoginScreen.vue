@@ -61,7 +61,7 @@ export default {
       errorMessage.value = ''; // Limpiamos cualquier mensaje de error anterior
 
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/userLogin', {  // Cambia la URL por la de tu API
+        const response = await fetch('http://127.0.0.1:8000/api/userLogin', {  
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -86,11 +86,10 @@ export default {
             username: data.user.name,
             email: data.user.email,
             role: data.user.rol,
-            image: data.user.image || 'https://randomuser.me/api/portraits/thumb/women/56.jpg', // Si tienes una imagen en la respuesta, reemplázala
           });
 
           // Redirige a la página de votaciones (u otra página)
-          router.push('/Offline');
+          router.push('/');
         } else {
           // Si la respuesta no es OK, muestra el mensaje de error
           errorMessage.value = data.message || 'Credenciales incorrectes';
