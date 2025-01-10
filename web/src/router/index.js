@@ -2,8 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/Login/LoginScreen.vue'
 import Offline from '../components/Offline/OfflineScreen.vue'
 import Online from '../components/Online/OnlineScreen.vue'
-//import Apunts from '../components/Apuntes/ApuntsScreen.vue'
-import Jocs from '../components/Jocs/JocsScreen.vue'
+import Apunts from '../components/Apuntes/apunts.vue'
 import Home from '../components/Home/HomeScreen.vue'
 import Register from '../components/Login/RegisterScreen.vue'
 import prePartida from '../components/Offline/PartidaOffline/prePartidaScreen.vue'
@@ -12,8 +11,8 @@ import PartidaCrono from '../components/Offline/PartidaOffline/PartidaCronoScree
 import FinPartida from '../components/Offline/PartidaOffline/FinPartidaScreen.vue'
 import PartidaFallos from '../components/Offline/PartidaOffline/PartidaFallosScreen.vue'
 import Logout from '../components/Login/LogoutScreen.vue'
-import Codigo from '../components/Jocs/codigo/game.vue'
-import Sudoku from '../components/Jocs/sudoku/sudokuScreen.vue';
+import Codigo from '../components/Offline/jocs/codigo/game.vue'
+import Sudoku from '../components/Offline/jocs/sudoku/sudokuScreen.vue';
 import PartidaNumeroOnline from '@/components/Online/PartidaOnline/PartidaNumeroOnlineScreen.vue'
 import SalaEspera from '@/components/Online/SalaEsperaScreen.vue'
 import prePartidaOnline from '@/components/Online/PartidaOnline/prePartidaOnline.vue'
@@ -49,11 +48,6 @@ const router = createRouter({
       component: Online,
     },
     {
-      path: '/Jocs',
-      name: 'Jocs',
-      component: Jocs,
-    },
-    {
       path: '/Offline/prePartida',
       name: 'prePartida',
       component: prePartida,
@@ -84,12 +78,12 @@ const router = createRouter({
       component: Logout,
     },
     {
-      path: '/Jocs/codigo',
+      path: '/Offline/jocs/codigo',
       name: 'Codigo',
       component: Codigo,
     },
     {
-      path: '/Jocs/sudoku',
+      path: '/Offline/jocs/sudoku',
       name: 'Sudoku',
       component: Sudoku,
     },
@@ -122,6 +116,11 @@ const router = createRouter({
       path: '/Online/CodigoPartida',
       name: 'CodigoPartida',
       component: CodigoPartida,
+    },
+    {
+      path: '/Apuntes',
+      name: 'Apunts',
+      component: Apunts,
     },
   ],
 });
