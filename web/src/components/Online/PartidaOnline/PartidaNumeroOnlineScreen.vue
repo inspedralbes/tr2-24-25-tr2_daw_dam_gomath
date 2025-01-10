@@ -99,8 +99,7 @@ export default {
       preguntasRespondidas.value[currentQuestionIndex.value] = index;
       useRespuesta2.setRespuesta(operation.value.answers[index].value);
       useRespuesta2.setId(operation.value.id_pregunta);
-      await unaRespuesta.fetchRespuesta();  
-      console.log('comparacion para correccion', operation.value.answers[index].value, useRespuesta2.correcta);
+      await unaRespuesta.fetchRespuesta();
       if (operation.value.answers[index].value !== useRespuesta2.correcta) {
         estadisticas.setPreguntaIncorrecta();
         estadisticas.setPuntos(-50);

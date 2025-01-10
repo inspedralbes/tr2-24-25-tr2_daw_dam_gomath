@@ -27,6 +27,7 @@ const rooms = {};
 
 app.post('/api/create-room', (req, res) => {
     const { email } = req.body;
+    
     if (!email) {
         return res.status(400).json({ success: false, message: "Email es requerido" });
     }
@@ -77,6 +78,13 @@ io.on("connection", (socket) => {
         console.log(`${username} creó la sala ${roomCode}`);
         socket.emit("room-created", roomCode);
     });
+
+    socket.on("tipoPartidaHost", ({ tipoPartida, codigoSala }) => {
+        if (codigoSala) {
+          console.log(`Configurado tipoPartida para la sala ${codigoSala}:`, tipoPartida);
+          io.to(codigoSala).emit("tipoPartidaHost", { tipoPartida });
+        }
+      });
 
     socket.on("join-room", ({ roomCode, username }) => {
         if (!username) {
