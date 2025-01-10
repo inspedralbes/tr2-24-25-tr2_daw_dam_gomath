@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+/*
 const QuestionSchema = new mongoose.Schema(
     {
         question: { type: String, required: true },
@@ -19,12 +20,13 @@ const LeaderboardSchema = new mongoose.Schema(
     },
     { _id: false }
 );
+*/
 
 const OnlineGameSchema = new mongoose.Schema({
     session_id: { type: String, required: true },
-    players_id: { type: [String], required: true },
-    game_type: { type: String, required: true },
-    total_rounds: { type: Number, required: true },
+    player_email: { type: String, required: true },
+    preguntasAcertadas: { type: Number, required: true },
+    preguntasFallidas: { type: Number, required: true },
     session_time: { type: Number, required: false },
     created_at: { 
         type: Date, 

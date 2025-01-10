@@ -5,7 +5,6 @@ const path = require('path');
 const http = require('http');
 const { v4: uuidv4 } = require("uuid");
 const { Server } = require('socket.io');
-const offlineGamesRoutes = require('./routes/offlineGames');
 const onlineGamesRoutes = require('./routes/onlineGames')
 
 const app = express();
@@ -25,7 +24,6 @@ app.use(cors({
     methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
     credentials: true,
 }));
-app.use('/api/offlineGames', offlineGamesRoutes);
 app.use('/api/onlineGames', onlineGamesRoutes);
 
 // Connexió a la base de dades MongoDB
@@ -37,6 +35,12 @@ mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.
 .catch((err) => console.error('Error al connectar a MongoDB', err));
 
 const rooms = {};
+
+app.post('/api/userLogin',(req, res) => {
+    const {email} = req.body;
+  
+    res.json({"email": email, "role": "admin"});
+});
 
 app.post('/api/create-room', (req, res) => {
     const { email } = req.body;
