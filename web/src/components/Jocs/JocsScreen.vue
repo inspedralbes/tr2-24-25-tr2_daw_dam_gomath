@@ -13,9 +13,6 @@
     <router-link to="/jocs/codigo" class="grid-item">
       <img src="../../assets/img/codigo.png" alt="Otro juego">
     </router-link>
-    <router-link to="/jocs/resta" class="grid-item">
-      <img src="../../assets/img/resta.svg" alt="Resta">
-    </router-link>
   </div>
 </template>
 

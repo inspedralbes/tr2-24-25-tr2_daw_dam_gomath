@@ -144,6 +144,7 @@ export default {
         const generatedBoard = sudokuGenerator(dificultad); // Llama al generador de Sudoku
         console.log("Tablero generado:", generatedBoard);
         this.actualizarTablero(generatedBoard); // Actualiza el tablero
+        this.inicializarContNum(generatedBoard); //Inicia el contador de numeros en la tabla
         this.setTemporizador();  // Inicia el temporizador
       } catch (error) {
         console.error("Error al generar el tablero:", error);
@@ -176,6 +177,17 @@ export default {
           this.finalizarJuego(false); // Finaliza el juego
         }
       }, 1000); // Intervalo de 1 segundo
+    },
+
+    /**
+     * Cuenta cada numero en el tablero para garantizar el correcto funcionamiento de la variable
+     */
+    inicializarContNum(boardString) {
+      for (let i = 0; i < boardString.length; i++) {
+        let num = parseInt(boardString[i]);
+        this.contadorNumeros[num]++;
+      }
+      console.log(this.contadorNumeros);
     },
 
     /**
@@ -241,7 +253,6 @@ export default {
           return;
         }
 
-
         this.contadorNumeros[num]++;
 
 
@@ -250,6 +261,7 @@ export default {
         }
 
         this.tablero[index].value = num;
+        this.tablero[index].readonly = true;
         const resultado = this.convertirTableroAStrIng(this.tablero)
         console.log('tablero cambiado: ', resultado);
         if (!resultado.includes('.')) {
@@ -259,11 +271,24 @@ export default {
       }
     },
 
+    /**
+    * Marca el final del juego.
+    * Cambia el estado de `gameOver` a `true` y muestra en la consola
+    * un mensaje indicando que el juego ha terminado junto con las vidas restantes.
+    *
+    * @returns {void}
+    */
     jocAcabat() {
       this.gameOver = true;
       console.log(`Juego terminado. vidas restantes: ${this.vides}/${this.OriginVides}`);
     },
 
+    /**
+    * Redirige al usuario a la página de selección de juegos.
+    * Utiliza el router para navegar a la ruta `/jocs`.
+    *
+    * @returns {void}
+    */
     salir() {
       this.$router.push('/jocs');
     }
@@ -349,12 +374,12 @@ export default {
 /* Estilos de los números a escoger */
 .numeros {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Crea una cuadrícula de 3 columnas */
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  justify-items: center; /* Centra los botones dentro de cada celda */
-  width: 100%; /* Asegura que ocupe todo el ancho disponible */
-  max-width: 150px; /* Limita el ancho máximo si es necesario */
-  margin: 0 auto; /* Centra la cuadrícula en su contenedor */
+  justify-items: center;
+  width: 100%;
+  max-width: 150px;
+  margin: 0 auto;
   margin-top: 180px;
 }
 
@@ -364,8 +389,10 @@ export default {
   cursor: pointer;
   border: 1px solid #000;
   transition: background-color 0.3s;
-  width: 50px; /* Ajusta el tamaño de los botones */
-  height: 50px; /* Ajusta el tamaño de los botones */
+  width: 50px;
+  /* Ajusta el tamaño de los botones */
+  height: 50px;
+  /* Ajusta el tamaño de los botones */
   display: flex;
   align-items: center;
   justify-content: center;
