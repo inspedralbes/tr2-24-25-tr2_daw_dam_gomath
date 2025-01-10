@@ -73,6 +73,16 @@ function solveSudoku(board) {
   return false; // Sin solución
 }
 
+/**
+ * Verifica si un movimiento es válido en un tablero de Sudoku.
+ *
+ * @param {string[]} board - Un array que representa el tablero de Sudoku en forma de cadena de caracteres,
+ *                           donde cada posición es un dígito o un '.' para celdas vacías.
+ * @param {number} row - Índice de la fila donde se intenta colocar el número.
+ * @param {number} col - Índice de la columna donde se intenta colocar el número.
+ * @param {string} digit - El número que se desea colocar, representado como un carácter ('1'-'9').
+ * @returns {boolean} - Retorna `true` si el movimiento es válido según las reglas del Sudoku; de lo contrario, `false`.
+ */
 function isValidMove(board, row, col, digit) {
   console.log('on service');
 
