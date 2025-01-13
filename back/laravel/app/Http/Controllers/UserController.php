@@ -14,13 +14,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $user = User::all();
 
         if (request()->is('api/*')) {
-            return response()->json($users);
+            return response()->json($user);
         }
 
-        return view('users.index', compact('users'));
+        return view('users.index', compact('user'));
     }
 
     /**

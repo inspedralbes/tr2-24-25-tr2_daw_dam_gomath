@@ -25,12 +25,12 @@
       const appStore = useAppStore();
       const router = useRouter();
       const username = appStore.loginInfo.username || 'Usuario';
-      const avatar = appStore.loginInfo.avatar || 'https://via.placeholder.com/100';
+      const avatar = appStore.loginInfo.avatar;
   
       const goToLogout = () => {
       router.push('/Logout'); 
       };
-
+      console.log(avatar)
       return {
         username,
         avatar,
