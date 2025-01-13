@@ -102,7 +102,7 @@ io.on("connection", (socket) => {
 
         if (rooms[roomCode]) {
             const isAlreadyMember = rooms[roomCode].members.some((member) => member.id === socket.id);
-            if (!isAlreadyMember) {
+            if (!isAlreadyMember && username !== "Android") {
                 rooms[roomCode].members.push({ id: socket.id, name: username, isHost: false });
                 console.log(`${username} se unió a la sala ${roomCode}`);
             }
