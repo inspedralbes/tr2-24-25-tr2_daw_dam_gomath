@@ -104,7 +104,6 @@ export default {
       }
 
       preguntasRespondidas.value[currentQuestionIndex.value] = index;
-      console.log('comparacion para correccion', operation.value.answers[index].value, useRespuesta2.correcta);
       if (operation.value.answers[index].value !== useRespuesta2.correcta) {
         estadisticasPartida2.setPreguntaIncorrecta();
         estadisticasPartida2.setPuntos(-50);

@@ -27,19 +27,16 @@ export const useTipoPartidaStore = defineStore(localStorageTipoPartida, () => {
   function setOperacion(operacion) {
     tipoPartida.value.operacion = operacion;
     updateLocalStorage();
-    console.log('Hola soy operacion', operacion, tipoPartida);
   }
 
   function setModo(modo) {
     tipoPartida.value.modo = modo;
     updateLocalStorage();
-    console.log('Hola soy modo', modo, tipoPartida);
   }
 
   function setCantidad(cantidad) {
     tipoPartida.value.cantidad = cantidad;
     updateLocalStorage();
-    console.log('Hola soy cantidad', cantidad, tipoPartida);
     if (tipoPartida.value.modo == 'numero') {
       router.push('/Offline/PartidaNumero');
     }
@@ -52,7 +49,6 @@ export const useTipoPartidaStore = defineStore(localStorageTipoPartida, () => {
   function setCantidadOnline(cantidad){
     tipoPartida.value.cantidad = cantidad;
     updateLocalStorage();
-    console.log('Hola soy cantidad', cantidad, tipoPartida);
     if (tipoPartida.value.modo == 'numero') {
       router.push('/Online/CodigoPartida');
     }
@@ -62,13 +58,11 @@ export const useTipoPartidaStore = defineStore(localStorageTipoPartida, () => {
     else if (tipoPartida.value.modo == 'fallos') {
       router.push('/Online/CodigoPartida');
     }
-    socket.emit('tipoPartidaHost', { tipoPartida: tipoPartida.tipoPartida });
   }
 
   function setDificultat(dificultat) {
     tipoPartida.value.dificultat = dificultat;
     updateLocalStorage();
-    console.log('Hola soy dificultad', dificultat, tipoPartida);
   }
 
   return {
@@ -97,7 +91,7 @@ export default {
         { to: '/Offline', label: 'OFFLINE' },
         { to: '/SalaEspera', label: 'ONLINE' },
         { to: '/Jocs', label: 'JOCS' },
-        { to: '/Apunts', label: 'APUNTS' },
+        { to: '/Apuntes', label: 'APUNTS' },
       ];
 
       if (!isLoggedIn.value) {
@@ -201,37 +195,12 @@ export default {
       </q-tabs>
     </q-drawer>
 
-    <q-drawer v-if="divActivo === 'offline'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
-      <q-tabs vertical>
-        <q-route-tab to="/Offline/prePartida" label="SUMES" />
-        <q-route-tab to="/Offline/prePartida" label="RESTES" />
-        <q-route-tab to="/Offline/prePartida" label="MULTIPLICACIÓNS" />
-        <q-route-tab to="/Offline/prePartida" label="DIVISIÓNS" />
-      </q-tabs>
-    </q-drawer>
-
-    <q-drawer v-if="divActivo === 'apunts'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
-      <q-tabs vertical>
-        <q-route-tab to="/tablasMultiplicar" label="TAULES DE MULTIPLICAR" />
-        <q-route-tab to="/equacions" label="EQUACIONS" />
-        <q-route-tab to="/pitagoras" label="PITAGORAS" />
-      </q-tabs>
-    </q-drawer>
 
     <q-drawer v-if="divActivo === 'jocs'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
       <q-tabs vertical>
         <q-route-tab to="/jocs/sudoku" label="SUDOKU" />
         <q-route-tab to="/jocs/codigo" label="Adivina el codigo" />
         <q-route-tab to="/nerdle" label="Nerdle(cambiar nombre)" />
-      </q-tabs>
-    </q-drawer>
-
-    <q-drawer v-if="divActivo === 'online'" show-if-above v-model="isLeftDrawerOpen" side="left" bordered>
-      <q-tabs vertical>
-        <q-route-tab to="/sumaOffline" label="SUMES" />
-        <q-route-tab to="/restaOffline" label="RESTA" />
-        <q-route-tab to="/multiplicacionOffline" label="MULTIPLICACIÓNS" />
-        <q-route-tab to="/divisionOffline" label="DIVISIÓNS" />
       </q-tabs>
     </q-drawer>
 

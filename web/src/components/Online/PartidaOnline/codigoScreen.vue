@@ -57,34 +57,47 @@ export default {
     const estadoOnline = useEstadoOnline();
     const sala = useCodigoSala();
 
-    onMounted(() => {
-      if (estadoOnline.propietario === "yo") {
-        sala.fetchCodigo().then(() => {
+    onMounted(async() => {
+      console.log('el propietario es: ',estadoOnline.propietario);
+      
+      if (estadoOnline.propietario === 'yo') {
+        sala.fetchCodigo().then(async () => {
           codigoSala.value = sala.codigo;
           empezarPartidaBtn.value = true;
-
-          socket.emit("join-room", {
+          console.log('eres host');
+          
+          const union = async()=>{socket.emit("join-room", {
             roomCode: codigoSala.value,
             username: loginInfo.loginInfo.username || "Jugador",
-          });
+          })};
+          await union();
+          socket.emit('tipoPartidaHost', { tipoPartida: tipoPartida.tipoPartida, codigoSala: codigoSala.value});
+          console.log('tipoPartida host enviado a node',tipoPartida.tipoPartida);
+          console.log('este es el codigo de la sala',codigoSala.value);
         });
-      } else if (estadoOnline.propietario === "otro") {
+      } else if (estadoOnline.propietario === 'otro') {
+        console.log('has entrado en otro');
+        
         codigoSala.value = estadoOnline.codigoUnion;
         empezarPartidaBtn.value = false;
-
-        socket.on("tipoPartidaHost", (data) => {
-          if (data && data.tipoPartida) {
-            tipoPartidaNode.value = data.tipoPartida;
-            tipoPartida.setModo(tipoPartidaNode.value.modo);
-          } else {
-            console.error("Datos de tipoPartidaHost inválidos:", data);
-          }
-        });
-
         socket.emit("join-room", {
           roomCode: codigoSala.value,
           username: loginInfo.loginInfo.username || "Jugador",
         });
+
+        socket.on("tipoPartidaHost", (data) => {
+          if (data && data.tipoPartida) {
+            tipoPartidaNode.value = data.tipoPartida;
+            console.log('tipoPartida de data directamente: ',data.tipoPartida);
+            
+            tipoPartida.setModo(tipoPartidaNode.value.modo);
+            
+          } else {
+            console.error("Datos de tipoPartidaHost inválidos:", data);
+          }
+        console.log('tipoPartida que llega',tipoPartidaNode.value.modo);
+        });
+
       }
 
       socket.on("update-users", (members) => {
