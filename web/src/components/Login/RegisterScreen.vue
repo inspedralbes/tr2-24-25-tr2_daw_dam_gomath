@@ -121,7 +121,7 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           if (data.status === 'success') {
-            router.push('/Home');
+            router.push('/');
 
             const appStore = useAppStore();
             appStore.setRegistrationInfo({

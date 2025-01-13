@@ -11,6 +11,7 @@ import PartidaCrono from '../components/Offline/PartidaOffline/PartidaCronoScree
 import FinPartida from '../components/Offline/PartidaOffline/FinPartidaScreen.vue'
 import PartidaFallos from '../components/Offline/PartidaOffline/PartidaFallosScreen.vue'
 import Profile from '../components/Login/ProfileScreen.vue'
+import Logout from '../components/Login/LogoutScreen.vue'
 import Codigo from '../components/Offline/jocs/codigo/game.vue'
 import Sudoku from '../components/Offline/jocs/sudoku/sudokuScreen.vue';
 import PartidaNumeroOnline from '@/components/Online/PartidaOnline/PartidaNumeroOnlineScreen.vue'
@@ -76,6 +77,11 @@ const router = createRouter({
       path: '/Profile',
       name: 'Profile',
       component: Profile,
+    },
+    {
+      path: '/Logout',
+      name: 'Logout',
+      component: Logout,
     },
     {
       path: '/Offline/jocs/codigo',

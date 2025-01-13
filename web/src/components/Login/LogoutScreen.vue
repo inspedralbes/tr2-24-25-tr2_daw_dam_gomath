@@ -7,27 +7,26 @@
       <q-page-container>
         <q-card class="q-pa-md q-ma-md shadow-2">
           <q-card-section style="text-align: center;">
-            <h3>Estàs segur que vols tancar la sessió?</h3>
-            <h6>No podràs unir-te a cap sessió si no has iniciat sessió prèviament.</h6>
+            <p style="font-size: 20px; font-weight: bold;">Estàs segur que vols tancar la sessió?</p>
+            <img src="@/assets/img/adios.gif" alt="Adiós" />
           </q-card-section>
           <q-card-section class="text-center">
             <q-btn label="SI" color="red" icon="logout" @click="logout()" />
           </q-card-section>
         </q-card>
+
       </q-page-container>
     </q-layout>
   </q-page>
 </template>
 
 <script>
-// Importa el store de Pinia donde guardas el token
 import { useAppStore } from '@/stores/app';
 
 export default {
   methods: {
     async logout() {
       try {
-        // Obtener el token desde Pinia
         const appStore = useAppStore();
         const token = appStore.loginInfo.token;
         console.log('ya tengo el token: ', token);
@@ -48,20 +47,25 @@ export default {
         }
 
         console.log('antes de limpiar en pinia');
-
-        // Limpiar la sesión en Pinia
         appStore.logout();
-
-
-        if (!token) {
-          this.$router.push('/login');
-          return;
-        }
-        //this.$router.push('/login');
+        this.$router.push('/');
       } catch (error) {
         console.error('Error al cerrar sesión:', error);
       }
-    },
-  },
+    },  
+  }
 };
 </script>
+<style>
+.goodbye-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  background-color: white;
+}
+.goodbye-container img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
