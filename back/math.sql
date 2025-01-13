@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-12-2024 a las 09:45:57
+-- Tiempo de generación: 13-01-2025 a las 11:37:23
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -63,7 +63,7 @@ CREATE TABLE `clases` (
 --
 
 INSERT INTO `clases` (`id`, `nombre_clase`, `created_at`, `updated_at`) VALUES
-(1, 'Clase1', '2024-12-20 07:43:24', '2024-12-20 07:43:24');
+(1, 'Clase1', '2025-01-13 09:36:34', '2025-01-13 09:36:34');
 
 -- --------------------------------------------------------
 
@@ -176,9 +176,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '1_operacions', 1),
 (4, '2024_12_02_073600_create_personal_access_tokens_table', 1),
 (5, '2024_12_11_114900_create_joc_codis_table', 1),
-(6, '2_clases', 1),
-(7, '3_users', 1),
-(8, '4_puntuacions', 1);
+(6, '2024_12_20_090046_create_sudoku_results_table', 1),
+(7, '2_clases', 1),
+(8, '3_users', 1),
+(9, '4_puntuacions', 1);
 
 -- --------------------------------------------------------
 
@@ -664,6 +665,21 @@ CREATE TABLE `sessions` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `sudoku_results`
+--
+
+CREATE TABLE `sudoku_results` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nivel` varchar(255) NOT NULL,
+  `tiempo` int(11) NOT NULL,
+  `errores` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -674,6 +690,7 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `rol` varchar(255) NOT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `clase_id` bigint(20) UNSIGNED DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -684,9 +701,9 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `rol`, `clase_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'user', 'user@gmail.com', NULL, '$2y$12$XXbUMBnt7k7/qUP3YVLyWeriKwGjGYpvr6XQrfUDgFdaePt65ssBq', 'user', 1, NULL, '2024-12-20 07:43:24', '2024-12-20 07:43:24'),
-(2, 'admin', 'admin@gmail.com', NULL, '$2y$12$QWnxFz0aMnfArYuMdUzUU.5hR.l/pKoAlPy.atSOw6RA3753a0iuS', 'Admin', 1, NULL, '2024-12-20 07:43:25', '2024-12-20 07:43:25');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `rol`, `avatar`, `clase_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'user', 'user@gmail.com', NULL, '$2y$12$vTRCDM2a9sLSqB.zzqsuMurbPmguoQkIrWUOp.zn3rO0mj7GCqjWe', 'user', NULL, 1, NULL, '2025-01-13 09:36:34', '2025-01-13 09:36:34'),
+(2, 'admin', 'admin@gmail.com', NULL, '$2y$12$bAGbgGAdrqwdwRgQEPWsfOVdEUcqya.AgH7ehyeddm0JM7FpF4WKO', 'Admin', NULL, 1, NULL, '2025-01-13 09:36:35', '2025-01-13 09:36:35');
 
 --
 -- Índices para tablas volcadas
@@ -778,6 +795,12 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
+-- Indices de la tabla `sudoku_results`
+--
+ALTER TABLE `sudoku_results`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -817,7 +840,7 @@ ALTER TABLE `joc_codis`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `operacions`
@@ -835,6 +858,12 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `puntuacions`
 --
 ALTER TABLE `puntuacions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `sudoku_results`
+--
+ALTER TABLE `sudoku_results`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
