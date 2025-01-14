@@ -39,7 +39,7 @@ const rooms = {};
 app.post('/api/userLogin',(req, res) => {
     const {email} = req.body;
   
-    res.json({"email": email, "role": "admin"});
+    res.json({"email": email, "role": "Professor"});
 });
 
 app.post('/api/create-room', (req, res) => {

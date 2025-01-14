@@ -9,7 +9,8 @@ router.post('/', async (req, res) => {
             session_id: req.body.session_id,
             player_email: req.body.player_email,
             preguntasAcertadas: req.body.preguntasAcertadas,
-            preguntasFallidas: req.body.preguntasFallidas
+            preguntasFallidas: req.body.preguntasFallidas,
+            puntos: req.body.puntos
         });
 
         const savedGame = await newGame.save();

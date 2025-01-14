@@ -5,12 +5,12 @@ const OnlineGameSchema = new mongoose.Schema({
     player_name: { type: String, required: true },
     preguntasAcertadas: { type: Number, required: true },
     preguntasFallidas: { type: Number, required: true },
-    session_time: { type: Number, required: false },
+    puntos: { type: Number, required: true },
     created_at: { 
         type: Date, 
         default: () => {
             const today = new Date();
-            today.setHours(0, 0, 0, 0); // Eliminar hora, minutos y segundos
+            today.setHours(0, 0, 0, 0);
             return today;
         } 
     }
