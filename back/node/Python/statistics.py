@@ -1,25 +1,31 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from pymongo import MongoClient
 
-# Datos iniciales (puedes reemplazarlos por una fuente dinámica)
-datos = [
-    {"nombre": "Alice", "aciertos": 15, "errores": 5, "puntos": 50},
-    {"nombre": "Bob", "aciertos": 10, "errores": 10, "puntos": 40},
-    {"nombre": "Carlos", "aciertos": 20, "errores": 2, "puntos": 80},
-    {"nombre": "Diana", "aciertos": 8, "errores": 12, "puntos": 30},
-]
+# Conectar a MongoDB
+cliente = MongoClient("mongodb://localhost:3000/api/onlinegames")  # Cambia la URI si es necesario
+db = cliente["GoMath"]  # Base de datos
+coleccion = db["Online-Games"]     # Colección para los datos
+
+# Obtener los datos desde MongoDB
+datos = list(coleccion.find({}, {"_id": 0, "player_email": 1, "preguntasAcertadas": 1, "preguntasFallidas": 1, "puntos": 1}))
+
+# Verificar si se obtuvieron datos
+if not datos:
+    print("No se encontraron datos en la colección.")
+    exit()
 
 # Convertir datos a un DataFrame de pandas
 df = pd.DataFrame(datos)
 
 # Calcular estadísticas adicionales
-df["porcentaje_aciertos"] = (df["aciertos"] / (df["aciertos"] + df["errores"])) * 100
+df["porcentaje_aciertos"] = (df["preguntasAcertadas"] / (df["preguntasAcertadas"] + df["preguntasFallidas"])) * 100
 
 # Estadísticas grupales
 promedio_puntos = df["puntos"].mean()
-promedio_aciertos = df["aciertos"].mean()
-promedio_errores = df["errores"].mean()
+promedio_aciertos = df["preguntasAcertadas"].mean()
+promedio_errores = df["preguntasFallidas"].mean()
 
 print("=== Estadísticas generales ===")
 print(f"Promedio de puntos: {promedio_puntos:.2f}")
@@ -30,13 +36,13 @@ print(f"Promedio de errores: {promedio_errores:.2f}")
 ranking = df.sort_values(by="puntos", ascending=False)
 
 print("\n=== Ranking de jugadores ===")
-print(ranking[["nombre", "puntos", "porcentaje_aciertos"]])
+print(ranking[["player_email", "puntos", "porcentaje_aciertos"]])
 
 # Visualización de los datos
 def graficar_puntos(df):
     """Generar un gráfico de barras de puntos por jugador."""
     plt.figure(figsize=(8, 5))
-    plt.bar(df["nombre"], df["puntos"], color="skyblue")
+    plt.bar(df["player_email"], df["puntos"], color="skyblue")
     plt.xlabel("Jugadores", fontsize=12)
     plt.ylabel("Puntos", fontsize=12)
     plt.title("Puntos Totales por Jugador", fontsize=14)
@@ -45,14 +51,14 @@ def graficar_puntos(df):
 
 def graficar_aciertos_vs_errores(df):
     """Generar un gráfico comparativo entre aciertos y errores."""
-    x = np.arange(len(df["nombre"]))  # Posiciones en el eje X
+    x = np.arange(len(df["player_email"]))  # Posiciones en el eje X
     ancho = 0.4  # Ancho de las barras
 
     plt.figure(figsize=(8, 5))
-    plt.bar(x - ancho/2, df["aciertos"], width=ancho, label="Aciertos", color="green")
-    plt.bar(x + ancho/2, df["errores"], width=ancho, label="Errores", color="red")
+    plt.bar(x - ancho/2, df["preguntasAcertadas"], width=ancho, label="Aciertos", color="green")
+    plt.bar(x + ancho/2, df["preguntasFallidas"], width=ancho, label="Errores", color="red")
 
-    plt.xticks(x, df["nombre"])
+    plt.xticks(x, df["player_email"])
     plt.xlabel("Jugadores", fontsize=12)
     plt.ylabel("Cantidad", fontsize=12)
     plt.title("Comparación de Aciertos y Errores", fontsize=14)
