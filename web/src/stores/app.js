@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 export const useAppStore = defineStore('app', {
   state: () => ({
-    loginInfo: {
+    loginInfo: JSON.parse(localStorage.getItem('loginInfo')) || {
       loggedIn: false,
       token: '',
       username: '',
@@ -10,7 +10,7 @@ export const useAppStore = defineStore('app', {
       role: '',
       image: '',
     },
-    registrationInfo: {
+    registrationInfo: JSON.parse(localStorage.getItem('registrationInfo')) || {
       loggedIn: false,
       token: '',
       username: '',
@@ -22,38 +22,31 @@ export const useAppStore = defineStore('app', {
 
   actions: {
     logout() {
-      this.loginInfo.loggedIn = false;
-      this.loginInfo.token = '';
-      this.loginInfo.username = '';
-      this.loginInfo.email = '';
-      this.loginInfo.role = '';
-      this.loginInfo.image = '';
+      this.loginInfo = {
+        loggedIn: false,
+        token: '',
+        username: '',
+        email: '',
+        role: '',
+        image: '',
+      };
+      localStorage.setItem('loginInfo', JSON.stringify(this.loginInfo));
     },
 
-    // Acción para establecer la información de login
     setLoginInfo({ loggedIn, token, username, email, role, image }) {
-      this.loginInfo.loggedIn = loggedIn;
-      this.loginInfo.token = token;
-      this.loginInfo.username = username;
-      this.loginInfo.email = email;
-      this.loginInfo.role = role;
-      this.loginInfo.image = image;
+      this.loginInfo = { loggedIn, token, username, email, role, image };
+      localStorage.setItem('loginInfo', JSON.stringify(this.loginInfo));
     },
-    // Acción para establecer la información de registro (puede ser utilizada en otros casos)
-    setRegistrationInfo({ loggedIn, token, username, role, image }) {
-      this.registrationInfo.loggedIn = loggedIn;
-      this.token = token;
-      this.registrationInfo.username = username;
-      this.registrationInfo.role = role;
-      this.registrationInfo.image = image;
+
+    setRegistrationInfo({ loggedIn, token, username, email, role, image }) {
+      this.registrationInfo = { loggedIn, token, username, email, role, image };
+      localStorage.setItem('registrationInfo', JSON.stringify(this.registrationInfo));
     },
   },
 
   getters: {
     isLoggedIn: (state) => state.loginInfo.loggedIn,
-
     getLoginInfo: (state) => state.loginInfo,
-
     getRegistrationInfo: (state) => state.registrationInfo,
   },
 });
