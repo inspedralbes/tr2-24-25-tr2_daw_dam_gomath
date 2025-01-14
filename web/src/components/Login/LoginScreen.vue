@@ -57,11 +57,11 @@ export default {
         return;
       }
 
-      isLoading.value = true;  // Activamos el estado de carga
-      errorMessage.value = ''; // Limpiamos cualquier mensaje de error anterior
+      isLoading.value = true;  
+      errorMessage.value = '';
 
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/userLogin', {  // Cambia la URL por la de tu API
+        const response = await fetch('http://127.0.0.1:8000/api/userLogin', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -28,9 +28,8 @@
 </template>
 
 <script>
-import { computed, onMounted, ref, onUnmounted } from "vue";
+import { computed, onMounted, ref, onUnmounted, inject } from "vue";
 import { useOperationsStore } from "@/stores/comunicationManager";
-import { inject } from "vue";
 import { useRouter } from "vue-router";
 import { useTipoPartidaStore } from "../../../App.vue";
 import { useRespuesta } from "../../../stores/respuesta";
@@ -48,9 +47,8 @@ export default {
     const tipoPartidaStore = useTipoPartidaStore();
     const divActivo = inject("divActivo");
     const operationsStore = useOperationsStore();
-    const preguntasRespondidas = ref([]);
     const currentQuestionIndex = ref(0);
-    const selectedAnswer = ref(null);
+    const selectedAnswer = ref(null); 
     const correctAnswer = ref(null);
     const timeLeft = ref(tipoPartidaStore.tipoPartida.cantidad);
     const isTimeRemaining = ref(true);
@@ -87,7 +85,7 @@ export default {
       clearInterval(timer);
     });
 
-    function startTimer () {
+    const startTimer = () => {
       if (timer) clearInterval(timer);
       timer = setInterval(async() => {
         if (timeLeft.value > 0) {
@@ -104,6 +102,7 @@ export default {
     const redirectToEnd = () => {
       router.push("/Offline/FinPartida");
     };
+
     const corregirRespuests = async () => {
       loading.value = true;
       try {
@@ -130,39 +129,42 @@ export default {
     };
 
     const getButtonColor = (index) => {
-      if (preguntasRespondidas.value[currentQuestionIndex.value] === index) {
-        return "grey";
+      if (selectedAnswer.value === index) {
+        return "grey";  
       }
-      return "primary";
+      return "primary"; 
     };
 
     const handleAnswer = async (selected, index) => {
-
       if (!isTimeRemaining.value) return;
-      const preguntaRespondida = preguntasRespondidas.value[currentQuestionIndex.value];
+      
+      selectedAnswer.value = index;
+      
+      const preguntaRespondida = respuestasPendientes.value.find(
+        (r) => r.id_pregunta === operation.value.id_pregunta
+      );
 
-      if (preguntaRespondida === undefined) {
-        preguntasRespondidas.value[currentQuestionIndex.value] = index;
+      if (!preguntaRespondida) {
         respuestasPendientes.value.push({
           id_pregunta: operation.value.id_pregunta,
-          respuesta: operation.value.answers[index].value
+          respuesta: operation.value.answers[index].value,
         });
       } else {
-        respuestasPendientes.value = respuestasPendientes.value.filter(r => r.id_pregunta !== operation.value.id_pregunta);
+        respuestasPendientes.value = respuestasPendientes.value.filter(
+          (r) => r.id_pregunta !== operation.value.id_pregunta
+        );
         respuestasPendientes.value.push({
           id_pregunta: operation.value.id_pregunta,
-          respuesta: operation.value.answers[index].value
+          respuesta: operation.value.answers[index].value,
         });
       }
-    }
-
-
+    };
 
     const nextQuestion = () => {
       if (hasNextQuestion.value) {
         currentQuestionIndex.value++;
         correctAnswer.value = null;
-        selectedAnswer.value = null;
+        selectedAnswer.value = null;  
       }
     };
 
@@ -187,13 +189,13 @@ export default {
       selectedAnswer,
       getButtonColor,
       hasNextQuestion,
-      preguntasRespondidas,
       timeLeft,
       isTimeRemaining,
       loading,
     };
   },
 };
+
 </script>
 
 <style scoped>

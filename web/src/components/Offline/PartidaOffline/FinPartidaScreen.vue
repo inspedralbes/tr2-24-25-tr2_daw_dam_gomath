@@ -71,10 +71,8 @@ export default {
       }
     };
 
-    // Ejecutar una vez al montar
     actualizarGifActivo();
 
-    // Reactividad en los cambios
     watch(estadisticas, () => {
       actualizarGifActivo();
     });

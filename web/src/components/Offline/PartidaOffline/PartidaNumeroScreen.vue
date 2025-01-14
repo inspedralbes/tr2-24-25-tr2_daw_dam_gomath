@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, reactive, ref } from 'vue';
 import { useOperationsStore, useUnaRespuesta } from "@/stores/comunicationManager";
 import { useTipoPartidaStore } from "../../../App.vue";
 import { useRouter } from 'vue-router';
@@ -60,10 +60,9 @@ export default {
     const useRespuesta2 = useRespuesta();
     const tipoPartidaStore = useTipoPartidaStore();
     const operationsStore = useOperationsStore();
-    const preguntasRespondidas = ref([]);
     const respuestasPendientes = ref([]);
     const currentQuestionIndex = ref(0);
-    const selectedAnswer = ref(null);
+    const selectedAnswer = ref(null); 
     const loading = ref(false);
     const router = useRouter();
 
@@ -94,17 +93,18 @@ export default {
       estadisticas.setEstadisticasZero();
     });
 
+    const preguntasRespondidas = reactive({});
+
     const getButtonColor = (index) => {
-      return preguntasRespondidas.value[currentQuestionIndex.value] === index
-        ? "grey"
-        : "primary";
+      return selectedAnswer.value === index ? "grey" : "primary";
     };
 
     const handleAnswer = (index) => {
-      const preguntaRespondida = preguntasRespondidas.value[currentQuestionIndex.value];
+      selectedAnswer.value = index;
+      const preguntaRespondida = preguntasRespondidas[currentQuestionIndex.value];
 
       if (preguntaRespondida === undefined) {
-        preguntasRespondidas.value[currentQuestionIndex.value] = index;
+        preguntasRespondidas[currentQuestionIndex.value] = index;
         respuestasPendientes.value.push({
           id_pregunta: operation.value.id_pregunta,
           respuesta: operation.value.answers[index].value
@@ -121,12 +121,14 @@ export default {
     const nextQuestion = () => {
       if (siguiente.value) {
         currentQuestionIndex.value++;
+        selectedAnswer.value = null;
       }
     };
 
     const previousQuestion = () => {
       if (currentQuestionIndex.value > 0) {
         currentQuestionIndex.value--;
+        selectedAnswer.value = null;
       }
     };
 

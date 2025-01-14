@@ -80,10 +80,8 @@ export const useUnaRespuesta = defineStore('respuesta', () => {
       const data = await response.json();
       console.log('Respuesta correcta a la pregunta:', data);
 
-      // Actualizar la tienda principal con la respuesta correcta
       useRespuesta2.setCorrecta(data.respuesta_correcta);
 
-      // Almacenar la respuesta correcta localmente
       respuestaCorrecta.value = data.respuesta_correcta;
     } catch (error) {
       console.error('Error al obtener la respuesta:', error);

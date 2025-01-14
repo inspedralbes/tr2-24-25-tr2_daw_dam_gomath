@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 const server = http.createServer(app);
 const PORT = 3000;
-
+let tipoPartidaHost;
 const io = new Server(server, {
     cors: {
         origin: "http://localhost:5173",
@@ -27,7 +27,7 @@ const rooms = {};
 
 app.post('/api/create-room', (req, res) => {
     const { email } = req.body;
-    
+
     if (!email) {
         return res.status(400).json({ success: false, message: "Email es requerido" });
     }
@@ -79,12 +79,6 @@ io.on("connection", (socket) => {
         socket.emit("room-created", roomCode);
     });
 
-    socket.on("tipoPartidaHost", ({ tipoPartida, codigoSala }) => {
-        if (codigoSala) {
-          console.log(`Configurado tipoPartida para la sala ${codigoSala}:`, tipoPartida);
-          io.to(codigoSala).emit("tipoPartidaHost", { tipoPartida });
-        }
-      });
 
     socket.on("join-room", ({ roomCode, username }) => {
         if (!username) {
@@ -106,11 +100,20 @@ io.on("connection", (socket) => {
                 messages: rooms[roomCode].messages,
                 tipoPartida: rooms[roomCode].tipoPartida,
             });
+            io.to(roomCode).emit("tipoPartidaUser", {tipoPartida: tipoPartidaHost});
         } else {
             socket.emit("error", "La sala no existe");
         }
+        console.log('roomcode', roomCode);
     });
 
+    socket.on("tipoPartidaHost", ({ tipoPartida, codigoSala }) => {
+        if (codigoSala) {
+            console.log(`Configurado tipoPartida para la sala ${codigoSala}:`, tipoPartida);
+            tipoPartidaHost = tipoPartida;
+            //io.to(codigoSala).emit("tipoPartidaHost", { tipoPartida });
+        }
+    });
     socket.on("update-tipoPartida", ({ roomCode, tipoPartida }) => {
         if (rooms[roomCode]) {
             rooms[roomCode].tipoPartida = tipoPartida;
@@ -123,8 +126,8 @@ io.on("connection", (socket) => {
     socket.on("start-game", (roomCode) => {
         console.log("Evento 'start-game' recibido con los siguientes datos:", roomCode, roomCode.roomCode)
         const room = roomCode.roomCode;
-            console.log(`Iniciando partida en la sala: ${room}`);
-            io.to(room).emit("game-started");
+        console.log(`Iniciando partida en la sala: ${room}`);
+        io.to(room).emit("game-started");
     });
 
     socket.on("disconnect", () => {
@@ -139,11 +142,9 @@ io.on("connection", (socket) => {
                 if (member.isHost) {
                     console.log(`El host se desconectó de la sala ${roomCode}`);
                     if (room.members.length > 0) {
-                        // Asignar nuevo host si quedan miembros
                         room.members[0].isHost = true;
                         io.to(roomCode).emit("new-host", room.members[0]);
                     } else {
-                        // Eliminar la sala si está vacía
                         delete rooms[roomCode];
                     }
                 } else {
