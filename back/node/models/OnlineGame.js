@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const OnlineGameSchema = new mongoose.Schema({
     session_id: { type: String, required: true },
-    player_name: { type: String, required: true },
+    player_email: { type: String, required: true },
     preguntasAcertadas: { type: Number, required: true },
     preguntasFallidas: { type: Number, required: true },
     puntos: { type: Number, required: true },
