@@ -16,7 +16,7 @@
       </div>
       <div class="card-body players-list">
         <div v-for="player in players" :key="player.id" class="player-item">
-          <img :src="player.fotoPerfil" alt="Foto de perfil" class="profile-pic" />
+          <img :src="player.fotoPerfil || `https://api.multiavatar.com/Jugador.png`" alt="Foto de perfil" class="profile-pic" />
           <span>{{ player.name }}</span>
         </div>
       </div>
