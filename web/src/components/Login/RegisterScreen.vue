@@ -127,7 +127,7 @@ export default {
       };
 
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/users/store', {
+        const response = await fetch('http://gomath.daw.inspedralbes.cat/public/api/users/store', {
           method: 'POST',
           mode: 'cors',
           headers: {
