@@ -55,11 +55,10 @@ export default {
     const router = useRouter();
 
     const user = appStore.loginInfo;
-    const userName = ref(user.username); // Asignamos el nombre actual del usuario
+    const userName = ref(user.username);
     const isEditing = ref(false);
 
-    // Avatar depende del nombre de usuario
-    const avatarName = computed(() => userName.value || 'default-user'); // El avatar depende del nombre del usuario
+    const avatarName = computed(() => userName.value || 'default-user'); 
     const avatarUrl = computed(() => `https://api.multiavatar.com/${avatarName.value}.png`);
 
     const toggleInput = () => {
@@ -67,17 +66,14 @@ export default {
     };
 
     const saveName = async () => {
-      // Actualizamos la información en el estado global
       appStore.loginInfo.username = userName.value;
       appStore.setLoginInfo({
         ...user,
         username: userName.value,
       });
 
-      // Llamamos a la función para actualizar el nombre en el backend
       await updateUserNameInBackend(userName.value);
 
-      // Deshabilitamos la edición después de guardar
       isEditing.value = false;
     };
 
