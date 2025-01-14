@@ -1,9 +1,9 @@
 <template>
   <v-container>
-    <!-- Filtro por ID -->
+    <!-- Filtro por correo de jugador -->
     <v-text-field
-      v-model="idFilter"
-      label="Filtrar por ID"
+      v-model="emailFilter"
+      label="Filtrar per Correu Electrònic"
       outlined
       dense
       class="mb-5 text-field-blue"
@@ -16,8 +16,8 @@
       <v-card-text>
         <v-data-table
           :headers="playerHeaders"
-          :items="filteredPlayerStats" Usamos el filtro en los items
-          item-value="_id"
+          :items="filteredPlayerStats"
+          item-value="player_email"
           dense
           class="elevated-table"
           :loading="loadingPlayerStats"
@@ -29,15 +29,15 @@
           <v-container>
             <template v-slot:top>
               <v-row class="font-weight-bold text-center table-header">
-                <v-col cols="3">ID</v-col>
-                <v-col cols="3">Tipo de Juego</v-col>
-                <v-col cols="3">Rondas Totales</v-col>
-                <v-col cols="3">Fecha</v-col>
+                <v-col cols="3">Correu Electrònic</v-col>
+                <v-col cols="3">Tipus de Joc</v-col>
+                <v-col cols="3">Rondes Totals</v-col>
+                <v-col cols="3">Data</v-col>
               </v-row>
             </template>
             <template v-slot:item="{ item }">
               <v-row class="text-center hover-row table-row">
-                <v-col cols="3">{{ item._id }}</v-col>
+                <v-col cols="3">{{ item.player_email }}</v-col>
                 <v-col cols="3">{{ item.session_id }}</v-col>
                 <v-col cols="3">{{ item.preguntasAcertadas + item.preguntasFallidas }}</v-col>
                 <v-col cols="3">{{ new Date(item.created_at).toLocaleDateString() }}</v-col>
@@ -55,7 +55,7 @@
         <v-data-table
           :headers="generalHeaders"
           :items="filteredGeneralStats"
-          item-value="_id"
+          item-value="player_email"
           dense
           class="elevated-table"
           :loading="loadingGeneralStats"
@@ -65,15 +65,15 @@
         >
           <template v-slot:top>
             <v-row class="font-weight-bold text-center table-header">
-              <v-col cols="3">ID del Jugador</v-col>
-              <v-col cols="3">Respuestas Correctas</v-col>
-              <v-col cols="3">Respuestas Incorrectas</v-col>
-              <v-col cols="3">Fecha</v-col>
+              <v-col cols="3">Correu Electrònic del Jugador</v-col>
+              <v-col cols="3">Respostes Correctes</v-col>
+              <v-col cols="3">Respostes Incorrectes</v-col>
+              <v-col cols="3">Data</v-col>
             </v-row>
           </template>
           <template v-slot:item="{ item }">
             <v-row class="text-center hover-row table-row">
-              <v-col cols="3">{{ item.player_name }}</v-col>
+              <v-col cols="3">{{ item.player_email }}</v-col>
               <v-col cols="3">{{ item.preguntasAcertadas }}</v-col>
               <v-col cols="3">{{ item.preguntasFallidas }}</v-col>
               <v-col cols="3">{{ new Date(item.created_at).toLocaleDateString() }}</v-col>
@@ -82,7 +82,16 @@
         </v-data-table>
       </v-card-text>
     </v-card>
-    
+
+    <!-- Botón para generar gráficos -->
+    <v-btn @click="generarGraficos" color="primary" class="mt-4">
+      Generar Gràfics
+    </v-btn>
+
+    <!-- Mostrar las gráficas generadas -->
+    <div v-if="graficoGenerado" class="mt-5">
+      <v-img :src="graficoUrl" max-width="100%" />
+    </div>
   </v-container>
 </template>
 
@@ -90,41 +99,43 @@
 export default {
   data() {
     return {
-      idFilter: "", // Filtro por ID
+      emailFilter: "",
       playerStats: [],
       generalStats: [],
       playerHeaders: [
-        { text: "ID", value: "_id" },
-        { text: "Tipo de Juego", value: "session_id" },
-        { text: "Rondas Totales", value: "total_rounds" },
-        { text: "Fecha", value: "created_at" },
+        { text: "Correu Electrònic", value: "player_email" },
+        { text: "Tipus de Joc", value: "session_id" },
+        { text: "Rondes Totals", value: "total_rounds" },
+        { text: "Data", value: "created_at" },
       ],
       generalHeaders: [
-        { text: "ID del Jugador", value: "player_name" },
-        { text: "Respuestas Correctas", value: "preguntasAcertadas" },
-        { text: "Respuestas Incorrectas", value: "preguntasFallidas" },
-        { text: "Fecha", value: "created_at" },
+        { text: "Correu Electrònic del Jugador", value: "player_email" },
+        { text: "Respostes Correctes", value: "preguntasAcertadas" },
+        { text: "Respostes Incorrectes", value: "preguntasFallidas" },
+        { text: "Data", value: "created_at" },
       ],
       loadingPlayerStats: false,
       loadingGeneralStats: false,
+      graficoGenerado: false, // Variable para saber si el gráfico fue generado
+      graficoUrl: "", // URL del gráfico generado
     };
   },
   computed: {
     filteredPlayerStats() {
-      if (!this.idFilter) {
-        return this.playerStats; // Si no hay filtro, devolver todos los resultados
+      if (!this.emailFilter) {
+        return this.playerStats;
       }
       return this.playerStats.filter(item =>
-        item._id.toLowerCase().includes(this.idFilter.toLowerCase())
-      ); // Filtrar por ID
+        item.player_email.toLowerCase().includes(this.emailFilter.toLowerCase())
+      );
     },
     filteredGeneralStats() {
-      if (!this.idFilter) {
-        return this.generalStats; // Si no hay filtro, devolver todos los resultados
+      if (!this.emailFilter) {
+        return this.generalStats;
       }
       return this.generalStats.filter(item =>
-        item.player_name.toLowerCase().includes(this.idFilter.toLowerCase())
-      ); // Filtrar por nombre de jugador
+        item.player_email.toLowerCase().includes(this.emailFilter.toLowerCase())
+      );
     },
   },
   methods: {
@@ -150,7 +161,7 @@ export default {
         
         this.generalStats = data.map((game) => {
           return {
-            player_name: game.player_name,
+            player_email: game.player_email,
             preguntasAcertadas: game.preguntasAcertadas,
             preguntasFallidas: game.preguntasFallidas,
             created_at: game.created_at,
@@ -163,12 +174,27 @@ export default {
         this.loadingGeneralStats = false;
       }
     },
+    async generarGraficos() {
+  try {
+    const response = await fetch("http://localhost:3000/api/generar-graficos", {
+      method: "GET",
+    });
+    const data = await response.json();
+
+    if (data.graficoUrl) {
+      this.graficoUrl = data.graficoUrl;
+    } else {
+      console.error("No se pudo generar el gráfico.");
+    }
+  } catch (error) {
+    console.error("Error al generar los gráficos:", error);
+  }
+}
+
   },
   mounted() {
     this.fetchGeneralStats();
     this.fetchPlayerStats();
-    const header = document.querySelector('.elevated-table .v-data-table__header');
-    if (header) header.style.display = 'none';
   },
 };
 </script>
@@ -261,5 +287,14 @@ export default {
 
 .fade-transition {
   transition: opacity 0.3s ease;
+}
+
+/* Estilos adicionales para los gráficos */
+.mt-5 {
+  margin-top: 20px;
+}
+
+.mt-4 {
+  margin-top: 15px;
 }
 </style>
