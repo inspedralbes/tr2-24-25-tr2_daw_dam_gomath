@@ -1,67 +1,71 @@
 <template>
   <div>
-    <div v-if="operation">
-      <h2>{{ operation.question }}</h2>
+    <div v-if="!loading">
+      <div v-if="operation">
+        <h2>{{ operation.question }}</h2>
 
-      <div class="opciones">
-        <q-btn
-          v-for="(answer, index) in operation.answers"
-          :key="index"
-          :color="getButtonColor(index)"
-          class="opcion-btn"
-          @click="handleAnswer(answer, index)"
-          style="width: 200px; margin: 5px auto;"
-        >
-          {{ answer.value }}  
-        </q-btn>
+        <div class="opciones">
+          <q-btn
+            v-for="(answer, index) in operation.answers"
+            :key="index"
+            :color="getButtonColor(index)"
+            class="opcion-btn"
+            @click="handleAnswer(index)"
+            style="width: 200px; margin: 5px auto;"
+          >
+            {{ answer.value }}  
+          </q-btn>
+        </div>
+
+        <div class="navegacion">
+          <q-btn
+            @click="previousQuestion"
+            label="Anterior"
+            :disabled="currentQuestionIndex === 0"
+          />
+          <q-btn
+            v-if="siguiente"
+            @click="nextQuestion"
+            label="Següent"
+          />
+          <q-btn
+            v-else
+            @click="finalizar"
+            label="Finalitzar"
+          />
+        </div>
       </div>
-
-      <div class="navegacion">
-        <q-btn
-          @click="previousQuestion"
-          label="Anterior"
-          :disabled="currentQuestionIndex === 0"
-        />
-        <q-btn
-          v-if="siguiente"
-          @click="nextQuestion"
-          label="Siguiente"
-        />
-        <q-btn
-          v-else
-          @click="finalizar"
-          label="Finalizar"
-        />
+      <div v-else class="loading-container">
+        <img src="../../../assets/img/loading.gif" alt="cargando" />
       </div>
     </div>
     <div v-else class="loading-container">
-      <img src="../../../assets/img/loading.gif" alt="cargando" />
+      <img src="../../../assets/img/loading.gif" alt="Cargando respuestas" />
     </div>
   </div>
 </template>
+
 <script>
-import { computed, onMounted, ref, onUnmounted } from 'vue';
-import { useOperationsStore } from "@/stores/comunicationManager";
-import { inject } from "vue";
+import { computed, onMounted, reactive, ref } from 'vue';
+import { useOperationsStore, useUnaRespuesta } from "@/stores/comunicationManager";
 import { useTipoPartidaStore } from "../../../App.vue";
 import { useRouter } from 'vue-router';
-import { useRespuesta } from '../../../stores/respuesta'
-import { useUnaRespuesta } from '../../../stores/comunicationManager'
+import { useRespuesta } from '../../../stores/respuesta';
 import { useEstadisticasPartida } from '../../../stores/useEstadisticasPartida';
 
 export default {
   setup() {
-    const estadisticas = useEstadisticasPartida();
     const unaRespuesta = useUnaRespuesta();
+    const estadisticas = useEstadisticasPartida();
     const useRespuesta2 = useRespuesta();
     const tipoPartidaStore = useTipoPartidaStore();
-    const divActivo = inject("divActivo");
     const operationsStore = useOperationsStore();
-    const preguntasRespondidas = ref([]);
+    const respuestasPendientes = ref([]);
     const currentQuestionIndex = ref(0);
-    const selectedAnswer = ref(null);
-    const correctAnswer = ref(null);
+    const selectedAnswer = ref(null);  
+    const loading = ref(false);
     const router = useRouter();
+
     const operation = computed(() => {
       const operacionesFiltradas = operationsStore.operations.preguntas_y_respuestas;
       if (operacionesFiltradas && operacionesFiltradas[currentQuestionIndex.value]) {
@@ -88,46 +92,64 @@ export default {
       await operationsStore.fetchOperations();
       estadisticas.setEstadisticasZero();
     });
+
+    const preguntasRespondidas = reactive({});
+
     const getButtonColor = (index) => {
-      return preguntasRespondidas.value[currentQuestionIndex.value] === index
-        ? "grey"
-        : "primary";
+      return selectedAnswer.value === index ? "grey" : "primary";
     };
 
-    const handleAnswer = async (selected, index) => {
-      selectedAnswer.value = selected;
-      preguntasRespondidas.value[currentQuestionIndex.value] = index;
-      useRespuesta2.setRespuesta(operation.value.answers[index].value);
-      useRespuesta2.setId(operation.value.id_pregunta);
-      await unaRespuesta.fetchRespuesta();  
-      console.log('comparacion para correccion', operation.value.answers[index].value, useRespuesta2.correcta);
-      if (operation.value.answers[index].value !== useRespuesta2.correcta) {
-        estadisticas.setPreguntaIncorrecta();
-        estadisticas.setPuntos(-50);
-        if (estadisticas.estadisticasPartida.preguntasFalladas === tipoPartidaStore.tipoPartida.cantidad) {
-          router.push('/Offline/FinPartida');
-        }
+    const handleAnswer = (index) => {
+      selectedAnswer.value = index; 
+      const preguntaRespondida = preguntasRespondidas[currentQuestionIndex.value];
+
+      if (preguntaRespondida === undefined) {
+        preguntasRespondidas[currentQuestionIndex.value] = index;
+        respuestasPendientes.value.push({
+          id_pregunta: operation.value.id_pregunta,
+          respuesta: operation.value.answers[index].value
+        });
       } else {
-        estadisticas.setPreguntaCorrecta();
-        estadisticas.setPuntos(100);
+        respuestasPendientes.value = respuestasPendientes.value.filter(r => r.id_pregunta !== operation.value.id_pregunta);
+        respuestasPendientes.value.push({
+          id_pregunta: operation.value.id_pregunta,
+          respuesta: operation.value.answers[index].value
+        });
       }
     };
+
     const nextQuestion = () => {
       if (siguiente.value) {
         currentQuestionIndex.value++;
-        correctAnswer.value = null;
-        selectedAnswer.value = null;
+        selectedAnswer.value = null; 
       }
     };
 
     const previousQuestion = () => {
       if (currentQuestionIndex.value > 0) {
         currentQuestionIndex.value--;
-        correctAnswer.value = null;
+        selectedAnswer.value = null; 
       }
     };
 
-    function finalizar () {
+    const finalizar = async () => {
+      loading.value = true;
+      const respuestasPromises = respuestasPendientes.value.map(async (respuesta) => {
+        useRespuesta2.setRespuesta(respuesta.respuesta);
+        useRespuesta2.setId(respuesta.id_pregunta);
+        await unaRespuesta.fetchRespuesta();
+
+        if (respuesta.respuesta !== useRespuesta2.correcta) {
+          estadisticas.setPreguntaIncorrecta();
+          estadisticas.setPuntos(-50);
+        } else {
+          estadisticas.setPreguntaCorrecta();
+          estadisticas.setPuntos(100);
+        }
+      });
+
+      await Promise.all(respuestasPromises);
+      loading.value = false;
       router.push('/Offline/FinPartida');
     };
 
@@ -138,14 +160,15 @@ export default {
       previousQuestion,
       finalizar,
       currentQuestionIndex,
-      selectedAnswer,
       getButtonColor,
       siguiente,
       preguntasRespondidas,
+      loading
     };
   },
 };
 </script>
+
 <style scoped>
 .opciones {
   display: flex;

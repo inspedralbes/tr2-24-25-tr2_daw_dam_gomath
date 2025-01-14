@@ -18,7 +18,6 @@ export default {
   setup() {
     const divActivo = inject('divActivo');
 
-    // Lista de archivos PDF
     const archivos = [
       'Dossier_Exercicis_Figures en el pla i angles.pdf',
       'Dossier_Exercicis_Nombres i Operacions.pdf',
@@ -33,7 +32,7 @@ export default {
     });
 
     return {
-      archivos, // Devuelve la lista para usarla en el template
+      archivos,
     };
   },
 };

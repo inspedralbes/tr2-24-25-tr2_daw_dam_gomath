@@ -63,9 +63,8 @@ export default {
         return;
       }
 
-      // Esborrar missatge d'error abans d'intentar l'inici de sessió
+      isLoading.value = true;  
       errorMessage.value = '';
-      isLoading.value = true;
 
       try {
         const response = await fetch('http://127.0.0.1:8000/api/userLogin', {

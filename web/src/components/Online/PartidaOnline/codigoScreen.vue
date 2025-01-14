@@ -21,13 +21,8 @@
       </div>
     </div>
 
-    <q-btn
-      v-if="empezarPartidaBtn"
-      class="start-btn"
-      label="Comenzar partida"
-      color="primary"
-      @click="hostEmpiezaPartida"
-    />
+    <q-btn v-if="empezarPartidaBtn" class="start-btn" label="Comenzar partida" color="primary"
+      @click="hostEmpiezaPartida" />
   </div>
 </template>
 
@@ -46,7 +41,6 @@ export default {
     const socket = io("http://localhost:3000", {
       transports: ["websocket"],
     });
-
     const codigoSala = ref("");
     const players = ref([]);
     const empezarPartidaBtn = ref(false);
@@ -57,35 +51,50 @@ export default {
     const estadoOnline = useEstadoOnline();
     const sala = useCodigoSala();
 
-    onMounted(() => {
-      if (estadoOnline.propietario === "yo") {
-        sala.fetchCodigo().then(() => {
+    onMounted(async () => {
+      console.log('el propietario es: ', estadoOnline.propietario);
+
+      if (estadoOnline.propietario === 'yo') {
+        sala.fetchCodigo().then(async () => {
           codigoSala.value = sala.codigo;
           empezarPartidaBtn.value = true;
+          console.log('eres host');
 
-          socket.emit("join-room", {
-            roomCode: codigoSala.value,
-            username: loginInfo.loginInfo.username || "Jugador",
-          });
+          const union = async () => {
+            socket.emit("join-room", {
+              roomCode: codigoSala.value,
+              username: loginInfo.loginInfo.username || "Jugador",
+            })
+          };
+          await union();
+          socket.emit('tipoPartidaHost', { tipoPartida: tipoPartida.tipoPartida, codigoSala: codigoSala.value });
+          console.log('tipoPartida host enviado a node', tipoPartida.tipoPartida);
+          console.log('este es el codigo de la sala', codigoSala.value);
         });
-      } else if (estadoOnline.propietario === "otro") {
+      } else if (estadoOnline.propietario === 'otro') {
+        console.log('has entrado en otro');
+
         codigoSala.value = estadoOnline.codigoUnion;
         empezarPartidaBtn.value = false;
-
-        socket.on("tipoPartidaHost", (data) => {
-          if (data && data.tipoPartida) {
-            tipoPartidaNode.value = data.tipoPartida;
-            tipoPartida.setModo(tipoPartidaNode.value.modo);
-          } else {
-            console.error("Datos de tipoPartidaHost inválidos:", data);
-          }
-        });
-
         socket.emit("join-room", {
           roomCode: codigoSala.value,
           username: loginInfo.loginInfo.username || "Jugador",
         });
+        
+        socket.on("tipoPartidaUser", (data) => {
+          console.log("tipoPartidaHost", data)
+          if (data.tipoPartida) {
+            tipoPartidaNode.value = data.tipoPartida;
+            console.log('tipoPartida de data directamente: ', data.tipoPartida);
+  
+            tipoPartida.tipoPartida = tipoPartidaNode.value;
+  
+          } else {
+            console.error("Datos de tipoPartidaHost inválidos:", data);
+          }
+        });
       }
+
 
       socket.on("update-users", (members) => {
         players.value = members;
@@ -121,14 +130,6 @@ export default {
 
     onUnmounted(() => {
       socket.disconnect();
-
-      if (estadoOnline.propietario === "yo") {
-        fetch(`http://localhost:3000/api/salas/${estadoOnline.codigoUnion}`, {
-          method: "DELETE",
-        }).catch((error) => {
-          console.error("Error al eliminar la sala:", error);
-        });
-      }
     });
 
     return {
