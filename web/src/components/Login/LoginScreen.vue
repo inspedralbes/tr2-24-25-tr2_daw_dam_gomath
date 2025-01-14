@@ -90,7 +90,7 @@ export default {
             image: data.user.image || 'https://randomuser.me/api/portraits/thumb/women/56.jpg',
           });
 
-          router.push('/Offline');
+          router.push('/');
         } else {
           errorMessage.value = data.message || 'Credencials incorrectes.';
         }
