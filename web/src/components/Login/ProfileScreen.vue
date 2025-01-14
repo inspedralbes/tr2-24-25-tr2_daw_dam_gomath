@@ -3,30 +3,20 @@
     <q-card class="q-pa-md" style="width: 300px;">
       <q-card-section>
         <div class="text-center">
+          <!-- Avatar que depende del nombre del usuario -->
           <q-avatar size="80px" class="q-mb-md">
             <img :src="avatarUrl" alt="Profile Picture" />
           </q-avatar>
+          <br>
+          <!-- Botón para cambiar el nombre -->
+          <q-btn dense flat label="Cambiar nombre" @click="toggleInput" class="q-mb-md"
+            style="background-color: #B0AEAC;" />
 
-          <q-btn
-            dense
-            flat
-            label="Avatares existentes"
-            @click="toggleInput"
-            class="q-mb-md"
-            style="background-color: #B0AEAC;"
-          />
+          <div class="text-h6">
+            <q-input v-if="isEditing" v-model="userName" label="Nuevo nombre" outlined dense class="q-mb-md" />
+            <div v-else>{{ user.username }}</div>
+          </div>
 
-          <q-input
-            v-if="isEditing"
-            v-model="avatarName"
-            label="Avatar ID"
-            outlined
-            dense
-            @input="updateAvatarUrl"
-            class="q-mb-md"
-          />
-
-          <div class="text-h6">{{ user.username }}</div>
           <div class="text-subtitle2">{{ user.email }}</div>
         </div>
       </q-card-section>
@@ -45,6 +35,8 @@
       </q-card-section>
 
       <q-card-actions align="right">
+        <!-- Botón para guardar los cambios -->
+        <q-btn v-if="isEditing" label="Guardar" color="primary" @click="saveName" />
         <q-btn label="Tancar sessió" color="negative" @click="logout" />
       </q-card-actions>
     </q-card>
@@ -63,24 +55,63 @@ export default {
     const router = useRouter();
 
     const user = appStore.loginInfo;
-
-    const avatarName = ref(appStore.loginInfo.imageId || user.username || 'default-user');
-    const avatarUrl = computed(() => `https://api.multiavatar.com/${avatarName.value}.png`);
+    const userName = ref(user.username); // Asignamos el nombre actual del usuario
     const isEditing = ref(false);
+
+    // Avatar depende del nombre de usuario
+    const avatarName = computed(() => userName.value || 'default-user'); // El avatar depende del nombre del usuario
+    const avatarUrl = computed(() => `https://api.multiavatar.com/${avatarName.value}.png`);
 
     const toggleInput = () => {
       isEditing.value = !isEditing.value;
     };
 
-    const updateAvatarUrl = () => {
-      appStore.loginInfo.imageId = avatarName.value;
+    const saveName = async () => {
+      // Actualizamos la información en el estado global
+      appStore.loginInfo.username = userName.value;
       appStore.setLoginInfo({
         ...user,
-        image: avatarUrl.value,
-        imageId: avatarName.value,
+        username: userName.value,
       });
-      localStorage.setItem('avatarUrl', avatarUrl.value);
+
+      // Llamamos a la función para actualizar el nombre en el backend
+      await updateUserNameInBackend(userName.value);
+
+      // Deshabilitamos la edición después de guardar
+      isEditing.value = false;
     };
+
+    const updateUserNameInBackend = async (newName) => {
+      try {
+        console.log(appStore.loginInfo);
+
+        console.log('hola',user.email);
+        
+        const token = appStore.loginInfo.token;
+        if (!user.email) {
+          throw new Error('El email del usuario no está definido');
+        }
+
+        const response = await fetch(`http://localhost:8000/api/user/update/${user.email}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ name: newName }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Error al actualizar el nombre');
+        }
+
+        const data = await response.json();
+        console.log('Nombre actualizado correctamente:', data);
+      } catch (error) {
+        console.error('Error al actualizar el nombre:', error);
+      }
+    };
+
 
     const formattedDate = new Date().toLocaleDateString('ca-ES', {
       year: 'numeric',
@@ -114,10 +145,10 @@ export default {
       user,
       formattedDate,
       avatarUrl,
-      avatarName,
+      userName,
       isEditing,
       toggleInput,
-      updateAvatarUrl,
+      saveName,
       logout,
     };
   },
@@ -125,9 +156,6 @@ export default {
 </script>
 
 <style scoped>
-.q-avatar img {
-  border-radius: 50%;
-}
 .text-center {
   text-align: center;
 }
