@@ -27,7 +27,6 @@ app.use(cors({
     credentials: true              
 }));
 app.use(express.static("public")); 
-app.use('/api/offlineGames', offlineGamesRoutes);
 app.use('/api/onlineGames', onlineGamesRoutes);
 
 // Connexió a la base de dades MongoDB

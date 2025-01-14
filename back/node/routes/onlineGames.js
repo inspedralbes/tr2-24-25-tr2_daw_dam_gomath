@@ -6,10 +6,17 @@ const OnlineGame = require('../models/OnlineGame');
 router.post('/', async (req, res) => {
     try {
         const newGame = new OnlineGame({
-            nombre: req.body.nombre,
-            aciertos: req.body.aciertos,
-            errores: req.body.errores,
-            puntos: req.body.puntos
+            session_id: req.body.session_id,
+            players_id: req.body.players_id,
+            game_type: req.body.game_type,
+            total_rounds: req.body.total_rounds,
+            session_time: req.body.session_time,
+            leaderboard: req.body.leaderboard.map(lb => ({
+                position: lb.position,
+                player_id: lb.player_id,
+                score: lb.score,
+                questions: lb.questions,
+            })),
         });
 
         const savedGame = await newGame.save();
@@ -29,25 +36,25 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Obtener partida online por nombre
-// router.get('/session/:session_id', async (req, res) => {
-//     try {
-//         const game = await OnlineGame.findOne({ session_id: req.params.session_id });
-//         if (!game) return res.status(404).json({ missatge: 'Partida no encontrada para este session_id' });
-//         res.json(game);
-//     } catch (error) {
-//         res.status(500).json({ missatge: 'Error al obtener la partida online', error });
-//     }
-// });
+// Obtener partida online por session_id
+router.get('/session/:session_id', async (req, res) => {
+    try {
+        const game = await OnlineGame.findOne({ session_id: req.params.session_id });
+        if (!game) return res.status(404).json({ missatge: 'Partida no encontrada para este session_id' });
+        res.json(game);
+    } catch (error) {
+        res.status(500).json({ missatge: 'Error al obtener la partida online', error });
+    }
+});
 
 // Obtenir partides per player_id (per ser part d'un array de players_id)
-router.get('/player/:nombre', async (req, res) => {
+router.get('/player/:player_id', async (req, res) => {
     try {
         // Obtenir el player_id de la petició
-        const playerId = req.params.nombre;
+        const playerId = req.params.player_id;
 
         // Cercar partides on player_id estigui dins de l'array players_id
-        const games = await OnlineGame.find({ nombre: playerId });
+        const games = await OnlineGame.find({ players_id: playerId });
 
         // Si no hi ha partides, retornar un error
         if (games.length === 0) {
@@ -62,34 +69,34 @@ router.get('/player/:nombre', async (req, res) => {
     }
 });
 
-// // Obtenir totes les partides per un player_id i data
-// router.get('/player/:player_id/:date', async (req, res) => {
-//     try {
-//         const playerId = req.params.player_id;
-//         const date = req.params.date; // Fecha en formato YYYY-MM-DD
+// Obtenir totes les partides per un player_id i data
+router.get('/player/:player_id/:date', async (req, res) => {
+    try {
+        const playerId = req.params.player_id;
+        const date = req.params.date; // Fecha en formato YYYY-MM-DD
   
-//         // Crear un objeto de fecha sin horas, minutos, segundos ni milisegundos
-//         const startDate = new Date(date);
-//         startDate.setHours(0, 0, 0, 0); // Asegura que solo se considere la fecha
+        // Crear un objeto de fecha sin horas, minutos, segundos ni milisegundos
+        const startDate = new Date(date);
+        startDate.setHours(0, 0, 0, 0); // Asegura que solo se considere la fecha
   
-//         const endDate = new Date(date);
-//         endDate.setHours(23, 59, 59, 999); // Asegura que la fecha termine al final del día
+        const endDate = new Date(date);
+        endDate.setHours(23, 59, 59, 999); // Asegura que la fecha termine al final del día
   
-//         // Buscar partidas por player_id y por rango de fecha
-//         const games = await OnlineGame.find({
-//             players_id: playerId,
-//             created_at: { $gte: startDate, $lte: endDate } // Filtrar por fecha
-//         });
+        // Buscar partidas por player_id y por rango de fecha
+        const games = await OnlineGame.find({
+            players_id: playerId,
+            created_at: { $gte: startDate, $lte: endDate } // Filtrar por fecha
+        });
   
-//         if (games.length === 0) {
-//             return res.status(404).json({ missatge: 'No s’han trobat partides per aquest player_id i data' });
-//         }
+        if (games.length === 0) {
+            return res.status(404).json({ missatge: 'No s’han trobat partides per aquest player_id i data' });
+        }
   
-//         res.json(games);
-//     } catch (error) {
-//         res.status(500).json({ missatge: 'Error al obtenir les partides', error });
-//     }
-//   });
+        res.json(games);
+    } catch (error) {
+        res.status(500).json({ missatge: 'Error al obtenir les partides', error });
+    }
+  });
 
 // Eliminar una partida online por ID
 router.delete('/:id', async (req, res) => {

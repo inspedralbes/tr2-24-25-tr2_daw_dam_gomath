@@ -16,7 +16,7 @@
       <v-card-text>
         <v-data-table
           :headers="playerHeaders"
-          :items="playerStats"
+          :items="filteredPlayerStats" Usamos el filtro en los items
           item-value="_id"
           dense
           class="elevated-table"
@@ -37,10 +37,10 @@
             </template>
             <template v-slot:item="{ item }">
               <v-row class="text-center hover-row table-row">
-                <v-col cols="3">{{ item.id }}</v-col>
-                <v-col cols="3">{{ item.game_type }}</v-col>
-                <v-col cols="3">{{ item.total_rounds }}</v-col>
-                <v-col cols="3">{{ new Date(item.date).toLocaleDateString() }}</v-col>
+                <v-col cols="3">{{ item._id }}</v-col>
+                <v-col cols="3">{{ item.session_id }}</v-col>
+                <v-col cols="3">{{ item.preguntasAcertadas + item.preguntasFallidas }}</v-col>
+                <v-col cols="3">{{ new Date(item.created_at).toLocaleDateString() }}</v-col>
               </v-row>
             </template>
           </v-container>
@@ -54,7 +54,7 @@
       <v-card-text>
         <v-data-table
           :headers="generalHeaders"
-          :items="generalStats"
+          :items="filteredGeneralStats"
           item-value="_id"
           dense
           class="elevated-table"
@@ -73,9 +73,9 @@
           </template>
           <template v-slot:item="{ item }">
             <v-row class="text-center hover-row table-row">
-              <v-col cols="3">{{ item.player_id }}</v-col>
-              <v-col cols="3">{{ item.correct_answers }}</v-col>
-              <v-col cols="3">{{ item.incorrect_answers }}</v-col>
+              <v-col cols="3">{{ item.player_name }}</v-col>
+              <v-col cols="3">{{ item.preguntasAcertadas }}</v-col>
+              <v-col cols="3">{{ item.preguntasFallidas }}</v-col>
               <v-col cols="3">{{ new Date(item.created_at).toLocaleDateString() }}</v-col>
             </v-row>
           </template>
@@ -95,30 +95,43 @@ export default {
       generalStats: [],
       playerHeaders: [
         { text: "ID", value: "_id" },
-        { text: "Tipo de Juego", value: "game_type" },
+        { text: "Tipo de Juego", value: "session_id" },
         { text: "Rondas Totales", value: "total_rounds" },
-        { text: "Tiempo de Sesión", value: "session_time" },
         { text: "Fecha", value: "created_at" },
       ],
       generalHeaders: [
-        { text: "ID del Jugador", value: "player_id" },
-        { text: "Respuestas Correctas", value: "correct_answers" },
-        { text: "Respuestas Incorrectas", value: "incorrect_answers" },
+        { text: "ID del Jugador", value: "player_name" },
+        { text: "Respuestas Correctas", value: "preguntasAcertadas" },
+        { text: "Respuestas Incorrectas", value: "preguntasFallidas" },
         { text: "Fecha", value: "created_at" },
       ],
       loadingPlayerStats: false,
       loadingGeneralStats: false,
     };
   },
+  computed: {
+    filteredPlayerStats() {
+      if (!this.idFilter) {
+        return this.playerStats; // Si no hay filtro, devolver todos los resultados
+      }
+      return this.playerStats.filter(item =>
+        item._id.toLowerCase().includes(this.idFilter.toLowerCase())
+      ); // Filtrar por ID
+    },
+    filteredGeneralStats() {
+      if (!this.idFilter) {
+        return this.generalStats; // Si no hay filtro, devolver todos los resultados
+      }
+      return this.generalStats.filter(item =>
+        item.player_name.toLowerCase().includes(this.idFilter.toLowerCase())
+      ); // Filtrar por nombre de jugador
+    },
+  },
   methods: {
     async fetchPlayerStats() {
-      if (!this.idFilter) {
-        this.playerStats = [];
-        return;
-      }
       this.loadingPlayerStats = true;
       try {
-        const response = await fetch(`http://localhost:3000/api/offlineGames/${this.idFilter}`);
+        const response = await fetch(`http://localhost:3000/api/onlineGames`);
         if (!response.ok) throw new Error("Error al obtener estadísticas del jugador");
         this.playerStats = await response.json();
       } catch (error) {
@@ -131,18 +144,15 @@ export default {
     async fetchGeneralStats() {
       this.loadingGeneralStats = true;
       try {
-        const response = await fetch(`http://localhost:3000/api/offlineGames`);
+        const response = await fetch(`http://localhost:3000/api/onlineGames`);
         if (!response.ok) throw new Error("Error al obtener estadísticas generales");
         const data = await response.json();
+        
         this.generalStats = data.map((game) => {
-          const correctAnswers = game.questions.filter(
-            (q) => q.correct_response === q.current_response
-          ).length;
-          const incorrectAnswers = game.questions.length - correctAnswers;
           return {
-            player_id: game.player_id,
-            correct_answers: correctAnswers,
-            incorrect_answers: incorrectAnswers,
+            player_name: game.player_name,
+            preguntasAcertadas: game.preguntasAcertadas,
+            preguntasFallidas: game.preguntasFallidas,
             created_at: game.created_at,
           };
         });
@@ -156,6 +166,7 @@ export default {
   },
   mounted() {
     this.fetchGeneralStats();
+    this.fetchPlayerStats();
     const header = document.querySelector('.elevated-table .v-data-table__header');
     if (header) header.style.display = 'none';
   },
