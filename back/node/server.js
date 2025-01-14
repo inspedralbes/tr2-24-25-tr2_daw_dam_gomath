@@ -80,7 +80,7 @@ io.on("connection", (socket) => {
     });
 
 
-    socket.on("join-room", ({ roomCode, username }) => {
+    socket.on("join-room", ({ roomCode, username, fotoPerfil }) => {
         if (!username) {
             return socket.emit("error", "El nombre de usuario es requerido para unirse a la sala");
         }
@@ -88,7 +88,7 @@ io.on("connection", (socket) => {
         if (rooms[roomCode]) {
             const isAlreadyMember = rooms[roomCode].members.some((member) => member.id === socket.id);
             if (!isAlreadyMember) {
-                rooms[roomCode].members.push({ id: socket.id, name: username, isHost: false });
+                rooms[roomCode].members.push({ id: socket.id, name: username, isHost: false, fotoPerfil: fotoPerfil, });
                 console.log(`${username} se unió a la sala ${roomCode}`);
             }
 

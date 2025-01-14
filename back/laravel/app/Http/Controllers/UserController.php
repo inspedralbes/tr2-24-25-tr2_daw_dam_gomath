@@ -143,6 +143,29 @@ class UserController extends Controller
 
         return view('users.edit', compact('user'));
     }
+    // En UserController
+
+    public function updateName(Request $request, $email)
+    {
+        $user = User::where('email', $email)->first();
+        if (!$user) {
+            return response()->json(['error' => 'Usuario no encontrado'], 404);
+        }
+    
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+    
+        $user->name = $data['name'];
+        $user->save();
+    
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Nombre actualizado correctamente.',
+            'user' => $user,
+        ]);
+    }
+    
 
     /**
      * Update the specified resource in storage.
