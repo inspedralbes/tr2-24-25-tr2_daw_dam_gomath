@@ -146,7 +146,6 @@ export default {
       side="left" bordered>
       <q-tabs vertical>
         <q-route-tab to="/register" label="Registra't" />
-        <q-route-tab to="/Cerrar-sesion" label="Tancar sessió" class="text-red" />
       </q-tabs>
     </q-drawer>
 

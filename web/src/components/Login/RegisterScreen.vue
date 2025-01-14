@@ -68,8 +68,8 @@ export default {
     const role = ref('');
     const router = useRouter();
     const divActivo = inject('divActivo');
-    const errorMessage = ref(''); // Variable per al missatge d'error
-    const isLoading = ref(false); // Estat de càrrega
+    const errorMessage = ref(''); 
+    const isLoading = ref(false); 
 
     onMounted(() => {
       if (divActivo) {
@@ -83,19 +83,16 @@ export default {
     });
 
     async function registration() {
-      // Validar email
       if (!isValidEmail.value) {
         errorMessage.value = 'Introdueix un correu electrònic vàlid.';
         return;
       }
 
-      // Validar camps obligatoris
       if (!username.value || !password.value || !email.value) {
         errorMessage.value = 'Si us plau, completa tots els camps.';
         return;
       }
 
-      // Validar si és professor
       if (isProfe.value) {
         if (!codiProfe.value.trim()) {
           errorMessage.value = 'Introdueix el Codi de Profe.';
@@ -111,11 +108,9 @@ export default {
         role.value = 'student';
       }
 
-      // Restablir missatge d'error i activar estat de càrrega
       errorMessage.value = '';
       isLoading.value = true;
 
-      // Generar avatar a partir del nom d'usuari
       const avatarUrl = `https://api.multiavatar.com/${username.value}.png`;
 
       const formData = {
@@ -123,7 +118,7 @@ export default {
         email: email.value,
         password: password.value,
         rol: role.value,
-        image: avatarUrl, // Asignamos el avatar generado aquí
+        image: avatarUrl,
       };
 
       try {
@@ -144,16 +139,16 @@ export default {
             loggedIn: true,
             username: username.value,
             role: role.value,
-            image: avatarUrl, // Usamos el avatar aquí también
+            image: avatarUrl, 
           });
           appStore.setLoginInfo({
             loggedIn: true,
             username: username.value,
             role: role.value,
-            image: avatarUrl, // Usamos el avatar aquí también
+            image: avatarUrl, 
           });
 
-          router.push('/Offline');
+          router.push('/');
         } else {
           errorMessage.value = data.message || 'Error en el registre.';
         }

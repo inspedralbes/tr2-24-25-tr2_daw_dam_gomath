@@ -6,10 +6,10 @@
         <p class="description">
           Descobreix el teu nivell de matemàtiques, desafia els teus límits i millora les teves habilitats mentre et diverteixes!
         </p>
-        <button class="cta-button" @click="goToRegister">Registra't ara!</button>
+        <button v-if="muestraRegistro" class="cta-button" @click="goToRegister">Registra't ara!</button>
       </main>
       <footer>
-        <p class="footer-text">Ja tens un compte?
+        <p v-if="muestraRegistro" class="footer-text">Ja tens un compte?
           <a href="#" @click="goToLogin">Inicia sessió aquí</a>
         </p>
       </footer>
@@ -19,7 +19,24 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+import { useAppStore } from '@/stores/app';
+import { onMounted } from 'vue';
 export default {
+  setup(){
+    const appStore = useAppStore();
+    const muestraRegistro = ref(true);
+    onMounted(() => {
+      if (appStore.loginInfo.email !== '') {
+        muestraRegistro.value = false;
+      }else{
+        muestraRegistro.value = true;
+      }
+    });
+    return{
+      muestraRegistro,
+    }
+  },
   name: "HomeScreen",
   methods: {
     goToRegister() {
