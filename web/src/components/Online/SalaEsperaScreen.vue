@@ -48,7 +48,7 @@ export default {
 
     const handleJoin = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/salas/${inputValue.value}`);
+        const response = await fetch(`http://gomath.daw.inspedralbes.cat:21555/api/salas/${inputValue.value}`);
         if (!response.ok) {
           throw new Error("No se pudo verificar la sala.");
         }

@@ -6,11 +6,11 @@ const cors = require("cors");
 
 const app = express();
 const server = http.createServer(app);
-const PORT = 3000;
+const PORT = 21555;
 let tipoPartidaHost;
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:5173",
+        origin: "http://gomath.daw.inspedralbes.cat",
         methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
         credentials: true,
     },
@@ -18,7 +18,7 @@ const io = new Server(server, {
 
 app.use(express.json());
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "http://gomath.daw.inspedralbes.cat",
     methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
     credentials: true,
 }));
@@ -157,5 +157,5 @@ io.on("connection", (socket) => {
 });
 
 server.listen(PORT, () => {
-    console.log(`Servidor en ejecución en http://localhost:${PORT}`);
+    console.log(`Servidor en ejecución en http://gomath.daw.inspedralbes.cat:${PORT}`);
 });

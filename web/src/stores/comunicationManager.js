@@ -121,7 +121,7 @@ export const useCodigoSala = defineStore('codigoSala', () => {
   const codigo = ref('');
   const emailCreador = ref('');
   async function fetchCodigo(){
-    await fetch('http://localhost:3000/api/create-room', {
+    await fetch('http://gomath.daw.inspedralbes.cat:21555/api/create-room', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',

@@ -8,7 +8,7 @@ const localStorageTipoPartida = 'tipoPartida';
 
 export const useTipoPartidaStore = defineStore(localStorageTipoPartida, () => {
   const router = useRouter();
-  const socket = io('http://localhost:3000', {
+  const socket = io('http://gomath.daw.inspedralbes.cat:21555', {
       transports: ['websocket'],
     });
   const tipoPartida = ref(

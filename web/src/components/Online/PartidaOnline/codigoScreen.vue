@@ -38,7 +38,7 @@ import { useTipoPartidaStore } from "@/App.vue";
 export default {
   setup() {
     const router = useRouter();
-    const socket = io("http://localhost:3000", {
+    const socket = io("http://gomath.daw.inspedralbes.cat:21555", {
       transports: ["websocket"],
     });
     const codigoSala = ref("");
@@ -88,7 +88,7 @@ export default {
             console.log('tipoPartida de data directamente: ', data.tipoPartida);
   
             tipoPartida.tipoPartida = tipoPartidaNode.value;
-  
+            console.log('tipoPartida que cambiado a',tipoPartida.tipoPartida);
           } else {
             console.error("Datos de tipoPartidaHost inválidos:", data);
           }

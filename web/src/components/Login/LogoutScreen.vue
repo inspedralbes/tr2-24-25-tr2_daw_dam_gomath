@@ -33,7 +33,7 @@ export default {
         console.log('ya tengo el token: ', token);
         console.log('antes del fetch');
 
-        const response = await fetch('http://localhost:8000/api/userLogout', {
+        const response = await fetch('http://gomath.daw.inspedralbes.cat/public/api/userLogout', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

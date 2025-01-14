@@ -16,7 +16,7 @@ return [
     */
 
     'allowed_origins' => [
-    'http://localhost:5173', // Permite solicitudes desde el puerto 5173
+    'http://gomath.daw.inspedralbes.cat', 
     ],
 
 
