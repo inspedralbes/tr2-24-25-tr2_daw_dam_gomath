@@ -8,7 +8,7 @@ export const useAppStore = defineStore('app', {
       username: '',
       email: '',
       role: '',
-      image: '',
+      image: localStorage.getItem('avatarUrl') || '',
     },
     registrationInfo: {
       loggedIn: false,
@@ -16,7 +16,7 @@ export const useAppStore = defineStore('app', {
       username: '',
       email: '',
       role: '',
-      image: '',
+      image: localStorage.getItem('avatarUrl') || '',
     },
   }),
 
@@ -28,9 +28,9 @@ export const useAppStore = defineStore('app', {
       this.loginInfo.email = '';
       this.loginInfo.role = '';
       this.loginInfo.image = '';
+      localStorage.removeItem('avatarUrl');
     },
 
-    // Acción para establecer la información de login
     setLoginInfo({ loggedIn, token, username, email, role, image }) {
       this.loginInfo.loggedIn = loggedIn;
       this.loginInfo.token = token;
@@ -38,22 +38,24 @@ export const useAppStore = defineStore('app', {
       this.loginInfo.email = email;
       this.loginInfo.role = role;
       this.loginInfo.image = image;
+
+      localStorage.setItem('avatarUrl', image);
     },
-    // Acción para establecer la información de registro (puede ser utilizada en otros casos)
+    
     setRegistrationInfo({ loggedIn, token, username, role, image }) {
       this.registrationInfo.loggedIn = loggedIn;
-      this.token = token;
+      this.registrationInfo.token = token;
       this.registrationInfo.username = username;
       this.registrationInfo.role = role;
       this.registrationInfo.image = image;
+
+      localStorage.setItem('avatarUrl', image);
     },
   },
 
   getters: {
     isLoggedIn: (state) => state.loginInfo.loggedIn,
-
     getLoginInfo: (state) => state.loginInfo,
-
     getRegistrationInfo: (state) => state.registrationInfo,
   },
 });

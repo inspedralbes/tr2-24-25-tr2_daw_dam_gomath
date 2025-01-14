@@ -115,11 +115,15 @@ export default {
       errorMessage.value = '';
       isLoading.value = true;
 
+      // Generar avatar a partir del nom d'usuari
+      const avatarUrl = `https://api.multiavatar.com/${username.value}.png`;
+
       const formData = {
         username: username.value,
         email: email.value,
         password: password.value,
         rol: role.value,
+        image: avatarUrl, // Asignamos el avatar generado aquí
       };
 
       try {
@@ -140,13 +144,13 @@ export default {
             loggedIn: true,
             username: username.value,
             role: role.value,
-            image: 'https://randomuser.me/api/portraits/thumb/women/56.jpg',
+            image: avatarUrl, // Usamos el avatar aquí también
           });
           appStore.setLoginInfo({
             loggedIn: true,
             username: username.value,
             role: role.value,
-            image: 'https://randomuser.me/api/portraits/thumb/women/56.jpg',
+            image: avatarUrl, // Usamos el avatar aquí también
           });
 
           router.push('/Offline');

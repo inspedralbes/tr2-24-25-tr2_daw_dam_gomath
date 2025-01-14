@@ -100,11 +100,6 @@ export default {
       ];
       if (isLoggedIn.value) {
         baseTabs.push({ to: '/profile', label: 'PROFILE' });
-        baseTabs.push({
-          to: '/logout',
-          label: 'LOGOUT',
-          style: 'background-color: #ff4d4d; color: white; border-top-left-radius: 5px; border-top-right-radius: 5px;',
-        });
       } else {
         baseTabs.push({ to: '/login', label: 'LOGIN' });
       }
