@@ -1,99 +1,88 @@
 <template>
-  <v-app>
-    <!-- Header sin imagen ni ícono -->
-    <v-app-bar color="primary" dark fixed>
-      <v-row class="d-flex align-center" no-gutters>
-        <!-- Título del encabezado -->
-        <v-col cols="auto">
-          <v-toolbar-title class="text-h5 font-weight-bold">Estadísticas de Juego</v-toolbar-title>
-        </v-col>
-      </v-row>
-    </v-app-bar>
+  <v-container>
+    <!-- Filtro por ID -->
+    <v-text-field
+      v-model="idFilter"
+      label="Filtrar por ID"
+      outlined
+      dense
+      class="mb-5 text-field-blue"
+      hide-details
+    ></v-text-field>
 
-    <!-- Contenedor principal -->
-    <v-main>
-      <v-container class="main-background text-black">
-        <!-- Filtro por ID -->
-        <v-row>
-          <v-col cols="12" md="6">
-            <v-text-field
-              label="Filtrar por ID"
-              v-model="idFilter"
-              @input="fetchPlayerStats"
-              outlined
-              dense
-              color="primary"
-              class="text-field-blue"
-              prepend-icon="mdi-magnify"
-              :loading="loadingPlayerStats"
-              :style="{ transition: 'all 0.3s ease-in-out' }"
-            ></v-text-field>
-          </v-col>
-        </v-row>
+    <!-- Estadísticas de Jugador -->
+    <v-card outlined class="mb-5 elevated-card">
+      <v-card-title class="blue lighten-1 white--text">Estadísticas de Jugador</v-card-title>
+      <v-card-text>
+        <v-data-table
+          :headers="playerHeaders"
+          :items="playerStats"
+          item-value="_id"
+          dense
+          class="elevated-table"
+          :loading="loadingPlayerStats"
+          hide-default-footer
+          no-data-text="No data available"
+          transition="fade-transition"
+          hide-header
+        >
+          <v-container>
+            <template v-slot:top>
+              <v-row class="font-weight-bold text-center table-header">
+                <v-col cols="3">ID</v-col>
+                <v-col cols="3">Tipo de Juego</v-col>
+                <v-col cols="3">Rondas Totales</v-col>
+                <v-col cols="3">Fecha</v-col>
+              </v-row>
+            </template>
+            <template v-slot:item="{ item }">
+              <v-row class="text-center hover-row table-row">
+                <v-col cols="3">{{ item.id }}</v-col>
+                <v-col cols="3">{{ item.game_type }}</v-col>
+                <v-col cols="3">{{ item.total_rounds }}</v-col>
+                <v-col cols="3">{{ new Date(item.date).toLocaleDateString() }}</v-col>
+              </v-row>
+            </template>
+          </v-container>
+        </v-data-table>
+      </v-card-text>
+    </v-card>
 
-        <!-- Estadísticas de Jugador -->
-        <v-divider class="my-4"></v-divider>
-        <v-row>
-          <v-col cols="12" md="6">
-            <v-card class="elevated-card" elevation="4" transition="scale-transition">
-              <v-card-title class="text-h6 font-weight-bold text-dark">
-                Estadísticas de Jugador
-              </v-card-title>
-              <v-card-subtitle class="text-body-2 text-muted">
-                Filtra por ID para ver las estadísticas del jugador
-              </v-card-subtitle>
-              <v-card-text>
-                <v-data-table
-                  :headers="playerHeaders"
-                  :items="playerStats"
-                  item-value="_id"
-                  dense
-                  class="elevated-table"
-                  :loading="loadingPlayerStats"
-                  item-class="hover-row"
-                  hide-default-footer
-                  transition="fade-transition"
-                >
-                  <template v-slot:item.created_at="{ item }">
-                    <span>{{ new Date(item.created_at).toLocaleDateString() }}</span>
-                  </template>
-                </v-data-table>
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-
-        <!-- Estadísticas Generales -->
-        <v-divider class="my-4"></v-divider>
-        <v-row>
-          <v-col cols="12" md="6">
-            <v-card class="elevated-card" elevation="4" transition="scale-transition">
-              <v-card-title class="text-h6 font-weight-bold text-dark">
-                Estadísticas Generales
-              </v-card-title>
-              <v-card-text>
-                <v-data-table
-                  :headers="generalHeaders"
-                  :items="generalStats"
-                  item-value="_id"
-                  dense
-                  class="elevated-table"
-                  :loading="loadingGeneralStats"
-                  item-class="hover-row"
-                  hide-default-footer
-                  transition="fade-transition"
-                >
-                  <template v-slot:item.created_at="{ item }">
-                    <span>{{ new Date(item.created_at).toLocaleDateString() }}</span>
-                  </template>
-                </v-data-table>
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-main>
-  </v-app>
+    <!-- Estadísticas Generales -->
+    <v-card outlined class="elevated-card">
+      <v-card-title class="blue lighten-1 white--text">Estadísticas Generales</v-card-title>
+      <v-card-text>
+        <v-data-table
+          :headers="generalHeaders"
+          :items="generalStats"
+          item-value="_id"
+          dense
+          class="elevated-table"
+          :loading="loadingGeneralStats"
+          hide-default-footer
+          transition="fade-transition"
+          hide-header
+        >
+          <template v-slot:top>
+            <v-row class="font-weight-bold text-center table-header">
+              <v-col cols="3">ID del Jugador</v-col>
+              <v-col cols="3">Respuestas Correctas</v-col>
+              <v-col cols="3">Respuestas Incorrectas</v-col>
+              <v-col cols="3">Fecha</v-col>
+            </v-row>
+          </template>
+          <template v-slot:item="{ item }">
+            <v-row class="text-center hover-row table-row">
+              <v-col cols="3">{{ item.player_id }}</v-col>
+              <v-col cols="3">{{ item.correct_answers }}</v-col>
+              <v-col cols="3">{{ item.incorrect_answers }}</v-col>
+              <v-col cols="3">{{ new Date(item.created_at).toLocaleDateString() }}</v-col>
+            </v-row>
+          </template>
+        </v-data-table>
+      </v-card-text>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -166,112 +155,99 @@ export default {
   },
   mounted() {
     this.fetchGeneralStats();
+    const header = document.querySelector('.elevated-table .v-data-table__header');
+    if (header) header.style.display = 'none';
   },
 };
 </script>
 
-<style scoped>
-  /* Estilo para el header */
-  .v-app-bar {
-    background-color: #2196F3;
-    z-index: 10; /* Asegura que el encabezado esté encima del contenido */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para el encabezado */
-  }
+<style>
+.v-application {
+  min-height: 100vh;
+  background-color: #ffffff;
+}
 
-  /* Fondo blanco, texto en negro */
-  html, body, #app {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #FFFFFF;
-  }
+.elevated-table .v-data-table-header {
+  display: none;
+}
 
-  .v-application {
-    min-height: 100vh;
-    background-color: #FFFFFF;
-  }
+.elevated-table .v-data-table__header {
+  display: none;
+}
 
-  .main-background {
-    padding: 24px;
-    background-color: #FFFFFF;
-  }
+.elevated-table .v-data-table__wrapper {
+  padding-top: 0 !important;
+}
 
-  .text-dark {
-    color: #000000 !important;
-  }
+.elevated-table thead {
+  display: none;
+}
 
-  .text-field-blue .v-input__control {
-    background-color: #E3F2FD;
-    color: #0D47A1;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
+.table-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .text-field-blue .v-input__control:focus-within {
-    background-color: #BBDEFB;
-    box-shadow: 0 0 5px rgba(0, 82, 155, 0.6);
-  }
+.table-row,
+.table-header {
+  margin: 0;
+  padding: 0;
+}
 
-  .elevated-table {
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: black; /* Cambia el color a uno visible */;
-  }
+.table-header {
+  font-weight: bold;
+}
 
-  .elevated-table .v-data-table__wrapper {
-    background-color: #FFFFFF;
-    border-radius: 8px;
-  }
+.text-field-blue .v-input__control {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
 
-  .elevated-card {
-    background-color: #F5F5F5;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-  }
+.text-field-blue .v-input__control:focus-within {
+  background-color: #bbdefb;
+  box-shadow: 0 0 5px rgba(0, 82, 155, 0.6);
+}
 
-  .elevated-card:hover {
-    transform: scale(1.02);
-  }
+.elevated-table {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  .elevated-card .v-card-title {
-    background-color: #2196F3;
-    color: #E3F2FD;
-    padding: 12px;
-    font-weight: bold;
-    font-size: 1rem;
-    border-radius: 8px 8px 0 0;
-  }
+.elevated-table .v-data-table__row:hover {
+  background-color: #bbdefb;
+}
 
-  .elevated-card .v-card-subtitle {
-    color: #757575;
-    padding: 0 12px 12px;
-  }
+.elevated-card {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
 
-  .hover-row:hover {
-    background-color: #BBDEFB;
-  }
+.elevated-card:hover {
+  background-color: #2196f3;
+}
 
-  .elevated-table .v-data-table__row {
-    transition: background-color 0.3s ease;
-  }
+.elevated-card .v-card-title {
+  background-color: #2196f3;
+  color: #e3f2fd;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 8px 8px 0 0;
+}
 
-  .elevated-table .v-data-table__row:hover {
-    background-color: #BBDEFB;
-  }
+.hover-row:hover {
+  background-color: #2196f3;
+}
 
-  .v-input--dense {
-    margin-bottom: 16px;
-  }
-
-  /* Transiciones */
-  .fade-transition {
-    transition: opacity 0.3s ease;
-  }
-
-  .scale-transition {
-    transition: transform 0.3s ease-in-out;
-  }
+.fade-transition {
+  transition: opacity 0.3s ease;
+}
 </style>
