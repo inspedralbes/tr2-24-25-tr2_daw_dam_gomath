@@ -3,12 +3,10 @@
     <q-card class="q-pa-md" style="width: 300px;">
       <q-card-section>
         <div class="text-center">
-          <!-- Avatar que depende del nombre del usuario -->
           <q-avatar size="80px" class="q-mb-md">
             <img :src="avatarUrl" alt="Profile Picture" />
           </q-avatar>
           <br>
-          <!-- Botón para cambiar el nombre -->
           <q-btn dense flat label="Cambiar nombre" @click="toggleInput" class="q-mb-md"
             style="background-color: #B0AEAC;" />
 
