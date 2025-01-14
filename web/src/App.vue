@@ -92,17 +92,11 @@ export default {
         { to: '/SalaEspera', label: 'ONLINE' },
         { to: '/Apuntes', label: 'APUNTS' },
       ];
-
-      if (!isLoggedIn.value) {
-        baseTabs.push({ to: '/login', label: 'LOGIN' });
+      if (isLoggedIn.value) {
+        baseTabs.push({ to: '/profile', label: 'PROFILE' });
       } else {
-        baseTabs.push({
-          to: '/logout',
-          label: 'LOGOUT',
-          style: 'background-color: #ff4d4d; color: white; border-top-left-radius: 5px; border-top-right-radius: 5px;'
-        });
+        baseTabs.push({ to: '/login', label: 'LOGIN' });
       }
-
       return baseTabs;
     });
 

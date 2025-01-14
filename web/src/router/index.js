@@ -10,7 +10,6 @@ import PartidaNumero from '../components/Offline/PartidaOffline/PartidaNumeroScr
 import PartidaCrono from '../components/Offline/PartidaOffline/PartidaCronoScreen.vue'
 import FinPartida from '../components/Offline/PartidaOffline/FinPartidaScreen.vue'
 import PartidaFallos from '../components/Offline/PartidaOffline/PartidaFallosScreen.vue'
-import Logout from '../components/Login/LogoutScreen.vue'
 import Codigo from '../components/Offline/jocs/codigo/game.vue'
 import Sudoku from '../components/Offline/jocs/sudoku/sudokuScreen.vue';
 import PartidaNumeroOnline from '@/components/Online/PartidaOnline/PartidaNumeroOnlineScreen.vue'
@@ -19,6 +18,7 @@ import prePartidaOnline from '@/components/Online/PartidaOnline/prePartidaOnline
 import CodigoPartida from '@/components/Online/PartidaOnline/codigoScreen.vue'
 import PartidaCronoOnline from '@/components/Online/PartidaOnline/PartidaCronoOnlineScreen.vue'
 import PartidaFallosOnline from '@/components/Online/PartidaOnline/PartidaFallosOnlineScreen.vue'
+import ProfileScreen from '@/components/Login/ProfileScreen.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -73,11 +73,6 @@ const router = createRouter({
       component: FinPartida,
     },
     {
-      path: '/logout',
-      name: 'Logout',
-      component: Logout,
-    },
-    {
       path: '/Offline/jocs/codigo',
       name: 'Codigo',
       component: Codigo,
@@ -122,6 +117,11 @@ const router = createRouter({
       name: 'Apunts',
       component: Apunts,
     },
+    {
+      path: '/profile',
+      name: 'ProfileScreen',
+      component: ProfileScreen,
+    },    
   ],
 });
 

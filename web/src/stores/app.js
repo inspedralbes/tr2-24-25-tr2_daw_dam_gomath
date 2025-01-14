@@ -8,7 +8,8 @@ export const useAppStore = defineStore('app', {
       username: '',
       email: '',
       role: '',
-      image: '',
+      image: localStorage.getItem('avatarUrl') || '',
+      imageId: '',
     },
     registrationInfo: JSON.parse(localStorage.getItem('registrationInfo')) || {
       loggedIn: false,
@@ -16,7 +17,8 @@ export const useAppStore = defineStore('app', {
       username: '',
       email: '',
       role: '',
-      image: '',
+      image: localStorage.getItem('avatarUrl') || '',
+      imageId: '',
     },
   }),
 
@@ -29,17 +31,18 @@ export const useAppStore = defineStore('app', {
         email: '',
         role: '',
         image: '',
+        imageId: ''
       };
       localStorage.setItem('loginInfo', JSON.stringify(this.loginInfo));
     },
 
-    setLoginInfo({ loggedIn, token, username, email, role, image }) {
-      this.loginInfo = { loggedIn, token, username, email, role, image };
+    setLoginInfo({ loggedIn, token, username, email, role, image, imageId }) {
+      this.loginInfo = { loggedIn, token, username, email, role, image, imageId };
       localStorage.setItem('loginInfo', JSON.stringify(this.loginInfo));
     },
 
-    setRegistrationInfo({ loggedIn, token, username, email, role, image }) {
-      this.registrationInfo = { loggedIn, token, username, email, role, image };
+    setRegistrationInfo({ loggedIn, token, username, email, role, image, imageId }) {
+      this.registrationInfo = { loggedIn, token, username, email, role, image, imageId };
       localStorage.setItem('registrationInfo', JSON.stringify(this.registrationInfo));
     },
   },
