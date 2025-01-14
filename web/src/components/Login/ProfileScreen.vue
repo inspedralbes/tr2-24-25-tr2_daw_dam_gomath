@@ -95,7 +95,7 @@ export default {
           throw new Error('El email del usuario no está definido');
         }
 
-        const response = await fetch(`http://localhost:8000/api/user/update/${user.email}`, {
+        const response = await fetch(`http://gomath.daw.inspedralbes.cat/api/user/update/${user.email}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
