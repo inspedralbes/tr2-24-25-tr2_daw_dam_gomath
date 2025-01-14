@@ -91,7 +91,7 @@ export default {
     const logout = async () => {
       try {
         const token = appStore.loginInfo.token;
-        const response = await fetch('http://localhost:8000/api/userLogout', {
+        const response = await fetch('http://gomath.daw.inspedralbes.cat/public/api/userLogout', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
