@@ -16,7 +16,8 @@
       </div>
       <div class="card-body players-list">
         <div v-for="player in players" :key="player.id" class="player-item">
-          {{ player.name }}
+          <img :src="player.fotoPerfil" alt="Foto de perfil" class="profile-pic" />
+          <span>{{ player.name }}</span>
         </div>
       </div>
     </div>
@@ -52,49 +53,45 @@ export default {
     const sala = useCodigoSala();
 
     onMounted(async () => {
-      console.log('el propietario es: ', estadoOnline.propietario);
+      console.log("el propietario es: ", estadoOnline.propietario);
 
-      if (estadoOnline.propietario === 'yo') {
+      if (estadoOnline.propietario === "yo") {
         sala.fetchCodigo().then(async () => {
           codigoSala.value = sala.codigo;
           empezarPartidaBtn.value = true;
-          console.log('eres host');
+          console.log("eres host");
 
           const union = async () => {
             socket.emit("join-room", {
               roomCode: codigoSala.value,
               username: loginInfo.loginInfo.username || "Jugador",
-            })
+              fotoPerfil: loginInfo.loginInfo.image,
+            });
           };
           await union();
-          socket.emit('tipoPartidaHost', { tipoPartida: tipoPartida.tipoPartida, codigoSala: codigoSala.value });
-          console.log('tipoPartida host enviado a node', tipoPartida.tipoPartida);
-          console.log('este es el codigo de la sala', codigoSala.value);
+          socket.emit("tipoPartidaHost", {
+            tipoPartida: tipoPartida.tipoPartida,
+            codigoSala: codigoSala.value,
+          });
         });
-      } else if (estadoOnline.propietario === 'otro') {
-        console.log('has entrado en otro');
-
+      } else if (estadoOnline.propietario === "otro") {
         codigoSala.value = estadoOnline.codigoUnion;
         empezarPartidaBtn.value = false;
         socket.emit("join-room", {
           roomCode: codigoSala.value,
           username: loginInfo.loginInfo.username || "Jugador",
+          fotoPerfil: loginInfo.loginInfo.image,
         });
-        
+
         socket.on("tipoPartidaUser", (data) => {
-          console.log("tipoPartidaHost", data)
           if (data.tipoPartida) {
             tipoPartidaNode.value = data.tipoPartida;
-            console.log('tipoPartida de data directamente: ', data.tipoPartida);
-  
             tipoPartida.tipoPartida = tipoPartidaNode.value;
-  
           } else {
             console.error("Datos de tipoPartidaHost inválidos:", data);
           }
         });
       }
-
 
       socket.on("update-users", (members) => {
         players.value = members;
@@ -116,8 +113,6 @@ export default {
 
     const hostEmpiezaPartida = () => {
       const modo = tipoPartida.tipoPartida.modo;
-      console.log("Emitiendo el evento 'start-game' con el código de sala:", codigoSala.value, "y el modo:", modo);
-
       socket.emit("start-game", {
         roomCode: codigoSala.value,
         modo: modo,
@@ -204,6 +199,9 @@ export default {
 }
 
 .player-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   font-size: 1rem;
   font-weight: 500;
   color: #4a4a4a;
@@ -212,6 +210,14 @@ export default {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   width: 80%;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .start-btn {

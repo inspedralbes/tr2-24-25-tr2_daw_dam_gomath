@@ -14,7 +14,7 @@
 
           <div class="text-h6">
             <q-input v-if="isEditing" v-model="userName" label="Nuevo nombre" outlined dense class="q-mb-md" />
-            <div v-else>{{ user.username }}</div>
+            <div v-else>{{ userName }}</div>
           </div>
 
           <div class="text-subtitle2">{{ user.email }}</div>
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed, reactive } from 'vue';
 import { useAppStore } from '@/stores/app';
 import { useRouter } from 'vue-router';
 
@@ -54,11 +54,11 @@ export default {
     const appStore = useAppStore();
     const router = useRouter();
 
-    const user = appStore.loginInfo;
+    const user = reactive(appStore.loginInfo);
     const userName = ref(user.username);
     const isEditing = ref(false);
 
-    const avatarName = computed(() => userName.value || 'default-user'); 
+    const avatarName = computed(() => userName.value || 'default-user');
     const avatarUrl = computed(() => `https://api.multiavatar.com/${avatarName.value}.png`);
 
     const toggleInput = () => {
@@ -66,23 +66,30 @@ export default {
     };
 
     const saveName = async () => {
-      appStore.loginInfo.username = userName.value;
-      appStore.setLoginInfo({
-        ...user,
-        username: userName.value,
-      });
+      try {
+        const avatarURL = avatarUrl.value; 
+        await updateUserNameInBackend(userName.value);
 
-      await updateUserNameInBackend(userName.value);
+        appStore.setLoginInfo({
+          ...appStore.loginInfo,
+          username: userName.value,
+          image: avatarURL,
+        });
 
-      isEditing.value = false;
+        isEditing.value = false;
+      } catch (error) {
+        console.error('Error al guardar el nombre:', error);
+      }
     };
+
+
 
     const updateUserNameInBackend = async (newName) => {
       try {
         console.log(appStore.loginInfo);
 
-        console.log('hola',user.email);
-        
+        console.log('hola', user.email);
+
         const token = appStore.loginInfo.token;
         if (!user.email) {
           throw new Error('El email del usuario no está definido');
