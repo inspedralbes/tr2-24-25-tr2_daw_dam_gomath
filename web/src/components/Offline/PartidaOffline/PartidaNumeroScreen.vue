@@ -5,34 +5,30 @@
         <h2>{{ operation.question }}</h2>
 
         <div class="opciones">
-          <q-btn
-            v-for="(answer, index) in operation.answers"
-            :key="index"
+          <q-btn 
+            v-for="(answer, index) in operation.answers" 
+            :key="index" 
             :color="getButtonColor(index)"
-            class="opcion-btn"
-            @click="handleAnswer(index)"
-            style="width: 200px; margin: 5px auto;"
-          >
-            {{ answer.value }}  
+            class="opcion-btn" 
+            @click="handleAnswer(index)" 
+            style="width: 200px; margin: 5px auto;">
+            {{ answer.value }}
           </q-btn>
         </div>
 
         <div class="navegacion">
-          <q-btn
-            @click="previousQuestion"
-            label="Anterior"
-            :disabled="currentQuestionIndex === 0"
-          />
-          <q-btn
-            v-if="siguiente"
-            @click="nextQuestion"
-            label="Següent"
-          />
-          <q-btn
-            v-else
-            @click="finalizar"
-            label="Finalitzar"
-          />
+          <q-btn 
+            @click="previousQuestion" 
+            label="Anterior" 
+            :disabled="currentQuestionIndex === 0" />
+          <q-btn 
+            v-if="siguiente" 
+            @click="nextQuestion" 
+            label="Següent" />
+          <q-btn 
+            v-else 
+            @click="finalizar" 
+            label="Finalitzar" />
         </div>
       </div>
       <div v-else class="loading-container">
@@ -62,7 +58,7 @@ export default {
     const operationsStore = useOperationsStore();
     const respuestasPendientes = ref([]);
     const currentQuestionIndex = ref(0);
-    const selectedAnswer = ref(null); 
+    const selectedAnswer = ref(null);
     const loading = ref(false);
     const router = useRouter();
 
@@ -93,29 +89,38 @@ export default {
       estadisticas.setEstadisticasZero();
     });
 
+    // Objeto reactivo para almacenar las respuestas seleccionadas de cada pregunta
     const preguntasRespondidas = reactive({});
 
     const getButtonColor = (index) => {
-      return selectedAnswer.value === index ? "grey" : "primary";
+      // Si la respuesta de la pregunta actual está seleccionada, muestra gris, si no, muestra primaria
+      return preguntasRespondidas[currentQuestionIndex.value] === index ? "grey" : "primary";
     };
 
     const handleAnswer = (index) => {
-      selectedAnswer.value = index;
-      const preguntaRespondida = preguntasRespondidas[currentQuestionIndex.value];
+      // Actualiza el índice de la respuesta seleccionada para la pregunta actual
+      preguntasRespondidas[currentQuestionIndex.value] = index;
 
-      if (preguntaRespondida === undefined) {
-        preguntasRespondidas[currentQuestionIndex.value] = index;
+      // Añade o actualiza la respuesta seleccionada en respuestasPendientes
+      const preguntaRespondida = respuestasPendientes.value.find(
+        (r) => r.id_pregunta === operation.value.id_pregunta
+      );
+
+      if (!preguntaRespondida) {
         respuestasPendientes.value.push({
           id_pregunta: operation.value.id_pregunta,
-          respuesta: operation.value.answers[index].value
+          respuesta: operation.value.answers[index].value,
         });
       } else {
-        respuestasPendientes.value = respuestasPendientes.value.filter(r => r.id_pregunta !== operation.value.id_pregunta);
+        respuestasPendientes.value = respuestasPendientes.value.filter(
+          (r) => r.id_pregunta !== operation.value.id_pregunta
+        );
         respuestasPendientes.value.push({
           id_pregunta: operation.value.id_pregunta,
-          respuesta: operation.value.answers[index].value
+          respuesta: operation.value.answers[index].value,
         });
       }
+      nextQuestion();
     };
 
     const nextQuestion = () => {

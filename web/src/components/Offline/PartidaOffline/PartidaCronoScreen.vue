@@ -5,9 +5,15 @@
         <h2>{{ operation.question }}</h2>
         <div class="crono">Temps restant: {{ timeLeft }}s</div>
         <div class="opciones">
-          <q-btn v-for="(answer, index) in operation.answers" :key="index" :color="getButtonColor(index)"
-            class="opcion-btn" @click="handleAnswer(answer, index)" :disabled="!isTimeRemaining"
-            style="width: 200px; margin: 5px auto;">
+          <q-btn
+            v-for="(answer, index) in operation.answers"
+            :key="index"
+            :color="getButtonColor(index)"
+            class="opcion-btn"
+            @click="handleAnswer(answer, index)"
+            :disabled="!isTimeRemaining"
+            style="width: 200px; margin: 5px auto;"
+          >
             {{ answer.value }}
           </q-btn>
         </div>
@@ -18,7 +24,7 @@
         </div>
       </div>
       <div v-else class="loading-container">
-        <img src="../../../assets/img/loading.gif" alt="cargando">
+        <img src="../../../assets/img/loading.gif" alt="cargando" />
       </div>
     </div>
     <div v-else class="loading-container">
@@ -28,7 +34,7 @@
 </template>
 
 <script>
-import { computed, onMounted, ref, onUnmounted, inject } from "vue";
+import { computed, onMounted, ref, onUnmounted, reactive, inject } from "vue";
 import { useOperationsStore } from "@/stores/comunicationManager";
 import { useRouter } from "vue-router";
 import { useTipoPartidaStore } from "../../../App.vue";
@@ -55,6 +61,9 @@ export default {
     let timer = null;
     const isActive = ref(true);
     const router = useRouter();
+
+    // Objeto reactivo para almacenar las respuestas seleccionadas de cada pregunta
+    const preguntasRespondidas = reactive({});
 
     const operation = computed(() => {
       const operacionesFiltradas = operationsStore.operations.preguntas_y_respuestas;
@@ -87,7 +96,7 @@ export default {
 
     const startTimer = () => {
       if (timer) clearInterval(timer);
-      timer = setInterval(async() => {
+      timer = setInterval(async () => {
         if (timeLeft.value > 0) {
           timeLeft.value--;
         } else {
@@ -129,17 +138,17 @@ export default {
     };
 
     const getButtonColor = (index) => {
-      if (selectedAnswer.value === index) {
-        return "grey";  
-      }
-      return "primary"; 
+      // Usa preguntasRespondidas para saber cuál fue la respuesta seleccionada en cada pregunta
+      return preguntasRespondidas[currentQuestionIndex.value] === index ? "grey" : "primary";
     };
 
     const handleAnswer = async (selected, index) => {
       if (!isTimeRemaining.value) return;
-      
-      selectedAnswer.value = index;
-      
+
+      // Guardamos la respuesta seleccionada en preguntasRespondidas para que se mantenga resaltada
+      preguntasRespondidas[currentQuestionIndex.value] = index;
+
+      // Añadir la respuesta seleccionada a respuestasPendientes
       const preguntaRespondida = respuestasPendientes.value.find(
         (r) => r.id_pregunta === operation.value.id_pregunta
       );
@@ -158,21 +167,22 @@ export default {
           respuesta: operation.value.answers[index].value,
         });
       }
+
+      // Pasar a la siguiente pregunta
+      nextQuestion();
     };
 
     const nextQuestion = () => {
       if (hasNextQuestion.value) {
         currentQuestionIndex.value++;
-        correctAnswer.value = null;
-        selectedAnswer.value = null;  
+        // No es necesario reiniciar selectedAnswer o correctAnswer aquí
       }
     };
 
     const previousQuestion = () => {
       if (currentQuestionIndex.value > 0) {
         currentQuestionIndex.value--;
-        correctAnswer.value = null;
-        selectedAnswer.value = null;
+        // No es necesario reiniciar selectedAnswer o correctAnswer aquí
       }
     };
 
@@ -195,7 +205,6 @@ export default {
     };
   },
 };
-
 </script>
 
 <style scoped>

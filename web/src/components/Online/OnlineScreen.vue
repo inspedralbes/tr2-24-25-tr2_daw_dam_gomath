@@ -7,12 +7,6 @@
       const tipoPartidaStore = useTipoPartidaStore();
       const divActivo = inject('divActivo');
 
-      onMounted(() => {
-        if (divActivo) {
-          divActivo.value = 'offline';
-        }
-      });
-
       return {
         tipoPartidaStore,
       };
