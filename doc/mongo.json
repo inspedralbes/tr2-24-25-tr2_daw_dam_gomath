@@ -1,0 +1,84 @@
+{
+    "player_data": [
+        {
+            "player_id": "player_id_1",
+            "level": "easy",
+            "score": 150,
+            "hits": 21,
+            "played": 30,
+            "mean_time_response": 0.35,
+            "game_type": "quiz",
+            "online": false
+        }
+    ],
+    "online_session_data": {
+        "session_id": "abc123-session",
+        "players_id": [
+            "player_id_1",
+            "player_id_2"
+        ],
+        "game_type": "quiz",
+        "total_rounds": 10,
+        "session_time": 5.32,
+        "leaderboard": [
+            {
+                "position": 1,
+                "player_id": "player_id_2",
+                "score": 200,
+                "questions": {
+                    "question_1": {
+                        "question": "question",
+                        "correct_response": "correct_response",
+                        "current_response": "current_response",
+                        "time_to_response": 0.5
+                    },
+                    "question_2": {
+                        "question": "question",
+                        "correct_response": "correct_response",
+                        "current_response": "current_response",
+                        "time_to_response": 0.8
+                    }
+                }
+            },
+            {
+                "position": 2,
+                "player_id": "player_id_1",
+                "score": 150,
+                "questions": {
+                    "question_1": {
+                        "question": "question",
+                        "correct_response": "correct_response",
+                        "current_response": "current_response",
+                        "time_to_response": 0.5
+                    },
+                    "question_2": {
+                        "question": "question",
+                        "correct_response": "correct_response",
+                        "current_response": "current_response",
+                        "time_to_response": 0.8
+                    }
+                }
+            }
+        ]
+    },
+    "offline_session_data": {
+        "player_id": "player_id_1",
+        "game_type": "quiz",
+        "total_rounds": 10,
+        "session_time": 5.32,
+        "questions": {
+            "question_1": {
+                "question": "question",
+                "correct_response": "correct_response",
+                "current_response": "current_response",
+                "time_to_response": 0.5
+            },
+            "question_2": {
+                "question": "question",
+                "correct_response": "correct_response",
+                "current_response": "current_response",
+                "time_to_response": 0.8
+            }
+        }
+    }
+}
