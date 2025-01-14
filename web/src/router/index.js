@@ -19,6 +19,7 @@ import prePartidaOnline from '@/components/Online/PartidaOnline/prePartidaOnline
 import CodigoPartida from '@/components/Online/PartidaOnline/codigoScreen.vue'
 import PartidaCronoOnline from '@/components/Online/PartidaOnline/PartidaCronoOnlineScreen.vue'
 import PartidaFallosOnline from '@/components/Online/PartidaOnline/PartidaFallosOnlineScreen.vue'
+import ProfileScreen from '@/components/Login/ProfileScreen.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -122,6 +123,11 @@ const router = createRouter({
       name: 'Apunts',
       component: Apunts,
     },
+    {
+      path: '/profile',
+      name: 'ProfileScreen',
+      component: ProfileScreen,
+    },    
   ],
 });
 
