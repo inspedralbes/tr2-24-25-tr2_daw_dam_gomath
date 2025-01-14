@@ -8,7 +8,7 @@ export const useAppStore = defineStore('app', {
       username: '',
       email: '',
       role: '',
-      image: '',
+      image: localStorage.getItem('avatarUrl') || '',
     },
     registrationInfo: JSON.parse(localStorage.getItem('registrationInfo')) || {
       loggedIn: false,
@@ -16,7 +16,7 @@ export const useAppStore = defineStore('app', {
       username: '',
       email: '',
       role: '',
-      image: '',
+      image: localStorage.getItem('avatarUrl') || '',
     },
   }),
 

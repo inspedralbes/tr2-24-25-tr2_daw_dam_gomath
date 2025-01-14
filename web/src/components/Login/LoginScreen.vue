@@ -24,7 +24,6 @@
           class="q-mt-md"
         />
         
-        <!-- Mostrar missatge d'error -->
         <div v-if="errorMessage" class="text-negative text-caption q-mt-md">
           {{ errorMessage }}
         </div>
@@ -49,7 +48,7 @@ export default {
     const password = ref('');
     const router = useRouter();
     const isLoading = ref(false);  
-    const errorMessage = ref(''); // Variable per emmagatzemar el missatge d'error
+    const errorMessage = ref(''); 
 
     const isValidEmail = computed(() => {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -57,7 +56,6 @@ export default {
     });
 
     async function login() {
-      // Validació del correu electrònic
       if (!isValidEmail.value) {
         errorMessage.value = 'Correu o contrasenya invàlids.';
         return;
@@ -82,7 +80,6 @@ export default {
         console.log(data);
 
         if (response.ok) {
-          // Guardar dades al store si la resposta és correcta
           const appStore = useAppStore();
           appStore.setLoginInfo({
             loggedIn: true,
@@ -93,17 +90,15 @@ export default {
             image: data.user.image || 'https://randomuser.me/api/portraits/thumb/women/56.jpg',
           });
 
-          // Redirigir l'usuari
           router.push('/Offline');
         } else {
-          // Mostrar missatge d'error si les credencials són incorrectes
           errorMessage.value = data.message || 'Credencials incorrectes.';
         }
       } catch (error) {
         console.error('Error en l\'inici de sessió:', error);
         errorMessage.value = 'Hi ha hagut un problema en connectar amb el servidor.';
       } finally {
-        isLoading.value = false; // Desactivar l'estat de càrrega
+        isLoading.value = false; 
       }
     }
 
