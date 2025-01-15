@@ -11,6 +11,9 @@ const server = http.createServer(app);
 const offlineGamesRoutes = require('./routes/offlineGames');
 const onlineGamesRoutes = require('./routes/onlineGames');
 
+const path = require("path");
+app.use('/graphs', express.static(path.join(__dirname, 'public/graphs')));
+
 const io = new Server(server, {
     cors: {
         origin: ["http://localhost:5173"], 
@@ -30,11 +33,11 @@ app.use(cors({
 app.use(express.static("public"));
 app.use('/api/onlineGames', onlineGamesRoutes);
 
-// Connexió a la base de dades MongoDB
+// Conexión a la base de datos MongoDB
 mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/GoMath', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-})
+});
 
 const rooms = {};
 
@@ -44,20 +47,19 @@ app.post('/api/create-room', (req, res) => {
     rooms[roomCode] = { members: [], messages: [] };
     res.json({ roomCode, email });
 });
+
+// Ruta para generar los gráficos
 app.get('/api/generar-graficos', (req, res) => {
-    // Ejecutar el script Python para generar los gráficos
-    exec("python3 ./path/to/your/statistic.py", (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error al ejecutar el script: ${error.message}`);
-            return res.status(500).json({ message: "Error al ejecutar el script de Python", error: error.message });
+    exec("python ./Python/statistics.py", (error, stdout, stderr) => {
+        if (error || stderr) {
+            console.error(`Error: ${error || stderr}`);
+            return res.status(500).json({ message: "Error al generar gráficos" });
         }
-        if (stderr) {
-            console.error(`Error en el script: ${stderr}`);
-            return res.status(500).json({ message: "Error en el script de Python", error: stderr });
-        }
-        console.log(`Gráficos generados: ${stdout}`);
-        // Aquí puedes devolver la URL de los gráficos generados
-        res.json({ graficoUrl: "/path/to/generated/graph.png" });
+        // Responder con las URLs de los gráficos generados
+        res.json({
+            graficoPuntosUrl: "/graphs/puntos_por_jugador.png",
+            graficoAciertosErroresUrl: "/graphs/aciertos_vs_errores.png"
+        });
     });
 });
 

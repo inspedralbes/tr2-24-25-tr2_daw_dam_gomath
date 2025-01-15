@@ -2,6 +2,40 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from pymongo import MongoClient
+import os
+
+def graficar_puntos(df):
+    """Generar un gráfico de barras de puntos por jugador."""
+    plt.figure(figsize=(8, 5))
+    plt.bar(df["player_email"], df["puntos"], color="skyblue")
+    plt.xlabel("Jugadores", fontsize=12)
+    plt.ylabel("Puntos", fontsize=12)
+    plt.title("Puntos Totales por Jugador", fontsize=14)
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    path = "./public/graphs/puntos_por_jugador.png"
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    plt.savefig(path)
+    plt.close()
+
+def graficar_aciertos_vs_errores(df):
+    """Generar un gráfico comparativo entre aciertos y errores."""
+    x = np.arange(len(df["player_email"]))  # Posiciones en el eje X
+    ancho = 0.4  # Ancho de las barras
+
+    plt.figure(figsize=(8, 5))
+    plt.bar(x - ancho/2, df["preguntasAcertadas"], width=ancho, label="Aciertos", color="green")
+    plt.bar(x + ancho/2, df["preguntasFallidas"], width=ancho, label="Errores", color="red")
+
+    plt.xticks(x, df["player_email"])
+    plt.xlabel("Jugadores", fontsize=12)
+    plt.ylabel("Cantidad", fontsize=12)
+    plt.title("Comparación de Aciertos y Errores", fontsize=14)
+    plt.legend()
+    plt.grid(axis='y', linestyle='--', alpha=0.7)
+    path = "./public/graphs/aciertos_vs_errores.png"
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    plt.savefig(path)
+    plt.close()
 
 # Conectar a MongoDB
 cliente = MongoClient("mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/GoMath")  # Cambia la URI si es necesario

@@ -1,56 +1,8 @@
 <template>
   <v-container>
-    <!-- Filtro por correo de jugador -->
-    <v-text-field
-      v-model="emailFilter"
-      label="Filtrar per Correu Electrònic"
-      outlined
-      dense
-      class="mb-5 text-field-blue"
-      hide-details
-    ></v-text-field>
-
-    <!-- Estadísticas de Jugador -->
-    <v-card outlined class="mb-5 elevated-card">
-      <v-card-title class="blue lighten-1 white--text">Estadísticas de Jugador</v-card-title>
-      <v-card-text>
-        <v-data-table
-          :headers="playerHeaders"
-          :items="filteredPlayerStats"
-          item-value="player_email"
-          dense
-          class="elevated-table"
-          :loading="loadingPlayerStats"
-          hide-default-footer
-          no-data-text="No data available"
-          transition="fade-transition"
-          hide-header
-        >
-          <v-container>
-            <template v-slot:top>
-              <v-row class="font-weight-bold text-center table-header">
-                <v-col cols="3">Correu Electrònic</v-col>
-                <v-col cols="3">Tipus de Joc</v-col>
-                <v-col cols="3">Rondes Totals</v-col>
-                <v-col cols="3">Data</v-col>
-              </v-row>
-            </template>
-            <template v-slot:item="{ item }">
-              <v-row class="text-center hover-row table-row">
-                <v-col cols="3">{{ item.player_email }}</v-col>
-                <v-col cols="3">{{ item.session_id }}</v-col>
-                <v-col cols="3">{{ item.preguntasAcertadas + item.preguntasFallidas }}</v-col>
-                <v-col cols="3">{{ new Date(item.created_at).toLocaleDateString() }}</v-col>
-              </v-row>
-            </template>
-          </v-container>
-        </v-data-table>
-      </v-card-text>
-    </v-card>
-
     <!-- Estadísticas Generales -->
     <v-card outlined class="elevated-card">
-      <v-card-title class="blue lighten-1 white--text">Estadísticas Generales</v-card-title>
+      <v-card-title class="blue lighten-1 white--text">Estadístiques Generals</v-card-title>
       <v-card-text>
         <v-data-table
           :headers="generalHeaders"
@@ -99,64 +51,29 @@
 export default {
   data() {
     return {
-      emailFilter: "",
-      playerStats: [],
       generalStats: [],
-      playerHeaders: [
-        { text: "Correu Electrònic", value: "player_email" },
-        { text: "Tipus de Joc", value: "session_id" },
-        { text: "Rondes Totals", value: "total_rounds" },
-        { text: "Data", value: "created_at" },
-      ],
       generalHeaders: [
         { text: "Correu Electrònic del Jugador", value: "player_email" },
         { text: "Respostes Correctes", value: "preguntasAcertadas" },
         { text: "Respostes Incorrectes", value: "preguntasFallidas" },
         { text: "Data", value: "created_at" },
       ],
-      loadingPlayerStats: false,
       loadingGeneralStats: false,
       graficoGenerado: false, // Variable para saber si el gráfico fue generado
       graficoUrl: "", // URL del gráfico generado
     };
   },
   computed: {
-    filteredPlayerStats() {
-      if (!this.emailFilter) {
-        return this.playerStats;
-      }
-      return this.playerStats.filter(item =>
-        item.player_email.toLowerCase().includes(this.emailFilter.toLowerCase())
-      );
-    },
     filteredGeneralStats() {
-      if (!this.emailFilter) {
-        return this.generalStats;
-      }
-      return this.generalStats.filter(item =>
-        item.player_email.toLowerCase().includes(this.emailFilter.toLowerCase())
-      );
+      return this.generalStats;
     },
   },
   methods: {
-    async fetchPlayerStats() {
-      this.loadingPlayerStats = true;
-      try {
-        const response = await fetch(`http://localhost:3000/api/onlineGames`);
-        if (!response.ok) throw new Error("Error al obtener estadísticas del jugador");
-        this.playerStats = await response.json();
-      } catch (error) {
-        console.error(error);
-        this.playerStats = [];
-      } finally {
-        this.loadingPlayerStats = false;
-      }
-    },
     async fetchGeneralStats() {
       this.loadingGeneralStats = true;
       try {
         const response = await fetch(`http://localhost:3000/api/onlineGames`);
-        if (!response.ok) throw new Error("Error al obtener estadísticas generales");
+        if (!response.ok) throw new Error("Error al obtenir estadístiques generals");
         const data = await response.json();
         
         this.generalStats = data.map((game) => {
@@ -175,27 +92,26 @@ export default {
       }
     },
     async generarGraficos() {
-  try {
-    const response = await fetch("http://localhost:3000/api/generar-graficos", {
-      method: "GET",
-    });
-    const data = await response.json();
+      try {
+        const response = await fetch("http://localhost:3000/api/generar-graficos", {
+          method: "GET",
+        });
+        const data = await response.json();
 
-    if (data.graficoUrl) {
-      this.graficoUrl = data.graficoUrl;
-    } else {
-      console.error("No se pudo generar el gráfico.");
+        if (data.graficoPuntosUrl && data.graficoAciertosErroresUrl) {
+          this.graficoUrl = data.graficoPuntosUrl; // Ajusta según cuál gráfico quieras mostrar
+          this.graficoGenerado = true;
+        } else {
+          console.error("No se pudo generar el gráfico.");
+        }
+      } catch (error) {
+        console.error("Error al generar los gráficos:", error);
+      }
     }
-  } catch (error) {
-    console.error("Error al generar los gráficos:", error);
-  }
-}
-
   },
   mounted() {
     this.fetchGeneralStats();
-    this.fetchPlayerStats();
-  },
+  }
 };
 </script>
 
