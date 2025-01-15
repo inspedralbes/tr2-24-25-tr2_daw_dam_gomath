@@ -3,6 +3,8 @@ const http = require("http");
 const { Server } = require("socket.io");
 const { v4: uuidv4 } = require("uuid");
 const cors = require("cors");
+const onlineGamesRoutes = require('./routes/onlineGames')
+const mongoose = require('mongoose')
 
 const app = express();
 const server = http.createServer(app);
@@ -22,6 +24,16 @@ app.use(cors({
     methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
     credentials: true,
 }));
+
+app.use('/api/onlineGames', onlineGamesRoutes);
+
+// Connexió a la base de dades MongoDB
+mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/GoMath', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+.then(() => console.log('Connectat a MongoDB'))
+.catch((err) => console.error('Error al connectar a MongoDB', err));
 
 const rooms = {};
 
@@ -87,7 +99,7 @@ io.on("connection", (socket) => {
 
         if (rooms[roomCode]) {
             const isAlreadyMember = rooms[roomCode].members.some((member) => member.id === socket.id);
-            if (!isAlreadyMember) {
+            if (!isAlreadyMember && username !== "Android") {
                 rooms[roomCode].members.push({ id: socket.id, name: username, isHost: false });
                 console.log(`${username} se unió a la sala ${roomCode}`);
             }
@@ -128,6 +140,16 @@ io.on("connection", (socket) => {
         const room = roomCode.roomCode;
         console.log(`Iniciando partida en la sala: ${room}`);
         io.to(room).emit("game-started");
+    });
+
+    socket.on('kickUser', ({ roomCode, id }) => {
+        console.log(id)
+        if (rooms[roomCode]) {
+            const room = rooms[roomCode] 
+            rooms[roomCode].members = rooms[roomCode].members.filter(user => user.id !== id);
+            io.to(roomCode).emit("update-users", room.members);
+            console.log(`Usuario con id ${id} fue expulsado de la sala ${roomCode}`);
+        }
     });
 
     socket.on("disconnect", () => {

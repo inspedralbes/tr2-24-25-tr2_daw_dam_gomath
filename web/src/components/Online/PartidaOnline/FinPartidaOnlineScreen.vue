@@ -43,7 +43,7 @@
 
       const enviarEstadisticas = async () => {
       try {
-        const response = await fetch("http://localhost:3002/api/onlineGames", {
+        const response = await fetch("http://localhost:3000/api/onlineGames", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -68,13 +68,18 @@
     };
 
     const handleVolverAJugar = async () => {
-      await enviarEstadisticas();
-      resetEstadisticasYRedirigir();
+      try {
+        await enviarEstadisticas();
+        resetEstadisticasYRedirigir(); // Se ejecuta solo si enviarEstadisticas tiene éxito
+      } catch (error) {
+        console.error("Error en el flujo de volver a jugar:", error);
+      }
     };
   
       return {
         estadisticas,
         resetEstadisticasYRedirigir,
+        handleVolverAJugar
       };
     },
   };

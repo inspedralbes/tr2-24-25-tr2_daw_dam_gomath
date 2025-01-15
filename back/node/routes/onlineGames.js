@@ -4,12 +4,13 @@ const OnlineGame = require('../models/OnlineGame');
 
 // Crear una nueva partida online
 router.post('/', async (req, res) => {
+    console.log(req.body)
     try {
         const newGame = new OnlineGame({
             session_id: req.body.session_id,
             player_email: req.body.player_email,
             preguntasAcertadas: req.body.preguntasAcertadas,
-            preguntasFallidas: req.body.preguntasFallidas,
+            preguntasFalladas: req.body.preguntasFalladas,
             puntos: req.body.puntos
         });
 
