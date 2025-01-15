@@ -44,6 +44,11 @@
     <div v-if="graficoGenerado" class="mt-5">
       <v-img :src="graficoUrl" max-width="100%" />
     </div>
+
+    <!-- Botón de Volver -->
+    <v-btn @click="goBack" color="secondary" class="mt-4">
+      Tornar
+    </v-btn>
   </v-container>
 </template>
 
@@ -107,6 +112,9 @@ export default {
       } catch (error) {
         console.error("Error al generar los gráficos:", error);
       }
+    },
+    goBack() {
+      window.location.href = "http://gomath.daw.inspedralbes.cat/"; // Redirige al enlace proporcionado
     }
   },
   mounted() {
