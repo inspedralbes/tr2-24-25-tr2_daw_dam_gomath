@@ -1,6 +1,5 @@
 const express = require("express");
 const http = require("http");
-const mongoose = require("mongoose");
 const { Server } = require("socket.io");
 const { v4: uuidv4 } = require("uuid");
 const cors = require("cors");
@@ -10,6 +9,9 @@ const mongoose = require('mongoose')
 const app = express();
 const server = http.createServer(app);
 const PORT = 3000;
+const path = require("path");
+app.use('/graphs', express.static(path.join(__dirname, 'public/graphs')));
+
 let tipoPartidaHost;
 const io = new Server(server, {
     cors: {
@@ -59,6 +61,20 @@ app.get('/api/salas/:roomCode', (req, res) => {
     } else {
         res.status(404).json({ existe: false, mensaje: "La sala no existe" });
     }
+});
+
+app.get('/api/generar-graficos', (req, res) => {
+    exec("python ./Python/statistics.py", (error, stdout, stderr) => {
+        if (error || stderr) {
+            console.error(`Error: ${error || stderr}`);
+            return res.status(500).json({ message: "Error al generar gráficos" });
+        }
+        // Responder con las URLs de los gráficos generados
+        res.json({
+            graficoPuntosUrl: "/graphs/puntos_por_jugador.png",
+            graficoAciertosErroresUrl: "/graphs/aciertos_vs_errores.png"
+        });
+    });
 });
 
 app.delete('/api/salas/:roomCode', (req, res) => {
