@@ -1,61 +1,13 @@
 <template>
   <v-container>
-    <!-- Filtro por ID -->
-    <v-text-field
-      v-model="idFilter"
-      label="Filtrar por ID"
-      outlined
-      dense
-      class="mb-5 text-field-blue"
-      hide-details
-    ></v-text-field>
-
-    <!-- Estadísticas de Jugador -->
-    <v-card outlined class="mb-5 elevated-card">
-      <v-card-title class="blue lighten-1 white--text">Estadísticas de Jugador</v-card-title>
-      <v-card-text>
-        <v-data-table
-          :headers="playerHeaders"
-          :items="playerStats"
-          item-value="_id"
-          dense
-          class="elevated-table"
-          :loading="loadingPlayerStats"
-          hide-default-footer
-          no-data-text="No data available"
-          transition="fade-transition"
-          hide-header
-        >
-          <v-container>
-            <template v-slot:top>
-              <v-row class="font-weight-bold text-center table-header">
-                <v-col cols="3">ID</v-col>
-                <v-col cols="3">Tipo de Juego</v-col>
-                <v-col cols="3">Rondas Totales</v-col>
-                <v-col cols="3">Fecha</v-col>
-              </v-row>
-            </template>
-            <template v-slot:item="{ item }">
-              <v-row class="text-center hover-row table-row">
-                <v-col cols="3">{{ item.id }}</v-col>
-                <v-col cols="3">{{ item.game_type }}</v-col>
-                <v-col cols="3">{{ item.total_rounds }}</v-col>
-                <v-col cols="3">{{ new Date(item.date).toLocaleDateString() }}</v-col>
-              </v-row>
-            </template>
-          </v-container>
-        </v-data-table>
-      </v-card-text>
-    </v-card>
-
     <!-- Estadísticas Generales -->
     <v-card outlined class="elevated-card">
-      <v-card-title class="blue lighten-1 white--text">Estadísticas Generales</v-card-title>
+      <v-card-title class="blue lighten-1 white--text">Estadístiques Generals</v-card-title>
       <v-card-text>
         <v-data-table
           :headers="generalHeaders"
-          :items="generalStats"
-          item-value="_id"
+          :items="filteredGeneralStats"
+          item-value="player_email"
           dense
           class="elevated-table"
           :loading="loadingGeneralStats"
@@ -65,24 +17,38 @@
         >
           <template v-slot:top>
             <v-row class="font-weight-bold text-center table-header">
-              <v-col cols="3">ID del Jugador</v-col>
-              <v-col cols="3">Respuestas Correctas</v-col>
-              <v-col cols="3">Respuestas Incorrectas</v-col>
-              <v-col cols="3">Fecha</v-col>
+              <v-col cols="3">Correu Electrònic del Jugador</v-col>
+              <v-col cols="3">Respostes Correctes</v-col>
+              <v-col cols="3">Respostes Incorrectes</v-col>
+              <v-col cols="3">Data</v-col>
             </v-row>
           </template>
           <template v-slot:item="{ item }">
             <v-row class="text-center hover-row table-row">
-              <v-col cols="3">{{ item.player_id }}</v-col>
-              <v-col cols="3">{{ item.correct_answers }}</v-col>
-              <v-col cols="3">{{ item.incorrect_answers }}</v-col>
+              <v-col cols="3">{{ item.player_email }}</v-col>
+              <v-col cols="3">{{ item.preguntasAcertadas }}</v-col>
+              <v-col cols="3">{{ item.preguntasFallidas }}</v-col>
               <v-col cols="3">{{ new Date(item.created_at).toLocaleDateString() }}</v-col>
             </v-row>
           </template>
         </v-data-table>
       </v-card-text>
     </v-card>
-    
+
+    <!-- Botón para generar gráficos -->
+    <v-btn @click="generarGraficos" color="primary" class="mt-4">
+      Generar Gràfics
+    </v-btn>
+
+    <!-- Mostrar las gráficas generadas -->
+    <div v-if="graficoGenerado" class="mt-5">
+      <v-img :src="graficoUrl" max-width="100%" />
+    </div>
+
+    <!-- Botón de Volver -->
+    <v-btn @click="goBack" color="secondary" class="mt-4">
+      Tornar
+    </v-btn>
   </v-container>
 </template>
 
@@ -90,59 +56,36 @@
 export default {
   data() {
     return {
-      idFilter: "", // Filtro por ID
-      playerStats: [],
       generalStats: [],
-      playerHeaders: [
-        { text: "ID", value: "_id" },
-        { text: "Tipo de Juego", value: "game_type" },
-        { text: "Rondas Totales", value: "total_rounds" },
-        { text: "Tiempo de Sesión", value: "session_time" },
-        { text: "Fecha", value: "created_at" },
-      ],
       generalHeaders: [
-        { text: "ID del Jugador", value: "player_id" },
-        { text: "Respuestas Correctas", value: "correct_answers" },
-        { text: "Respuestas Incorrectas", value: "incorrect_answers" },
-        { text: "Fecha", value: "created_at" },
+        { text: "Correu Electrònic del Jugador", value: "player_email" },
+        { text: "Respostes Correctes", value: "preguntasAcertadas" },
+        { text: "Respostes Incorrectes", value: "preguntasFallidas" },
+        { text: "Data", value: "created_at" },
       ],
-      loadingPlayerStats: false,
       loadingGeneralStats: false,
+      graficoGenerado: false, // Variable para saber si el gráfico fue generado
+      graficoUrl: "", // URL del gráfico generado
     };
   },
-  methods: {
-    async fetchPlayerStats() {
-      if (!this.idFilter) {
-        this.playerStats = [];
-        return;
-      }
-      this.loadingPlayerStats = true;
-      try {
-        const response = await fetch(`http://localhost:3000/api/offlineGames/${this.idFilter}`);
-        if (!response.ok) throw new Error("Error al obtener estadísticas del jugador");
-        this.playerStats = await response.json();
-      } catch (error) {
-        console.error(error);
-        this.playerStats = [];
-      } finally {
-        this.loadingPlayerStats = false;
-      }
+  computed: {
+    filteredGeneralStats() {
+      return this.generalStats;
     },
+  },
+  methods: {
     async fetchGeneralStats() {
       this.loadingGeneralStats = true;
       try {
-        const response = await fetch(`http://localhost:3000/api/offlineGames`);
-        if (!response.ok) throw new Error("Error al obtener estadísticas generales");
+        const response = await fetch(`http://localhost:3000/api/onlineGames`);
+        if (!response.ok) throw new Error("Error al obtenir estadístiques generals");
         const data = await response.json();
+        
         this.generalStats = data.map((game) => {
-          const correctAnswers = game.questions.filter(
-            (q) => q.correct_response === q.current_response
-          ).length;
-          const incorrectAnswers = game.questions.length - correctAnswers;
           return {
-            player_id: game.player_id,
-            correct_answers: correctAnswers,
-            incorrect_answers: incorrectAnswers,
+            player_email: game.player_email,
+            preguntasAcertadas: game.preguntasAcertadas,
+            preguntasFallidas: game.preguntasFallidas,
             created_at: game.created_at,
           };
         });
@@ -153,12 +96,30 @@ export default {
         this.loadingGeneralStats = false;
       }
     },
+    async generarGraficos() {
+      try {
+        const response = await fetch("http://localhost:3000/api/generar-graficos", {
+          method: "GET",
+        });
+        const data = await response.json();
+
+        if (data.graficoPuntosUrl && data.graficoAciertosErroresUrl) {
+          this.graficoUrl = data.graficoPuntosUrl; // Ajusta según cuál gráfico quieras mostrar
+          this.graficoGenerado = true;
+        } else {
+          console.error("No se pudo generar el gráfico.");
+        }
+      } catch (error) {
+        console.error("Error al generar los gráficos:", error);
+      }
+    },
+    goBack() {
+      window.location.href = "http://gomath.daw.inspedralbes.cat/"; // Redirige al enlace proporcionado
+    }
   },
   mounted() {
     this.fetchGeneralStats();
-    const header = document.querySelector('.elevated-table .v-data-table__header');
-    if (header) header.style.display = 'none';
-  },
+  }
 };
 </script>
 
@@ -250,5 +211,14 @@ export default {
 
 .fade-transition {
   transition: opacity 0.3s ease;
+}
+
+/* Estilos adicionales para los gráficos */
+.mt-5 {
+  margin-top: 20px;
+}
+
+.mt-4 {
+  margin-top: 15px;
 }
 </style>

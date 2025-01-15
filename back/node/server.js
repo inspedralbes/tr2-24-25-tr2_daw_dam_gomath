@@ -5,6 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 const cors = require("cors");
 const onlineGamesRoutes = require('./routes/onlineGames')
 const mongoose = require('mongoose')
+const { exec } = require("child_process"); // Para ejecutar comandos de Python
 
 const app = express();
 const server = http.createServer(app);
@@ -23,7 +24,7 @@ const io = new Server(server, {
 
 app.use(express.json());
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "http://localhost:3001"],
     methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
     credentials: true,
 }));
