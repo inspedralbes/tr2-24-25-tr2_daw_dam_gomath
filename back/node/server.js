@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 const cors = require("cors");
 const onlineGamesRoutes = require('./routes/onlineGames')
 const mongoose = require('mongoose')
-const { exec } = require("child_process"); // Para ejecutar comandos de Python
+const { exec } = require("child_process");
 
 const app = express();
 const server = http.createServer(app);
@@ -109,7 +109,6 @@ io.on("connection", (socket) => {
         socket.emit("room-created", roomCode);
     });
 
-
     socket.on("join-room", ({ roomCode, username }) => {
         if (!username) {
             return socket.emit("error", "El nombre de usuario es requerido para unirse a la sala");
@@ -141,9 +140,10 @@ io.on("connection", (socket) => {
         if (codigoSala) {
             console.log(`Configurado tipoPartida para la sala ${codigoSala}:`, tipoPartida);
             tipoPartidaHost = tipoPartida;
-            //io.to(codigoSala).emit("tipoPartidaHost", { tipoPartida });
+            // io.to(codigoSala).emit("tipoPartidaHost", { tipoPartida });
         }
     });
+
     socket.on("update-tipoPartida", ({ roomCode, tipoPartida }) => {
         if (rooms[roomCode]) {
             rooms[roomCode].tipoPartida = tipoPartida;
