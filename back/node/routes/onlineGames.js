@@ -4,19 +4,14 @@ const OnlineGame = require('../models/OnlineGame');
 
 // Crear una nueva partida online
 router.post('/', async (req, res) => {
+    console.log(req.body)
     try {
         const newGame = new OnlineGame({
             session_id: req.body.session_id,
-            players_id: req.body.players_id,
-            game_type: req.body.game_type,
-            total_rounds: req.body.total_rounds,
-            session_time: req.body.session_time,
-            leaderboard: req.body.leaderboard.map(lb => ({
-                position: lb.position,
-                player_id: lb.player_id,
-                score: lb.score,
-                questions: lb.questions,
-            })),
+            player_email: req.body.player_email,
+            preguntasAcertadas: req.body.preguntasAcertadas,
+            preguntasFalladas: req.body.preguntasFalladas,
+            puntos: req.body.puntos
         });
 
         const savedGame = await newGame.save();
@@ -48,17 +43,17 @@ router.get('/session/:session_id', async (req, res) => {
 });
 
 // Obtenir partides per player_id (per ser part d'un array de players_id)
-router.get('/player/:player_id', async (req, res) => {
+router.get('/player/:player_email', async (req, res) => {
     try {
         // Obtenir el player_id de la petició
-        const playerId = req.params.player_id;
+        const playerEmail = req.params.player_email;
 
         // Cercar partides on player_id estigui dins de l'array players_id
-        const games = await OnlineGame.find({ players_id: playerId });
+        const games = await OnlineGame.find({ player_email: playerEmail });
 
         // Si no hi ha partides, retornar un error
         if (games.length === 0) {
-            return res.status(404).json({ missatge: 'No s’han trobat partides per aquest player_id' });
+            return res.status(404).json({ missatge: 'No s’han trobat partides per aquest player_email' });
         }
 
         // Retornar les partides trobades
@@ -70,9 +65,9 @@ router.get('/player/:player_id', async (req, res) => {
 });
 
 // Obtenir totes les partides per un player_id i data
-router.get('/player/:player_id/:date', async (req, res) => {
+router.get('/player/:player_name/:date', async (req, res) => {
     try {
-        const playerId = req.params.player_id;
+        const playerName = req.params.player_name;
         const date = req.params.date; // Fecha en formato YYYY-MM-DD
   
         // Crear un objeto de fecha sin horas, minutos, segundos ni milisegundos
@@ -89,7 +84,7 @@ router.get('/player/:player_id/:date', async (req, res) => {
         });
   
         if (games.length === 0) {
-            return res.status(404).json({ missatge: 'No s’han trobat partides per aquest player_id i data' });
+            return res.status(404).json({ missatge: 'No s\'han trobat partides per aquest player_id i data' });
         }
   
         res.json(games);

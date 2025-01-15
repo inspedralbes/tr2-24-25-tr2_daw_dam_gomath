@@ -19,7 +19,7 @@
         </div>
       </div>
   
-      <q-btn @click="resetEstadisticasYRedirigir" label="Volver a jugar" color="secondary" />
+      <q-btn @click="handleVolverAJugar" label="Volver a jugar" color="secondary" />
     </div>
   </template>
   
@@ -40,10 +40,46 @@
         estadisticasPartidaStore.setEstadisticasZero();  
         router.push("/Offline");  
       };
+
+      const enviarEstadisticas = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/onlineGames", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            session_id: "556r5",
+            player_email: "example@gmail.com",
+            preguntasAcertadas: estadisticas.value.preguntasAcertadas,
+            preguntasFalladas: estadisticas.value.preguntasFalladas,
+            puntos: estadisticas.value.puntos,
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error al enviar estadísticas: ${response.statusText}`);
+        }
+
+        console.log("Estadísticas enviadas correctamente");
+      } catch (error) {
+        console.error("Error al enviar estadísticas:", error);
+      }
+    };
+
+    const handleVolverAJugar = async () => {
+      try {
+        await enviarEstadisticas();
+        resetEstadisticasYRedirigir(); // Se ejecuta solo si enviarEstadisticas tiene éxito
+      } catch (error) {
+        console.error("Error en el flujo de volver a jugar:", error);
+      }
+    };
   
       return {
         estadisticas,
         resetEstadisticasYRedirigir,
+        handleVolverAJugar
       };
     },
   };

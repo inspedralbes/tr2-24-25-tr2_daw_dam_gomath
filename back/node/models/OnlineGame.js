@@ -1,40 +1,19 @@
 const mongoose = require('mongoose');
 
-const QuestionSchema = new mongoose.Schema(
-    {
-        question: { type: String, required: true },
-        correct_response: { type: String, required: true },
-        current_response: { type: String, required: true },
-        time_to_response: { type: Number, required: true },
-    },
-    { _id: false } // Desactiva la generación automática de _id
-);
-
-const LeaderboardSchema = new mongoose.Schema(
-    {
-        position: { type: Number, required: true },
-        player_id: { type: String, required: true },
-        score: { type: Number, required: true },
-        questions: { type: Map, of: QuestionSchema },
-    },
-    { _id: false }
-);
-
 const OnlineGameSchema = new mongoose.Schema({
     session_id: { type: String, required: true },
-    players_id: { type: [String], required: true },
-    game_type: { type: String, required: true },
-    total_rounds: { type: Number, required: true },
-    session_time: { type: Number, required: false },
+    player_email: { type: String, required: true },
+    preguntasAcertadas: { type: Number, required: true },
+    preguntasFalladas: { type: Number, required: true },
+    puntos: { type: Number, required: true },
     created_at: { 
         type: Date, 
         default: () => {
             const today = new Date();
-            today.setHours(0, 0, 0, 0); // Eliminar hora, minutos y segundos
+            today.setHours(0, 0, 0, 0);
             return today;
         } 
-    },
-    leaderboard: { type: [LeaderboardSchema], required: true },
+    }
 });
 
 // Middleware para formatear la salida

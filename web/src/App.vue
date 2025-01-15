@@ -135,6 +135,8 @@ export default {
           </q-avatar>
           GoMath
         </q-toolbar-title>
+        
+        <q-btn dense flat round icon="article" href="http://localhost:3001/" />
       </q-toolbar>
 
       <q-tabs align="center">
