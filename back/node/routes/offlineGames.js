@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Obtenir totes les motocicletes
+// Obtenir tot el historial de partides
 router.get('/', async (req, res) => {
   try {
     const games = await OfflineGame.find();
