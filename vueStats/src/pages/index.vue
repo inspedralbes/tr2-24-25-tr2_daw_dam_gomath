@@ -1,7 +1,20 @@
 <template>
   <v-container>
+    <!-- Header -->
+    <v-app-bar color="blue lighten-1" dark dense>
+      <v-btn @click="goBack" text class="white--text">
+        Tornar
+      </v-btn>
+      <v-toolbar-title
+        class="text-center white--text"
+        style="position: absolute; left: 50%; transform: translateX(-50%);"
+      >
+        ESTADÍSTIQUES
+      </v-toolbar-title>
+    </v-app-bar>
+
     <!-- Estadísticas Generales -->
-    <v-card outlined class="elevated-card">
+    <v-card outlined class="elevated-card mt-4">
       <v-card-title class="blue lighten-1 white--text">Estadístiques Generals</v-card-title>
       <v-card-text>
         <v-data-table
@@ -35,20 +48,55 @@
       </v-card-text>
     </v-card>
 
+    <!-- Filtre per Correu Electrònic -->
+    <v-card outlined class="elevated-card mt-4">
+      <v-card-title class="blue lighten-1 white--text">Filtrar per Correu Electrònic</v-card-title>
+      <v-card-text>
+        <!-- Input per filtrar per email -->
+        <v-text-field
+          v-model="emailFilter"
+          label="Correu Electrònic"
+          dense
+          clearable
+        ></v-text-field>
+
+        <!-- Tabló amb les estadístiques filtrades -->
+        <v-data-table
+          :headers="generalHeaders"
+          :items="filteredGeneralStatsByEmail"
+          item-value="player_email"
+          dense
+          class="elevated-table"
+          :loading="loadingGeneralStats"
+          hide-default-footer
+          transition="fade-transition"
+          hide-header
+        >
+          <template v-slot:top>
+            <v-row class="font-weight-bold text-center table-header">
+              <v-col cols="3">Correu Electrònic del Jugador</v-col>
+              <v-col cols="3">Respostes Correctes</v-col>
+              <v-col cols="3">Respostes Incorrectes</v-col>
+              <v-col cols="3">Data</v-col>
+            </v-row>
+          </template>
+          <template v-slot:item="{ item }">
+            <v-row class="text-center hover-row table-row">
+              <v-col cols="3">{{ item.player_email }}</v-col>
+              <v-col cols="3">{{ item.preguntasAcertadas }}</v-col>
+              <v-col cols="3">{{ item.preguntasFallidas }}</v-col>
+              <v-col cols="3">{{ new Date(item.created_at).toLocaleDateString() }}</v-col>
+            </v-row>
+          </template>
+        </v-data-table>
+      </v-card-text>
+    </v-card>
+
     <!-- Botón para generar gráficos -->
     <v-btn @click="generarGraficos" color="primary" class="mt-4">
       Generar Gràfics
     </v-btn>
 
-    <!-- Mostrar las gráficas generadas -->
-    <div v-if="graficoGenerado" class="mt-5">
-      <v-img :src="graficoUrl" max-width="100%" />
-    </div>
-
-    <!-- Botón de Volver -->
-    <v-btn @click="goBack" color="secondary" class="mt-4">
-      Tornar
-    </v-btn>
   </v-container>
 </template>
 
@@ -56,7 +104,7 @@
 export default {
   data() {
     return {
-      generalStats: [],
+      generalStats: [], // Estadístiques generals de les partides
       generalHeaders: [
         { text: "Correu Electrònic del Jugador", value: "player_email" },
         { text: "Respostes Correctes", value: "preguntasAcertadas" },
@@ -64,12 +112,19 @@ export default {
         { text: "Data", value: "created_at" },
       ],
       loadingGeneralStats: false,
-      graficoGenerado: false, // Variable para saber si el gráfico fue generado
-      graficoUrl: "", // URL del gráfico generado
+      emailFilter: "", // Filtre per correu electrònic
     };
   },
   computed: {
     filteredGeneralStats() {
+      return this.generalStats;
+    },
+    filteredGeneralStatsByEmail() {
+      if (this.emailFilter) {
+        return this.generalStats.filter(item => 
+          item.player_email.toLowerCase().includes(this.emailFilter.toLowerCase())
+        );
+      }
       return this.generalStats;
     },
   },
@@ -80,7 +135,7 @@ export default {
         const response = await fetch(`http://localhost:3000/api/onlineGames`);
         if (!response.ok) throw new Error("Error al obtenir estadístiques generals");
         const data = await response.json();
-        
+
         this.generalStats = data.map((game) => {
           return {
             player_email: game.player_email,
@@ -104,7 +159,7 @@ export default {
         const data = await response.json();
 
         if (data.graficoPuntosUrl && data.graficoAciertosErroresUrl) {
-          this.graficoUrl = data.graficoPuntosUrl; // Ajusta según cuál gráfico quieras mostrar
+          this.graficoUrl = data.graficoPuntosUrl; // Ajusta segons quin gràfic vulguis mostrar
           this.graficoGenerado = true;
         } else {
           console.error("No se pudo generar el gráfico.");
@@ -127,6 +182,14 @@ export default {
 .v-application {
   min-height: 100vh;
   background-color: #ffffff;
+}
+
+.elevated-card {
+  margin-top: 20px;
+}
+
+.v-toolbar-title {
+  font-weight: bold;
 }
 
 .elevated-table .v-data-table-header {
